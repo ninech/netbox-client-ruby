@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "netbox/client/ruby"
+require "netbox-client-ruby"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

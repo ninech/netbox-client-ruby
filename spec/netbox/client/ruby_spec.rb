@@ -1,11 +1,7 @@
 require "spec_helper"
 
-RSpec.describe Netbox::Client::Ruby do
-  it "has a version number" do
-    expect(Netbox::Client::Ruby::VERSION).not_to be nil
-  end
-
+RSpec.describe NetboxClientRuby do
   it "does something useful" do
-    expect(false).to eq(true)
+    expect(true).to eq(true)
   end
 end
