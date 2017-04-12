@@ -1,0 +1,66 @@
+PATH
+  remote: .
+  specs:
+    netbox-client-ruby (0.0.1)
+      dry-configurable (~> 0.1)
+      faraday (~> 0.12)
+      faraday-detailed_logger (~> 2.1)
+      faraday_middleware (~> 0.11.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ast (2.3.0)
+    concurrent-ruby (1.0.5)
+    diff-lcs (1.3)
+    dry-configurable (0.6.2)
+      concurrent-ruby (~> 1.0)
+    faraday (0.12.0.1)
+      multipart-post (>= 1.2, < 3)
+    faraday-detailed_logger (2.1.1)
+      faraday (~> 0.8)
+    faraday_middleware (0.11.0.1)
+      faraday (>= 0.7.4, < 1.0)
+    multipart-post (2.0.0)
+    parser (2.4.0.0)
+      ast (~> 2.2)
+    powerpack (0.1.1)
+    rainbow (2.2.1)
+    rake (10.5.0)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    rubocop (0.48.1)
+      parser (>= 2.3.3.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-rspec (1.15.0)
+      rubocop (>= 0.42.0)
+    ruby-progressbar (1.8.1)
+    unicode-display_width (1.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.14)
+  netbox-client-ruby!
+  rake (~> 10.0)
+  rspec (~> 3.0)
+  rubocop (~> 0.48)
+  rubocop-rspec (~> 1.15)
+
+BUNDLED WITH
+   1.14.6
