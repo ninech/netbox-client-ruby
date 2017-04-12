@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - nginx
+    volumes:
+      - .:/app
+  nginx:
+    image: nginx:1.11-alpine
+    command: nginx -g 'daemon off;' -c /etc/netbox-nginx/nginx.conf
+    depends_on:
+      - netbox
+    volumes:
+      - netbox-nginx-config:/etc/netbox-nginx/
+      - netbox-static-files:/opt/netbox/netbox/static
+    ports:
+      - 80
+  netbox:
+    image: digitalocean/netbox:v2.0-beta2
+    depends_on:
+      - postgres
+    volumes:
+      - netbox-static-files:/opt/netbox/netbox/static
+      - netbox-nginx-config:/etc/netbox-nginx/
+    env_file: 'netbox.env'
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: netbox
+      POSTGRES_PASSWORD: netbox
+      POSTGRES_DB: netbox
+volumes:
+  netbox-static-files:
+    driver: local
+  netbox-nginx-config:
+    driver: local
