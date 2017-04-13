@@ -38,6 +38,14 @@ describe NetboxClientRuby::Communication do
   end
 
   describe 'http status checks' do
+    context '204 No Content' do
+      let(:response) { double('response', status: 204) }
+
+      it 'returns and empty object' do
+        expect(subject.response(response)).to eq({})
+      end
+    end
+
     context '304 Not Modified' do
       let(:response) { double('response', status: 304) }
 

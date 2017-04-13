@@ -6,6 +6,7 @@ module NetboxClientRuby
   module Communication
     def response(response)
       return nil if response.status == 304
+      return {} if response.status == 204
 
       raise_on_http_error response.status
 

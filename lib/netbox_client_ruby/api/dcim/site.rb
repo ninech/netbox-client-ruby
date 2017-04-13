@@ -5,6 +5,9 @@ module NetboxClientRuby
     include NetboxClientRuby::Entity
 
     attr_reader :id
+    readonly_fields :count_prefixes, :count_vlans, :count_racks, :count_devices,
+                    :count_circuits
+
     deletable true
     path 'dcim/sites/:id.json'
 

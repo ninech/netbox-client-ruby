@@ -42,7 +42,8 @@ NetboxClientRuby.configure do |config|
 
   # these are optional:
   config.netbox.pagination.default_limit = 50
-  config.faraday.adapter = :your_preferred_faraday_adapter
+  config.faraday.adapter = Faraday.default_adapter
+  config.faraday.request_options = { open_timeout: 1, timeout: 5 }
   config.faraday.logger = :logger # built-in options: :logger, :detailed_logger; default: nil
 end
 ```

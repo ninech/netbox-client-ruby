@@ -103,7 +103,7 @@ module NetboxClientRuby
     end
 
     def delete
-      fail NetboxClientRuby::LocalError, "Can't delete unless deletable=true" unless deletable
+      raise NetboxClientRuby::LocalError, "Can't delete unless deletable=true" unless deletable
       return self if @deleted
 
       @data = response connection.delete path
