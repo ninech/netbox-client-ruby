@@ -32,9 +32,7 @@ module NetboxClientRuby
     private
 
     def read(response)
-      body = response.body
-
-      body['results'] || body
+      response.body
     end
 
     def raise_on_http_error(status)

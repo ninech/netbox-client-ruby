@@ -29,15 +29,13 @@ module NetboxClientRuby
       end
 
       def deletable(deletable = false)
-        return @deletable unless @deletable.nil?
-
-        @deletable = deletable
+        @deletable ||= deletable
       end
 
       def path(path = nil)
         return @path if @path
 
-        fail ArgumentError, 'path is not defined' if path.nil?
+        raise ArgumentError, 'path is not defined' if path.nil?
 
         @path = path
       end
@@ -126,10 +124,12 @@ module NetboxClientRuby
       patch
     end
 
+    def raw_data!
+      data
+    end
+
     def method_missing(name_as_symbol, *args, &block)
       name = normalize_accessor name_as_symbol
-
-      return data if :_raw_data! == name_as_symbol
 
       if name.end_with?('=')
         if readonly_fields.include?(name[0..-2])
@@ -156,8 +156,6 @@ module NetboxClientRuby
 
     def respond_to_missing?(name_as_symbol, *args)
       name = normalize_accessor name_as_symbol
-
-      return true if :_raw_data! == name_as_symbol
 
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
       return true if name.end_with?('!') && data.keys.include?(name[0..-2])
@@ -231,9 +229,7 @@ module NetboxClientRuby
     end
 
     def path
-      return @path if @path
-
-      @path = replace_path_variables_in self.class.path
+      @path ||= replace_path_variables_in self.class.path
     end
 
     def replace_path_variables_in(path)
