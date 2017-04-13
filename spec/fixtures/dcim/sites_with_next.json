@@ -1,0 +1,33 @@
+{
+  "count": 2,
+  "next": "http://localhost/api/dcim/sites/?limit=1&offset=1",
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "test",
+      "slug": "test",
+      "region": {
+        "id": 1,
+        "url": "http://localhost/api/dcim/regions/1/",
+        "name": "region1",
+        "slug": "region1"
+      },
+      "tenant": null,
+      "facility": "",
+      "asn": null,
+      "physical_address": "",
+      "shipping_address": "",
+      "contact_name": "",
+      "contact_phone": "",
+      "contact_email": "",
+      "comments": "",
+      "custom_fields": {},
+      "count_prefixes": 0,
+      "count_vlans": 0,
+      "count_racks": 0,
+      "count_devices": 0,
+      "count_circuits": 0
+    }
+  ]
+}

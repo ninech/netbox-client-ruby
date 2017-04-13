@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "device": {
+    "id": 1,
+    "url": "http://localhost/api/dcim/devices/1/",
+    "name": "device1",
+    "display_name": "device1"
+  },
+  "parent": null,
+  "name": "inventory_item1",
+  "manufacturer": null,
+  "part_id": "",
+  "serial": "",
+  "discovered": false
+}

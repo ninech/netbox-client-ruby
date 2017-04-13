@@ -1,0 +1,54 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "test",
+      "slug": "test",
+      "region": {
+        "id": 1,
+        "url": "http://localhost/api/dcim/regions/1/",
+        "name": "region1",
+        "slug": "region1"
+      },
+      "tenant": null,
+      "facility": "",
+      "asn": null,
+      "physical_address": "",
+      "shipping_address": "",
+      "contact_name": "",
+      "contact_phone": "",
+      "contact_email": "",
+      "comments": "",
+      "custom_fields": {},
+      "count_prefixes": 0,
+      "count_vlans": 0,
+      "count_racks": 0,
+      "count_devices": 0,
+      "count_circuits": 0
+    },
+    {
+      "id": 2,
+      "name": "test_site2",
+      "slug": "test2",
+      "region": null,
+      "tenant": null,
+      "facility": "",
+      "asn": null,
+      "physical_address": "",
+      "shipping_address": "",
+      "contact_name": "",
+      "contact_phone": "",
+      "contact_email": "",
+      "comments": "",
+      "custom_fields": {},
+      "count_prefixes": 0,
+      "count_vlans": 0,
+      "count_racks": 1,
+      "count_devices": 2,
+      "count_circuits": 0
+    }
+  ]
+}

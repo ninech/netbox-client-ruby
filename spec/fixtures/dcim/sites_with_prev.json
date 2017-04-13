@@ -1,0 +1,28 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": "http://localhost/api/dcim/sites/?limit=1",
+  "results": [
+    {
+      "id": 2,
+      "name": "test_site2",
+      "slug": "test2",
+      "region": null,
+      "tenant": null,
+      "facility": "",
+      "asn": null,
+      "physical_address": "",
+      "shipping_address": "",
+      "contact_name": "",
+      "contact_phone": "",
+      "contact_email": "",
+      "comments": "",
+      "custom_fields": {},
+      "count_prefixes": 0,
+      "count_vlans": 0,
+      "count_racks": 1,
+      "count_devices": 2,
+      "count_circuits": 0
+    }
+  ]
+}

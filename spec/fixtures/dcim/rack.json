@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "name": "test2rack",
+  "facility_id": null,
+  "display_name": "test2rack",
+  "site": {
+    "id": 2,
+    "url": "http://localhost/api/dcim/sites/2/",
+    "name": "test_site2",
+    "slug": "test2"
+  },
+  "group": null,
+  "tenant": null,
+  "role": null,
+  "type": null,
+  "width": {
+    "value": 19,
+    "label": "19 inches"
+  },
+  "u_height": 42,
+  "desc_units": false,
+  "comments": "",
+  "custom_fields": {}
+}

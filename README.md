@@ -41,7 +41,7 @@ NetboxClientRuby.configure do |config|
   config.netbox.api_base_url = 'http://netbox.local/api/'
 
   # these are optional:
-  config.netbox.pagingation.default_limit = 50
+  config.netbox.pagination.default_limit = 50
   config.faraday.adapter = :your_preferred_faraday_adapter
   config.faraday.logger = :logger # built-in options: :logger, :detailed_logger; default: nil
 end
