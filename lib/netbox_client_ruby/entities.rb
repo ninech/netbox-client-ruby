@@ -6,8 +6,6 @@ module NetboxClientRuby
   module Entities
     include NetboxClientRuby::Communication
 
-    MAX_SIGNED_64BIT_INT = 9_223_372_036_854_775_807
-
     def self.included(other_klass)
       other_klass.extend ClassMethods
     end
@@ -28,29 +26,35 @@ module NetboxClientRuby
       def limit(limit = nil)
         return @limit if @limit
 
-        @limit = limit || NetboxClientRuby.config.pagination.default_limit
+        @limit = limit || NetboxClientRuby.config.netbox.pagination.default_limit
 
-        check_limit
+        if @limit.nil?
+          raise ArgumentError,
+                "Whether 'limit' nor 'default_limit' are defined."
+        end
+
+        check_limit @limit
 
         @limit
       end
 
-      def check_limit
-        if @limit.nil?
+      def check_limit(limit)
+        max_limit = NetboxClientRuby.config.netbox.pagination.max_limit
+        if limit.nil?
           raise ArgumentError,
-                "'limit' has not been defined or and no 'default_limit' was set."
-        elsif !@limit.is_a?(Numeric)
+                "'limit' can not be nil."
+        elsif !limit.is_a?(Numeric)
           raise ArgumentError,
-                "The limit '#{@limit}' is not numeric but it has to be."
-        elsif !@limit.integer?
+                "The limit '#{limit}' is not numeric but it has to be."
+        elsif !limit.integer?
           raise ArgumentError,
-                "The limit '#{@limit}' is not decimal but it has to be."
-        elsif @limit < 0
+                "The limit '#{limit}' is not decimal but it has to be."
+        elsif limit < 0
           raise ArgumentError,
-                "The limit '#{@limit}' is below zero, but it should be zero or bigger."
-        elsif @limit > MAX_SIGNED_64BIT_INT
+                "The limit '#{limit}' is below zero, but it should be zero or bigger."
+        elsif limit > max_limit
           raise ArgumentError,
-                "The limit '#{@limit}' is bigger than the allowed limit value."
+                "The limit '#{limit}' is bigger than the configured limit value ('#{max_limit}')."
         end
       end
 
@@ -78,6 +82,19 @@ module NetboxClientRuby
 
       @filter = filter
       reset
+      self
+    end
+
+    def all
+      @instance_limit = NetboxClientRuby.config.netbox.pagination.max_limit
+      reset
+      self
+    end
+
+    def limit(limit)
+      self.class.check_limit limit
+
+      @instance_limit = limit
       self
     end
 
@@ -134,13 +151,25 @@ module NetboxClientRuby
       response connection.get path_with_parameters
     end
 
-    def path_parameters
-      return '' unless @filter
-      '?' + URI.encode_www_form(@filter)
-    end
-
     def path_with_parameters
       self.class.path + path_parameters
+    end
+
+    def path_parameters
+      params = []
+
+      params << @filter
+      params << { limit: @instance_limit || self.class.limit }
+
+      join_path_parameters(params)
+    end
+
+    def join_path_parameters(params)
+      return '' if params.empty?
+
+      '?' + params.compact.map do |param_obj|
+        URI.encode_www_form param_obj
+      end.join('&')
     end
 
     def as_entity(raw_entity)

@@ -11,6 +11,8 @@ RSpec.shared_context 'connection setup' do
     NetboxClientRuby.configure do |config|
       config.netbox.auth.token = netbox_auth_token
       config.netbox.api_base_url = netbox_api_base_url
+      config.netbox.pagination.default_limit = 42
+      config.netbox.pagination.max_limit = 9999
     end
   end
 end
@@ -43,7 +45,6 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   end
 
   before do
-    puts "params: #{request_url}#{request_url_params_string} #{request_params}"
     faraday_stubs.public_send(request_method,
                               "#{request_url}#{request_url_params_string}",
                               request_params) do |_env|

@@ -43,6 +43,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
   end
   let(:response) { JSON.generate(raw_data) }
   let(:request_url) { '/api/tests/42' }
+  let(:request_url_params) { { limit: 321 } }
   let(:subject) { TestEntities.new }
 
   describe '#total' do
@@ -60,8 +61,11 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     context 'nonexistent count_key provided' do
       subject { TestEntities2.new }
       let(:request_url) { '/test' }
+      let(:request_url_params) do
+        { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
+      end
 
-      it 'does something' do
+      it 'return nil' do
         expect(subject.total).to be_nil
       end
     end
@@ -125,6 +129,9 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
   context 'nonexistent data_key provided' do
     subject { TestEntities2.new }
     let(:request_url) { '/test' }
+    let(:request_url_params) do
+      { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
+    end
 
     describe '#as_array' do
       it 'returns an empty Array' do
@@ -185,6 +192,119 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
 
       it 'applies the filter' do
         subject.filter(filter).reload
+      end
+    end
+  end
+
+  describe '#all' do
+    let(:limit) { 1234 }
+    let(:request_url_params) { { limit: limit } }
+
+    it 'returns itself' do
+      expect(subject.all).to be subject
+    end
+
+    it 'fetches all the articles until the maximum allowed value' do
+      subject.limit(limit).reload
+    end
+
+    context 'limit exactly maximum' do
+      let(:limit) do
+        NetboxClientRuby.config.netbox.pagination.max_limit
+      end
+
+      it 'works as expected' do
+        expect { subject.limit(limit) }.to_not raise_exception
+      end
+    end
+
+    context 'limit higher than maximum' do
+      let(:limit) do
+        NetboxClientRuby.config.netbox.pagination.max_limit + 1
+      end
+
+      it 'raises an ArgumentError' do
+        expect { subject.limit(limit) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'limit negative' do
+      let(:limit) { -1 }
+
+      it 'raises an ArgumentError' do
+        expect { subject.limit(limit) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'limit nil' do
+      let(:limit) { nil }
+
+      it 'raises an ArgumentError' do
+        expect { subject.limit(limit) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'non-numeric limit' do
+      let(:limit) { 'a' }
+
+      it 'raises an ArgumentError' do
+        expect { subject.limit(limit) }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe '#page' do
+    it 'returns itself' do
+      pending
+      expect(subject.page(2)).to be subject
+    end
+
+    context 'negative page number' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.page(-1) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'nil page' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.page(nil) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'non-numeric page' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.page('a') }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe '#offset' do
+    it 'returns itself' do
+      pending
+      expect(subject.offset(1)).to be subject
+    end
+
+    context 'negative offset number' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.offset(-1) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'nil offset' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.offset(nil) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'non-numeric offset' do
+      it 'raises an ArgumentError' do
+        pending
+        expect { subject.offset('a') }.to raise_error(ArgumentError)
       end
     end
   end

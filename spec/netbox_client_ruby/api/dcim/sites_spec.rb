@@ -3,6 +3,9 @@ require 'spec_helper'
 describe NetboxClientRuby::Sites, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/dcim/sites.json') }
   let(:request_url) { '/api/dcim/sites.json' }
+  let(:request_url_params) do
+    { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
+  end
 
   subject { NetboxClientRuby::Sites.new }
 
@@ -32,6 +35,16 @@ describe NetboxClientRuby::Sites, faraday_stub: true do
     describe '#total' do
       it 'shall be the expected total' do
         expect(subject.total).to be 2
+      end
+    end
+
+    describe '#all' do
+      let(:request_url_params) do
+        { limit: NetboxClientRuby.config.netbox.pagination.max_limit }
+      end
+
+      it 'shall fetch and return all entities' do
+        expect(subject.all.total).to be 2
       end
     end
   end

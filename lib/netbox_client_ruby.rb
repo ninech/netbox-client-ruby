@@ -5,6 +5,8 @@ require 'netbox_client_ruby/api'
 module NetboxClientRuby
   extend Dry::Configurable
 
+  MAX_SIGNED_64BIT_INT = 9_223_372_036_854_775_807
+
   setting :netbox do
     setting :api_base_url
     setting :auth do
@@ -12,6 +14,7 @@ module NetboxClientRuby
     end
     setting :pagination do
       setting :default_limit, 50
+      setting :max_limit, MAX_SIGNED_64BIT_INT
     end
   end
 

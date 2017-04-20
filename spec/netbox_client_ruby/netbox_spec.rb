@@ -6,6 +6,7 @@ describe NetboxClientRuby do
       config.netbox.auth.token = 'my_very_special_token'
       config.netbox.api_base_url = 'https://netbox.test/api/'
       config.netbox.pagination.default_limit = 42
+      config.netbox.pagination.max_limit = 84
       config.faraday.adapter = :net_http_persistent
       config.faraday.logger = :detailed_logger
       config.faraday.request_options = { open_timeout: 3, timeout: 15 }
@@ -17,6 +18,8 @@ describe NetboxClientRuby do
       .to eq 'https://netbox.test/api/'
     expect(NetboxClientRuby.config.netbox.pagination.default_limit)
       .to eq 42
+    expect(NetboxClientRuby.config.netbox.pagination.max_limit)
+      .to eq 84
     expect(NetboxClientRuby.config.faraday.adapter)
       .to be :net_http_persistent
     expect(NetboxClientRuby.config.faraday.logger)
