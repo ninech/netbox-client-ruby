@@ -6,6 +6,8 @@ module NetboxClientRuby
   module Entities
     include NetboxClientRuby::Communication
 
+    MAX_SIGNED_64BIT_INT = 9_223_372_036_854_775_807
+
     def self.included(other_klass)
       other_klass.extend ClassMethods
     end
@@ -48,6 +50,9 @@ module NetboxClientRuby
         elsif @limit < 0
           raise ArgumentError,
                 "The limit '#{@limit}' is below zero, but it should be zero or bigger."
+        elsif @limit > MAX_SIGNED_64BIT_INT
+          raise ArgumentError,
+                "The limit '#{@limit}' is bigger than the allowed limit value."
         end
       end
 
