@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'faraday'
 require 'faraday_middleware'
+require 'uri'
 
 RSpec.shared_context 'connection setup' do
   let(:netbox_auth_token) { 'this-is-the-test-token' }
@@ -30,13 +31,22 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
 
   let(:request_method) { :get }
   let(:request_params) { {} }
+  let(:request_url_params) { nil }
   let(:response_status) { 200 }
   let(:response_config) { { content_type: 'application/json' } }
   let(:response) { '{}' }
 
+  let(:request_url_params_string) do
+    return request_url_params if request_url_params.nil?
+    return "?#{request_url_params}" if request_url_params.is_a? String
+    '?' + URI.encode_www_form(request_url_params)
+  end
+
   before do
-    puts "params: #{request_url} #{request_params}"
-    faraday_stubs.public_send(request_method, request_url, request_params) do |_env|
+    puts "params: #{request_url}#{request_url_params_string} #{request_params}"
+    faraday_stubs.public_send(request_method,
+                              "#{request_url}#{request_url_params_string}",
+                              request_params) do |_env|
       [response_status, response_config, response]
     end
     allow(Faraday).to receive(:new).and_return faraday

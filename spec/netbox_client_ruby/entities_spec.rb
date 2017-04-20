@@ -162,4 +162,30 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
       end
     end
   end
+
+  describe '#filter' do
+    let(:filter) { { something: true } }
+
+    it 'returns itself' do
+      expect(subject.filter(filter)).to be subject
+    end
+
+    it 'does not request anything' do
+      expect(faraday).to_not receive(:get)
+      subject.filter(filter)
+    end
+
+    it 'resets the data' do
+      expect(faraday).to receive(:get).twice.and_call_original
+      subject.reload.filter(filter).reload
+    end
+
+    context 'check filter on connection' do
+      let(:request_url_params) { filter }
+
+      it 'applies the filter' do
+        subject.filter(filter).reload
+      end
+    end
+  end
 end

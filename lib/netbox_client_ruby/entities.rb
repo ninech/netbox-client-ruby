@@ -12,8 +12,6 @@ module NetboxClientRuby
       other_klass.extend ClassMethods
     end
 
-    attr_accessor :filter
-
     module ClassMethods
       def self.extended(other_klass)
         @other_klass = other_klass
@@ -75,6 +73,14 @@ module NetboxClientRuby
       end
     end
 
+    def filter(filter)
+      raise ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
+
+      @filter = filter
+      reset
+      self
+    end
+
     def [](index)
       return nil if length <= index
 
@@ -111,6 +117,10 @@ module NetboxClientRuby
     alias count total
 
     private
+
+    def reset
+      @data = nil
+    end
 
     def raw_data_array
       data[self.class.data_key] || []
