@@ -30,11 +30,24 @@ module NetboxClientRuby
 
         @limit = limit || NetboxClientRuby.config.pagination.default_limit
 
-        if @limit
-          @limit
-        else
+        check_limit
+
+        @limit
+      end
+
+      def check_limit
+        if @limit.nil?
           raise ArgumentError,
-                '"limit" has not been defined or and no default_limit was set.'
+                "'limit' has not been defined or and no 'default_limit' was set."
+        elsif !@limit.is_a?(Numeric)
+          raise ArgumentError,
+                "The limit '#{@limit}' is not numeric but it has to be."
+        elsif !@limit.integer?
+          raise ArgumentError,
+                "The limit '#{@limit}' is not decimal but it has to be."
+        elsif @limit < 0
+          raise ArgumentError,
+                "The limit '#{@limit}' is below zero, but it should be zero or bigger."
         end
       end
 
@@ -60,14 +73,17 @@ module NetboxClientRuby
     def [](index)
       return nil if length <= index
 
-      list = data[self.class.data_key] || []
-      as_entity list[index]
+      as_entity raw_data_array[index]
+    end
+
+    def as_array
+      raw_data_array.map { |raw_entity| as_entity raw_entity}
     end
 
     ##
     # The number of entities that have been fetched
     def length
-      data[self.class.data_key].length
+      raw_data_array.length
     end
 
     ##
@@ -91,12 +107,16 @@ module NetboxClientRuby
 
     private
 
+    def raw_data_array
+      data[self.class.data_key] || []
+    end
+
     def data
       @data ||= get
     end
 
     def get
-      response connection.get path
+      response connection.get path_with_parameters
     end
 
     def path_parameters
@@ -104,7 +124,7 @@ module NetboxClientRuby
       '?' + URI.encode_www_form(@filter)
     end
 
-    def path
+    def path_with_parameters
       self.class.path + path_parameters
     end
 
