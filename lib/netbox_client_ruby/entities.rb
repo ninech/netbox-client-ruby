@@ -48,7 +48,7 @@ module NetboxClientRuby
                 "The limit '#{limit}' is not numeric but it has to be."
         elsif !limit.integer?
           raise ArgumentError,
-                "The limit '#{limit}' is not decimal but it has to be."
+                "The limit '#{limit}' is not integer but it has to be."
         elsif limit < 0
           raise ArgumentError,
                 "The limit '#{limit}' is below zero, but it should be zero or bigger."
@@ -92,10 +92,36 @@ module NetboxClientRuby
     end
 
     def limit(limit)
-      self.class.check_limit limit
+      self.class.check_limit limit unless limit.nil?
 
       @instance_limit = limit
+      reset
       self
+    end
+
+    def offset(offset)
+      if !offset.is_a? Numeric
+        raise ArgumentError, "The offset '#{offset}' is not numeric."
+      elsif offset.negative?
+        raise ArgumentError, "The offset '#{offset}' must not be negative."
+      end
+
+      @offset = offset
+      reset
+      self
+    end
+
+    def page(page)
+      if !page.is_a? Numeric
+        raise ArgumentError, "The offset '#{page}' is not numeric but has to be."
+      elsif !page.integer?
+        raise ArgumentError, "The offset '#{page}' must be integer but isn't."
+      elsif page.negative?
+        raise ArgumentError, "The offset '#{page}' must not be negative but is."
+      end
+
+      limit = @instance_limit || self.class.limit
+      offset(limit * page)
     end
 
     def [](index)
@@ -160,6 +186,7 @@ module NetboxClientRuby
 
       params << @filter
       params << { limit: @instance_limit || self.class.limit }
+      params << { offset: @offset } if @offset
 
       join_path_parameters(params)
     end

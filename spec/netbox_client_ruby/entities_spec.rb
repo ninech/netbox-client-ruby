@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'ostruct'
+require 'uri'
 
 describe NetboxClientRuby::Entities, faraday_stub: true do
   class TestEntities
@@ -197,7 +198,9 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
   end
 
   describe '#all' do
-    let(:limit) { 1234 }
+    let(:limit) do
+      NetboxClientRuby.config.netbox.pagination.default_limit
+    end
     let(:request_url_params) { { limit: limit } }
 
     it 'returns itself' do
@@ -206,6 +209,22 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
 
     it 'fetches all the articles until the maximum allowed value' do
       subject.limit(limit).reload
+    end
+
+    context 'complex test' do
+      before do
+        url_params_string = '?' + URI.encode_www_form(limit: 321)
+        faraday_stubs.public_send(request_method,
+                                  "#{request_url}#{url_params_string}",
+                                  request_params) do |_env|
+          [response_status, response_config, response]
+        end
+      end
+
+      it 're-fetches after a limit change' do
+        expect(faraday).to receive(:get).twice.and_call_original
+        subject.reload.limit(limit).reload
+      end
     end
 
     context 'limit exactly maximum' do
@@ -236,14 +255,6 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
       end
     end
 
-    context 'limit nil' do
-      let(:limit) { nil }
-
-      it 'raises an ArgumentError' do
-        expect { subject.limit(limit) }.to raise_error(ArgumentError)
-      end
-    end
-
     context 'non-numeric limit' do
       let(:limit) { 'a' }
 
@@ -254,56 +265,77 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
   end
 
   describe '#page' do
+    let(:limit) { 321 }
+    let(:page) { 0 }
+    let(:offset) { limit * page }
+    let(:request_url_params) { { limit: limit, offset: offset } }
+
     it 'returns itself' do
-      pending
       expect(subject.page(2)).to be subject
+    end
+
+    (0..10).each do |counter|
+      context "page #{counter}" do
+        let(:page) { counter }
+
+        it 'fetches the correct data from the right offset' do
+          subject.page(page).reload
+        end
+      end
     end
 
     context 'negative page number' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.page(-1) }.to raise_error(ArgumentError)
       end
     end
 
     context 'nil page' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.page(nil) }.to raise_error(ArgumentError)
       end
     end
 
     context 'non-numeric page' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.page('a') }.to raise_error(ArgumentError)
       end
     end
   end
 
   describe '#offset' do
+    let(:limit) { 321 }
+    let(:offset) { 0 }
+    let(:request_url_params) { { limit: limit, offset: offset } }
+
     it 'returns itself' do
-      pending
       expect(subject.offset(1)).to be subject
+    end
+
+    (0..10).each do |counter|
+      context "page #{counter}" do
+        let(:offset) { counter * limit }
+
+        it 'fetches the correct data from the right offset' do
+          subject.offset(offset).reload
+        end
+      end
     end
 
     context 'negative offset number' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.offset(-1) }.to raise_error(ArgumentError)
       end
     end
 
     context 'nil offset' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.offset(nil) }.to raise_error(ArgumentError)
       end
     end
 
     context 'non-numeric offset' do
       it 'raises an ArgumentError' do
-        pending
         expect { subject.offset('a') }.to raise_error(ArgumentError)
       end
     end
