@@ -11,34 +11,34 @@ describe NetboxClientRuby::Entity do
   class TestEntity5
     include NetboxClientRuby::Entity
 
-    attr_accessor :test_id
+    id test_id: 'id'
     path 'tests/:test_id'
     array_object_fields an_object_array: TestSubPoro
 
     def initialize
-      @test_id = 42
+      super test_id: 42
     end
   end
   class TestSubEntity
     include NetboxClientRuby::Entity
 
-    attr_accessor :my_id
+    id my_id: 'name'
     path 'tests/:my_id/sub'
 
     def initialize(my_id, data = nil)
-      @my_id = my_id
       self.data = data
+      super my_id: my_id
     end
   end
   class TestEntity6
     include NetboxClientRuby::Entity
 
-    attr_accessor :test_id
+    id test_id: 'id'
     path 'tests/:test_id'
     array_object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
 
     def initialize
-      @test_id = 42
+      super test_id: 42
     end
   end
 
@@ -53,6 +53,7 @@ describe NetboxClientRuby::Entity do
   let(:response_json) do
     <<-json
       {
+        "id": 42,
         "name": "Beat",
         "boolean": true,
         "number": 1,
@@ -77,7 +78,7 @@ describe NetboxClientRuby::Entity do
     json
   end
   let(:url) { '/api/tests/42' }
-  let(:subject) { TestEntity.new }
+  let(:subject) { TestEntity.new 42 }
 
   before do
     faraday_stubs.get(url) do |_env|

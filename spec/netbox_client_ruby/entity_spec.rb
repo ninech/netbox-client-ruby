@@ -6,14 +6,17 @@ describe NetboxClientRuby::Entity do
 
     attr_accessor :name
 
+    id test_id: 'id'
     readonly_fields :counter
     deletable true
     path 'tests/:test_id'
+    creation_path 'tests/'
     object_fields :an_object
     array_object_fields :an_object_array
 
-    def initialize(name = 'Urs')
+    def initialize(id = 42, name = 'Urs')
       @name = name
+      super id
     end
 
     private
@@ -25,6 +28,7 @@ describe NetboxClientRuby::Entity do
   class TestEntity2
     include NetboxClientRuby::Entity
 
+    id test_id: 'id'
     readonly_fields :counter
     # not deletable
 
@@ -33,12 +37,14 @@ describe NetboxClientRuby::Entity do
   class TestEntity3
     include NetboxClientRuby::Entity
 
+    id test_id: 'id'
     # Wrong URL (starts with '/')
     path '/tests/42'
   end
   class TestEntity4
     include NetboxClientRuby::Entity
 
+    id test_id: 'id'
     # no path defined
   end
 
@@ -52,6 +58,7 @@ describe NetboxClientRuby::Entity do
   end
   let(:raw_data) do
     {
+      'id' => 42,
       'name' => 'Beat',
       'boolean' => true,
       'number' => 1,
@@ -72,7 +79,7 @@ describe NetboxClientRuby::Entity do
   end
   let(:response_json) { JSON.generate(raw_data) }
   let(:url) { '/api/tests/42' }
-  let(:subject) { TestEntity.new }
+  let(:subject) { TestEntity.new 42, 'Urs' }
 
   before do
     faraday_stubs.get(url) do |_env|
@@ -151,7 +158,7 @@ describe NetboxClientRuby::Entity do
       expect(faraday).to receive(:patch).and_call_original
 
       subject._name = 'Fritz'
-      expect(subject.patch).to be subject
+      expect(subject.save).to be subject
       expect(subject.name).to eq 'Urs'
 
       # this value is read from the response, which is 'Beat', and not 'Fritz'
@@ -179,7 +186,7 @@ describe NetboxClientRuby::Entity do
     it 'does not send PATCH to the server when nothing changed' do
       expect(faraday).to_not receive(:patch)
 
-      expect(subject.patch).to be subject
+      expect(subject.save).to be subject
     end
 
     it 'does not send PATCH to the server when nothing valid changed' do
@@ -190,7 +197,7 @@ describe NetboxClientRuby::Entity do
   end
 
   describe 'api class has readonly_fields' do
-    let(:subject) { TestEntity2.new }
+    let(:subject) { TestEntity2.new 42 }
 
     it 'still runs a fetch' do
       expect(faraday).to receive(:get).once.and_call_original
@@ -209,7 +216,7 @@ describe NetboxClientRuby::Entity do
     end
   end
 
-  describe 'delete entities' do
+  describe '#delete' do
     before do
       faraday_stubs.delete(url) do |_env|
         [status, { content_type: 'application/json' }, response]
@@ -239,7 +246,7 @@ describe NetboxClientRuby::Entity do
       end
 
       context 'non-deletable entity' do
-        let(:subject) { TestEntity2.new }
+        let(:subject) { TestEntity2.new 42 }
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -269,7 +276,7 @@ describe NetboxClientRuby::Entity do
       end
 
       context 'non-deletable entity' do
-        let(:subject) { TestEntity2.new }
+        let(:subject) { TestEntity2.new 42 }
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -278,7 +285,7 @@ describe NetboxClientRuby::Entity do
   end
 
   describe 'a wrong path is given' do
-    let(:subject) { TestEntity3.new }
+    let(:subject) { TestEntity3.new 42 }
 
     it 'raises an exception' do
       expect { subject.name }.to raise_error Faraday::Adapter::Test::Stubs::NotFound
@@ -286,7 +293,7 @@ describe NetboxClientRuby::Entity do
   end
 
   describe 'no path given' do
-    let(:subject) { TestEntity4.new }
+    let(:subject) { TestEntity4.new 42 }
 
     it 'raises an exception' do
       expect { subject.reload }.to raise_error ArgumentError
@@ -319,4 +326,6 @@ describe NetboxClientRuby::Entity do
       expect(b).to_not be a
     end
   end
+
+  describe '#'
 end

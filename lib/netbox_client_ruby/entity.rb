@@ -10,22 +10,44 @@ module NetboxClientRuby
     end
 
     module ClassMethods
-      def self.extended(other_klass)
-        @other_klass = other_klass
-      end
+      ##
+      # Expects ids in the following format:
+      #   id 'an_id_field'
+      #   id :an_id_field
+      #   id 'an_id_field', 'another_id_field'
+      #   id :an_id_field, :another_id_field
+      #   id an_id_field: 'id_field_in_data'
+      #   id an_id_field: :id_field_in_data
+      #   id 'an_id_field' => :id_field_in_data
+      #   id 'an_id_field' => 'id_field_in_data'
+      #   id an_id_field: 'id_field_in_data', :another_id_field: 'id_field2_in_data'
+      #
+      def id(*fields)
+        return @id_fields if @id_fields
 
-      attr_accessor :fields_wrapper_class
+        raise ArgumentError, "No 'id' was defined, but one is expected." if fields.empty?
+
+        @id_fields = {}
+        if fields.first.is_a?(Hash)
+          fields.first.each { |key, value| @id_fields[key.to_s] = value.to_s }
+        else
+          fields.map(&:to_s).each do |field|
+            field_as_string = field.to_s
+            @id_fields[field_as_string] = field_as_string
+          end
+        end
+
+        @id_fields.keys.each do |field|
+          define_method(field) { instance_variable_get "@#{field}" }
+        end
+
+        @id_fields
+      end
 
       def readonly_fields(*fields)
         return @readonly_fields if @readonly_fields
 
-        if fields.nil?
-          @readonly_fields = []
-        elsif fields.is_a?(Array)
-          @readonly_fields = fields.map(&:to_s)
-        else
-          @readonly_fields = [fields.to_s]
-        end
+        @readonly_fields = fields.map(&:to_s)
       end
 
       def deletable(deletable = false)
@@ -33,11 +55,19 @@ module NetboxClientRuby
       end
 
       def path(path = nil)
+        @path ||= path
+
         return @path if @path
 
-        raise ArgumentError, 'path is not defined' if path.nil?
+        raise ArgumentError, "No argument to 'path' was given."
+      end
 
-        @path = path
+      def creation_path(creation_path = nil)
+        @creation_path ||= creation_path
+
+        return @creation_path if @creation_path
+
+        raise ArgumentError, "No argument to 'creation_path' was given."
       end
 
       def object_fields(*fields)
@@ -84,8 +114,24 @@ module NetboxClientRuby
       end
     end
 
+    def initialize(given_ids = nil)
+      return self if given_ids.nil?
+
+      if id_fields.count == 1 && !given_ids.is_a?(Hash)
+        instance_variable_set("@#{id_fields.keys.first}", given_ids)
+        return self
+      end
+
+      check_given_ids(given_ids)
+
+      given_ids.each { |id_field, id_value| instance_variable_set "@#{id_field}", id_value }
+
+      self
+    end
+
     def revert
       dirty_data.clear
+      self
     end
 
     def reload
@@ -94,12 +140,16 @@ module NetboxClientRuby
       self
     end
 
-    def patch
-      return self if dirty_data.empty?
+    def save
+      return post unless ids_set?
+      patch
+    end
 
-      @data = response connection.patch path, dirty_data
-      revert
-      self
+    def create(raw_data)
+      raise LocalError, "Can't 'create', this object already exists" if ids_set?
+
+      @dirty_data = raw_data
+      post
     end
 
     def delete
@@ -176,9 +226,43 @@ module NetboxClientRuby
     end
 
     alias get! reload
-    alias save patch
+    alias remove delete
 
     private
+
+    def post
+      return self if dirty_data.empty?
+
+      @data = response connection.post creation_path, dirty_data
+      extract_ids
+      revert
+      self
+    end
+
+    def patch
+      return self if dirty_data.empty?
+
+      @data ||= {}
+      response_data = response (connection.patch path, dirty_data)
+      @data.merge! response_data
+      revert
+      self
+    end
+
+    def check_given_ids(given_ids)
+      if !given_ids.is_a? Hash
+        raise ArgumentError, "'#{self.class}.new' expects the argument to be a Hash when multiple ids are defined"
+      elsif given_ids.empty?
+        raise ArgumentError, "'#{self.class}.new' expects a the argument to not be empty."
+      end
+
+      missing_ids = id_fields.keys - given_ids.keys.map(&:to_s)
+
+      unless missing_ids.empty?
+        raise ArgumentError,
+              "'#{self.class}.new' expects a value for all defined IDs. The following values are missing: '#{missing_ids.join(', ')}'"
+      end
+    end
 
     def normalize_accessor(symbol_or_string)
       always_string = symbol_or_string.to_s
@@ -228,6 +312,10 @@ module NetboxClientRuby
       end
     end
 
+    def creation_path
+      @creation_path ||= replace_path_variables_in self.class.creation_path
+    end
+
     def path
       @path ||= replace_path_variables_in self.class.path
     end
@@ -242,6 +330,24 @@ module NetboxClientRuby
 
     def dirty_data
       @dirty_data ||= {}
+    end
+
+    def id_fields
+      self.class.id
+    end
+
+    def extract_ids
+      id_fields.each do |id_attr, id_field|
+        unless data.has_key?(id_field)
+          raise LocalError, "Can't find the id field '#{id_field}' in the received data."
+        end
+
+        instance_variable_set("@#{id_attr}", data[id_field])
+      end
+    end
+
+    def ids_set?
+      id_fields.map { |id_attr, _| instance_variable_get("@#{id_attr}") }.all?
     end
   end
 end
