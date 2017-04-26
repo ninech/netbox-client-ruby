@@ -251,7 +251,7 @@ module NetboxClientRuby
       return self if dirty_data.empty?
 
       @data ||= {}
-      response_data = response (connection.patch path, dirty_data)
+      response_data = response connection.patch(path, dirty_data)
       @data.merge! response_data
       revert
       self
