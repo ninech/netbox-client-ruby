@@ -165,7 +165,7 @@ module NetboxClientRuby
     def update(updated_fields)
       checked_updated_fields = {}
       updated_fields.each do |key, values|
-        s_key = normalize_accessor key
+        s_key = key.to_s
 
         checked_updated_fields[s_key] = values unless readonly_fields.include? s_key
       end
@@ -178,21 +178,29 @@ module NetboxClientRuby
       data
     end
 
+    def [](name)
+      s_name = name.to_s
+      dirty_data[s_name] || data[s_name]
+    end
+
+    def []=(name, value)
+      dirty_data[name.to_s] = value
+    end
+
     def method_missing(name_as_symbol, *args, &block)
-      name = normalize_accessor name_as_symbol
+      name = name_as_symbol.to_s
 
       if name.end_with?('=')
-        if readonly_fields.include?(name[0..-2])
+        is_readonly_field = readonly_fields.include?(name[0..-2])
+        is_instance_variable = instance_variables.include?("@#{name[0..-2]}".to_sym)
+        not_this_classes_business = is_readonly_field || is_instance_variable
+
+        if not_this_classes_business
           super
         else
           dirty_data[name[0..-2]] = args[0]
-          return
+          return args[0]
         end
-      end
-
-      # allow access to the unmodified data using 'zone.always_string!' or 'zone._name!'
-      if name.end_with?('!') && data.keys.include?(name[0..-2])
-        return data[name[0..2]]
       end
 
       return objectify(name) if object_fields.include? name
@@ -205,10 +213,10 @@ module NetboxClientRuby
     end
 
     def respond_to_missing?(name_as_symbol, *args)
-      name = normalize_accessor name_as_symbol
+      name = name_as_symbol.to_s
 
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
-      return true if name.end_with?('!') && data.keys.include?(name[0..-2])
+      return false if name.end_with?('=') && instance_variables.include?(name[0..-2])
 
       return true if object_fields.include? name
       return true if array_object_fields.keys.include? name
@@ -264,20 +272,12 @@ module NetboxClientRuby
       end
     end
 
-    def normalize_accessor(symbol_or_string)
-      always_string = symbol_or_string.to_s
-
-      # allows access to remote data who's name conflicts with pre-defined methods
-      # e.g. write 'zone._zone_id' instead of 'zone.zone_id' to access the remote value of 'zone_id'
-      always_string.start_with?('_') ? always_string[1..-1] : always_string
-    end
-
     def data
       @data ||= get
     end
 
     def get
-      response connection.get path
+      response connection.get path unless @deleted
     end
 
     def readonly_fields
@@ -323,7 +323,9 @@ module NetboxClientRuby
     def replace_path_variables_in(path)
       interpreted_path = path.clone
       path.scan(/:([a-zA-Z_][a-zA-Z0-9_]+[!?=]?)/) do |match, *|
-        interpreted_path.gsub! ":#{match}", send(match).to_s
+        path_variable_value = send(match)
+        return interpreted_path.gsub! ":#{match}", path_variable_value.to_s unless path_variable_value.nil?
+        raise LocalError, "Received 'nil' while replacing ':#{match}' in '#{path}' with a value."
       end
       interpreted_path
     end

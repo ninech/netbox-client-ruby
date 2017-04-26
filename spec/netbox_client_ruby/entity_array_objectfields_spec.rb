@@ -107,7 +107,7 @@ describe NetboxClientRuby::Entity do
       it 'does not call the server for the sub-object' do
         expect(faraday).to receive(:get).once.and_call_original
 
-        expect(subject._name).to eq 'Beat'
+        expect(subject[:name]).to eq 'Beat'
         expect(subject.an_object_array).to_not be_a Hash
       end
 
@@ -141,7 +141,7 @@ describe NetboxClientRuby::Entity do
       it 'does not call the server for the sub-object' do
         expect(faraday).to receive(:get).once.and_call_original
 
-        expect(subject._name).to eq 'Beat'
+        expect(subject[:name]).to eq 'Beat'
         expect(subject.an_object_array).to_not be_a Hash
       end
 
@@ -175,7 +175,7 @@ describe NetboxClientRuby::Entity do
       it 'does not call the server for the sub-object' do
         expect(faraday).to receive(:get).once.and_call_original
 
-        expect(subject._name).to eq 'Beat'
+        expect(subject[:name]).to eq 'Beat'
         expect(subject.an_object_array).to_not be_a Hash
       end
 

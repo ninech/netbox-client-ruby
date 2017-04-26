@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Entity do
+describe NetboxClientRuby::Entity, faraday_stub: true do
   class TestEntity
     include NetboxClientRuby::Entity
 
@@ -14,15 +14,9 @@ describe NetboxClientRuby::Entity do
     object_fields :an_object
     array_object_fields :an_object_array
 
-    def initialize(id = 42, name = 'Urs')
+    def initialize(id = nil, name = nil)
       @name = name
       super id
-    end
-
-    private
-
-    def test_id
-      42
     end
   end
   class TestEntity2
@@ -48,17 +42,9 @@ describe NetboxClientRuby::Entity do
     # no path defined
   end
 
-  let(:faraday_stubs) { Faraday::Adapter::Test::Stubs.new }
-  let(:faraday) do
-    Faraday.new(url: 'https://netbox.test/api/', headers: NetboxClientRuby::Connection.headers) do |faraday|
-      faraday.adapter :test, faraday_stubs
-      faraday.request :json
-      faraday.response :json, content_type: /\bjson$/
-    end
-  end
   let(:raw_data) do
     {
-      'id' => 42,
+      'id' => 43,
       'name' => 'Beat',
       'boolean' => true,
       'number' => 1,
@@ -77,16 +63,10 @@ describe NetboxClientRuby::Entity do
       'counter' => 1,
     }
   end
-  let(:response_json) { JSON.generate(raw_data) }
-  let(:url) { '/api/tests/42' }
-  let(:subject) { TestEntity.new 42, 'Urs' }
 
-  before do
-    faraday_stubs.get(url) do |_env|
-      [200, { content_type: 'application/json' }, response_json]
-    end
-    allow(Faraday).to receive(:new).and_return faraday
-  end
+  let(:response) { JSON.generate(raw_data) }
+  let(:request_url) { '/api/tests/42' }
+  let(:subject) { TestEntity.new 42, 'Urs' }
 
   it 'gets the name from the TestEntity' do
     expect(subject.name).to eq 'Urs'
@@ -94,14 +74,14 @@ describe NetboxClientRuby::Entity do
 
   describe 'fetch values' do
     it 'returns the correct name' do
-      expect(subject._name).to eq 'Beat'
+      expect(subject[:name]).to eq 'Beat'
     end
 
     it 'caches the data' do
       expect(faraday).to receive(:get).once.and_call_original
 
-      expect(subject._name).to eq 'Beat'
-      expect(subject._name).to eq 'Beat'
+      expect(subject[:name]).to eq 'Beat'
+      expect(subject[:name]).to eq 'Beat'
     end
 
     it 'fetches the data when asked to' do
@@ -137,62 +117,131 @@ describe NetboxClientRuby::Entity do
   end
 
   describe 'send values' do
-    before do
-      faraday_stubs.patch(url, 'name' => 'Fritz') do |_env|
-        [200, { content_type: 'application/json' }, response_json]
+    context 'updating the object' do
+      let(:request_method) { :patch }
+      let(:request_params) { { 'name' => 'Fritz' } }
+
+      it 'raises a NoMethodError when the field is not modifiable' do
+        expect { subject.counter = 1 }.to raise_error NoMethodError
+      end
+
+      it 'returns the value that has been set' do
+        subject.name = 'Fritz'
+        subject[:name] = 'Alfred'
+        expect(subject.name).to eq 'Fritz'
+        expect(subject[:name]).to eq 'Alfred'
+      end
+
+      it 'sends PATCH to the server' do
+        expect(faraday).to receive(:patch).and_call_original
+
+        subject[:name] = 'Fritz'
+        expect(subject.save).to be subject
+        expect(subject.name).to eq 'Urs'
+
+        # this value is read from the response, which is 'Beat', and not 'Fritz'
+        # this also checks implicitly that the @dirty cache has been emptied
+        expect(subject[:name]).to eq 'Beat'
+      end
+
+      it 'updates the value and sends PATCH to the server' do
+        expect(faraday).to receive(:patch).and_call_original
+
+        expect(subject.update(name: 'Fritz')).to be subject
+        expect(subject.name).to eq 'Urs'
+
+        # this value is read from the response, which is 'Beat', and not 'Fritz'
+        # this also checks implicitly that the @dirty cache has been emptied
+        expect(subject[:name]).to eq 'Beat'
+      end
+
+      it 'updates only allowed values and sends PATCH to the server' do
+        expect(faraday).to receive(:patch).and_call_original
+
+        expect(subject.update(name: 'Fritz', counter: 'It Is')).to be subject
+      end
+
+      it 'does not send PATCH to the server when nothing changed' do
+        expect(faraday).to_not receive(:patch)
+
+        expect(subject.save).to be subject
+      end
+
+      it 'does not send PATCH to the server when nothing valid changed' do
+        expect(faraday).to_not receive(:patch)
+
+        expect(subject.update(counter: 'It Is')).to be subject
       end
     end
 
-    it 'raises a NoMethodError when the field is not modifiable' do
-      expect { subject.counter = 1 }.to raise_error NoMethodError
+    context 'creating the object' do
+      let(:subject) { TestEntity.new }
+      let(:name) { 'foobar' }
+
+      let(:request_url) { '/api/tests/' }
+      let(:request_method) { :post }
+      let(:request_params) { { 'name' => name } }
+
+      it 'does raise an exception when trying to fetch data' do
+        expect { subject.reload }.to raise_error(NetboxClientRuby::LocalError)
+      end
+
+      it 'returns itself when calling save' do
+        subject[:name] = name
+
+        expect(subject.save).to be(subject)
+      end
+
+      it 'calls post' do
+        expect(faraday).to receive(:post).and_call_original
+
+        subject[:name] = name
+
+        subject.save
+      end
+
+      context 'save with more data' do
+        let(:hash) { { 'one' => 1, 'two' => 2 } }
+        let(:number) { 3 }
+        let(:request_params) { { 'name' => name, 'number' => number, 'hash' => hash } }
+
+        it 'sends all the data' do
+          expect(faraday).to receive(:post).and_call_original
+
+          subject[:name] = name
+          subject.number = number
+          subject.hash = hash
+
+          subject.save
+        end
+      end
+
+      it 'parses the response' do
+        expect(faraday).to_not receive(:get)
+
+        subject[:name] = name
+
+        subject.save
+
+        expect(subject.test_id).to be(43)
+        expect(subject.boolean).to be(true)
+      end
+    end
+  end
+
+  describe 'id handling' do
+    it 'assigns the id' do
+      expect(subject.test_id).to be(42)
     end
 
-    it 'returns the value that has been set' do
-      subject.name = 'Fritz'
-      subject._name = 'Alfred'
-      expect(subject.name).to eq 'Fritz'
-      expect(subject._name).to eq 'Alfred'
+    it 'does not respond to value changes on ids' do
+      expect { subject.test_id = 667 }.to raise_error NoMethodError
     end
 
-    it 'sends PATCH to the server' do
-      expect(faraday).to receive(:patch).and_call_original
+    it 'does not call out for getting ids' do
+      expect(faraday).to_not receive(:get)
 
-      subject._name = 'Fritz'
-      expect(subject.save).to be subject
-      expect(subject.name).to eq 'Urs'
-
-      # this value is read from the response, which is 'Beat', and not 'Fritz'
-      # this also checks implicitly that the @dirty cache has been emptied
-      expect(subject._name).to eq 'Beat'
-    end
-
-    it 'updates the value and sends PATCH to the server' do
-      expect(faraday).to receive(:patch).and_call_original
-
-      expect(subject.update(name: 'Fritz')).to be subject
-      expect(subject.name).to eq 'Urs'
-
-      # this value is read from the response, which is 'Beat', and not 'Fritz'
-      # this also checks implicitly that the @dirty cache has been emptied
-      expect(subject._name).to eq 'Beat'
-    end
-
-    it 'updates only allowed values and sends PATCH to the server' do
-      expect(faraday).to receive(:patch).and_call_original
-
-      expect(subject.update(name: 'Fritz', counter: 'It Is')).to be subject
-    end
-
-    it 'does not send PATCH to the server when nothing changed' do
-      expect(faraday).to_not receive(:patch)
-
-      expect(subject.save).to be subject
-    end
-
-    it 'does not send PATCH to the server when nothing valid changed' do
-      expect(faraday).to_not receive(:patch)
-
-      expect(subject.update(counter: 'It Is')).to be subject
+      subject.test_id
     end
   end
 
@@ -217,11 +266,7 @@ describe NetboxClientRuby::Entity do
   end
 
   describe '#delete' do
-    before do
-      faraday_stubs.delete(url) do |_env|
-        [status, { content_type: 'application/json' }, response]
-      end
-    end
+    let(:request_method) { :delete }
 
     context 'with response' do
       let(:response) { '{"id":42}' }
@@ -242,7 +287,7 @@ describe NetboxClientRuby::Entity do
 
       it 'parses the response' do
         expect(subject.delete).to be subject
-        expect { subject._name }.to raise_error NoMethodError
+        expect(subject[:name]).to be_nil
       end
 
       context 'non-deletable entity' do
@@ -254,7 +299,7 @@ describe NetboxClientRuby::Entity do
     end
 
     context 'with empty response' do
-      let(:response) { nil }
+      let(:response) { '' }
       let(:status) { 204 }
 
       it 'deletes the entity from the server' do
@@ -271,8 +316,10 @@ describe NetboxClientRuby::Entity do
       end
 
       it 'parses the response' do
+        expect(faraday).to_not receive(:get)
+
         expect(subject.delete).to be subject
-        expect { subject._name }.to raise_error NoMethodError
+        expect { subject[:name] }.to raise_error NoMethodError
       end
 
       context 'non-deletable entity' do
@@ -314,7 +361,7 @@ describe NetboxClientRuby::Entity do
     it 'does not call the server for the sub-object' do
       expect(faraday).to receive(:get).once.and_call_original
 
-      expect(subject._name).to eq 'Beat'
+      expect(subject[:name]).to eq 'Beat'
       expect(subject.an_object).to_not be_a Hash
     end
 
@@ -326,6 +373,4 @@ describe NetboxClientRuby::Entity do
       expect(b).to_not be a
     end
   end
-
-  describe '#'
 end
