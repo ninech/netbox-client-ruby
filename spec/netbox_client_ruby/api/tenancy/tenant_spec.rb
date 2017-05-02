@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Region, faraday_stub: true do
+describe NetboxClientRuby::Tenant, faraday_stub: true do
   let(:region_id) { 1 }
-  let(:response) { File.read("spec/fixtures/dcim/region_#{region_id}.json") }
-  let(:request_url) { "/api/dcim/regions/#{region_id}.json" }
+  let(:base_url) { '/api/tenancy/tenants/' }
+  let(:request_url) { "#{base_url}#{region_id}.json" }
+  let(:response) { File.read("spec/fixtures/tenancy/tenant_#{region_id}.json") }
 
-  subject { NetboxClientRuby::Region.new region_id }
+  subject { NetboxClientRuby::Tenant.new region_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -21,22 +22,22 @@ describe NetboxClientRuby::Region, faraday_stub: true do
     end
 
     it 'shall be the expected name' do
-      expect(subject.name).to eq('region1')
+      expect(subject.name).to eq('tenant1')
     end
   end
 
-  describe '.parent' do
+  describe '.group' do
     it 'should be nil' do
-      expect(subject.parent).to be_nil
+      expect(subject.group).to be_nil
     end
 
-    context 'Sub Region' do
-      let(:region_id) { 2 }
+    context 'Tenant with Group' do
+      let(:region_id) { 3 }
 
       it 'should be a Region object' do
-        parent_region = subject.parent
-        expect(parent_region).to be_a NetboxClientRuby::Region
-        expect(parent_region.id).to eq(1)
+        tenant_group = subject.group
+        expect(tenant_group).to be_a NetboxClientRuby::TenantGroup
+        expect(tenant_group.id).to eq(1)
       end
     end
   end
@@ -58,27 +59,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
 
     it 'should update the object' do
       expect(faraday).to receive(request_method).and_call_original
-      expect(subject.update(name: 'noob').name).to eq('region1')
-    end
-
-    context 'Sub Region' do
-      let(:region_id) { 2 }
-
-      context 'delete a parent' do
-        let(:request_params) { { 'parent' => nil } }
-
-        it 'should remove the parent' do
-          expect(subject.update parent: nil).to be subject
-        end
-      end
-
-      context 'add a parent' do
-        let(:request_params) { { 'parent' => 1 } }
-
-        it 'should add a parent' do
-          expect(subject.update parent: 1).to be subject
-        end
-      end
+      expect(subject.update(name: 'noob').name).to eq('tenant1')
     end
   end
 
@@ -100,10 +81,10 @@ describe NetboxClientRuby::Region, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        region = NetboxClientRuby::Region.new region_id
-        region.name = name
-        region.slug = slug
-        region
+        entity = NetboxClientRuby::Tenant.new region_id
+        entity.name = name
+        entity.slug = slug
+        entity
       end
 
       it 'does not call PATCH until save is called' do
@@ -124,20 +105,20 @@ describe NetboxClientRuby::Region, faraday_stub: true do
         expect(faraday).to receive(request_method).and_call_original
 
         subject.save
-        expect(subject.name).to eq('region1')
-        expect(subject.slug).to eq('region1')
+        expect(subject.name).to eq('tenant1')
+        expect(subject.slug).to eq('tenant1')
       end
     end
 
     context 'create' do
       let(:request_method) { :post }
-      let(:request_url) { '/api/dcim/regions/' }
+      let(:request_url) { base_url }
 
       subject do
-        region = NetboxClientRuby::Region.new
-        region.name = name
-        region.slug = slug
-        region
+        entity = NetboxClientRuby::Tenant.new
+        entity.name = name
+        entity.slug = slug
+        entity
       end
 
       it 'does not POST until save is called' do
@@ -160,8 +141,8 @@ describe NetboxClientRuby::Region, faraday_stub: true do
         subject.save
 
         expect(subject.id).to be(1)
-        expect(subject.name).to eq('region1')
-        expect(subject.slug).to eq('region1')
+        expect(subject.name).to eq('tenant1')
+        expect(subject.slug).to eq('tenant1')
       end
     end
   end

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM do
+describe NetboxClientRuby::Tenancy do
   {
-    sites: NetboxClientRuby::Sites,
-    regions: NetboxClientRuby::Regions
+    tenant_groups: NetboxClientRuby::TenantGroups,
+    tenants: NetboxClientRuby::Tenants
   }.each do |method, klass|
     describe ".#{method}" do
-      subject { NetboxClientRuby::DCIM.new.public_send(method) }
+      subject { NetboxClientRuby::Tenancy.new.public_send(method) }
 
       context 'is of the correct type' do
         it { is_expected.to be_a klass }
@@ -15,7 +15,7 @@ describe NetboxClientRuby::DCIM do
       context 'is a different instance each time' do
         it do
           is_expected
-            .to_not be NetboxClientRuby::DCIM.new.public_send(method)
+            .to_not be NetboxClientRuby::Tenancy.new.public_send(method)
         end
       end
 

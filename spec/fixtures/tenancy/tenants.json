@@ -1,0 +1,39 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 3,
+      "name": "tenant3",
+      "slug": "tenant3",
+      "group": {
+        "id": 1,
+        "url": "http://localhost/api/tenancy/tenant-groups/1/",
+        "name": "Customer",
+        "slug": "customer"
+      },
+      "description": "",
+      "comments": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 1,
+      "name": "tenant1",
+      "slug": "tenant1",
+      "group": null,
+      "description": "",
+      "comments": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 2,
+      "name": "tenant2",
+      "slug": "tenant2",
+      "group": null,
+      "description": "",
+      "comments": "",
+      "custom_fields": {}
+    }
+  ]
+}

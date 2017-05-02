@@ -1,12 +1,12 @@
 require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/dcim/region'
+require 'netbox_client_ruby/api/tenancy/tenant'
 require 'uri'
 
 module NetboxClientRuby
-  class Regions
+  class Tenants
     include NetboxClientRuby::Entities
 
-    path 'dcim/regions.json'
+    path 'tenancy/tenants.json'
     data_key 'results'
     count_key 'count'
     entity_creator :entity_creator
@@ -14,7 +14,7 @@ module NetboxClientRuby
     private
 
     def entity_creator(raw_entity)
-      NetboxClientRuby::Region.new raw_entity['id']
+      NetboxClientRuby::Tenant.new raw_entity['id']
     end
   end
 end

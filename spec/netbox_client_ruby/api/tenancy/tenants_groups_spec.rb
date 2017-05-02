@@ -1,8 +1,11 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Regions, faraday_stub: true do
-  let(:response) { File.read('spec/fixtures/dcim/regions.json') }
-  let(:request_url) { '/api/dcim/regions.json' }
+describe NetboxClientRuby::TenantGroups, faraday_stub: true do
+  let(:expected_number_of_items) { 1 }
+  let(:expected_singular_type) { NetboxClientRuby::TenantGroup }
+
+  let(:response) { File.read('spec/fixtures/tenancy/tenant-groups.json') }
+  let(:request_url) { '/api/tenancy/tenant-groups.json' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end
@@ -10,13 +13,13 @@ describe NetboxClientRuby::Regions, faraday_stub: true do
   context 'unpaged fetch' do
     describe '#length' do
       it 'shall be the expected length' do
-        expect(subject.length).to be 2
+        expect(subject.length).to be expected_number_of_items
       end
     end
 
     describe '#total' do
       it 'shall be the expected total' do
-        expect(subject.total).to be 2
+        expect(subject.total).to be expected_number_of_items
       end
     end
   end
@@ -42,12 +45,12 @@ describe NetboxClientRuby::Regions, faraday_stub: true do
 
   describe '#as_array' do
     it 'return the correct amount' do
-      expect(subject.as_array.length).to be 2
+      expect(subject.as_array.length).to be expected_number_of_items
     end
 
-    it 'returns Site instances' do
+    it 'returns single instances' do
       subject.as_array.each do |element|
-        expect(element).to be_a NetboxClientRuby::Region
+        expect(element).to be_a expected_singular_type
       end
     end
   end

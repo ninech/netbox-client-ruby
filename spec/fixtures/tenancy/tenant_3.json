@@ -1,0 +1,14 @@
+{
+  "id": 3,
+  "name": "tenant3",
+  "slug": "tenant3",
+  "group": {
+    "id": 1,
+    "url": "http://localhost/api/tenancy/tenant-groups/1/",
+    "name": "Customer",
+    "slug": "customer"
+  },
+  "description": "",
+  "comments": "",
+  "custom_fields": {}
+}
