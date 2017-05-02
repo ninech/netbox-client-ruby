@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Vrfs, faraday_stub: true do
-  let(:expected_length) { 2 }
-  let(:expected_singular_type) { NetboxClientRuby::Vrf }
+describe NetboxClientRuby::Vlans, faraday_stub: true do
+  let(:expected_length) { 1 }
+  let(:expected_singular_type) { NetboxClientRuby::Vlan }
+  let(:response) { File.read('spec/fixtures/ipam/vlans.json') }
+  let(:request_url) { '/api/ipam/vlans.json' }
 
-  let(:response) { File.read('spec/fixtures/ipam/vrfs.json') }
-  let(:request_url) { '/api/ipam/vrfs.json' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

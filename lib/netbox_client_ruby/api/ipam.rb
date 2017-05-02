@@ -10,8 +10,8 @@ require 'netbox_client_ruby/api/ipam/roles'
 # require 'netbox_client_ruby/api/ipam/ip_addresss'
 require 'netbox_client_ruby/api/ipam/vlan_group'
 require 'netbox_client_ruby/api/ipam/vlan_groups'
-# require 'netbox_client_ruby/api/ipam/vlan'
-# require 'netbox_client_ruby/api/ipam/vlans'
+require 'netbox_client_ruby/api/ipam/vlan'
+require 'netbox_client_ruby/api/ipam/vlans'
 require 'netbox_client_ruby/api/ipam/vrf'
 require 'netbox_client_ruby/api/ipam/vrfs'
 # require 'netbox_client_ruby/api/ipam/service'
@@ -37,11 +37,19 @@ module NetboxClientRuby
     end
 
     def vrfs
-      VRFs.new
+      Vrfs.new
     end
 
     def vrf(id)
-      VRF.new id
+      Vrf.new id
+    end
+
+    def vlans
+      Vlans.new
+    end
+
+    def vlan(id)
+      Vlan.new id
     end
   end
 end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Vrf, faraday_stub: true do
-  let(:expected_name) { 'vrf1' }
-  let(:class_under_test) { NetboxClientRuby::Vrf }
-  let(:base_url) { '/api/ipam/vrfs/' }
-  let(:response) { File.read("spec/fixtures/ipam/vrf_#{entity_id}.json") }
+describe NetboxClientRuby::Vlan, faraday_stub: true do
+  let(:expected_name) { 'vlan_1' }
+  let(:class_under_test) { NetboxClientRuby::Vlan }
+  let(:base_url) { '/api/ipam/vlans/' }
+  let(:response) { File.read("spec/fixtures/ipam/vlan_#{entity_id}.json") }
 
   let(:entity_id) { 1 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
@@ -29,31 +29,28 @@ describe NetboxClientRuby::Vrf, faraday_stub: true do
     end
   end
 
-  describe '.tenant' do
-    context 'entity without tenant' do
+  {
+    tenant: NetboxClientRuby::Tenant,
+    group: NetboxClientRuby::VlanGroup,
+    status: NetboxClientRuby::VlanStatus,
+    role: NetboxClientRuby::Role
+  }.each_pair do |method_name, expected_type|
+    describe ".#{method_name}" do
       it 'should fetch the data' do
         expect(faraday).to receive(:get).and_call_original
 
-        expect(subject.tenant).to be_nil
-      end
-    end
-
-    context 'entity with tenant' do
-      let(:entity_id) { 2 }
-
-      it 'should fetch the data' do
-        expect(faraday).to receive(:get).and_call_original
-
-        expect(subject.tenant).to_not be_nil
+        expect(subject.public_send(method_name)).to_not be_nil
       end
 
       it 'shall return the expected type' do
-        expect(subject.tenant).to be_a(NetboxClientRuby::Tenant)
+        expect(subject.public_send(method_name)).to be_a(expected_type)
       end
+    end
+  end
 
-      it 'should an entity with the right it' do
-        expect(subject.tenant.id).to eq(3)
-      end
+  describe '.status' do
+    it 'should assign the correct value' do
+      expect(subject.status.label).to eq('Active')
     end
   end
 

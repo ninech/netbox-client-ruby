@@ -1,0 +1,36 @@
+{
+  "id": 1,
+  "site": {
+    "id": 2,
+    "url": "http://localhost/api/dcim/sites/2/",
+    "name": "test_site2",
+    "slug": "test2"
+  },
+  "group": {
+    "id": 1,
+    "url": "http://localhost/api/ipam/vlan-groups/1/",
+    "name": "vlan1",
+    "slug": "vlan1"
+  },
+  "vid": 1,
+  "name": "vlan_1",
+  "tenant": {
+    "id": 3,
+    "url": "http://localhost/api/tenancy/tenants/3/",
+    "name": "tenant3",
+    "slug": "tenant3"
+  },
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "role": {
+    "id": 2,
+    "url": "http://localhost/api/ipam/roles/2/",
+    "name": "vlan_role1",
+    "slug": "vlan_role1"
+  },
+  "description": "desc1",
+  "display_name": "1 (vlan_1)",
+  "custom_fields": {}
+}
