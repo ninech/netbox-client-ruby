@@ -3,7 +3,8 @@ require 'spec_helper'
 describe NetboxClientRuby::IPAM do
   {
     roles: NetboxClientRuby::Roles,
-    vlan_groups: NetboxClientRuby::VlanGroups
+    vlan_groups: NetboxClientRuby::VlanGroups,
+    vrfs: NetboxClientRuby::VRFs
   }.each do |method, klass|
     describe ".#{method}" do
       subject { NetboxClientRuby::IPAM.new.public_send(method) }

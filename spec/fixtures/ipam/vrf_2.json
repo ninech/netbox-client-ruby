@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "name": "vrf2",
+  "rd": "RD2",
+  "tenant": {
+    "id": 3,
+    "url": "http://localhost/api/tenancy/tenants/3/",
+    "name": "tenant3",
+    "slug": "tenant3"
+  },
+  "enforce_unique": false,
+  "description": "",
+  "custom_fields": {}
+}
