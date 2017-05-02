@@ -1,4 +1,6 @@
 require 'netbox_client_ruby/communication'
+require 'netbox_client_ruby/api/dcim/regions'
+require 'netbox_client_ruby/api/dcim/region'
 require 'netbox_client_ruby/api/dcim/sites'
 require 'netbox_client_ruby/api/dcim/site'
 require 'uri'
@@ -11,6 +13,10 @@ module NetboxClientRuby
 
     def site(id)
       Site.new id
+    end
+
+    def regions
+      Regions.new
     end
   end
 end

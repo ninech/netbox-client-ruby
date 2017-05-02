@@ -1,0 +1,11 @@
+{
+  "id": 2,
+  "name": "sub_region1",
+  "slug": "sub_region1",
+  "parent": {
+    "id": 1,
+    "url": "http://localhost/api/dcim/regions/1/",
+    "name": "region1",
+    "slug": "region1"
+  }
+}

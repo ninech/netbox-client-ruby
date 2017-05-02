@@ -1,5 +1,5 @@
 {
-  "count": 1,
+  "count": 2,
   "next": null,
   "previous": null,
   "results": [
@@ -8,6 +8,17 @@
       "name": "region1",
       "slug": "region1",
       "parent": null
+    },
+    {
+      "id": 2,
+      "name": "sub_region1",
+      "slug": "sub_region1",
+      "parent": {
+        "id": 1,
+        "url": "http://localhost/api/dcim/regions/1/",
+        "name": "region1",
+        "slug": "region1"
+      }
     }
   ]
 }
