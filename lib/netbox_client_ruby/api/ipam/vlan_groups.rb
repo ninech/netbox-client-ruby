@@ -1,6 +1,5 @@
 require 'netbox_client_ruby/entities'
 require 'netbox_client_ruby/api/ipam/vlan_group'
-require 'uri'
 
 module NetboxClientRuby
   class VlanGroups
