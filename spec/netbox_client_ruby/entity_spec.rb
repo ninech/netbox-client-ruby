@@ -11,8 +11,7 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
     deletable true
     path 'tests/:test_id'
     creation_path 'tests/'
-    object_fields :an_object
-    array_object_fields :an_object_array
+    object_fields :an_object, :an_object_array
 
     def initialize(id = nil, name = nil)
       @name = name

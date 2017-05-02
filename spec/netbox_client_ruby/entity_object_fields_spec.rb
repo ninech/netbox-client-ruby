@@ -8,17 +8,6 @@ describe NetboxClientRuby::Entity do
       @name = data['name']
     end
   end
-  class TestEntity5
-    include NetboxClientRuby::Entity
-
-    id test_id: 'id'
-    path 'tests/:test_id'
-    array_object_fields an_object_array: TestSubPoro
-
-    def initialize
-      super test_id: 42
-    end
-  end
   class TestSubEntity
     include NetboxClientRuby::Entity
 
@@ -30,15 +19,74 @@ describe NetboxClientRuby::Entity do
       super my_id: my_id
     end
   end
-  class TestEntity6
-    include NetboxClientRuby::Entity
+  module ArrayObjectField
+    class TestEntitySimple
+      include NetboxClientRuby::Entity
 
-    id test_id: 'id'
-    path 'tests/:test_id'
-    array_object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields 'an_object_array'
 
-    def initialize
-      super test_id: 42
+      def initialize
+        super test_id: 42
+      end
+    end
+    class TestEntityPoro
+      include NetboxClientRuby::Entity
+
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields an_object_array: TestSubPoro
+
+      def initialize
+        super test_id: 42
+      end
+    end
+    class TestEntityProc
+      include NetboxClientRuby::Entity
+
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
+
+      def initialize
+        super test_id: 42
+      end
+    end
+  end
+  module ObjectField
+    class TestEntityPlain
+      include NetboxClientRuby::Entity
+
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields :an_object
+
+      def initialize
+        super test_id: 42
+      end
+    end
+    class TestEntityPoro
+      include NetboxClientRuby::Entity
+
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields an_object: TestSubPoro
+
+      def initialize
+        super test_id: 42
+      end
+    end
+    class TestEntityProc
+      include NetboxClientRuby::Entity
+
+      id test_id: 'id'
+      path 'tests/:test_id'
+      object_fields an_object: proc { |data| TestSubEntity.new(@test_id, data) }
+
+      def initialize
+        super test_id: 42
+      end
     end
   end
 
@@ -73,12 +121,14 @@ describe NetboxClientRuby::Entity do
             "name": "obj3"
           }
         ],
+        "an_object": {
+          "name": "obj1"
+        },
         "counter": 1
       }
     json
   end
   let(:url) { '/api/tests/42' }
-  let(:subject) { TestEntity.new 42 }
 
   before do
     faraday_stubs.get(url) do |_env|
@@ -89,6 +139,8 @@ describe NetboxClientRuby::Entity do
 
   describe 'objectification of the content of array fields' do
     context 'anonymous classes' do
+      let(:subject) { ArrayObjectField::TestEntitySimple.new }
+
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
         subject.an_object_array.each do |obj|
@@ -121,7 +173,7 @@ describe NetboxClientRuby::Entity do
     end
 
     context 'poro classes' do
-      let(:subject) { TestEntity5.new }
+      let(:subject) { ArrayObjectField::TestEntityPoro.new }
 
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
@@ -155,7 +207,7 @@ describe NetboxClientRuby::Entity do
     end
 
     context 'entity classes' do
-      let(:subject) { TestEntity6.new }
+      let(:subject) { ArrayObjectField::TestEntityProc.new }
 
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
@@ -182,6 +234,89 @@ describe NetboxClientRuby::Entity do
       it 'is a new object everytime' do
         a = subject.an_object_array
         b = subject.an_object_array
+
+        expect(a).to_not be b
+        expect(b).to_not be a
+      end
+    end
+  end
+
+  describe 'objectification of the content of object fields' do
+    context 'anonymous class' do
+      let(:subject) { ObjectField::TestEntityPlain.new }
+
+      it 'does not return `an_object` as a Hash' do
+        expect(subject.an_object).to_not be_a Hash
+      end
+
+      it 'returns the correct values' do
+        expect(subject.an_object.name).to eq 'obj1'
+      end
+
+      it 'does not call the server for the sub-object' do
+        expect(faraday).to receive(:get).once.and_call_original
+
+        expect(subject[:name]).to eq 'Beat'
+        expect(subject.an_object).to_not be_a Hash
+      end
+
+      it 'is a new object everytime' do
+        a = subject.an_object
+        b = subject.an_object
+
+        expect(a).to_not be b
+        expect(b).to_not be a
+      end
+    end
+
+    context 'poro class' do
+      let(:subject) { ObjectField::TestEntityPoro.new }
+
+      it 'does not return `an_object` as a Hash' do
+        expect(subject.an_object).to be_a TestSubPoro
+      end
+
+      it 'returns the correct values' do
+        expect(subject.an_object.name).to eq 'obj1'
+      end
+
+      it 'does not call the server for the sub-object' do
+        expect(faraday).to receive(:get).once.and_call_original
+
+        expect(subject[:name]).to eq 'Beat'
+        expect(subject.an_object).to_not be_a Hash
+      end
+
+      it 'is a new object everytime' do
+        a = subject.an_object
+        b = subject.an_object
+
+        expect(a).to_not be b
+        expect(b).to_not be a
+      end
+    end
+
+    context 'entity class' do
+      let(:subject) { ObjectField::TestEntityProc.new }
+
+      it 'does not return `an_object` as a Hashe' do
+        expect(subject.an_object).to_not be_a Hash
+      end
+
+      it 'returns the correct values' do
+        expect(subject.an_object.name).to eq 'obj1'
+      end
+
+      it 'does not call the server for the sub-object' do
+        expect(faraday).to receive(:get).once.and_call_original
+
+        expect(subject[:name]).to eq 'Beat'
+        expect(subject.an_object).to_not be_a Hash
+      end
+
+      it 'is a new object everytime' do
+        a = subject.an_object
+        b = subject.an_object
 
         expect(a).to_not be b
         expect(b).to_not be a

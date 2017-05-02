@@ -70,36 +70,26 @@ module NetboxClientRuby
         raise ArgumentError, "No argument to 'creation_path' was given."
       end
 
-      def object_fields(*fields)
-        return @object_fields if @object_fields
-
-        if fields.nil? || fields.empty?
-          @object_fields = []
-        else
-          @object_fields = fields.map(&:to_s)
-        end
-      end
-
       # allowed values:
       # <code>
-      # array_object_fields :field_a, :field_b, :field_c, 'fieldname_as_string'
+      # object_fields :field_a, :field_b, :field_c, 'fieldname_as_string'
       # # next is ame as previous
-      # array_object_fields field_a: nil, field_b: nil, field_c: nil, 'fieldname_as_string': nil
+      # object_fields field_a: nil, field_b: nil, field_c: nil, 'fieldname_as_string': nil
       # # next defines the types of the objects
-      # array_object_fields field_a: Klass, field_b: proc { |data| Klass.new data }, field_c: nil, 'fieldname_as_string'
+      # object_fields field_a: Klass, field_b: proc { |data| Klass.new data }, field_c: nil, 'fieldname_as_string'
       # </code>
-      def array_object_fields(*fields_to_class_map)
-        return @array_object_fields if @array_object_fields
+      def object_fields(*fields_to_class_map)
+        return @object_fields if @object_fields
 
         if fields_to_class_map.nil? || fields_to_class_map.empty?
-          @array_object_fields = {}
+          @object_fields = {}
         else
-          fields_map = turn_all_items_into_a_single_hash(fields_to_class_map)
-          @array_object_fields = fields_map
+          fields_map = sanitize_mapping(fields_to_class_map)
+          @object_fields = fields_map
         end
       end
 
-      def turn_all_items_into_a_single_hash(fields_to_class_map)
+      def sanitize_mapping(fields_to_class_map)
         fields_map = {}
         fields_to_class_map.each do |field_definition|
           if field_definition.is_a?(Hash)
@@ -203,8 +193,7 @@ module NetboxClientRuby
         end
       end
 
-      return objectify(name) if object_fields.include? name
-      return arrayify(name, array_object_fields[name]) if array_object_fields.keys.include? name
+      return objectify(name, object_fields[name]) if object_fields.keys.include? name
 
       return dirty_data[name] if dirty_data.keys.include? name
       return data[name] if data.is_a?(Hash) && data.keys.include?(name)
@@ -218,8 +207,7 @@ module NetboxClientRuby
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
       return false if name.end_with?('=') && instance_variables.include?(name[0..-2])
 
-      return true if object_fields.include? name
-      return true if array_object_fields.keys.include? name
+      return true if object_fields.keys.include? name
 
       return true if dirty_data.keys.include? name
       return true if data.is_a?(Hash) && data.keys.include?(name)
@@ -292,23 +280,25 @@ module NetboxClientRuby
       self.class.object_fields
     end
 
-    def array_object_fields
-      self.class.array_object_fields
+    def data_to_obj(raw_data, klass_or_proc = nil)
+      if klass_or_proc.nil?
+        hash_to_object raw_data
+      elsif klass_or_proc.is_a? Proc
+        klass_or_proc.call raw_data
+      else
+        klass_or_proc.new raw_data
+      end
     end
 
-    def objectify(name)
-      hash_to_object data[name]
-    end
+    def objectify(name, klass_or_proc = nil)
+      raw_data = data[name]
+      
+      return nil if raw_data.nil?
 
-    def arrayify(name, klass_or_proc = nil)
-      data[name].map do |data|
-        if klass_or_proc.nil?
-          hash_to_object data
-        elsif klass_or_proc.is_a? Proc
-          klass_or_proc.call data
-        else
-          klass_or_proc.new data
-        end
+      return data_to_obj(raw_data, klass_or_proc) unless raw_data.is_a? Array
+
+      data[name].map do |raw_data_entry|
+        data_to_obj(raw_data_entry, klass_or_proc)
       end
     end
 
