@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "vlan1",
+  "slug": "vlan1",
+  "site": {
+    "id": 2,
+    "url": "http://localhost/api/dcim/sites/2/",
+    "name": "test_site2",
+    "slug": "test2"
+  }
+}

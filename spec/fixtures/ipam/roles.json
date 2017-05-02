@@ -1,0 +1,19 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "role1",
+      "slug": "role1",
+      "weight": 1000
+    },
+    {
+      "id": 2,
+      "name": "vlan_role1",
+      "slug": "vlan_role1",
+      "weight": 1000
+    }
+  ]
+}
