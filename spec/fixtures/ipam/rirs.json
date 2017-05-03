@@ -1,0 +1,19 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "rir1",
+      "slug": "rir1",
+      "is_private": true
+    },
+    {
+      "id": 2,
+      "name": "rir2",
+      "slug": "rir2",
+      "is_private": false
+    }
+  ]
+}

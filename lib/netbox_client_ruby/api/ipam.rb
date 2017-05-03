@@ -1,5 +1,5 @@
-# require 'netbox_client_ruby/api/ipam/rir'
-# require 'netbox_client_ruby/api/ipam/rirs'
+require 'netbox_client_ruby/api/ipam/rir'
+require 'netbox_client_ruby/api/ipam/rirs'
 # require 'netbox_client_ruby/api/ipam/aggregate'
 # require 'netbox_client_ruby/api/ipam/aggregates'
 require 'netbox_client_ruby/api/ipam/role'
@@ -50,6 +50,14 @@ module NetboxClientRuby
 
     def vlan(id)
       Vlan.new id
+    end
+
+    def rirs
+      Rirs.new
+    end
+
+    def rir(id)
+      Rir.new id
     end
   end
 end
