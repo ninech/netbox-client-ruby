@@ -1,0 +1,17 @@
+{
+  "id": 2,
+  "family": 4,
+  "prefix": "10.1.0.0/16",
+  "site": null,
+  "vrf": null,
+  "tenant": null,
+  "vlan": null,
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "role": null,
+  "is_pool": true,
+  "description": "",
+  "custom_fields": {}
+}

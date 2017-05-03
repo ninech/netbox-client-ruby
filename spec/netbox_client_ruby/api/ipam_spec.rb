@@ -6,7 +6,8 @@ describe NetboxClientRuby::IPAM do
     vlan_groups: NetboxClientRuby::VlanGroups,
     vrfs: NetboxClientRuby::Vrfs,
     vlans: NetboxClientRuby::Vlans,
-    rirs: NetboxClientRuby::Rirs
+    rirs: NetboxClientRuby::Rirs,
+    prefixes: NetboxClientRuby::Prefixes
   }.each do |method, klass|
     describe ".#{method}" do
       subject { NetboxClientRuby::IPAM.new.public_send(method) }

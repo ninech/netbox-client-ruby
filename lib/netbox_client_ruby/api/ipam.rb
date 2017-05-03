@@ -2,8 +2,8 @@ require 'netbox_client_ruby/api/ipam/aggregate'
 require 'netbox_client_ruby/api/ipam/aggregates'
 # require 'netbox_client_ruby/api/ipam/ip_addresss'
 # require 'netbox_client_ruby/api/ipam/ip_address'
-# require 'netbox_client_ruby/api/ipam/prefix'
-# require 'netbox_client_ruby/api/ipam/prefixs'
+require 'netbox_client_ruby/api/ipam/prefix'
+require 'netbox_client_ruby/api/ipam/prefixes'
 require 'netbox_client_ruby/api/ipam/rir'
 require 'netbox_client_ruby/api/ipam/rirs'
 require 'netbox_client_ruby/api/ipam/role'
@@ -28,12 +28,36 @@ module NetboxClientRuby
       Aggregate.new id
     end
 
+    def prefixes
+      Prefixes.new
+    end
+
+    def prefix
+      Prefix.new
+    end
+
+    def rirs
+      Rirs.new
+    end
+
+    def rir(id)
+      Rir.new id
+    end
+
     def roles
       Roles.new
     end
 
     def role(id)
       Role.new id
+    end
+
+    def vlans
+      Vlans.new
+    end
+
+    def vlan(id)
+      Vlan.new id
     end
 
     def vlan_groups
@@ -50,22 +74,6 @@ module NetboxClientRuby
 
     def vrf(id)
       Vrf.new id
-    end
-
-    def vlans
-      Vlans.new
-    end
-
-    def vlan(id)
-      Vlan.new id
-    end
-
-    def rirs
-      Rirs.new
-    end
-
-    def rir(id)
-      Rir.new id
     end
   end
 end

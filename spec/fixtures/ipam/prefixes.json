@@ -1,0 +1,84 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "family": 4,
+      "prefix": "10.0.0.0/8",
+      "site": null,
+      "vrf": null,
+      "tenant": null,
+      "vlan": null,
+      "status": {
+        "value": 1,
+        "label": "Active"
+      },
+      "role": null,
+      "is_pool": false,
+      "description": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 2,
+      "family": 4,
+      "prefix": "10.1.0.0/16",
+      "site": null,
+      "vrf": null,
+      "tenant": null,
+      "vlan": null,
+      "status": {
+        "value": 1,
+        "label": "Active"
+      },
+      "role": null,
+      "is_pool": true,
+      "description": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 3,
+      "family": 4,
+      "prefix": "10.2.0.0/16",
+      "site": {
+        "id": 2,
+        "url": "http://localhost/api/dcim/sites/2/",
+        "name": "test_site2",
+        "slug": "test2"
+      },
+      "vrf": {
+        "id": 1,
+        "url": "http://localhost/api/ipam/vrfs/1/",
+        "name": "vrf1",
+        "rd": "RD1"
+      },
+      "tenant": {
+        "id": 1,
+        "url": "http://localhost/api/tenancy/tenants/1/",
+        "name": "tenant1",
+        "slug": "tenant1"
+      },
+      "vlan": {
+        "id": 1,
+        "url": "http://localhost/api/ipam/vlans/1/",
+        "vid": 1,
+        "name": "vlan_1",
+        "display_name": "1 (vlan_1)"
+      },
+      "status": {
+        "value": 0,
+        "label": "Container"
+      },
+      "role": {
+        "id": 1,
+        "url": "http://localhost/api/ipam/roles/1/",
+        "name": "role1",
+        "slug": "role1"
+      },
+      "is_pool": false,
+      "description": "desc1",
+      "custom_fields": {}
+    }
+  ]
+}
