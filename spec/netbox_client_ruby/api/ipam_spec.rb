@@ -3,6 +3,7 @@ require 'spec_helper'
 describe NetboxClientRuby::IPAM do
   {
     roles: NetboxClientRuby::Roles,
+    ip_addresses: NetboxClientRuby::IpAddresses,
     vlan_groups: NetboxClientRuby::VlanGroups,
     vrfs: NetboxClientRuby::Vrfs,
     vlans: NetboxClientRuby::Vlans,

@@ -1,0 +1,45 @@
+{
+  "id": 1,
+  "family": 4,
+  "address": "10.0.0.1/8",
+  "vrf": {
+    "id": 2,
+    "url": "http://localhost/api/ipam/vrfs/2/",
+    "name": "vrf2",
+    "rd": "RD2"
+  },
+  "tenant": {
+    "id": 3,
+    "url": "http://localhost/api/tenancy/tenants/3/",
+    "name": "tenant3",
+    "slug": "tenant3"
+  },
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "interface": {
+    "id": 3,
+    "device": {
+      "id": 2,
+      "url": "http://localhost/api/dcim/devices/2/",
+      "name": "device2",
+      "display_name": "device2"
+    },
+    "name": "interface2",
+    "form_factor": {
+      "value": 200,
+      "label": "Link Aggregation Group (LAG)"
+    },
+    "lag": null,
+    "mac_address": null,
+    "mgmt_only": false,
+    "description": "lag1",
+    "connection": null,
+    "connected_interface": null
+  },
+  "description": "description",
+  "nat_inside": null,
+  "nat_outside": null,
+  "custom_fields": {}
+}

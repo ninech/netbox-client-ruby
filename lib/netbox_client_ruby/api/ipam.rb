@@ -1,7 +1,7 @@
 require 'netbox_client_ruby/api/ipam/aggregate'
 require 'netbox_client_ruby/api/ipam/aggregates'
-# require 'netbox_client_ruby/api/ipam/ip_addresss'
-# require 'netbox_client_ruby/api/ipam/ip_address'
+require 'netbox_client_ruby/api/ipam/ip_addresses'
+require 'netbox_client_ruby/api/ipam/ip_address'
 require 'netbox_client_ruby/api/ipam/prefix'
 require 'netbox_client_ruby/api/ipam/prefixes'
 require 'netbox_client_ruby/api/ipam/rir'
@@ -26,6 +26,14 @@ module NetboxClientRuby
 
     def aggregate(id)
       Aggregate.new id
+    end
+
+    def ip_addresses
+      IpAddresses.new
+    end
+
+    def ip_address(id)
+      IpAddress.new id
     end
 
     def prefixes
