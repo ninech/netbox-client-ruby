@@ -1,5 +1,4 @@
 require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/tenancy/tenant'
 
 module NetboxClientRuby
   class Rir

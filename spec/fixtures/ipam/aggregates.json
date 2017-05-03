@@ -1,0 +1,21 @@
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "family": 4,
+            "prefix": "10.0.0.0/8",
+            "rir": {
+                "id": 1,
+                "url": "http://localhost/api/ipam/rirs/1/",
+                "name": "rir1",
+                "slug": "rir1"
+            },
+            "date_added": null,
+            "description": "",
+            "custom_fields": {}
+        }
+    ]
+}

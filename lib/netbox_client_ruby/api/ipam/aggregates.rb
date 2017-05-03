@@ -1,11 +1,11 @@
 require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/ipam/rir'
+require 'netbox_client_ruby/api/ipam/aggregate'
 
 module NetboxClientRuby
-  class Rirs
+  class Aggregates
     include NetboxClientRuby::Entities
 
-    path 'ipam/rirs.json'
+    path 'ipam/aggregates.json'
     data_key 'results'
     count_key 'count'
     entity_creator :entity_creator
@@ -13,7 +13,7 @@ module NetboxClientRuby
     private
 
     def entity_creator(raw_entity)
-      NetboxClientRuby::Rir.new raw_entity['id']
+      NetboxClientRuby::Aggregate.new raw_entity['id']
     end
   end
 end
