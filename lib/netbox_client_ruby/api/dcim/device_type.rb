@@ -1,8 +1,16 @@
 require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/api/dcim/manufacturer'
-require 'netbox_client_ruby/api/tenancy/tenant'
 
 module NetboxClientRuby
+  class InterfaceOrdering
+    attr_reader :value, :label
+
+    def initialize(raw_data)
+      @value = raw_data['value']
+      @label = raw_data['label']
+    end
+  end
+
   class DeviceType
     include NetboxClientRuby::Entity
 
@@ -12,18 +20,8 @@ module NetboxClientRuby
     creation_path 'dcim/device-types/'
     object_fields(
       manufacturer: proc { |raw_data| NetboxClientRuby::Manufacturer.new raw_data['id'] },
-      interface_ordering: NetboxClientRuby::DeviceTypeInterfaceOrdering
+      interface_ordering: NetboxClientRuby::InterfaceOrdering
     )
-    readonly_fields :display_name
 
-  end
-
-  class IpAddressStatus
-    attr_reader :value, :label
-
-    def initialize(raw_data)
-      @value = raw_data['value']
-      @label = raw_data['label']
-    end
   end
 end
