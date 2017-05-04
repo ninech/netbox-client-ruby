@@ -3,7 +3,8 @@ require 'spec_helper'
 describe NetboxClientRuby::DCIM do
   {
     sites: NetboxClientRuby::Sites,
-    regions: NetboxClientRuby::Regions
+    regions: NetboxClientRuby::Regions,
+    manufacturers: NetboxClientRuby::Manufacturers
   }.each do |method, expected_class|
     describe ".#{method}" do
       subject { NetboxClientRuby::DCIM.new.public_send(method) }
@@ -27,7 +28,8 @@ describe NetboxClientRuby::DCIM do
 
   {
     site: NetboxClientRuby::Site,
-    region: NetboxClientRuby::Region
+    region: NetboxClientRuby::Region,
+    manufacturer: NetboxClientRuby::Manufacturer
   }.each do |method, expected_class|
     describe ".#{method}" do
       let(:id) { 1 }
