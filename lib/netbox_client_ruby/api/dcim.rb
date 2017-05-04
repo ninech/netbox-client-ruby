@@ -6,20 +6,22 @@ require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
   class DCIM
-    def sites
-      Sites.new
+    {
+      sites: Sites,
+      regions: Regions
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) do
+        class_name.new
+      end
     end
 
-    def site(id)
-      Site.new id
-    end
-
-    def regions
-      Regions.new
-    end
-
-    def region(id)
-      Region.new id
+    {
+      site: Site,
+      region: Region
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) do |id|
+        class_name.new id
+      end
     end
   end
 end

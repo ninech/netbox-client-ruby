@@ -20,68 +20,34 @@ require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
   class IPAM
-    def aggregates
-      Aggregates.new
+    {
+      aggregates: Aggregates,
+      ip_addresses: IpAddresses,
+      prefixes: Prefixes,
+      rirs: Rirs,
+      roles: Roles,
+      vlans: Vlans,
+      vlan_groups: VlanGroups,
+      vrfs: Vrfs
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) do
+        class_name.new
+      end
     end
 
-    def aggregate(id)
-      Aggregate.new id
-    end
-
-    def ip_addresses
-      IpAddresses.new
-    end
-
-    def ip_address(id)
-      IpAddress.new id
-    end
-
-    def prefixes
-      Prefixes.new
-    end
-
-    def prefix
-      Prefix.new
-    end
-
-    def rirs
-      Rirs.new
-    end
-
-    def rir(id)
-      Rir.new id
-    end
-
-    def roles
-      Roles.new
-    end
-
-    def role(id)
-      Role.new id
-    end
-
-    def vlans
-      Vlans.new
-    end
-
-    def vlan(id)
-      Vlan.new id
-    end
-
-    def vlan_groups
-      VlanGroups.new
-    end
-
-    def vlan_group(id)
-      VlanGroup.new id
-    end
-
-    def vrfs
-      Vrfs.new
-    end
-
-    def vrf(id)
-      Vrf.new id
+    {
+      aggregate: Aggregate,
+      ip_address: IpAddress,
+      prefix: Prefix,
+      rir: Rir,
+      role: Role,
+      vlan: Vlan,
+      vlan_group: VlanGroup,
+      vrf: Vrf
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) do |id|
+        class_name.new id
+      end
     end
   end
 end
