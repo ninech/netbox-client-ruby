@@ -5,7 +5,8 @@ describe NetboxClientRuby::DCIM do
     sites: NetboxClientRuby::Sites,
     regions: NetboxClientRuby::Regions,
     manufacturers: NetboxClientRuby::Manufacturers,
-    device_types: NetboxClientRuby::DeviceTypes
+    device_types: NetboxClientRuby::DeviceTypes,
+    device_roles: NetboxClientRuby::DeviceRoles,
   }.each do |method, expected_class|
     describe ".#{method}" do
       subject { NetboxClientRuby::DCIM.new.public_send(method) }
@@ -31,7 +32,8 @@ describe NetboxClientRuby::DCIM do
     site: NetboxClientRuby::Site,
     region: NetboxClientRuby::Region,
     manufacturer: NetboxClientRuby::Manufacturer,
-    device_type: NetboxClientRuby::DeviceType
+    device_type: NetboxClientRuby::DeviceType,
+    device_role: NetboxClientRuby::DeviceRole,
   }.each do |method, expected_class|
     describe ".#{method}" do
       let(:id) { 1 }

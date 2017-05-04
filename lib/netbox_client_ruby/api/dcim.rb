@@ -1,3 +1,5 @@
+require 'netbox_client_ruby/api/dcim/device_role'
+require 'netbox_client_ruby/api/dcim/device_roles'
 require 'netbox_client_ruby/api/dcim/device_type'
 require 'netbox_client_ruby/api/dcim/device_types'
 require 'netbox_client_ruby/api/dcim/manufacturer'
@@ -14,7 +16,8 @@ module NetboxClientRuby
       sites: Sites,
       regions: Regions,
       manufacturers: Manufacturers,
-      device_types: DeviceTypes
+      device_types: DeviceTypes,
+      device_roles: DeviceRoles,
     }.each_pair do |method_name, class_name|
       define_method(method_name) do
         class_name.new
@@ -25,7 +28,8 @@ module NetboxClientRuby
       site: Site,
       region: Region,
       manufacturer: Manufacturer,
-      device_type: DeviceType
+      device_type: DeviceType,
+      device_role: DeviceRole,
     }.each_pair do |method_name, class_name|
       define_method(method_name) do |id|
         class_name.new id
