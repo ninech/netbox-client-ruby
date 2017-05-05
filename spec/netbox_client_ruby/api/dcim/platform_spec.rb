@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Device, faraday_stub: true do
-  let(:entity_id) { 2 }
-  let(:expected_name) { 'device2' }
-  let(:sut) { NetboxClientRuby::Device }
-  let(:base_url) { '/api/dcim/devices/' }
-  let(:response) { File.read("spec/fixtures/dcim/device_#{entity_id}.json") }
+describe NetboxClientRuby::DeviceRole, faraday_stub: true do
+  let(:entity_id) { 1 }
+  let(:expected_name) { 'devicerole1' }
+  let(:sut) { NetboxClientRuby::DeviceRole }
+  let(:base_url) { '/api/dcim/device-roles/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:response) { File.read("spec/fixtures/dcim/device-role_#{entity_id}.json") }
 
   subject { sut.new entity_id }
 
@@ -26,32 +26,6 @@ describe NetboxClientRuby::Device, faraday_stub: true do
 
     it 'shall be the expected name' do
       expect(subject.name).to eq(expected_name)
-    end
-  end
-
-  {
-    device_type: [NetboxClientRuby::DeviceType, 1],
-    device_role: [NetboxClientRuby::DeviceRole, 1],
-    tenant: [NetboxClientRuby::Tenant, 3],
-    platform: [NetboxClientRuby::Platform, 1],
-    site: [NetboxClientRuby::Site, 2],
-    # rack: [NetboxClientRuby::Rack, 1],
-    primary_ip: [NetboxClientRuby::IpAddress, 5],
-    primary_ip4: [NetboxClientRuby::IpAddress, 1],
-    primary_ip6: [NetboxClientRuby::IpAddress, 5],
-  }.each do |method_name, expected_values|
-    expected_type = expected_values[0]
-    expected_id = expected_values[1]
-
-    describe "##{method_name}" do
-      it "should return a #{expected_type}" do
-        expect(subject.public_send(method_name))
-          .to be_a(expected_type)
-      end
-
-      it "should be the expected #{method_name}" do
-        expect(subject.public_send(method_name).id).to eq(expected_id)
-      end
     end
   end
 
@@ -87,8 +61,8 @@ describe NetboxClientRuby::Device, faraday_stub: true do
 
   describe '.save' do
     let(:name) { 'foobar' }
-    let(:display_name) { name }
-    let(:request_params) { { 'name' => name, 'display_name' => display_name } }
+    let(:slug) { name }
+    let(:request_params) { { 'name' => name, 'slug' => slug } }
 
     context 'update' do
       let(:request_method) { :patch }
@@ -96,7 +70,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
       subject do
         region = sut.new entity_id
         region.name = name
-        region.display_name = display_name
+        region.slug = slug
         region
       end
 
@@ -105,7 +79,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.display_name).to eq(display_name)
+        expect(subject.slug).to eq(slug)
       end
 
       it 'calls PATCH when save is called' do
@@ -119,7 +93,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
 
         subject.save
         expect(subject.name).to eq(expected_name)
-        expect(subject.display_name).to eq(expected_name)
+        expect(subject.slug).to eq(expected_name)
       end
     end
 
@@ -130,7 +104,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
       subject do
         region = sut.new
         region.name = name
-        region.display_name = display_name
+        region.slug = slug
         region
       end
 
@@ -139,7 +113,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.display_name).to eq(display_name)
+        expect(subject.slug).to eq(slug)
       end
 
       it 'POSTs the data upon a call of save' do
@@ -153,9 +127,9 @@ describe NetboxClientRuby::Device, faraday_stub: true do
 
         subject.save
 
-        expect(subject.id).to eq(entity_id)
+        expect(subject.id).to be(1)
         expect(subject.name).to eq(expected_name)
-        expect(subject.display_name).to eq(expected_name)
+        expect(subject.slug).to eq(expected_name)
       end
     end
   end

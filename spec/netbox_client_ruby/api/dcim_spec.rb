@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe NetboxClientRuby::DCIM do
   {
-    sites: NetboxClientRuby::Sites,
-    regions: NetboxClientRuby::Regions,
-    manufacturers: NetboxClientRuby::Manufacturers,
-    device_types: NetboxClientRuby::DeviceTypes,
+    devices: NetboxClientRuby::Devices,
     device_roles: NetboxClientRuby::DeviceRoles,
-    devices: NetboxClientRuby::Devices
+    device_types: NetboxClientRuby::DeviceTypes,
+    manufacturers: NetboxClientRuby::Manufacturers,
+    platforms: NetboxClientRuby::Platforms,
+    regions: NetboxClientRuby::Regions,
+    sites: NetboxClientRuby::Sites,
   }.each do |method, expected_class|
     describe ".#{method}" do
       subject { NetboxClientRuby::DCIM.new.public_send(method) }
@@ -30,12 +31,13 @@ describe NetboxClientRuby::DCIM do
   end
 
   {
-    site: NetboxClientRuby::Site,
-    region: NetboxClientRuby::Region,
-    manufacturer: NetboxClientRuby::Manufacturer,
-    device_type: NetboxClientRuby::DeviceType,
-    device_role: NetboxClientRuby::DeviceRole,
     device: NetboxClientRuby::Device,
+    device_role: NetboxClientRuby::DeviceRole,
+    device_type: NetboxClientRuby::DeviceType,
+    manufacturer: NetboxClientRuby::Manufacturer,
+    platform: NetboxClientRuby::Platform,
+    region: NetboxClientRuby::Region,
+    site: NetboxClientRuby::Site,
   }.each do |method, expected_class|
     describe ".#{method}" do
       let(:id) { 1 }
