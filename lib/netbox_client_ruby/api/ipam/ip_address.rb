@@ -1,5 +1,5 @@
 require 'netbox_client_ruby/entity'
-# require 'netbox_client_ruby/api/dcim/interface'
+require 'netbox_client_ruby/api/dcim/interface'
 require 'netbox_client_ruby/api/ipam/vrf'
 require 'netbox_client_ruby/api/tenancy/tenant'
 
@@ -15,7 +15,7 @@ module NetboxClientRuby
       vrf: proc { |raw_data| NetboxClientRuby::Vrf.new raw_data['id'] },
       tenant: proc { |raw_data| NetboxClientRuby::Tenant.new raw_data['id'] },
       status: proc { |raw_data| NetboxClientRuby::IpAddressStatus.new raw_data['value'] },
-      # interface: proc { |raw_data| NetboxClientRuby::Interface.new raw_data['id'] }
+      interface: proc { |raw_data| NetboxClientRuby::Interface.new raw_data['id'] }
     )
     readonly_fields :display_name
 

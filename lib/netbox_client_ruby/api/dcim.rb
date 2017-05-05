@@ -4,6 +4,8 @@ require 'netbox_client_ruby/api/dcim/device_role'
 require 'netbox_client_ruby/api/dcim/device_roles'
 require 'netbox_client_ruby/api/dcim/device_type'
 require 'netbox_client_ruby/api/dcim/device_types'
+require 'netbox_client_ruby/api/dcim/interface'
+require 'netbox_client_ruby/api/dcim/interfaces'
 require 'netbox_client_ruby/api/dcim/manufacturer'
 require 'netbox_client_ruby/api/dcim/manufacturers'
 require 'netbox_client_ruby/api/dcim/platform'
@@ -22,6 +24,7 @@ module NetboxClientRuby
       devices: Devices,
       device_roles: DeviceRoles,
       device_types: DeviceTypes,
+      interfaces: Interfaces,
       manufacturers: Manufacturers,
       platforms: Platforms,
       racks: Racks,
@@ -37,6 +40,7 @@ module NetboxClientRuby
       device: Device,
       device_role: DeviceRole,
       device_type: DeviceType,
+      interface: Interface,
       manufacturer: Manufacturer,
       platform: Platform,
       rack: Rack,

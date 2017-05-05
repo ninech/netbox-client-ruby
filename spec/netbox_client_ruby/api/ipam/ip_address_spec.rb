@@ -32,7 +32,7 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
   {
     vrf: NetboxClientRuby::Vrf,
     tenant: NetboxClientRuby::Tenant,
-    # interface: NetboxClientRuby::Interface,
+    interface: NetboxClientRuby::Interface,
     status: NetboxClientRuby::IpAddressStatus
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do

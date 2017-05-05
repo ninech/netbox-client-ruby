@@ -1,0 +1,20 @@
+{
+  "id": 3,
+  "device": {
+    "id": 2,
+    "url": "http://localhost/api/dcim/devices/2/",
+    "name": "device2",
+    "display_name": "device2"
+  },
+  "name": "interface2",
+  "form_factor": {
+    "value": 200,
+    "label": "Link Aggregation Group (LAG)"
+  },
+  "lag": null,
+  "mac_address": null,
+  "mgmt_only": false,
+  "description": "lag1",
+  "connection": null,
+  "connected_interface": null
+}
