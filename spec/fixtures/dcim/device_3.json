@@ -1,18 +1,18 @@
 {
-  "id": 1,
-  "name": "device1",
-  "display_name": "device1",
+  "id": 3,
+  "name": "parent_device1",
+  "display_name": "parent_device1",
   "device_type": {
-    "id": 1,
-    "url": "http://localhost/api/dcim/device-types/1/",
+    "id": 2,
+    "url": "http://localhost/api/dcim/device-types/2/",
     "manufacturer": {
       "id": 1,
       "url": "http://localhost/api/dcim/manufacturers/1/",
       "name": "manu1",
       "slug": "manu1"
     },
-    "model": "devicetype1",
-    "slug": "devicetype1"
+    "model": "parent1",
+    "slug": "parent1"
   },
   "device_role": {
     "id": 1,
@@ -36,10 +36,10 @@
     "name": "test2rack",
     "display_name": "test2rack"
   },
-  "position": 39,
+  "position": 41,
   "face": {
-    "value": 1,
-    "label": "Rear"
+    "value": 0,
+    "label": "Front"
   },
   "parent_device": null,
   "status": {
@@ -49,8 +49,8 @@
   "primary_ip": null,
   "primary_ip4": null,
   "primary_ip6": null,
-  "comments": "trewyutglibjwfvd",
+  "comments": "",
   "custom_fields": {
-    "custom1": "WICHTIG"
+    "custom1": null
   }
 }
