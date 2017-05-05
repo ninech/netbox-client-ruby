@@ -7,6 +7,7 @@ describe NetboxClientRuby::DCIM do
     device_types: NetboxClientRuby::DeviceTypes,
     manufacturers: NetboxClientRuby::Manufacturers,
     platforms: NetboxClientRuby::Platforms,
+    racks: NetboxClientRuby::Racks,
     regions: NetboxClientRuby::Regions,
     sites: NetboxClientRuby::Sites,
   }.each do |method, expected_class|
@@ -36,6 +37,7 @@ describe NetboxClientRuby::DCIM do
     device_type: NetboxClientRuby::DeviceType,
     manufacturer: NetboxClientRuby::Manufacturer,
     platform: NetboxClientRuby::Platform,
+    rack: NetboxClientRuby::Rack,
     region: NetboxClientRuby::Region,
     site: NetboxClientRuby::Site,
   }.each do |method, expected_class|

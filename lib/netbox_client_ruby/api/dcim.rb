@@ -8,6 +8,8 @@ require 'netbox_client_ruby/api/dcim/manufacturer'
 require 'netbox_client_ruby/api/dcim/manufacturers'
 require 'netbox_client_ruby/api/dcim/platform'
 require 'netbox_client_ruby/api/dcim/platforms'
+require 'netbox_client_ruby/api/dcim/rack'
+require 'netbox_client_ruby/api/dcim/racks'
 require 'netbox_client_ruby/api/dcim/region'
 require 'netbox_client_ruby/api/dcim/regions'
 require 'netbox_client_ruby/api/dcim/site'
@@ -22,6 +24,7 @@ module NetboxClientRuby
       device_types: DeviceTypes,
       manufacturers: Manufacturers,
       platforms: Platforms,
+      racks: Racks,
       regions: Regions,
       sites: Sites,
     }.each_pair do |method_name, class_name|
@@ -36,6 +39,7 @@ module NetboxClientRuby
       device_type: DeviceType,
       manufacturer: Manufacturer,
       platform: Platform,
+      rack: Rack,
       region: Region,
       site: Site,
     }.each_pair do |method_name, class_name|
