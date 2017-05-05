@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'netbox-client-ruby'
-  spec.version     = File.read(File.expand_path('../VERSION', __FILE__)).strip
+  spec.version       = File.read(File.expand_path('../VERSION', __FILE__)).strip
   spec.authors       = ['Christian Mäder']
   spec.email         = ['christian.maeder@nine.ch']
 
