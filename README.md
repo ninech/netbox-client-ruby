@@ -1,7 +1,7 @@
 # NetboxClientRuby
 
-[![Build Status](https://travis-ci.org/ninech/netbox-client-ruby.svg?branch=master)](https://travis-ci.org/ninech/cloudflair)
-[![Gem Version](https://badge.fury.io/rb/netbox-client-ruby.svg)](https://badge.fury.io/rb/cloudflair)
+[![Build Status](https://travis-ci.org/ninech/netbox-client-ruby.svg?branch=master)](https://travis-ci.org/ninech/netbox-client-ruby)
+[![Gem Version](https://badge.fury.io/rb/netbox-client-ruby.svg)](https://badge.fury.io/rb/netbox-client-ruby)
 
 This is a gem to pragmatically access your [Netbox instance](https://github.com/digitalocean/netbox)
 via it's API from Ruby. This gem is currently only compatible with Netbox v2.
