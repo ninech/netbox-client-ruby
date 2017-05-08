@@ -27,6 +27,5 @@ module NetboxClientRuby
       primary_ip4: proc { |raw_data| NetboxClientRuby::IpAddress.new raw_data['id'] },
       primary_ip6: proc { |raw_data| NetboxClientRuby::IpAddress.new raw_data['id'] }
     )
-
   end
 end

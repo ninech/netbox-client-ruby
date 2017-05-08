@@ -8,6 +8,5 @@ module NetboxClientRuby
     deletable true
     path 'ipam/roles/:id.json'
     creation_path 'ipam/roles/'
-
   end
 end

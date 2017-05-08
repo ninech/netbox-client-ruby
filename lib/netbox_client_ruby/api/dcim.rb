@@ -29,7 +29,7 @@ module NetboxClientRuby
       platforms: Platforms,
       racks: Racks,
       regions: Regions,
-      sites: Sites,
+      sites: Sites
     }.each_pair do |method_name, class_name|
       define_method(method_name) do
         class_name.new
@@ -45,7 +45,7 @@ module NetboxClientRuby
       platform: Platform,
       rack: Rack,
       region: Region,
-      site: Site,
+      site: Site
     }.each_pair do |method_name, class_name|
       define_method(method_name) do |id|
         class_name.new id

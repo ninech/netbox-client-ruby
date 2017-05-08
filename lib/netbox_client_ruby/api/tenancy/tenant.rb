@@ -10,6 +10,5 @@ module NetboxClientRuby
     path 'tenancy/tenants/:id.json'
     creation_path 'tenancy/tenants/'
     object_fields group: proc { |raw_data| NetboxClientRuby::TenantGroup.new raw_data['id'] }
-
   end
 end

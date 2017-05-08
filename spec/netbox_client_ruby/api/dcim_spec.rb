@@ -10,7 +10,7 @@ describe NetboxClientRuby::DCIM do
     platforms: NetboxClientRuby::Platforms,
     racks: NetboxClientRuby::Racks,
     regions: NetboxClientRuby::Regions,
-    sites: NetboxClientRuby::Sites,
+    sites: NetboxClientRuby::Sites
   }.each do |method, expected_class|
     describe ".#{method}" do
       subject { NetboxClientRuby::DCIM.new.public_send(method) }
@@ -41,7 +41,7 @@ describe NetboxClientRuby::DCIM do
     platform: NetboxClientRuby::Platform,
     rack: NetboxClientRuby::Rack,
     region: NetboxClientRuby::Region,
-    site: NetboxClientRuby::Site,
+    site: NetboxClientRuby::Site
   }.each do |method, expected_class|
     describe ".#{method}" do
       let(:id) { 1 }

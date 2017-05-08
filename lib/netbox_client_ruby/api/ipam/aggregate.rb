@@ -10,6 +10,5 @@ module NetboxClientRuby
     path 'ipam/aggregates/:id.json'
     creation_path 'ipam/aggregates/'
     object_fields rir: proc { |raw_data| NetboxClientRuby::Rir.new raw_data['id'] }
-
   end
 end

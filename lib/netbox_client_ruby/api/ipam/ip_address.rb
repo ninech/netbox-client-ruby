@@ -18,7 +18,6 @@ module NetboxClientRuby
       interface: proc { |raw_data| NetboxClientRuby::Interface.new raw_data['id'] }
     )
     readonly_fields :display_name
-
   end
 
   class IpAddressStatus

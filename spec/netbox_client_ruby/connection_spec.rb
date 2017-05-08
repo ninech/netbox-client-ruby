@@ -17,8 +17,8 @@ describe NetboxClientRuby::Connection do
     end
 
     it 'correctly sets the base url' do
-      expect(NetboxClientRuby::Connection.new.url_prefix).
-        to eq(URI.parse('https://netbox.test/api/'))
+      expect(NetboxClientRuby::Connection.new.url_prefix)
+        .to eq(URI.parse('https://netbox.test/api/'))
     end
 
     it 'sets the correct auth headers' do
@@ -27,13 +27,13 @@ describe NetboxClientRuby::Connection do
     end
 
     it 'sets the adapter' do
-      expect(NetboxClientRuby::Connection.new.builder.handlers).
-        to include Faraday::Adapter::NetHttp
+      expect(NetboxClientRuby::Connection.new.builder.handlers)
+        .to include Faraday::Adapter::NetHttp
     end
 
     it 'adds the json middleware' do
-      expect(NetboxClientRuby::Connection.new.builder.handlers).
-        to include FaradayMiddleware::ParseJson
+      expect(NetboxClientRuby::Connection.new.builder.handlers)
+        .to include FaradayMiddleware::ParseJson
     end
   end
 
@@ -47,8 +47,8 @@ describe NetboxClientRuby::Connection do
     end
 
     it 'sets the adapter' do
-      expect(NetboxClientRuby::Connection.new.builder.handlers).
-        to include Faraday::Adapter::NetHttpPersistent
+      expect(NetboxClientRuby::Connection.new.builder.handlers)
+        .to include Faraday::Adapter::NetHttpPersistent
     end
   end
 
@@ -64,8 +64,8 @@ describe NetboxClientRuby::Connection do
       end
 
       it 'sets the logger' do
-        expect(NetboxClientRuby::Connection.new.builder.handlers).
-          to include Faraday::Response::Logger
+        expect(NetboxClientRuby::Connection.new.builder.handlers)
+          .to include Faraday::Response::Logger
       end
     end
 
@@ -80,8 +80,8 @@ describe NetboxClientRuby::Connection do
       end
 
       it 'sets the logger' do
-        expect(NetboxClientRuby::Connection.new.builder.handlers).
-          to include Faraday::DetailedLogger::Middleware
+        expect(NetboxClientRuby::Connection.new.builder.handlers)
+          .to include Faraday::DetailedLogger::Middleware
       end
     end
   end

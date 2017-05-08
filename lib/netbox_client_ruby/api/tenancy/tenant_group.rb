@@ -8,6 +8,5 @@ module NetboxClientRuby
     deletable true
     path 'tenancy/tenant-groups/:id.json'
     creation_path 'tenancy/tenant-groups/'
-
   end
 end

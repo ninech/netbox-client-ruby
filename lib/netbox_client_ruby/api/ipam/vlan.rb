@@ -18,7 +18,6 @@ module NetboxClientRuby
       group: proc { |raw_data| NetboxClientRuby::VlanGroup.new raw_data['id'] }
     )
     readonly_fields :display_name
-
   end
 
   class VlanStatus

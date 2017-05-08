@@ -10,6 +10,5 @@ module NetboxClientRuby
     path 'ipam/vlan-groups/:id.json'
     creation_path 'ipam/vlan-groups/'
     object_fields site: proc { |raw_data| NetboxClientRuby::Site.new raw_data['id'] }
-
   end
 end

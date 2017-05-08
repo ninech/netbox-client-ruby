@@ -8,6 +8,5 @@ module NetboxClientRuby
     deletable true
     path 'dcim/racks/:id.json'
     creation_path 'dcim/racks/'
-
   end
 end

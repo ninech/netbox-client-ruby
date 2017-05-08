@@ -25,7 +25,7 @@ module NetboxClientRuby
         variable_name = "_#{variable_name}" if objectified_instance.methods.map(&:to_s).include?(variable_name)
 
         objectified_instance.instance_variable_set("@#{variable_name}", v)
-        objectified_class.send :define_method, variable_name, proc { instance_variable_get("@#{variable_name}") }
+        objectified_class.send(:define_method, variable_name, proc { instance_variable_get("@#{variable_name}") })
       end
       objectified_instance
     end
@@ -42,28 +42,28 @@ module NetboxClientRuby
       when 400..499 then
         raise_on_http_client_error status
       when 500..599 then
-        fail NetboxClientRuby::RemoteError, "#{status} Remote Error"
+        raise NetboxClientRuby::RemoteError, "#{status} Remote Error"
       else
-        fail NetboxClientRuby::RemoteError, "#{status} Unknown Error Code"
+        raise NetboxClientRuby::RemoteError, "#{status} Unknown Error Code"
       end
     end
 
     def raise_on_http_client_error(status)
       case status
       when 400 then
-        fail NetboxClientRuby::ClientError, '400 Bad Request'
+        raise NetboxClientRuby::ClientError, '400 Bad Request'
       when 401 then
-        fail NetboxClientRuby::ClientError, '401 Unauthorized'
+        raise NetboxClientRuby::ClientError, '401 Unauthorized'
       when 403 then
-        fail NetboxClientRuby::ClientError, '403 Forbidden'
+        raise NetboxClientRuby::ClientError, '403 Forbidden'
       when 405 then
-        fail NetboxClientRuby::ClientError, '405 Method Not Allowed'
+        raise NetboxClientRuby::ClientError, '405 Method Not Allowed'
       when 415 then
-        fail NetboxClientRuby::ClientError, '415 Unsupported Media Type'
+        raise NetboxClientRuby::ClientError, '415 Unsupported Media Type'
       when 429 then
-        fail NetboxClientRuby::ClientError, '429 Too Many Requests'
+        raise NetboxClientRuby::ClientError, '429 Too Many Requests'
       else
-        fail NetboxClientRuby::ClientError, "#{status} Request Error"
+        raise NetboxClientRuby::ClientError, "#{status} Request Error"
       end
     end
 

@@ -49,7 +49,7 @@ module NetboxClientRuby
         elsif !limit.integer?
           raise ArgumentError,
                 "The limit '#{limit}' is not integer but it has to be."
-        elsif limit < 0
+        elsif limit.negative?
           raise ArgumentError,
                 "The limit '#{limit}' is below zero, but it should be zero or bigger."
         elsif limit > max_limit
@@ -61,11 +61,9 @@ module NetboxClientRuby
       def entity_creator(creator = nil)
         return @entity_creator if @entity_creator
 
-        if creator
-          @entity_creator = creator
-        else
-          raise ArgumentError, '"entity_creator" has not been defined.'
-        end
+        raise ArgumentError, '"entity_creator" has not been defined.' unless creator
+
+        @entity_creator = creator
       end
 
       def path(path = nil)
@@ -100,11 +98,8 @@ module NetboxClientRuby
     end
 
     def offset(offset)
-      if !offset.is_a? Numeric
-        raise ArgumentError, "The offset '#{offset}' is not numeric."
-      elsif offset.negative?
-        raise ArgumentError, "The offset '#{offset}' must not be negative."
-      end
+      raise ArgumentError, "The offset '#{offset}' is not numeric." unless offset.is_a? Numeric
+      raise ArgumentError, "The offset '#{offset}' must not be negative." if offset.negative?
 
       @offset = offset
       reset
@@ -112,13 +107,9 @@ module NetboxClientRuby
     end
 
     def page(page)
-      if !page.is_a? Numeric
-        raise ArgumentError, "The offset '#{page}' is not numeric but has to be."
-      elsif !page.integer?
-        raise ArgumentError, "The offset '#{page}' must be integer but isn't."
-      elsif page.negative?
-        raise ArgumentError, "The offset '#{page}' must not be negative but is."
-      end
+      raise ArgumentError, "The offset '#{page}' is not numeric but has to be." unless page.is_a? Numeric
+      raise ArgumentError, "The offset '#{page}' must be integer but isn't." unless page.integer?
+      raise ArgumentError, "The offset '#{page}' must not be negative but is." if page.negative?
 
       limit = @instance_limit || self.class.limit
       offset(limit * page)
@@ -131,7 +122,7 @@ module NetboxClientRuby
     end
 
     def as_array
-      raw_data_array.map { |raw_entity| as_entity raw_entity}
+      raw_data_array.map { |raw_entity| as_entity raw_entity }
     end
 
     ##

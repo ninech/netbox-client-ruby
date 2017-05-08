@@ -8,6 +8,5 @@ module NetboxClientRuby
     deletable true
     path 'dcim/device-roles/:id.json'
     creation_path 'dcim/device-roles/'
-
   end
 end

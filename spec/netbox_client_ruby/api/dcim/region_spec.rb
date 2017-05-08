@@ -68,7 +68,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
         let(:request_params) { { 'parent' => nil } }
 
         it 'should remove the parent' do
-          expect(subject.update parent: nil).to be subject
+          expect(subject.update(parent: nil)).to be subject
         end
       end
 
@@ -76,7 +76,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
         let(:request_params) { { 'parent' => 1 } }
 
         it 'should add a parent' do
-          expect(subject.update parent: 1).to be subject
+          expect(subject.update(parent: 1)).to be subject
         end
       end
     end

@@ -1,4 +1,3 @@
-#require "netbox_client_ruby"
 require 'dry-configurable'
 require 'netbox_client_ruby/api'
 

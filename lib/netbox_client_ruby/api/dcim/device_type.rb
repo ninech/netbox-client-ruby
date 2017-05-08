@@ -22,6 +22,5 @@ module NetboxClientRuby
       manufacturer: proc { |raw_data| NetboxClientRuby::Manufacturer.new raw_data['id'] },
       interface_ordering: NetboxClientRuby::InterfaceOrdering
     )
-
   end
 end

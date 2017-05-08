@@ -38,7 +38,7 @@ describe NetboxClientRuby::Device, faraday_stub: true do
     rack: [NetboxClientRuby::Rack, 1],
     primary_ip: [NetboxClientRuby::IpAddress, 5],
     primary_ip4: [NetboxClientRuby::IpAddress, 1],
-    primary_ip6: [NetboxClientRuby::IpAddress, 5],
+    primary_ip6: [NetboxClientRuby::IpAddress, 5]
   }.each do |method_name, expected_values|
     expected_type = expected_values[0]
     expected_id = expected_values[1]

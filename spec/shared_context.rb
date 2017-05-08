@@ -23,7 +23,8 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   let(:faraday_logger) { nil }
   let(:faraday_stubs) { Faraday::Adapter::Test::Stubs.new }
   let(:faraday) do
-    Faraday.new(url: NetboxClientRuby.config.netbox.api_base_url, headers: NetboxClientRuby::Connection.headers) do |faraday|
+    Faraday.new(url: NetboxClientRuby.config.netbox.api_base_url,
+                headers: NetboxClientRuby::Connection.headers) do |faraday|
       faraday.adapter :test, faraday_stubs
       faraday.request :json
       faraday.response :json, content_type: /\bjson$/

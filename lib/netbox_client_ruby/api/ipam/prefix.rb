@@ -23,7 +23,6 @@ module NetboxClientRuby
       role: proc { |raw_data| NetboxClientRuby::Role.new raw_data['id'] }
     )
     readonly_fields :display_name
-
   end
 
   class PrefixStatus
