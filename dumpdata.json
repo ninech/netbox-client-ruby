@@ -1,0 +1,3540 @@
+[
+   {
+      "fields" : {
+         "app_label" : "admin",
+         "model" : "logentry"
+      },
+      "pk" : 1,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "group",
+         "app_label" : "auth"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 2
+   },
+   {
+      "fields" : {
+         "model" : "permission",
+         "app_label" : "auth"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 3
+   },
+   {
+      "fields" : {
+         "app_label" : "auth",
+         "model" : "user"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 4
+   },
+   {
+      "pk" : 5,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "app_label" : "contenttypes",
+         "model" : "contenttype"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "sessions",
+         "model" : "session"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 6
+   },
+   {
+      "fields" : {
+         "model" : "provider",
+         "app_label" : "circuits"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 7
+   },
+   {
+      "pk" : 8,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "app_label" : "circuits",
+         "model" : "circuittermination"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "circuits",
+         "model" : "circuittype"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 9
+   },
+   {
+      "fields" : {
+         "app_label" : "circuits",
+         "model" : "circuit"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 10
+   },
+   {
+      "fields" : {
+         "model" : "devicebaytemplate",
+         "app_label" : "dcim"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 11
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "devicebay"
+      },
+      "pk" : 12,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "platform",
+         "app_label" : "dcim"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 13
+   },
+   {
+      "fields" : {
+         "model" : "rackrole",
+         "app_label" : "dcim"
+      },
+      "pk" : 14,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "pk" : 15,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "model" : "interface",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "pk" : 16,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "model" : "powerporttemplate",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "consoleserverport"
+      },
+      "pk" : 17,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "site"
+      },
+      "pk" : 18,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "device",
+         "app_label" : "dcim"
+      },
+      "pk" : 19,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "rack"
+      },
+      "pk" : 20,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "powerport",
+         "app_label" : "dcim"
+      },
+      "pk" : 21,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "interfacetemplate",
+         "app_label" : "dcim"
+      },
+      "pk" : 22,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 23,
+      "fields" : {
+         "model" : "consoleporttemplate",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 24,
+      "fields" : {
+         "model" : "devicerole",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "pk" : 25,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "rackgroup"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "rackreservation"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 26
+   },
+   {
+      "pk" : 27,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "model" : "interfaceconnection",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 28,
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "inventoryitem"
+      }
+   },
+   {
+      "fields" : {
+         "model" : "manufacturer",
+         "app_label" : "dcim"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 29
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 30,
+      "fields" : {
+         "model" : "region",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "pk" : 31,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "consoleport"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "consoleserverporttemplate"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 32
+   },
+   {
+      "fields" : {
+         "model" : "poweroutlet",
+         "app_label" : "dcim"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 33
+   },
+   {
+      "fields" : {
+         "app_label" : "dcim",
+         "model" : "devicetype"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 34
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 35,
+      "fields" : {
+         "model" : "poweroutlettemplate",
+         "app_label" : "dcim"
+      }
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 36,
+      "fields" : {
+         "model" : "role",
+         "app_label" : "ipam"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "ipam",
+         "model" : "service"
+      },
+      "pk" : 37,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "ipam",
+         "model" : "vlangroup"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 38
+   },
+   {
+      "fields" : {
+         "app_label" : "ipam",
+         "model" : "vrf"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 39
+   },
+   {
+      "fields" : {
+         "model" : "ipaddress",
+         "app_label" : "ipam"
+      },
+      "pk" : 40,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "aggregate",
+         "app_label" : "ipam"
+      },
+      "pk" : 41,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "ipam",
+         "model" : "rir"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 42
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 43,
+      "fields" : {
+         "model" : "vlan",
+         "app_label" : "ipam"
+      }
+   },
+   {
+      "fields" : {
+         "model" : "prefix",
+         "app_label" : "ipam"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 44
+   },
+   {
+      "fields" : {
+         "app_label" : "extras",
+         "model" : "customfield"
+      },
+      "pk" : 45,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "useraction",
+         "app_label" : "extras"
+      },
+      "pk" : 46,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "graph",
+         "app_label" : "extras"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 47
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 48,
+      "fields" : {
+         "app_label" : "extras",
+         "model" : "exporttemplate"
+      }
+   },
+   {
+      "pk" : 49,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "model" : "customfieldchoice",
+         "app_label" : "extras"
+      }
+   },
+   {
+      "pk" : 50,
+      "model" : "contenttypes.contenttype",
+      "fields" : {
+         "model" : "topologymap",
+         "app_label" : "extras"
+      }
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 51,
+      "fields" : {
+         "model" : "customfieldvalue",
+         "app_label" : "extras"
+      }
+   },
+   {
+      "fields" : {
+         "app_label" : "secrets",
+         "model" : "secret"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 52
+   },
+   {
+      "model" : "contenttypes.contenttype",
+      "pk" : 53,
+      "fields" : {
+         "model" : "userkey",
+         "app_label" : "secrets"
+      }
+   },
+   {
+      "fields" : {
+         "model" : "secretrole",
+         "app_label" : "secrets"
+      },
+      "pk" : 54,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "secrets",
+         "model" : "sessionkey"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 55
+   },
+   {
+      "fields" : {
+         "app_label" : "tenancy",
+         "model" : "tenantgroup"
+      },
+      "pk" : 56,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "app_label" : "tenancy",
+         "model" : "tenant"
+      },
+      "pk" : 57,
+      "model" : "contenttypes.contenttype"
+   },
+   {
+      "fields" : {
+         "model" : "token",
+         "app_label" : "users"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 58
+   },
+   {
+      "fields" : {
+         "model" : "imageattachment",
+         "app_label" : "extras"
+      },
+      "model" : "contenttypes.contenttype",
+      "pk" : 59
+   },
+   {
+      "fields" : {
+         "session_data" : "ZjYyOWZmMTkzOTBjYWFkNWQ5NWUwY2UzZDZhZWY3OWYzZWFhNGQzMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjdhZjQ4M2M0MzJkZTRmNjZkM2QxM2MzZmRiYTAxZjJkMTZlM2RjZGMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+         "expire_date" : "2017-04-26T12:06:17.711Z"
+      },
+      "pk" : "7t20aaqs6k739jymk6839hwzewuwjety",
+      "model" : "sessions.session"
+   },
+   {
+      "fields" : {
+         "session_data" : "ZjYyOWZmMTkzOTBjYWFkNWQ5NWUwY2UzZDZhZWY3OWYzZWFhNGQzMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjdhZjQ4M2M0MzJkZTRmNjZkM2QxM2MzZmRiYTAxZjJkMTZlM2RjZGMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
+         "expire_date" : "2017-05-11T07:17:46.209Z"
+      },
+      "model" : "sessions.session",
+      "pk" : "9yh3t1pef0qzmug5oh5hwb4fqw1g8jjr"
+   },
+   {
+      "model" : "dcim.region",
+      "pk" : 1,
+      "fields" : {
+         "parent" : null,
+         "rght" : 4,
+         "level" : 0,
+         "name" : "region1",
+         "slug" : "region1",
+         "lft" : 1,
+         "tree_id" : 1
+      }
+   },
+   {
+      "fields" : {
+         "slug" : "sub_region1",
+         "lft" : 2,
+         "tree_id" : 1,
+         "parent" : 1,
+         "rght" : 3,
+         "name" : "sub_region1",
+         "level" : 1
+      },
+      "pk" : 2,
+      "model" : "dcim.region"
+   },
+   {
+      "model" : "dcim.site",
+      "pk" : 1,
+      "fields" : {
+         "name" : "new name",
+         "shipping_address" : "",
+         "comments" : "",
+         "tenant" : null,
+         "facility" : "",
+         "asn" : null,
+         "physical_address" : "",
+         "slug" : "test",
+         "last_updated" : "2017-05-05T09:03:18.253Z",
+         "contact_phone" : "",
+         "created" : "2017-04-12",
+         "contact_email" : "",
+         "region" : 1,
+         "contact_name" : ""
+      }
+   },
+   {
+      "fields" : {
+         "region" : null,
+         "contact_name" : "",
+         "contact_email" : "",
+         "created" : "2017-04-13",
+         "physical_address" : "",
+         "asn" : null,
+         "slug" : "test2",
+         "contact_phone" : "",
+         "last_updated" : "2017-04-27T07:23:40.289Z",
+         "comments" : "",
+         "facility" : "",
+         "tenant" : null,
+         "shipping_address" : "",
+         "name" : "test_site2"
+      },
+      "model" : "dcim.site",
+      "pk" : 2
+   },
+   {
+      "pk" : 1,
+      "model" : "dcim.rack",
+      "fields" : {
+         "width" : 19,
+         "desc_units" : false,
+         "group" : null,
+         "site" : 2,
+         "role" : null,
+         "comments" : "",
+         "tenant" : null,
+         "type" : null,
+         "name" : "test2rack",
+         "created" : "2017-04-13",
+         "u_height" : 42,
+         "facility_id" : null,
+         "last_updated" : "2017-04-13T07:32:22.150Z"
+      }
+   },
+   {
+      "model" : "dcim.manufacturer",
+      "pk" : 1,
+      "fields" : {
+         "slug" : "manu1",
+         "name" : "manu1"
+      }
+   },
+   {
+      "model" : "dcim.devicetype",
+      "pk" : 1,
+      "fields" : {
+         "interface_ordering" : 1,
+         "is_full_depth" : true,
+         "part_number" : "",
+         "is_console_server" : false,
+         "subdevice_role" : null,
+         "manufacturer" : 1,
+         "comments" : "",
+         "slug" : "devicetype1",
+         "is_pdu" : false,
+         "model" : "devicetype1",
+         "is_network_device" : true,
+         "u_height" : 1
+      }
+   },
+   {
+      "fields" : {
+         "part_number" : "",
+         "is_full_depth" : true,
+         "interface_ordering" : 1,
+         "manufacturer" : 1,
+         "comments" : "",
+         "is_console_server" : false,
+         "subdevice_role" : true,
+         "u_height" : 1,
+         "is_network_device" : true,
+         "is_pdu" : false,
+         "model" : "parent1",
+         "slug" : "parent1"
+      },
+      "model" : "dcim.devicetype",
+      "pk" : 2
+   },
+   {
+      "fields" : {
+         "is_full_depth" : true,
+         "part_number" : "",
+         "interface_ordering" : 1,
+         "is_console_server" : false,
+         "subdevice_role" : false,
+         "manufacturer" : 1,
+         "comments" : "",
+         "is_network_device" : true,
+         "u_height" : 0,
+         "slug" : "child1",
+         "model" : "child1",
+         "is_pdu" : false
+      },
+      "model" : "dcim.devicetype",
+      "pk" : 3
+   },
+   {
+      "pk" : 1,
+      "model" : "dcim.devicerole",
+      "fields" : {
+         "name" : "devicerole1",
+         "slug" : "devicerole1",
+         "color" : "aa1409"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "platform1",
+         "rpc_client" : "",
+         "slug" : "platform1"
+      },
+      "pk" : 1,
+      "model" : "dcim.platform"
+   },
+   {
+      "pk" : 1,
+      "model" : "dcim.device",
+      "fields" : {
+         "platform" : null,
+         "asset_tag" : null,
+         "site" : 2,
+         "comments" : "trewyutglibjwfvd",
+         "primary_ip6" : null,
+         "device_role" : 1,
+         "last_updated" : "2017-05-05T05:09:11.667Z",
+         "face" : 1,
+         "primary_ip4" : null,
+         "position" : 39,
+         "rack" : 1,
+         "device_type" : 1,
+         "tenant" : null,
+         "status" : true,
+         "name" : "device1",
+         "created" : "2017-04-13",
+         "serial" : ""
+      }
+   },
+   {
+      "pk" : 2,
+      "model" : "dcim.device",
+      "fields" : {
+         "face" : 0,
+         "primary_ip4" : 1,
+         "rack" : 1,
+         "position" : 42,
+         "device_type" : 1,
+         "tenant" : 3,
+         "status" : true,
+         "name" : "device2",
+         "created" : "2017-04-13",
+         "serial" : "123456",
+         "asset_tag" : "654321",
+         "platform" : 1,
+         "site" : 2,
+         "comments" : "",
+         "primary_ip6" : 5,
+         "device_role" : 1,
+         "last_updated" : "2017-05-05T06:15:12.972Z"
+      }
+   },
+   {
+      "fields" : {
+         "platform" : null,
+         "asset_tag" : null,
+         "site" : 2,
+         "comments" : "",
+         "primary_ip6" : null,
+         "device_role" : 1,
+         "last_updated" : "2017-05-04T08:51:34.497Z",
+         "face" : 0,
+         "device_type" : 2,
+         "rack" : 1,
+         "position" : 41,
+         "primary_ip4" : null,
+         "tenant" : null,
+         "name" : "parent_device1",
+         "status" : true,
+         "created" : "2017-05-04",
+         "serial" : ""
+      },
+      "pk" : 3,
+      "model" : "dcim.device"
+   },
+   {
+      "fields" : {
+         "status" : true,
+         "name" : "child_device1",
+         "tenant" : null,
+         "serial" : "",
+         "created" : "2017-05-04",
+         "face" : null,
+         "primary_ip4" : null,
+         "position" : null,
+         "rack" : 1,
+         "device_type" : 3,
+         "primary_ip6" : null,
+         "comments" : "",
+         "last_updated" : "2017-05-04T08:51:56.350Z",
+         "device_role" : 1,
+         "asset_tag" : null,
+         "platform" : null,
+         "site" : 2
+      },
+      "pk" : 4,
+      "model" : "dcim.device"
+   },
+   {
+      "pk" : 1,
+      "model" : "dcim.interface",
+      "fields" : {
+         "name" : "e0",
+         "form_factor" : 1000,
+         "mac_address" : null,
+         "lag" : null,
+         "mgmt_only" : false,
+         "device" : 1,
+         "description" : ""
+      }
+   },
+   {
+      "fields" : {
+         "name" : "interface1",
+         "form_factor" : 1000,
+         "lag" : 3,
+         "mac_address" : "00:11:22:33:44:55",
+         "description" : "description of interface1",
+         "device" : 2,
+         "mgmt_only" : false
+      },
+      "pk" : 2,
+      "model" : "dcim.interface"
+   },
+   {
+      "pk" : 3,
+      "model" : "dcim.interface",
+      "fields" : {
+         "form_factor" : 200,
+         "name" : "interface2",
+         "mgmt_only" : false,
+         "device" : 2,
+         "description" : "lag1",
+         "mac_address" : null,
+         "lag" : null
+      }
+   },
+   {
+      "fields" : {
+         "part_id" : "",
+         "serial" : "",
+         "device" : 1,
+         "discovered" : false,
+         "name" : "inventory_item1",
+         "parent" : null,
+         "manufacturer" : null
+      },
+      "pk" : 1,
+      "model" : "dcim.inventoryitem"
+   },
+   {
+      "model" : "dcim.inventoryitem",
+      "pk" : 2,
+      "fields" : {
+         "serial" : "",
+         "part_id" : "",
+         "discovered" : false,
+         "device" : 1,
+         "name" : "Disk1",
+         "parent" : null,
+         "manufacturer" : null
+      }
+   },
+   {
+      "pk" : 1,
+      "model" : "ipam.vrf",
+      "fields" : {
+         "enforce_unique" : true,
+         "tenant" : null,
+         "rd" : "RD1",
+         "name" : "vrf1",
+         "created" : "2017-05-02",
+         "description" : "",
+         "last_updated" : "2017-05-02T16:16:15.100Z"
+      }
+   },
+   {
+      "pk" : 2,
+      "model" : "ipam.vrf",
+      "fields" : {
+         "last_updated" : "2017-05-02T17:28:56.270Z",
+         "created" : "2017-05-02",
+         "description" : "",
+         "name" : "vrf2",
+         "enforce_unique" : false,
+         "rd" : "RD2",
+         "tenant" : 3
+      }
+   },
+   {
+      "pk" : 1,
+      "model" : "ipam.rir",
+      "fields" : {
+         "slug" : "rir1",
+         "name" : "rir1",
+         "is_private" : true
+      }
+   },
+   {
+      "fields" : {
+         "slug" : "rir2",
+         "is_private" : false,
+         "name" : "rir2"
+      },
+      "model" : "ipam.rir",
+      "pk" : 2
+   },
+   {
+      "pk" : 1,
+      "model" : "ipam.aggregate",
+      "fields" : {
+         "description" : "",
+         "created" : "2017-05-02",
+         "last_updated" : "2017-05-02T16:16:34.340Z",
+         "family" : 4,
+         "prefix" : "10.0.0.0/8",
+         "rir" : 1,
+         "date_added" : null
+      }
+   },
+   {
+      "fields" : {
+         "weight" : 1000,
+         "slug" : "role1",
+         "name" : "role1"
+      },
+      "pk" : 1,
+      "model" : "ipam.role"
+   },
+   {
+      "fields" : {
+         "name" : "vlan_role1",
+         "slug" : "vlan_role1",
+         "weight" : 1000
+      },
+      "pk" : 2,
+      "model" : "ipam.role"
+   },
+   {
+      "fields" : {
+         "last_updated" : "2017-04-27T08:35:52.114Z",
+         "created" : "2017-04-27",
+         "status" : 1,
+         "is_pool" : false,
+         "prefix" : "10.0.0.0/8",
+         "tenant" : null,
+         "vrf" : null,
+         "vlan" : null,
+         "role" : null,
+         "site" : null,
+         "family" : 4,
+         "description" : ""
+      },
+      "model" : "ipam.prefix",
+      "pk" : 1
+   },
+   {
+      "pk" : 2,
+      "model" : "ipam.prefix",
+      "fields" : {
+         "last_updated" : "2017-05-02T16:16:54.880Z",
+         "created" : "2017-05-02",
+         "status" : 1,
+         "tenant" : null,
+         "prefix" : "10.1.0.0/16",
+         "is_pool" : true,
+         "role" : null,
+         "site" : null,
+         "family" : 4,
+         "vrf" : null,
+         "vlan" : null,
+         "description" : ""
+      }
+   },
+   {
+      "fields" : {
+         "status" : 0,
+         "prefix" : "10.2.0.0/16",
+         "tenant" : 1,
+         "is_pool" : false,
+         "last_updated" : "2017-05-02T16:19:51.048Z",
+         "created" : "2017-05-02",
+         "family" : 4,
+         "role" : 1,
+         "site" : 2,
+         "vlan" : 1,
+         "vrf" : 1,
+         "description" : "desc1"
+      },
+      "model" : "ipam.prefix",
+      "pk" : 3
+   },
+   {
+      "fields" : {
+         "status" : 1,
+         "is_pool" : false,
+         "prefix" : "2001:db8::/32",
+         "tenant" : null,
+         "last_updated" : "2017-05-05T06:11:48.976Z",
+         "created" : "2017-05-05",
+         "vrf" : null,
+         "vlan" : null,
+         "family" : 6,
+         "role" : null,
+         "site" : null,
+         "description" : "Documentation Prefix"
+      },
+      "model" : "ipam.prefix",
+      "pk" : 4
+   },
+   {
+      "fields" : {
+         "interface" : 3,
+         "created" : "2017-04-27",
+         "nat_inside" : null,
+         "last_updated" : "2017-05-03T08:44:07.873Z",
+         "address" : "10.0.0.1/8",
+         "tenant" : 3,
+         "status" : 1,
+         "description" : "description",
+         "vrf" : 2,
+         "family" : 4
+      },
+      "pk" : 1,
+      "model" : "ipam.ipaddress"
+   },
+   {
+      "model" : "ipam.ipaddress",
+      "pk" : 2,
+      "fields" : {
+         "nat_inside" : null,
+         "last_updated" : "2017-05-04T08:45:49.461Z",
+         "created" : "2017-05-04",
+         "interface" : null,
+         "status" : 1,
+         "tenant" : null,
+         "address" : "10.1.0.0/24",
+         "family" : 4,
+         "vrf" : null,
+         "description" : ""
+      }
+   },
+   {
+      "pk" : 5,
+      "model" : "ipam.ipaddress",
+      "fields" : {
+         "vrf" : null,
+         "family" : 6,
+         "description" : "",
+         "nat_inside" : null,
+         "last_updated" : "2017-05-05T06:15:12.959Z",
+         "created" : "2017-05-05",
+         "interface" : 3,
+         "status" : 1,
+         "address" : "2001:db8:aaaa:bbbb::1/64",
+         "tenant" : null
+      }
+   },
+   {
+      "fields" : {
+         "site" : 2,
+         "slug" : "vlan1",
+         "name" : "vlan1"
+      },
+      "pk" : 1,
+      "model" : "ipam.vlangroup"
+   },
+   {
+      "fields" : {
+         "description" : "desc1",
+         "vid" : 1,
+         "group" : 1,
+         "role" : 2,
+         "site" : 2,
+         "created" : "2017-05-02",
+         "last_updated" : "2017-05-02T16:19:40.629Z",
+         "tenant" : 3,
+         "name" : "vlan_1",
+         "status" : 1
+      },
+      "pk" : 1,
+      "model" : "ipam.vlan"
+   },
+   {
+      "fields" : {
+         "name" : "service22",
+         "ipaddresses" : [],
+         "created" : "2017-05-04",
+         "protocol" : 6,
+         "last_updated" : "2017-05-04T08:46:42.956Z",
+         "port" : 22,
+         "device" : 2,
+         "description" : ""
+      },
+      "model" : "ipam.service",
+      "pk" : 1
+   },
+   {
+      "model" : "extras.customfield",
+      "pk" : 1,
+      "fields" : {
+         "default" : "",
+         "description" : "",
+         "is_filterable" : true,
+         "obj_type" : [
+            18
+         ],
+         "weight" : 100,
+         "name" : "site_custom_field",
+         "label" : "Custom Field Text:",
+         "type" : 100,
+         "required" : true
+      }
+   },
+   {
+      "model" : "extras.customfield",
+      "pk" : 2,
+      "fields" : {
+         "description" : "Not required",
+         "weight" : 100,
+         "obj_type" : [
+            18
+         ],
+         "is_filterable" : true,
+         "default" : "",
+         "required" : false,
+         "type" : 200,
+         "name" : "custom_field_int",
+         "label" : "Int Custom Field"
+      }
+   },
+   {
+      "fields" : {
+         "default" : "",
+         "description" : "",
+         "weight" : 100,
+         "is_filterable" : true,
+         "obj_type" : [
+            18
+         ],
+         "type" : 300,
+         "label" : "Boolean Custom Field",
+         "name" : "custom_field_bool",
+         "required" : false
+      },
+      "pk" : 3,
+      "model" : "extras.customfield"
+   },
+   {
+      "fields" : {
+         "default" : "",
+         "description" : "",
+         "is_filterable" : true,
+         "obj_type" : [
+            19
+         ],
+         "weight" : 100,
+         "name" : "custom1",
+         "label" : "",
+         "type" : 100,
+         "required" : false
+      },
+      "pk" : 4,
+      "model" : "extras.customfield"
+   },
+   {
+      "model" : "extras.customfieldvalue",
+      "pk" : 1,
+      "fields" : {
+         "field" : 3,
+         "obj_id" : 2,
+         "serialized_value" : "1",
+         "obj_type" : 18
+      }
+   },
+   {
+      "fields" : {
+         "obj_type" : 18,
+         "obj_id" : 2,
+         "serialized_value" : "55",
+         "field" : 2
+      },
+      "model" : "extras.customfieldvalue",
+      "pk" : 2
+   },
+   {
+      "fields" : {
+         "field" : 1,
+         "obj_type" : 18,
+         "serialized_value" : "uuh",
+         "obj_id" : 2
+      },
+      "model" : "extras.customfieldvalue",
+      "pk" : 3
+   },
+   {
+      "fields" : {
+         "obj_type" : 19,
+         "obj_id" : 1,
+         "serialized_value" : "WICHTIG",
+         "field" : 4
+      },
+      "model" : "extras.customfieldvalue",
+      "pk" : 4
+   },
+   {
+      "model" : "extras.customfieldvalue",
+      "pk" : 5,
+      "fields" : {
+         "field" : 4,
+         "obj_type" : 19,
+         "obj_id" : 2,
+         "serialized_value" : "custom1"
+      }
+   },
+   {
+      "fields" : {
+         "slug" : "customer",
+         "name" : "Customer"
+      },
+      "pk" : 1,
+      "model" : "tenancy.tenantgroup"
+   },
+   {
+      "fields" : {
+         "comments" : "",
+         "name" : "tenant1",
+         "description" : "",
+         "created" : "2017-05-02",
+         "group" : null,
+         "last_updated" : "2017-05-02T14:46:44.008Z",
+         "slug" : "tenant1"
+      },
+      "pk" : 1,
+      "model" : "tenancy.tenant"
+   },
+   {
+      "pk" : 2,
+      "model" : "tenancy.tenant",
+      "fields" : {
+         "name" : "tenant2",
+         "comments" : "",
+         "last_updated" : "2017-05-02T14:47:28.717Z",
+         "group" : null,
+         "slug" : "tenant2",
+         "created" : "2017-05-02",
+         "description" : ""
+      }
+   },
+   {
+      "fields" : {
+         "comments" : "",
+         "name" : "tenant3",
+         "created" : "2017-05-02",
+         "description" : "",
+         "last_updated" : "2017-05-02T14:47:37.281Z",
+         "group" : 1,
+         "slug" : "tenant3"
+      },
+      "model" : "tenancy.tenant",
+      "pk" : 3
+   },
+   {
+      "fields" : {
+         "codename" : "add_logentry",
+         "name" : "Can add log entry",
+         "content_type" : 1
+      },
+      "pk" : 1,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 2,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can change log entry",
+         "content_type" : 1,
+         "codename" : "change_logentry"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 3,
+      "fields" : {
+         "codename" : "delete_logentry",
+         "content_type" : 1,
+         "name" : "Can delete log entry"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 4,
+      "fields" : {
+         "codename" : "add_group",
+         "name" : "Can add group",
+         "content_type" : 2
+      }
+   },
+   {
+      "pk" : 5,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_group",
+         "name" : "Can change group",
+         "content_type" : 2
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_group",
+         "name" : "Can delete group",
+         "content_type" : 2
+      },
+      "model" : "auth.permission",
+      "pk" : 6
+   },
+   {
+      "pk" : 7,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_permission",
+         "name" : "Can add permission",
+         "content_type" : 3
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 8,
+      "fields" : {
+         "codename" : "change_permission",
+         "content_type" : 3,
+         "name" : "Can change permission"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can delete permission",
+         "content_type" : 3,
+         "codename" : "delete_permission"
+      },
+      "model" : "auth.permission",
+      "pk" : 9
+   },
+   {
+      "pk" : 10,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can add user",
+         "content_type" : 4,
+         "codename" : "add_user"
+      }
+   },
+   {
+      "pk" : 11,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_user",
+         "name" : "Can change user",
+         "content_type" : 4
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 12,
+      "fields" : {
+         "codename" : "delete_user",
+         "name" : "Can delete user",
+         "content_type" : 4
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 13,
+      "fields" : {
+         "content_type" : 5,
+         "name" : "Can add content type",
+         "codename" : "add_contenttype"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 14,
+      "fields" : {
+         "name" : "Can change content type",
+         "content_type" : 5,
+         "codename" : "change_contenttype"
+      }
+   },
+   {
+      "pk" : 15,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_contenttype",
+         "content_type" : 5,
+         "name" : "Can delete content type"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 16,
+      "fields" : {
+         "content_type" : 6,
+         "name" : "Can add session",
+         "codename" : "add_session"
+      }
+   },
+   {
+      "pk" : 17,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 6,
+         "name" : "Can change session",
+         "codename" : "change_session"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_session",
+         "content_type" : 6,
+         "name" : "Can delete session"
+      },
+      "model" : "auth.permission",
+      "pk" : 18
+   },
+   {
+      "pk" : 19,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can add provider",
+         "content_type" : 7,
+         "codename" : "add_provider"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 20,
+      "fields" : {
+         "name" : "Can change provider",
+         "content_type" : 7,
+         "codename" : "change_provider"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_provider",
+         "name" : "Can delete provider",
+         "content_type" : 7
+      },
+      "model" : "auth.permission",
+      "pk" : 21
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 22,
+      "fields" : {
+         "codename" : "add_circuittermination",
+         "content_type" : 8,
+         "name" : "Can add circuit termination"
+      }
+   },
+   {
+      "pk" : 23,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_circuittermination",
+         "name" : "Can change circuit termination",
+         "content_type" : 8
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 24,
+      "fields" : {
+         "name" : "Can delete circuit termination",
+         "content_type" : 8,
+         "codename" : "delete_circuittermination"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_circuittype",
+         "name" : "Can add circuit type",
+         "content_type" : 9
+      },
+      "pk" : 25,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "change_circuittype",
+         "name" : "Can change circuit type",
+         "content_type" : 9
+      },
+      "model" : "auth.permission",
+      "pk" : 26
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 27,
+      "fields" : {
+         "name" : "Can delete circuit type",
+         "content_type" : 9,
+         "codename" : "delete_circuittype"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 28,
+      "fields" : {
+         "codename" : "add_circuit",
+         "content_type" : 10,
+         "name" : "Can add circuit"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 10,
+         "name" : "Can change circuit",
+         "codename" : "change_circuit"
+      },
+      "model" : "auth.permission",
+      "pk" : 29
+   },
+   {
+      "fields" : {
+         "content_type" : 10,
+         "name" : "Can delete circuit",
+         "codename" : "delete_circuit"
+      },
+      "pk" : 30,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 31,
+      "fields" : {
+         "name" : "Can add device bay template",
+         "content_type" : 11,
+         "codename" : "add_devicebaytemplate"
+      }
+   },
+   {
+      "pk" : 32,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 11,
+         "name" : "Can change device bay template",
+         "codename" : "change_devicebaytemplate"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 33,
+      "fields" : {
+         "name" : "Can delete device bay template",
+         "content_type" : 11,
+         "codename" : "delete_devicebaytemplate"
+      }
+   },
+   {
+      "pk" : 34,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can add device bay",
+         "content_type" : 12,
+         "codename" : "add_devicebay"
+      }
+   },
+   {
+      "pk" : 35,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 12,
+         "name" : "Can change device bay",
+         "codename" : "change_devicebay"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_devicebay",
+         "name" : "Can delete device bay",
+         "content_type" : 12
+      },
+      "model" : "auth.permission",
+      "pk" : 36
+   },
+   {
+      "fields" : {
+         "name" : "Can add platform",
+         "content_type" : 13,
+         "codename" : "add_platform"
+      },
+      "pk" : 37,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 38,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_platform",
+         "content_type" : 13,
+         "name" : "Can change platform"
+      }
+   },
+   {
+      "pk" : 39,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can delete platform",
+         "content_type" : 13,
+         "codename" : "delete_platform"
+      }
+   },
+   {
+      "pk" : 40,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_rackrole",
+         "name" : "Can add rack role",
+         "content_type" : 14
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_rackrole",
+         "name" : "Can change rack role",
+         "content_type" : 14
+      },
+      "model" : "auth.permission",
+      "pk" : 41
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 42,
+      "fields" : {
+         "content_type" : 14,
+         "name" : "Can delete rack role",
+         "codename" : "delete_rackrole"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_interface",
+         "content_type" : 15,
+         "name" : "Can add interface"
+      },
+      "model" : "auth.permission",
+      "pk" : 43
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 44,
+      "fields" : {
+         "name" : "Can change interface",
+         "content_type" : 15,
+         "codename" : "change_interface"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 45,
+      "fields" : {
+         "name" : "Can delete interface",
+         "content_type" : 15,
+         "codename" : "delete_interface"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add power port template",
+         "content_type" : 16,
+         "codename" : "add_powerporttemplate"
+      },
+      "model" : "auth.permission",
+      "pk" : 46
+   },
+   {
+      "fields" : {
+         "content_type" : 16,
+         "name" : "Can change power port template",
+         "codename" : "change_powerporttemplate"
+      },
+      "model" : "auth.permission",
+      "pk" : 47
+   },
+   {
+      "fields" : {
+         "codename" : "delete_powerporttemplate",
+         "name" : "Can delete power port template",
+         "content_type" : 16
+      },
+      "model" : "auth.permission",
+      "pk" : 48
+   },
+   {
+      "fields" : {
+         "codename" : "add_consoleserverport",
+         "content_type" : 17,
+         "name" : "Can add console server port"
+      },
+      "model" : "auth.permission",
+      "pk" : 49
+   },
+   {
+      "fields" : {
+         "codename" : "change_consoleserverport",
+         "content_type" : 17,
+         "name" : "Can change console server port"
+      },
+      "pk" : 50,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "delete_consoleserverport",
+         "content_type" : 17,
+         "name" : "Can delete console server port"
+      },
+      "model" : "auth.permission",
+      "pk" : 51
+   },
+   {
+      "fields" : {
+         "codename" : "add_site",
+         "content_type" : 18,
+         "name" : "Can add site"
+      },
+      "model" : "auth.permission",
+      "pk" : 52
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 53,
+      "fields" : {
+         "codename" : "change_site",
+         "content_type" : 18,
+         "name" : "Can change site"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 18,
+         "name" : "Can delete site",
+         "codename" : "delete_site"
+      },
+      "model" : "auth.permission",
+      "pk" : 54
+   },
+   {
+      "pk" : 55,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_device",
+         "name" : "Can add device",
+         "content_type" : 19
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can change device",
+         "content_type" : 19,
+         "codename" : "change_device"
+      },
+      "pk" : 56,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 57,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 19,
+         "name" : "Can delete device",
+         "codename" : "delete_device"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_rack",
+         "name" : "Can add rack",
+         "content_type" : 20
+      },
+      "pk" : 58,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "name" : "Can change rack",
+         "content_type" : 20,
+         "codename" : "change_rack"
+      },
+      "pk" : 59,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 60,
+      "fields" : {
+         "codename" : "delete_rack",
+         "content_type" : 20,
+         "name" : "Can delete rack"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 61,
+      "fields" : {
+         "name" : "Can add power port",
+         "content_type" : 21,
+         "codename" : "add_powerport"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_powerport",
+         "name" : "Can change power port",
+         "content_type" : 21
+      },
+      "model" : "auth.permission",
+      "pk" : 62
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 63,
+      "fields" : {
+         "content_type" : 21,
+         "name" : "Can delete power port",
+         "codename" : "delete_powerport"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add interface template",
+         "content_type" : 22,
+         "codename" : "add_interfacetemplate"
+      },
+      "model" : "auth.permission",
+      "pk" : 64
+   },
+   {
+      "fields" : {
+         "content_type" : 22,
+         "name" : "Can change interface template",
+         "codename" : "change_interfacetemplate"
+      },
+      "pk" : 65,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "content_type" : 22,
+         "name" : "Can delete interface template",
+         "codename" : "delete_interfacetemplate"
+      },
+      "pk" : 66,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "add_consoleporttemplate",
+         "content_type" : 23,
+         "name" : "Can add console port template"
+      },
+      "model" : "auth.permission",
+      "pk" : 67
+   },
+   {
+      "fields" : {
+         "codename" : "change_consoleporttemplate",
+         "name" : "Can change console port template",
+         "content_type" : 23
+      },
+      "model" : "auth.permission",
+      "pk" : 68
+   },
+   {
+      "pk" : 69,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_consoleporttemplate",
+         "content_type" : 23,
+         "name" : "Can delete console port template"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_devicerole",
+         "name" : "Can add device role",
+         "content_type" : 24
+      },
+      "model" : "auth.permission",
+      "pk" : 70
+   },
+   {
+      "pk" : 71,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 24,
+         "name" : "Can change device role",
+         "codename" : "change_devicerole"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 72,
+      "fields" : {
+         "name" : "Can delete device role",
+         "content_type" : 24,
+         "codename" : "delete_devicerole"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 73,
+      "fields" : {
+         "name" : "Can add rack group",
+         "content_type" : 25,
+         "codename" : "add_rackgroup"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_rackgroup",
+         "name" : "Can change rack group",
+         "content_type" : 25
+      },
+      "pk" : 74,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "content_type" : 25,
+         "name" : "Can delete rack group",
+         "codename" : "delete_rackgroup"
+      },
+      "pk" : 75,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "name" : "Can add rack reservation",
+         "content_type" : 26,
+         "codename" : "add_rackreservation"
+      },
+      "model" : "auth.permission",
+      "pk" : 76
+   },
+   {
+      "fields" : {
+         "codename" : "change_rackreservation",
+         "name" : "Can change rack reservation",
+         "content_type" : 26
+      },
+      "model" : "auth.permission",
+      "pk" : 77
+   },
+   {
+      "fields" : {
+         "content_type" : 26,
+         "name" : "Can delete rack reservation",
+         "codename" : "delete_rackreservation"
+      },
+      "model" : "auth.permission",
+      "pk" : 78
+   },
+   {
+      "pk" : 79,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_interfaceconnection",
+         "content_type" : 27,
+         "name" : "Can add interface connection"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_interfaceconnection",
+         "content_type" : 27,
+         "name" : "Can change interface connection"
+      },
+      "model" : "auth.permission",
+      "pk" : 80
+   },
+   {
+      "fields" : {
+         "content_type" : 27,
+         "name" : "Can delete interface connection",
+         "codename" : "delete_interfaceconnection"
+      },
+      "pk" : 81,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 82,
+      "fields" : {
+         "name" : "Can add inventory item",
+         "content_type" : 28,
+         "codename" : "add_inventoryitem"
+      }
+   },
+   {
+      "pk" : 83,
+      "model" : "auth.permission",
+      "fields" : {
+         "name" : "Can change inventory item",
+         "content_type" : 28,
+         "codename" : "change_inventoryitem"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 84,
+      "fields" : {
+         "codename" : "delete_inventoryitem",
+         "name" : "Can delete inventory item",
+         "content_type" : 28
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 85,
+      "fields" : {
+         "content_type" : 29,
+         "name" : "Can add manufacturer",
+         "codename" : "add_manufacturer"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 86,
+      "fields" : {
+         "content_type" : 29,
+         "name" : "Can change manufacturer",
+         "codename" : "change_manufacturer"
+      }
+   },
+   {
+      "pk" : 87,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_manufacturer",
+         "content_type" : 29,
+         "name" : "Can delete manufacturer"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 30,
+         "name" : "Can add region",
+         "codename" : "add_region"
+      },
+      "model" : "auth.permission",
+      "pk" : 88
+   },
+   {
+      "fields" : {
+         "content_type" : 30,
+         "name" : "Can change region",
+         "codename" : "change_region"
+      },
+      "pk" : 89,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 90,
+      "fields" : {
+         "content_type" : 30,
+         "name" : "Can delete region",
+         "codename" : "delete_region"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add console port",
+         "content_type" : 31,
+         "codename" : "add_consoleport"
+      },
+      "model" : "auth.permission",
+      "pk" : 91
+   },
+   {
+      "fields" : {
+         "codename" : "change_consoleport",
+         "content_type" : 31,
+         "name" : "Can change console port"
+      },
+      "model" : "auth.permission",
+      "pk" : 92
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 93,
+      "fields" : {
+         "content_type" : 31,
+         "name" : "Can delete console port",
+         "codename" : "delete_consoleport"
+      }
+   },
+   {
+      "pk" : 94,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_consoleserverporttemplate",
+         "content_type" : 32,
+         "name" : "Can add console server port template"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can change console server port template",
+         "content_type" : 32,
+         "codename" : "change_consoleserverporttemplate"
+      },
+      "model" : "auth.permission",
+      "pk" : 95
+   },
+   {
+      "fields" : {
+         "name" : "Can delete console server port template",
+         "content_type" : 32,
+         "codename" : "delete_consoleserverporttemplate"
+      },
+      "pk" : 96,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 97,
+      "fields" : {
+         "name" : "Can add power outlet",
+         "content_type" : 33,
+         "codename" : "add_poweroutlet"
+      }
+   },
+   {
+      "pk" : 98,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_poweroutlet",
+         "content_type" : 33,
+         "name" : "Can change power outlet"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_poweroutlet",
+         "content_type" : 33,
+         "name" : "Can delete power outlet"
+      },
+      "pk" : 99,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 100,
+      "fields" : {
+         "codename" : "add_devicetype",
+         "name" : "Can add device type",
+         "content_type" : 34
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_devicetype",
+         "name" : "Can change device type",
+         "content_type" : 34
+      },
+      "pk" : 101,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "content_type" : 34,
+         "name" : "Can delete device type",
+         "codename" : "delete_devicetype"
+      },
+      "pk" : 102,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 103,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "add_poweroutlettemplate",
+         "content_type" : 35,
+         "name" : "Can add power outlet template"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_poweroutlettemplate",
+         "name" : "Can change power outlet template",
+         "content_type" : 35
+      },
+      "pk" : 104,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 105,
+      "fields" : {
+         "name" : "Can delete power outlet template",
+         "content_type" : 35,
+         "codename" : "delete_poweroutlettemplate"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 36,
+         "name" : "Can add role",
+         "codename" : "add_role"
+      },
+      "model" : "auth.permission",
+      "pk" : 106
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 107,
+      "fields" : {
+         "name" : "Can change role",
+         "content_type" : 36,
+         "codename" : "change_role"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 36,
+         "name" : "Can delete role",
+         "codename" : "delete_role"
+      },
+      "model" : "auth.permission",
+      "pk" : 108
+   },
+   {
+      "fields" : {
+         "content_type" : 37,
+         "name" : "Can add service",
+         "codename" : "add_service"
+      },
+      "model" : "auth.permission",
+      "pk" : 109
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 110,
+      "fields" : {
+         "codename" : "change_service",
+         "name" : "Can change service",
+         "content_type" : 37
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_service",
+         "name" : "Can delete service",
+         "content_type" : 37
+      },
+      "model" : "auth.permission",
+      "pk" : 111
+   },
+   {
+      "fields" : {
+         "codename" : "add_vlangroup",
+         "name" : "Can add VLAN group",
+         "content_type" : 38
+      },
+      "model" : "auth.permission",
+      "pk" : 112
+   },
+   {
+      "fields" : {
+         "codename" : "change_vlangroup",
+         "name" : "Can change VLAN group",
+         "content_type" : 38
+      },
+      "model" : "auth.permission",
+      "pk" : 113
+   },
+   {
+      "pk" : 114,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_vlangroup",
+         "content_type" : 38,
+         "name" : "Can delete VLAN group"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add VRF",
+         "content_type" : 39,
+         "codename" : "add_vrf"
+      },
+      "model" : "auth.permission",
+      "pk" : 115
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 116,
+      "fields" : {
+         "content_type" : 39,
+         "name" : "Can change VRF",
+         "codename" : "change_vrf"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can delete VRF",
+         "content_type" : 39,
+         "codename" : "delete_vrf"
+      },
+      "model" : "auth.permission",
+      "pk" : 117
+   },
+   {
+      "fields" : {
+         "content_type" : 40,
+         "name" : "Can add IP address",
+         "codename" : "add_ipaddress"
+      },
+      "model" : "auth.permission",
+      "pk" : 118
+   },
+   {
+      "fields" : {
+         "name" : "Can change IP address",
+         "content_type" : 40,
+         "codename" : "change_ipaddress"
+      },
+      "pk" : 119,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 120,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_ipaddress",
+         "name" : "Can delete IP address",
+         "content_type" : 40
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add aggregate",
+         "content_type" : 41,
+         "codename" : "add_aggregate"
+      },
+      "pk" : 121,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "change_aggregate",
+         "name" : "Can change aggregate",
+         "content_type" : 41
+      },
+      "pk" : 122,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 123,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_aggregate",
+         "content_type" : 41,
+         "name" : "Can delete aggregate"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_rir",
+         "content_type" : 42,
+         "name" : "Can add RIR"
+      },
+      "model" : "auth.permission",
+      "pk" : 124
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 125,
+      "fields" : {
+         "codename" : "change_rir",
+         "name" : "Can change RIR",
+         "content_type" : 42
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 126,
+      "fields" : {
+         "content_type" : 42,
+         "name" : "Can delete RIR",
+         "codename" : "delete_rir"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_vlan",
+         "name" : "Can add VLAN",
+         "content_type" : 43
+      },
+      "model" : "auth.permission",
+      "pk" : 127
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 128,
+      "fields" : {
+         "name" : "Can change VLAN",
+         "content_type" : 43,
+         "codename" : "change_vlan"
+      }
+   },
+   {
+      "pk" : 129,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "delete_vlan",
+         "name" : "Can delete VLAN",
+         "content_type" : 43
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 44,
+         "name" : "Can add prefix",
+         "codename" : "add_prefix"
+      },
+      "pk" : 130,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "change_prefix",
+         "content_type" : 44,
+         "name" : "Can change prefix"
+      },
+      "model" : "auth.permission",
+      "pk" : 131
+   },
+   {
+      "fields" : {
+         "name" : "Can delete prefix",
+         "content_type" : 44,
+         "codename" : "delete_prefix"
+      },
+      "model" : "auth.permission",
+      "pk" : 132
+   },
+   {
+      "fields" : {
+         "codename" : "add_customfield",
+         "content_type" : 45,
+         "name" : "Can add custom field"
+      },
+      "pk" : 133,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 134,
+      "fields" : {
+         "name" : "Can change custom field",
+         "content_type" : 45,
+         "codename" : "change_customfield"
+      }
+   },
+   {
+      "pk" : 135,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 45,
+         "name" : "Can delete custom field",
+         "codename" : "delete_customfield"
+      }
+   },
+   {
+      "fields" : {
+         "content_type" : 46,
+         "name" : "Can add user action",
+         "codename" : "add_useraction"
+      },
+      "model" : "auth.permission",
+      "pk" : 136
+   },
+   {
+      "fields" : {
+         "content_type" : 46,
+         "name" : "Can change user action",
+         "codename" : "change_useraction"
+      },
+      "model" : "auth.permission",
+      "pk" : 137
+   },
+   {
+      "fields" : {
+         "codename" : "delete_useraction",
+         "name" : "Can delete user action",
+         "content_type" : 46
+      },
+      "pk" : 138,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "name" : "Can add graph",
+         "content_type" : 47,
+         "codename" : "add_graph"
+      },
+      "pk" : 139,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "change_graph",
+         "content_type" : 47,
+         "name" : "Can change graph"
+      },
+      "model" : "auth.permission",
+      "pk" : 140
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 141,
+      "fields" : {
+         "name" : "Can delete graph",
+         "content_type" : 47,
+         "codename" : "delete_graph"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 142,
+      "fields" : {
+         "content_type" : 48,
+         "name" : "Can add export template",
+         "codename" : "add_exporttemplate"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_exporttemplate",
+         "content_type" : 48,
+         "name" : "Can change export template"
+      },
+      "pk" : 143,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 144,
+      "fields" : {
+         "codename" : "delete_exporttemplate",
+         "content_type" : 48,
+         "name" : "Can delete export template"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_customfieldchoice",
+         "name" : "Can add custom field choice",
+         "content_type" : 49
+      },
+      "pk" : 145,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 146,
+      "fields" : {
+         "content_type" : 49,
+         "name" : "Can change custom field choice",
+         "codename" : "change_customfieldchoice"
+      }
+   },
+   {
+      "pk" : 147,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 49,
+         "name" : "Can delete custom field choice",
+         "codename" : "delete_customfieldchoice"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 148,
+      "fields" : {
+         "content_type" : 50,
+         "name" : "Can add topology map",
+         "codename" : "add_topologymap"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 149,
+      "fields" : {
+         "name" : "Can change topology map",
+         "content_type" : 50,
+         "codename" : "change_topologymap"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 150,
+      "fields" : {
+         "content_type" : 50,
+         "name" : "Can delete topology map",
+         "codename" : "delete_topologymap"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_customfieldvalue",
+         "name" : "Can add custom field value",
+         "content_type" : 51
+      },
+      "pk" : 151,
+      "model" : "auth.permission"
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 152,
+      "fields" : {
+         "codename" : "change_customfieldvalue",
+         "content_type" : 51,
+         "name" : "Can change custom field value"
+      }
+   },
+   {
+      "pk" : 153,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 51,
+         "name" : "Can delete custom field value",
+         "codename" : "delete_customfieldvalue"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can add secret",
+         "content_type" : 52,
+         "codename" : "add_secret"
+      },
+      "model" : "auth.permission",
+      "pk" : 154
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 155,
+      "fields" : {
+         "name" : "Can change secret",
+         "content_type" : 52,
+         "codename" : "change_secret"
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can delete secret",
+         "content_type" : 52,
+         "codename" : "delete_secret"
+      },
+      "model" : "auth.permission",
+      "pk" : 156
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 157,
+      "fields" : {
+         "codename" : "add_userkey",
+         "content_type" : 53,
+         "name" : "Can add user key"
+      }
+   },
+   {
+      "pk" : 158,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 53,
+         "name" : "Can change user key",
+         "codename" : "change_userkey"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_userkey",
+         "name" : "Can delete user key",
+         "content_type" : 53
+      },
+      "model" : "auth.permission",
+      "pk" : 159
+   },
+   {
+      "pk" : 160,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 53,
+         "name" : "Can activate user keys for decryption",
+         "codename" : "activate_userkey"
+      }
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 161,
+      "fields" : {
+         "codename" : "add_secretrole",
+         "name" : "Can add secret role",
+         "content_type" : 54
+      }
+   },
+   {
+      "fields" : {
+         "name" : "Can change secret role",
+         "content_type" : 54,
+         "codename" : "change_secretrole"
+      },
+      "pk" : 162,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "name" : "Can delete secret role",
+         "content_type" : 54,
+         "codename" : "delete_secretrole"
+      },
+      "pk" : 163,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "add_sessionkey",
+         "content_type" : 55,
+         "name" : "Can add session key"
+      },
+      "model" : "auth.permission",
+      "pk" : 164
+   },
+   {
+      "fields" : {
+         "codename" : "change_sessionkey",
+         "content_type" : 55,
+         "name" : "Can change session key"
+      },
+      "pk" : 165,
+      "model" : "auth.permission"
+   },
+   {
+      "fields" : {
+         "codename" : "delete_sessionkey",
+         "name" : "Can delete session key",
+         "content_type" : 55
+      },
+      "pk" : 166,
+      "model" : "auth.permission"
+   },
+   {
+      "pk" : 167,
+      "model" : "auth.permission",
+      "fields" : {
+         "content_type" : 56,
+         "name" : "Can add tenant group",
+         "codename" : "add_tenantgroup"
+      }
+   },
+   {
+      "pk" : 168,
+      "model" : "auth.permission",
+      "fields" : {
+         "codename" : "change_tenantgroup",
+         "name" : "Can change tenant group",
+         "content_type" : 56
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "delete_tenantgroup",
+         "content_type" : 56,
+         "name" : "Can delete tenant group"
+      },
+      "model" : "auth.permission",
+      "pk" : 169
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 170,
+      "fields" : {
+         "name" : "Can add tenant",
+         "content_type" : 57,
+         "codename" : "add_tenant"
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "change_tenant",
+         "content_type" : 57,
+         "name" : "Can change tenant"
+      },
+      "model" : "auth.permission",
+      "pk" : 171
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 172,
+      "fields" : {
+         "codename" : "delete_tenant",
+         "name" : "Can delete tenant",
+         "content_type" : 57
+      }
+   },
+   {
+      "fields" : {
+         "codename" : "add_imageattachment",
+         "name" : "Can add image attachment",
+         "content_type" : 59
+      },
+      "model" : "auth.permission",
+      "pk" : 173
+   },
+   {
+      "fields" : {
+         "codename" : "change_imageattachment",
+         "content_type" : 59,
+         "name" : "Can change image attachment"
+      },
+      "model" : "auth.permission",
+      "pk" : 174
+   },
+   {
+      "model" : "auth.permission",
+      "pk" : 175,
+      "fields" : {
+         "codename" : "delete_imageattachment",
+         "content_type" : 59,
+         "name" : "Can delete image attachment"
+      }
+   },
+   {
+      "fields" : {
+         "is_staff" : true,
+         "is_superuser" : true,
+         "groups" : [],
+         "last_name" : "",
+         "date_joined" : "2017-04-12T12:04:55.905Z",
+         "username" : "admin",
+         "first_name" : "",
+         "password" : "pbkdf2_sha256$36000$9xLV2SBc0idx$T2Wvku5Toy/yoPCcPTY+mnctebo5f0y5PClMwubTlqA=",
+         "user_permissions" : [],
+         "last_login" : "2017-04-27T07:17:46.194Z",
+         "email" : "admin@example.com",
+         "is_active" : true
+      },
+      "model" : "auth.user",
+      "pk" : 1
+   },
+   {
+      "pk" : 1,
+      "model" : "extras.useraction",
+      "fields" : {
+         "message" : "Created site <a href=\"/dcim/sites/test/\">test</a>",
+         "object_id" : 1,
+         "content_type" : 18,
+         "time" : "2017-04-12T12:06:27.378Z",
+         "action" : 1,
+         "user" : 1
+      }
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-04-13T06:27:15.276Z",
+         "content_type" : 18,
+         "message" : "Created site <a href=\"/dcim/sites/test2/\">test2</a>",
+         "object_id" : 2
+      },
+      "model" : "extras.useraction",
+      "pk" : 2
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 3,
+      "fields" : {
+         "object_id" : 1,
+         "message" : "Created region <a href=\"/dcim/sites/?region=region1\">region1</a>",
+         "content_type" : 30,
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-04-13T07:30:34.131Z"
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 4,
+      "fields" : {
+         "time" : "2017-04-13T07:30:48.089Z",
+         "user" : 1,
+         "action" : 3,
+         "message" : "Modified site <a href=\"/dcim/sites/test/\">test</a>",
+         "object_id" : 1,
+         "content_type" : 18
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 5,
+      "fields" : {
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-04-13T07:32:22.160Z",
+         "message" : "Created rack <a href=\"/dcim/racks/1/\">test2rack</a>",
+         "content_type" : 20,
+         "object_id" : 1
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 6,
+      "fields" : {
+         "message" : "Created platform <a href=\"/dcim/devices/?platform=platform1\">platform1</a>",
+         "content_type" : 13,
+         "object_id" : 1,
+         "time" : "2017-04-13T07:35:09.686Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "fields" : {
+         "message" : "Created manufacturer <a href=\"/dcim/device-types/?manufacturer=manu1\">manu1</a>",
+         "content_type" : 29,
+         "object_id" : 1,
+         "time" : "2017-04-13T07:35:14.035Z",
+         "action" : 1,
+         "user" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 7
+   },
+   {
+      "fields" : {
+         "message" : "Created device role <a href=\"/dcim/devices/?role=devicerole1\">devicerole1</a>",
+         "content_type" : 24,
+         "object_id" : 1,
+         "time" : "2017-04-13T07:35:21.692Z",
+         "user" : 1,
+         "action" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 8
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 9,
+      "fields" : {
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-04-13T07:35:31.139Z",
+         "message" : "Created device type <a href=\"/dcim/device-types/1/\">devicetype1</a>",
+         "object_id" : 1,
+         "content_type" : 34
+      }
+   },
+   {
+      "pk" : 10,
+      "model" : "extras.useraction",
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-04-13T07:35:46.769Z",
+         "message" : "Created device <a href=\"/dcim/devices/1/\">device1</a>",
+         "object_id" : 1,
+         "content_type" : 19
+      }
+   },
+   {
+      "pk" : 11,
+      "model" : "extras.useraction",
+      "fields" : {
+         "object_id" : 2,
+         "message" : "Created device <a href=\"/dcim/devices/2/\">device2</a>",
+         "content_type" : 19,
+         "time" : "2017-04-13T07:36:19.026Z",
+         "action" : 1,
+         "user" : 1
+      }
+   },
+   {
+      "fields" : {
+         "time" : "2017-04-13T11:42:26.916Z",
+         "action" : 1,
+         "user" : 1,
+         "content_type" : 28,
+         "message" : "Created inventory item inventory_item1",
+         "object_id" : 1
+      },
+      "pk" : 12,
+      "model" : "extras.useraction"
+   },
+   {
+      "fields" : {
+         "object_id" : 2,
+         "message" : "Modified device <a href=\"/dcim/devices/2/\">device2</a>",
+         "content_type" : 19,
+         "action" : 3,
+         "user" : 1,
+         "time" : "2017-04-13T12:17:19.068Z"
+      },
+      "pk" : 13,
+      "model" : "extras.useraction"
+   },
+   {
+      "fields" : {
+         "object_id" : 2,
+         "message" : "Modified site <a href=\"/dcim/sites/test2/\">test_site2</a>",
+         "content_type" : 18,
+         "user" : 1,
+         "action" : 3,
+         "time" : "2017-04-27T07:23:40.358Z"
+      },
+      "model" : "extras.useraction",
+      "pk" : 14
+   },
+   {
+      "fields" : {
+         "time" : "2017-04-27T08:35:52.132Z",
+         "user" : 1,
+         "action" : 1,
+         "content_type" : 44,
+         "message" : "Created prefix <a href=\"/ipam/prefixes/1/\">10.0.0.0/8</a>",
+         "object_id" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 15
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 16,
+      "fields" : {
+         "message" : "Created IP address <a href=\"/ipam/ip-addresses/1/\">10.0.0.1/8</a>",
+         "content_type" : 40,
+         "object_id" : 1,
+         "time" : "2017-04-27T08:37:50.631Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "fields" : {
+         "message" : "Created inventory item Disk1",
+         "object_id" : 2,
+         "content_type" : 28,
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-05-02T08:43:02.828Z"
+      },
+      "pk" : 17,
+      "model" : "extras.useraction"
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 18,
+      "fields" : {
+         "user" : 1,
+         "action" : 3,
+         "time" : "2017-05-02T08:55:44.671Z",
+         "content_type" : 19,
+         "message" : "Modified device <a href=\"/dcim/devices/1/\">device1</a>",
+         "object_id" : 1
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 19,
+      "fields" : {
+         "object_id" : 1,
+         "message" : "Modified device <a href=\"/dcim/devices/1/\">device1</a>",
+         "content_type" : 19,
+         "action" : 3,
+         "user" : 1,
+         "time" : "2017-05-02T09:06:54.795Z"
+      }
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-02T13:26:16.898Z",
+         "message" : "Created region <a href=\"/dcim/sites/?region=sub_region1\">sub_region1</a>",
+         "object_id" : 2,
+         "content_type" : 30
+      },
+      "model" : "extras.useraction",
+      "pk" : 20
+   },
+   {
+      "fields" : {
+         "message" : "Created tenant <a href=\"/tenancy/tenants/tenant1/\">tenant1</a>",
+         "content_type" : 57,
+         "object_id" : 1,
+         "time" : "2017-05-02T14:46:44.027Z",
+         "action" : 1,
+         "user" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 21
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 22,
+      "fields" : {
+         "message" : "Created tenant group <a href=\"/tenancy/tenants/?group=customer\">Customer</a>",
+         "content_type" : 56,
+         "object_id" : 1,
+         "time" : "2017-05-02T14:47:04.878Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "fields" : {
+         "action" : 3,
+         "user" : 1,
+         "time" : "2017-05-02T14:47:18.943Z",
+         "message" : "Modified tenant group <a href=\"/tenancy/tenants/?group=customer\">Customer</a>",
+         "content_type" : 56,
+         "object_id" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 23
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-02T14:47:28.728Z",
+         "message" : "Created tenant <a href=\"/tenancy/tenants/tenant2/\">tenant2</a>",
+         "content_type" : 57,
+         "object_id" : 2
+      },
+      "model" : "extras.useraction",
+      "pk" : 24
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 25,
+      "fields" : {
+         "message" : "Created tenant <a href=\"/tenancy/tenants/tenant3/\">tenant3</a>",
+         "object_id" : 3,
+         "content_type" : 57,
+         "time" : "2017-05-02T14:47:37.293Z",
+         "action" : 1,
+         "user" : 1
+      }
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-02T16:15:40.152Z",
+         "message" : "Created role role1",
+         "object_id" : 1,
+         "content_type" : 36
+      },
+      "pk" : 26,
+      "model" : "extras.useraction"
+   },
+   {
+      "fields" : {
+         "time" : "2017-05-02T16:15:48.016Z",
+         "action" : 1,
+         "user" : 1,
+         "object_id" : 1,
+         "message" : "Created RIR <a href=\"/ipam/aggregates/?rir=rir1\">rir1</a>",
+         "content_type" : 42
+      },
+      "pk" : 27,
+      "model" : "extras.useraction"
+   },
+   {
+      "pk" : 28,
+      "model" : "extras.useraction",
+      "fields" : {
+         "content_type" : 42,
+         "message" : "Created RIR <a href=\"/ipam/aggregates/?rir=rir2\">rir2</a>",
+         "object_id" : 2,
+         "time" : "2017-05-02T16:15:54.362Z",
+         "action" : 1,
+         "user" : 1
+      }
+   },
+   {
+      "pk" : 29,
+      "model" : "extras.useraction",
+      "fields" : {
+         "time" : "2017-05-02T16:16:15.115Z",
+         "action" : 1,
+         "user" : 1,
+         "object_id" : 1,
+         "message" : "Created VRF <a href=\"/ipam/vrfs/1/\">vrf1</a>",
+         "content_type" : 39
+      }
+   },
+   {
+      "fields" : {
+         "object_id" : 1,
+         "message" : "Created aggregate <a href=\"/ipam/aggregates/1/\">10.0.0.0/8</a>",
+         "content_type" : 41,
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-02T16:16:34.355Z"
+      },
+      "model" : "extras.useraction",
+      "pk" : 30
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 31,
+      "fields" : {
+         "content_type" : 44,
+         "message" : "Created prefix <a href=\"/ipam/prefixes/2/\">10.1.0.0/16</a>",
+         "object_id" : 2,
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-02T16:16:54.897Z"
+      }
+   },
+   {
+      "fields" : {
+         "time" : "2017-05-02T16:17:33.924Z",
+         "user" : 1,
+         "action" : 1,
+         "message" : "Created prefix <a href=\"/ipam/prefixes/3/\">10.2.0.0/16</a>",
+         "content_type" : 44,
+         "object_id" : 3
+      },
+      "model" : "extras.useraction",
+      "pk" : 32
+   },
+   {
+      "fields" : {
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-05-02T16:18:48.793Z",
+         "message" : "Created role vlan_role1",
+         "object_id" : 2,
+         "content_type" : 36
+      },
+      "pk" : 33,
+      "model" : "extras.useraction"
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 34,
+      "fields" : {
+         "content_type" : 38,
+         "message" : "Created VLAN group <a href=\"/ipam/vlans/?group_id=1\">test_site2 - vlan1</a>",
+         "object_id" : 1,
+         "time" : "2017-05-02T16:19:07.102Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "fields" : {
+         "object_id" : 1,
+         "message" : "Created VLAN <a href=\"/ipam/vlans/1/\">1 (vlan_1)</a>",
+         "content_type" : 43,
+         "time" : "2017-05-02T16:19:33.294Z",
+         "action" : 1,
+         "user" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 35
+   },
+   {
+      "fields" : {
+         "message" : "Modified VLAN <a href=\"/ipam/vlans/1/\">1 (vlan_1)</a>",
+         "object_id" : 1,
+         "content_type" : 43,
+         "time" : "2017-05-02T16:19:40.640Z",
+         "user" : 1,
+         "action" : 3
+      },
+      "model" : "extras.useraction",
+      "pk" : 36
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 37,
+      "fields" : {
+         "time" : "2017-05-02T16:19:51.058Z",
+         "action" : 3,
+         "user" : 1,
+         "message" : "Modified prefix <a href=\"/ipam/prefixes/3/\">10.2.0.0/16</a>",
+         "content_type" : 44,
+         "object_id" : 3
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 38,
+      "fields" : {
+         "message" : "Created VRF <a href=\"/ipam/vrfs/2/\">vrf2</a>",
+         "content_type" : 39,
+         "object_id" : 2,
+         "time" : "2017-05-02T17:28:56.290Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 39,
+      "fields" : {
+         "time" : "2017-05-03T08:40:59.223Z",
+         "action" : 3,
+         "user" : 1,
+         "message" : "Modified IP address <a href=\"/ipam/ip-addresses/1/\">10.0.0.1/8</a>",
+         "content_type" : 40,
+         "object_id" : 1
+      }
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 3,
+         "time" : "2017-05-03T08:42:55.726Z",
+         "message" : "Modified interface interface1",
+         "content_type" : 15,
+         "object_id" : 2
+      },
+      "model" : "extras.useraction",
+      "pk" : 40
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 41,
+      "fields" : {
+         "message" : "Created IP address <a href=\"/ipam/ip-addresses/2/\">10.1.0.0/24</a>",
+         "object_id" : 2,
+         "content_type" : 40,
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-05-04T08:45:49.483Z"
+      }
+   },
+   {
+      "pk" : 42,
+      "model" : "extras.useraction",
+      "fields" : {
+         "time" : "2017-05-04T08:46:18.894Z",
+         "user" : 1,
+         "action" : 3,
+         "message" : "Modified device <a href=\"/dcim/devices/2/\">device2</a>",
+         "object_id" : 2,
+         "content_type" : 19
+      }
+   },
+   {
+      "fields" : {
+         "time" : "2017-05-04T08:46:42.974Z",
+         "action" : 1,
+         "user" : 1,
+         "object_id" : 1,
+         "message" : "Created service service22 (22/TCP)",
+         "content_type" : 37
+      },
+      "pk" : 43,
+      "model" : "extras.useraction"
+   },
+   {
+      "pk" : 44,
+      "model" : "extras.useraction",
+      "fields" : {
+         "content_type" : 19,
+         "message" : "Modified device <a href=\"/dcim/devices/2/\">device2</a>",
+         "object_id" : 2,
+         "action" : 3,
+         "user" : 1,
+         "time" : "2017-05-04T08:48:24.564Z"
+      }
+   },
+   {
+      "pk" : 45,
+      "model" : "extras.useraction",
+      "fields" : {
+         "object_id" : 2,
+         "message" : "Created device type <a href=\"/dcim/device-types/2/\">parent1</a>",
+         "content_type" : 34,
+         "action" : 1,
+         "user" : 1,
+         "time" : "2017-05-04T08:49:16.213Z"
+      }
+   },
+   {
+      "fields" : {
+         "time" : "2017-05-04T08:49:31.927Z",
+         "user" : 1,
+         "action" : 1,
+         "object_id" : 3,
+         "message" : "Created device type <a href=\"/dcim/device-types/3/\">child1</a>",
+         "content_type" : 34
+      },
+      "model" : "extras.useraction",
+      "pk" : 46
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 47,
+      "fields" : {
+         "content_type" : 19,
+         "message" : "Created device <a href=\"/dcim/devices/3/\">parent_device1</a>",
+         "object_id" : 3,
+         "time" : "2017-05-04T08:49:53.772Z",
+         "user" : 1,
+         "action" : 1
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 48,
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-04T08:50:11.299Z",
+         "message" : "Created device <a href=\"/dcim/devices/4/\">child_device1</a>",
+         "content_type" : 19,
+         "object_id" : 4
+      }
+   },
+   {
+      "fields" : {
+         "action" : 3,
+         "user" : 1,
+         "time" : "2017-05-04T08:51:34.512Z",
+         "message" : "Modified device <a href=\"/dcim/devices/3/\">parent_device1</a>",
+         "object_id" : 3,
+         "content_type" : 19
+      },
+      "pk" : 49,
+      "model" : "extras.useraction"
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 50,
+      "fields" : {
+         "user" : 1,
+         "action" : 3,
+         "time" : "2017-05-04T08:51:56.366Z",
+         "content_type" : 19,
+         "message" : "Modified device <a href=\"/dcim/devices/4/\">child_device1</a>",
+         "object_id" : 4
+      }
+   },
+   {
+      "fields" : {
+         "object_id" : 1,
+         "message" : "Modified device <a href=\"/dcim/devices/1/\">device1</a>",
+         "content_type" : 19,
+         "time" : "2017-05-05T05:09:11.534Z",
+         "action" : 3,
+         "user" : 1
+      },
+      "model" : "extras.useraction",
+      "pk" : 82
+   },
+   {
+      "fields" : {
+         "message" : "Modified device <a href=\"/dcim/devices/1/\">device1</a>",
+         "object_id" : 1,
+         "content_type" : 19,
+         "time" : "2017-05-05T05:09:11.692Z",
+         "user" : 1,
+         "action" : 3
+      },
+      "model" : "extras.useraction",
+      "pk" : 83
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 84,
+      "fields" : {
+         "time" : "2017-05-05T06:11:48.996Z",
+         "action" : 1,
+         "user" : 1,
+         "message" : "Created prefix <a href=\"/ipam/prefixes/4/\">2001:db8::/32</a>",
+         "content_type" : 44,
+         "object_id" : 4
+      }
+   },
+   {
+      "fields" : {
+         "user" : 1,
+         "action" : 1,
+         "time" : "2017-05-05T06:12:41.608Z",
+         "message" : "Created IP address <a href=\"/ipam/ip-addresses/3/\">2001:db8:aaaa:bbbb::1/64</a>",
+         "content_type" : 40,
+         "object_id" : 3
+      },
+      "model" : "extras.useraction",
+      "pk" : 85
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 86,
+      "fields" : {
+         "action" : 5,
+         "user" : 1,
+         "time" : "2017-05-05T06:14:02.272Z",
+         "message" : "Deleted IP address 2001:db8:aaaa:bbbb::1/64",
+         "content_type" : 40,
+         "object_id" : null
+      }
+   },
+   {
+      "model" : "extras.useraction",
+      "pk" : 87,
+      "fields" : {
+         "message" : "Deleted IP address 2001:db8:aaaa:bbbb::1/64",
+         "content_type" : 40,
+         "object_id" : null,
+         "time" : "2017-05-05T06:14:59.990Z",
+         "user" : 1,
+         "action" : 5
+      }
+   },
+   {
+      "fields" : {
+         "description" : "",
+         "created" : "2017-04-12T12:29:32.603Z",
+         "user" : 1,
+         "expires" : null,
+         "write_enabled" : true,
+         "key" : "2e35594ec8710e9922d14365a1ea66f27ea69450"
+      },
+      "model" : "users.token",
+      "pk" : 1
+   },
+   {
+      "pk" : 1,
+      "model" : "admin.logentry",
+      "fields" : {
+         "object_id" : "1",
+         "content_type" : 45,
+         "change_message" : "[{\"added\": {}}]",
+         "object_repr" : "Custom Field Text:",
+         "action_flag" : 1,
+         "user" : 1,
+         "action_time" : "2017-04-27T07:22:04.607Z"
+      }
+   },
+   {
+      "model" : "admin.logentry",
+      "pk" : 2,
+      "fields" : {
+         "object_id" : "2",
+         "content_type" : 45,
+         "object_repr" : "Int Custom Field",
+         "change_message" : "[{\"added\": {}}]",
+         "user" : 1,
+         "action_time" : "2017-04-27T07:22:47.298Z",
+         "action_flag" : 1
+      }
+   },
+   {
+      "pk" : 3,
+      "model" : "admin.logentry",
+      "fields" : {
+         "user" : 1,
+         "action_time" : "2017-04-27T07:23:14.589Z",
+         "action_flag" : 1,
+         "object_repr" : "Boolean Custom Field",
+         "change_message" : "[{\"added\": {}}]",
+         "content_type" : 45,
+         "object_id" : "3"
+      }
+   },
+   {
+      "pk" : 4,
+      "model" : "admin.logentry",
+      "fields" : {
+         "object_id" : "4",
+         "content_type" : 45,
+         "action_flag" : 1,
+         "action_time" : "2017-05-02T08:55:32.745Z",
+         "user" : 1,
+         "change_message" : "[{\"added\": {}}]",
+         "object_repr" : "Custom1"
+      }
+   }
+]
