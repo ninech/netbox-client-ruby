@@ -19,10 +19,10 @@ module NetboxClientRuby
     path 'ipam/ip-addresses/:id.json'
     creation_path 'ipam/ip-addresses/'
     object_fields(
-      vrf: proc { |raw_data| NetboxClientRuby::Vrf.new raw_data['id'] },
-      tenant: proc { |raw_data| NetboxClientRuby::Tenant.new raw_data['id'] },
+      vrf: proc { |raw_data| Vrf.new raw_data['id'] },
+      tenant: proc { |raw_data| Tenant.new raw_data['id'] },
       status: proc { |raw_data| STATUS_VALUES.key(raw_data['value']) || raw_data['value'] },
-      interface: proc { |raw_data| NetboxClientRuby::Interface.new raw_data['id'] }
+      interface: proc { |raw_data| Interface.new raw_data['id'] }
     )
     readonly_fields :display_name
 
