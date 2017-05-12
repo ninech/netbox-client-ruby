@@ -152,15 +152,19 @@ module NetboxClientRuby
       self
     end
 
-    def update(updated_fields)
-      checked_updated_fields = {}
-      updated_fields.each do |key, values|
-        s_key = key.to_s
+    def update(new_values)
+      new_values.each do |attribute, values|
+        s_attribute = attribute.to_s
+        next if readonly_fields.include? s_attribute
 
-        checked_updated_fields[s_key] = values unless readonly_fields.include? s_key
+        sym_attr_writer = "#{attribute}=".to_sym
+        if methods.include?(sym_attr_writer)
+          public_send(sym_attr_writer, values)
+        else
+          dirty_data[s_attribute] = values
+        end
       end
 
-      dirty_data.merge! checked_updated_fields
       patch
     end
 
@@ -292,7 +296,7 @@ module NetboxClientRuby
 
     def objectify(name, klass_or_proc = nil)
       raw_data = data[name]
-      
+
       return nil if raw_data.nil?
 
       return data_to_obj(raw_data, klass_or_proc) unless raw_data.is_a? Array

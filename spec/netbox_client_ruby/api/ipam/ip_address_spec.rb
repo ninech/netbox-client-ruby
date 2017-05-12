@@ -33,7 +33,7 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
     vrf: NetboxClientRuby::Vrf,
     tenant: NetboxClientRuby::Tenant,
     interface: NetboxClientRuby::Interface,
-    status: NetboxClientRuby::IpAddressStatus
+    status: Symbol
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do
       it 'should fetch the data' do
@@ -49,8 +49,8 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
   end
 
   describe '.status' do
-    it 'should assign the correct value' do
-      expect(subject.status.label).to eq('Active')
+    it 'should return the correct symbol' do
+      expect(subject.status).to eq(:active)
     end
   end
 
@@ -73,6 +73,24 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
     it 'should update the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(address: address).address).to eq(expected_address)
+    end
+
+    context 'status update' do
+      let(:request_params) { { 'status' => 2 } }
+
+      it 'should resolve the status to a number' do
+        expect(faraday).to receive(request_method).and_call_original
+        expect(subject.update(status: :reserved).status).to eq(:active)
+      end
+
+      context 'with an unknown status' do
+        let(:request_params) { { 'status' => 42 } }
+
+        it 'should send a request with the unknown status' do
+          expect(faraday).to receive(request_method).and_call_original
+          expect(subject.update(status: 42).status).to eq(:active)
+        end
+      end
     end
   end
 
