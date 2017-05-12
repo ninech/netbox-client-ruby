@@ -143,23 +143,6 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
         expect(subject[:name]).to eq 'Beat'
       end
 
-      it 'updates the value and sends PATCH to the server' do
-        expect(faraday).to receive(:patch).and_call_original
-
-        expect(subject.update(name: 'Fritz')).to be subject
-        expect(subject.name).to eq 'Urs'
-
-        # this value is read from the response, which is 'Beat', and not 'Fritz'
-        # this also checks implicitly that the @dirty cache has been emptied
-        expect(subject[:name]).to eq 'Beat'
-      end
-
-      it 'updates only allowed values and sends PATCH to the server' do
-        expect(faraday).to receive(:patch).and_call_original
-
-        expect(subject.update(name: 'Fritz', counter: 'It Is')).to be subject
-      end
-
       it 'does not send PATCH to the server when nothing changed' do
         expect(faraday).to_not receive(:patch)
 

@@ -7,36 +7,28 @@ module NetboxClientRuby
   class IpAddress
     include NetboxClientRuby::Entity
 
+    STATUS_VALUES = {
+      active: 1,
+      reserved: 2,
+      deprecated: 3,
+      dhcp: 5
+    }.freeze
+
     id id: :id
     deletable true
     path 'ipam/ip-addresses/:id.json'
     creation_path 'ipam/ip-addresses/'
     object_fields(
-      vrf: proc { |raw_data| NetboxClientRuby::Vrf.new raw_data['id'] },
-      tenant: proc { |raw_data| NetboxClientRuby::Tenant.new raw_data['id'] },
-      status: proc { |raw_data| NetboxClientRuby::IpAddressStatus.new raw_data['value'] },
-      interface: proc { |raw_data| NetboxClientRuby::Interface.new raw_data['id'] }
+      vrf: proc { |raw_data| Vrf.new raw_data['id'] },
+      tenant: proc { |raw_data| Tenant.new raw_data['id'] },
+      status: proc { |raw_data| STATUS_VALUES.key(raw_data['value']) || raw_data['value'] },
+      interface: proc { |raw_data| Interface.new raw_data['id'] }
     )
     readonly_fields :display_name
-  end
 
-  class IpAddressStatus
-    attr_reader :value, :label
-
-    def initialize(status_value)
-      @value = status_value
-      @label = case status_value
-               when 1 then
-                 'Active'.freeze
-               when 2 then
-                 'Reserved'.freeze
-               when 3 then
-                 'Deprecated'.freeze
-               when 5 then
-                 'DHCP'.freeze
-               else
-                 'UNDEFINED'.freeze
-               end
+    def status=(value)
+      status_code_lookup = STATUS_VALUES.fetch(value, value)
+      method_missing(:status=, status_code_lookup)
     end
   end
 end

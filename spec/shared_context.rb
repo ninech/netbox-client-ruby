@@ -46,7 +46,7 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   end
 
   before do
-    puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
+    #puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
     faraday_stubs.public_send(request_method,
                               "#{request_url}#{request_url_params_string}",
                               request_params) do |_env|
