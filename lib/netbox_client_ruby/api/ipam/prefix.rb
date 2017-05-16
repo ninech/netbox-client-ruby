@@ -5,6 +5,7 @@ require 'netbox_client_ruby/api/ipam/vrf'
 require 'netbox_client_ruby/api/ipam/vlan'
 require 'netbox_client_ruby/api/ipam/vlan_group'
 require 'netbox_client_ruby/api/tenancy/tenant'
+require 'ipaddress'
 
 module NetboxClientRuby
   class Prefix
@@ -20,7 +21,8 @@ module NetboxClientRuby
       tenant: proc { |raw_data| NetboxClientRuby::Tenant.new raw_data['id'] },
       vlan: proc { |raw_data| NetboxClientRuby::Vlan.new raw_data['id'] },
       status: proc { |raw_data| NetboxClientRuby::PrefixStatus.new raw_data['value'] },
-      role: proc { |raw_data| NetboxClientRuby::Role.new raw_data['id'] }
+      role: proc { |raw_data| NetboxClientRuby::Role.new raw_data['id'] },
+      prefix: proc { |raw_data| IPAddress.parse raw_data }
     )
     readonly_fields :display_name
   end

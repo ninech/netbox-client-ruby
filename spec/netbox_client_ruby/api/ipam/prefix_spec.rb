@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'ipaddress'
 
 describe NetboxClientRuby::Prefix, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::Prefix }
   let(:base_url) { '/api/ipam/prefixes/' }
   let(:response) { File.read("spec/fixtures/ipam/prefix_#{entity_id}.json") }
 
-  let(:expected_prefix) { '10.2.0.0/16' }
+  let(:expected_prefix) { IPAddress.parse '10.2.0.0/16' }
   let(:entity_id) { 3 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
 
@@ -35,7 +36,8 @@ describe NetboxClientRuby::Prefix, faraday_stub: true do
     tenant: NetboxClientRuby::Tenant,
     vlan: NetboxClientRuby::Vlan,
     status: NetboxClientRuby::PrefixStatus,
-    role: NetboxClientRuby::Role
+    role: NetboxClientRuby::Role,
+    prefix: IPAddress
   }.each_pair do |method_name, expected_type|
     context 'entity with references' do
       describe ".#{method_name}" do
@@ -84,7 +86,7 @@ describe NetboxClientRuby::Prefix, faraday_stub: true do
   end
 
   describe '.update' do
-    let(:prefix) { '192.168.0.0/16' }
+    let(:prefix) { IPAddress.parse '192.168.0.0/16' }
     let(:request_method) { :patch }
     let(:request_params) { { 'prefix' => prefix } }
 
