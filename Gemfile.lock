@@ -6,6 +6,7 @@ PATH
       faraday (~> 0.12)
       faraday-detailed_logger (~> 2.1)
       faraday_middleware (~> 0.11.0)
+      ipaddress (>= 0.8.3)
 
 GEM
   remote: https://rubygems.org/
@@ -22,6 +23,7 @@ GEM
       faraday (~> 0.8)
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
+    ipaddress (0.8.3)
     method_source (0.8.2)
     multipart-post (2.0.0)
     parser (2.4.0.0)

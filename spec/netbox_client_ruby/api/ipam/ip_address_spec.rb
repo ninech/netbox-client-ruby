@@ -1,11 +1,12 @@
 require 'spec_helper'
+require 'ipaddress'
 
 describe NetboxClientRuby::IpAddress, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::IpAddress }
   let(:base_url) { '/api/ipam/ip-addresses/' }
   let(:response) { File.read("spec/fixtures/ipam/ip-address_#{entity_id}.json") }
 
-  let(:expected_address) { '10.0.0.1/8' }
+  let(:expected_address) { IPAddress.parse('10.0.0.1/8') }
   let(:entity_id) { 1 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
 
@@ -66,7 +67,7 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
   end
 
   describe '.update' do
-    let(:address) { '192.168.1.1/24' }
+    let(:address) { IPAddress.parse('192.168.1.1/24') }
     let(:request_method) { :patch }
     let(:request_params) { { 'address' => address } }
 
@@ -104,7 +105,7 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
   end
 
   describe '.save' do
-    let(:address) { '192.168.1.1/24' }
+    let(:address) { IPAddress.parse('192.168.1.1/24') }
     let(:request_params) { { 'address' => address } }
 
     context 'update' do
@@ -129,7 +130,7 @@ describe NetboxClientRuby::IpAddress, faraday_stub: true do
         expect(subject.save).to be(subject)
       end
 
-      it 'Reads the anwer from the PATCH answer' do
+      it 'Reads the answer from the PATCH answer' do
         expect(faraday).to receive(request_method).and_call_original
 
         subject.save
