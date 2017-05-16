@@ -2,6 +2,7 @@ require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/api/dcim/interface'
 require 'netbox_client_ruby/api/ipam/vrf'
 require 'netbox_client_ruby/api/tenancy/tenant'
+require 'ipaddress'
 
 module NetboxClientRuby
   class IpAddress
@@ -22,7 +23,8 @@ module NetboxClientRuby
       vrf: proc { |raw_data| Vrf.new raw_data['id'] },
       tenant: proc { |raw_data| Tenant.new raw_data['id'] },
       status: proc { |raw_data| STATUS_VALUES.key(raw_data['value']) || raw_data['value'] },
-      interface: proc { |raw_data| Interface.new raw_data['id'] }
+      interface: proc { |raw_data| Interface.new raw_data['id'] },
+      address: proc { |raw_ip| IPAddress.parse(raw_ip) }
     )
     readonly_fields :display_name
 

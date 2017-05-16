@@ -197,9 +197,9 @@ module NetboxClientRuby
         end
       end
 
-      return dirty_data[name] if dirty_data.keys.include? name
-      return objectify(data[name], object_fields[name]) if object_fields.keys.include? name
-      return data[name] if data.is_a?(Hash) && data.keys.include?(name)
+      return dirty_data[name] if dirty_data.key? name
+      return objectify(data[name], object_fields[name]) if object_fields.key? name
+      return data[name] if data.is_a?(Hash) && data.key?(name)
 
       super
     end
@@ -210,9 +210,9 @@ module NetboxClientRuby
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
       return false if name.end_with?('=') && instance_variables.include?(name[0..-2])
 
-      return true if dirty_data.keys.include? name
-      return true if object_fields.keys.include? name
-      return true if data.is_a?(Hash) && data.keys.include?(name)
+      return true if dirty_data.key? name
+      return true if object_fields.key? name
+      return true if data.is_a?(Hash) && data.key?(name)
 
       super
     end
