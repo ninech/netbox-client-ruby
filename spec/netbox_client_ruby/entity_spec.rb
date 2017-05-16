@@ -184,8 +184,9 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
 
       context 'save with more data' do
         let(:hash) { { 'one' => 1, 'two' => 2 } }
+        let(:array) { [1, 2, 3] }
         let(:number) { 3 }
-        let(:request_params) { { 'name' => name, 'number' => number, 'hash' => hash } }
+        let(:request_params) { { 'name' => name, 'number' => number, 'hash' => hash, 'array' => array } }
 
         it 'sends all the data' do
           expect(faraday).to receive(:post).and_call_original
@@ -193,8 +194,30 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
           subject[:name] = name
           subject.number = number
           subject.hash = hash
+          subject.array = array
 
           subject.save
+        end
+      end
+
+      context 'setting an object field' do
+        let(:test_object) { Object.new }
+        let(:request_params) { { 'an_object' => test_object } }
+
+        it 'does not call the remote yet' do
+          expect(faraday).to_not receive(:post)
+
+          subject.an_object = test_object
+
+          expect(subject.an_object).to be(test_object)
+        end
+
+        it 'sends the object to faraday for serialization' do
+          expect(faraday).to receive(:post).and_call_original
+
+          subject.an_object = test_object
+
+          expect(subject.save).to be(subject)
         end
       end
 
