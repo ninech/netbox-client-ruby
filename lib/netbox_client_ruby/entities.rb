@@ -1,6 +1,5 @@
 require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/error/local_error'
-require 'pry'
 
 module NetboxClientRuby
   module Entities
