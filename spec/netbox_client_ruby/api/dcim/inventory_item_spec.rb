@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Platform, faraday_stub: true do
+describe NetboxClientRuby::InventoryItem, faraday_stub: true do
   let(:entity_id) { 1 }
-  let(:expected_name) { 'platform1' }
-  let(:sut) { NetboxClientRuby::Platform }
-  let(:base_url) { '/api/dcim/platforms/' }
+  let(:expected_name) { 'inventory_item1' }
+  let(:sut) { NetboxClientRuby::InventoryItem }
+  let(:base_url) { '/api/dcim/inventory-items/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
-  let(:response) { File.read("spec/fixtures/dcim/platform_#{entity_id}.json") }
+  let(:response) { File.read("spec/fixtures/dcim/inventory-item_#{entity_id}.json") }
 
   subject { sut.new entity_id }
 
@@ -61,8 +61,7 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
 
   describe '.save' do
     let(:name) { 'foobar' }
-    let(:slug) { name }
-    let(:request_params) { { 'name' => name, 'slug' => slug } }
+    let(:request_params) { { 'name' => name } }
 
     context 'update' do
       let(:request_method) { :patch }
@@ -70,7 +69,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
       subject do
         region = sut.new entity_id
         region.name = name
-        region.slug = slug
         region
       end
 
@@ -79,7 +77,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.slug).to eq(slug)
       end
 
       it 'calls PATCH when save is called' do
@@ -93,7 +90,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
 
         subject.save
         expect(subject.name).to eq(expected_name)
-        expect(subject.slug).to eq(expected_name)
       end
     end
 
@@ -104,7 +100,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
       subject do
         region = sut.new
         region.name = name
-        region.slug = slug
         region
       end
 
@@ -113,7 +108,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.slug).to eq(slug)
       end
 
       it 'POSTs the data upon a call of save' do
@@ -129,7 +123,6 @@ describe NetboxClientRuby::Platform, faraday_stub: true do
 
         expect(subject.id).to be(1)
         expect(subject.name).to eq(expected_name)
-        expect(subject.slug).to eq(expected_name)
       end
     end
   end

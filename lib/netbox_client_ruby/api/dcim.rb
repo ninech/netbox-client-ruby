@@ -6,6 +6,8 @@ require 'netbox_client_ruby/api/dcim/device_type'
 require 'netbox_client_ruby/api/dcim/device_types'
 require 'netbox_client_ruby/api/dcim/interface'
 require 'netbox_client_ruby/api/dcim/interfaces'
+require 'netbox_client_ruby/api/dcim/inventory_item'
+require 'netbox_client_ruby/api/dcim/inventory_items'
 require 'netbox_client_ruby/api/dcim/manufacturer'
 require 'netbox_client_ruby/api/dcim/manufacturers'
 require 'netbox_client_ruby/api/dcim/platform'
@@ -25,15 +27,14 @@ module NetboxClientRuby
       device_roles: DeviceRoles,
       device_types: DeviceTypes,
       interfaces: Interfaces,
+      inventory_items: InventoryItems,
       manufacturers: Manufacturers,
       platforms: Platforms,
       racks: Racks,
       regions: Regions,
       sites: Sites
     }.each_pair do |method_name, class_name|
-      define_method(method_name) do
-        class_name.new
-      end
+      define_method(method_name) { class_name.new }
     end
 
     {
@@ -41,15 +42,14 @@ module NetboxClientRuby
       device_role: DeviceRole,
       device_type: DeviceType,
       interface: Interface,
+      inventory_item: InventoryItem,
       manufacturer: Manufacturer,
       platform: Platform,
       rack: Rack,
       region: Region,
       site: Site
     }.each_pair do |method_name, class_name|
-      define_method(method_name) do |id|
-        class_name.new id
-      end
+      define_method(method_name) { |id| class_name.new id }
     end
   end
 end
