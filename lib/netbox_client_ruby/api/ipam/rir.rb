@@ -1,12 +1,14 @@
 require 'netbox_client_ruby/entity'
 
 module NetboxClientRuby
-  class Rir
-    include NetboxClientRuby::Entity
+  module IPAM
+    class Rir
+      include Entity
 
-    id id: :id
-    deletable true
-    path 'ipam/rirs/:id.json'
-    creation_path 'ipam/rirs/'
+      id id: :id
+      deletable true
+      path 'ipam/rirs/:id.json'
+      creation_path 'ipam/rirs/'
+    end
   end
 end

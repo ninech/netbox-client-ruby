@@ -5,21 +5,21 @@ require 'netbox_client_ruby/api/tenancy/tenant_groups'
 require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
-  class Tenancy
-    def tenants
-      Tenants.new
+  module Tenancy
+    {
+      tenants: Tenants,
+      tenant_groups: TenantGroups
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) { class_name.new }
+      module_function(method_name)
     end
 
-    def tenant(id)
-      Tenant.new id
-    end
-
-    def tenant_groups
-      TenantGroups.new
-    end
-
-    def tenant_group
-      TenantGroup.new
+    {
+      tenant: Tenant,
+      tenant_group: TenantGroup
+    }.each_pair do |method_name, class_name|
+      define_method(method_name) { |id| class_name.new id }
+      module_function(method_name)
     end
   end
 end

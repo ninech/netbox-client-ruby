@@ -1,67 +1,71 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM do
-  {
-    devices: NetboxClientRuby::Devices,
-    device_roles: NetboxClientRuby::DeviceRoles,
-    device_types: NetboxClientRuby::DeviceTypes,
-    interfaces: NetboxClientRuby::Interfaces,
-    inventory_items: NetboxClientRuby::InventoryItems,
-    manufacturers: NetboxClientRuby::Manufacturers,
-    platforms: NetboxClientRuby::Platforms,
-    racks: NetboxClientRuby::Racks,
-    regions: NetboxClientRuby::Regions,
-    sites: NetboxClientRuby::Sites
-  }.each do |method, expected_class|
-    describe ".#{method}" do
-      subject { NetboxClientRuby::DCIM.new.public_send(method) }
-
-      context 'is of the correct type' do
-        it { is_expected.to be_a expected_class }
-      end
-
-      context 'is a different instance each time' do
-        it do
-          is_expected
-            .to_not be NetboxClientRuby::DCIM.new.public_send(method)
+module NetboxClientRuby
+  module DCIM
+    describe DCIM do
+      {
+        devices: Devices,
+        device_roles: DeviceRoles,
+        device_types: DeviceTypes,
+        interfaces: Interfaces,
+        inventory_items: InventoryItems,
+        manufacturers: Manufacturers,
+        platforms: Platforms,
+        racks: Racks,
+        regions: Regions,
+        sites: Sites
+      }.each do |method, expected_class|
+        describe ".#{method}" do
+          subject { DCIM.public_send(method) }
+    
+          context 'is of the correct type' do
+            it { is_expected.to be_a expected_class }
+          end
+    
+          context 'is a different instance each time' do
+            it do
+              is_expected
+                .to_not be DCIM.public_send(method)
+            end
+          end
+    
+          context 'is an Entities object' do
+            it { is_expected.to respond_to(:get!) }
+          end
         end
       end
-
-      context 'is an Entities object' do
-        it { is_expected.to respond_to(:get!) }
-      end
-    end
-  end
-
-  {
-    device: NetboxClientRuby::Device,
-    device_role: NetboxClientRuby::DeviceRole,
-    device_type: NetboxClientRuby::DeviceType,
-    interface: NetboxClientRuby::Interface,
-    inventory_item: NetboxClientRuby::InventoryItem,
-    manufacturer: NetboxClientRuby::Manufacturer,
-    platform: NetboxClientRuby::Platform,
-    rack: NetboxClientRuby::Rack,
-    region: NetboxClientRuby::Region,
-    site: NetboxClientRuby::Site
-  }.each do |method, expected_class|
-    describe ".#{method}" do
-      let(:id) { 1 }
-      subject { NetboxClientRuby::DCIM.new.public_send(method, id) }
-
-      context 'is of the expected type' do
-        it { is_expected.to be_a expected_class }
-      end
-
-      context 'it is a new instance each time' do
-        it do
-          is_expected
-            .to_not be NetboxClientRuby::DCIM.new.public_send(method, id)
+    
+      {
+        device: Device,
+        device_role: DeviceRole,
+        device_type: DeviceType,
+        interface: Interface,
+        inventory_item: InventoryItem,
+        manufacturer: Manufacturer,
+        platform: Platform,
+        rack: Rack,
+        region: Region,
+        site: Site
+      }.each do |method, expected_class|
+        describe ".#{method}" do
+          let(:id) { 1 }
+          subject { DCIM.public_send(method, id) }
+    
+          context 'is of the expected type' do
+            it { is_expected.to be_a expected_class }
+          end
+    
+          context 'it is a new instance each time' do
+            it do
+              is_expected
+                .to_not be DCIM.public_send(method, id)
+            end
+          end
+    
+          context 'is an Entity object' do
+            it { is_expected.to respond_to(:get!) }
+          end
         end
-      end
-
-      context 'is an Entity object' do
-        it { is_expected.to respond_to(:get!) }
       end
     end
   end

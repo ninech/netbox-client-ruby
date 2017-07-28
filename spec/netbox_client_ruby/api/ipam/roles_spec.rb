@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Roles, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Roles, faraday_stub: true do
   let(:expected_length) { 2 }
-  let(:expected_singular_type) { NetboxClientRuby::Role }
+  let(:expected_singular_type) { NetboxClientRuby::IPAM::Role }
 
   let(:response) { File.read('spec/fixtures/ipam/roles.json') }
   let(:request_url) { '/api/ipam/roles.json' }

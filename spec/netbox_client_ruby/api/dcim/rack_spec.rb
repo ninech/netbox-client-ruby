@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Rack, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Rack, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'test2rack' }
-  let(:sut) { NetboxClientRuby::Rack }
+  let(:sut) { NetboxClientRuby::DCIM::Rack }
   let(:base_url) { '/api/dcim/racks/' }
   let(:response) { File.read("spec/fixtures/dcim/rack_#{entity_id}.json") }
 

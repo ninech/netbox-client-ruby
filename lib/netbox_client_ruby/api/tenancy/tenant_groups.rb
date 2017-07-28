@@ -2,18 +2,20 @@ require 'netbox_client_ruby/entities'
 require 'netbox_client_ruby/api/tenancy/tenant_group'
 
 module NetboxClientRuby
-  class TenantGroups
-    include NetboxClientRuby::Entities
+  module Tenancy
+    class TenantGroups
+      include Entities
 
-    path 'tenancy/tenant-groups.json'
-    data_key 'results'
-    count_key 'count'
-    entity_creator :entity_creator
+      path 'tenancy/tenant-groups.json'
+      data_key 'results'
+      count_key 'count'
+      entity_creator :entity_creator
 
-    private
+      private
 
-    def entity_creator(raw_entity)
-      NetboxClientRuby::TenantGroup.new raw_entity['id']
+      def entity_creator(raw_entity)
+        TenantGroup.new raw_entity['id']
+      end
     end
   end
 end

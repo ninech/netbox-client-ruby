@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Platform, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Platform, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'platform1' }
-  let(:sut) { NetboxClientRuby::Platform }
+  let(:sut) { NetboxClientRuby::DCIM::Platform }
   let(:base_url) { '/api/dcim/platforms/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }

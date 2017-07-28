@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Regions, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Regions, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/dcim/regions.json') }
   let(:request_url) { '/api/dcim/regions.json' }
   let(:request_url_params) do
@@ -47,7 +47,7 @@ describe NetboxClientRuby::Regions, faraday_stub: true do
 
     it 'returns Site instances' do
       subject.as_array.each do |element|
-        expect(element).to be_a NetboxClientRuby::Region
+        expect(element).to be_a NetboxClientRuby::DCIM::Region
       end
     end
   end

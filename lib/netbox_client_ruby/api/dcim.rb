@@ -21,7 +21,7 @@ require 'netbox_client_ruby/api/dcim/sites'
 require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
-  class DCIM
+  module DCIM
     {
       devices: Devices,
       device_roles: DeviceRoles,
@@ -35,6 +35,7 @@ module NetboxClientRuby
       sites: Sites
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
+      module_function(method_name)
     end
 
     {
@@ -50,6 +51,7 @@ module NetboxClientRuby
       site: Site
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
+      module_function(method_name)
     end
   end
 end

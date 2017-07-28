@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Devices, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Devices, faraday_stub: true do
   let(:expected_length) { 4 }
-  let(:singular_type) { NetboxClientRuby::Device }
+  let(:singular_type) { NetboxClientRuby::DCIM::Device }
 
   let(:response) { File.read('spec/fixtures/dcim/devices.json') }
   let(:request_url) { '/api/dcim/devices.json' }

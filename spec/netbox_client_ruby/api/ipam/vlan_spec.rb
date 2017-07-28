@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Vlan, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
   let(:expected_name) { 'vlan_1' }
-  let(:class_under_test) { NetboxClientRuby::Vlan }
+  let(:class_under_test) { NetboxClientRuby::IPAM::Vlan }
   let(:base_url) { '/api/ipam/vlans/' }
   let(:response) { File.read("spec/fixtures/ipam/vlan_#{entity_id}.json") }
 
@@ -30,10 +30,10 @@ describe NetboxClientRuby::Vlan, faraday_stub: true do
   end
 
   {
-    tenant: NetboxClientRuby::Tenant,
-    group: NetboxClientRuby::VlanGroup,
-    status: NetboxClientRuby::VlanStatus,
-    role: NetboxClientRuby::Role
+    tenant: NetboxClientRuby::Tenancy::Tenant,
+    group: NetboxClientRuby::IPAM::VlanGroup,
+    status: NetboxClientRuby::IPAM::VlanStatus,
+    role: NetboxClientRuby::IPAM::Role
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do
       it 'should fetch the data' do

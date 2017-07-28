@@ -19,7 +19,7 @@ require 'netbox_client_ruby/api/ipam/vrfs'
 require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
-  class IPAM
+  module IPAM
     {
       aggregates: Aggregates,
       ip_addresses: IpAddresses,
@@ -30,9 +30,8 @@ module NetboxClientRuby
       vlan_groups: VlanGroups,
       vrfs: Vrfs
     }.each_pair do |method_name, class_name|
-      define_method(method_name) do
-        class_name.new
-      end
+      define_method(method_name) { class_name.new }
+      module_function(method_name)
     end
 
     {
@@ -45,9 +44,8 @@ module NetboxClientRuby
       vlan_group: VlanGroup,
       vrf: Vrf
     }.each_pair do |method_name, class_name|
-      define_method(method_name) do |id|
-        class_name.new id
-      end
+      define_method(method_name) { |id| class_name.new id }
+      module_function(method_name)
     end
   end
 end

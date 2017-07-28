@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Manufacturer, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Manufacturer, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'manu1' }
-  let(:sut) { NetboxClientRuby::Manufacturer }
+  let(:sut) { NetboxClientRuby::DCIM::Manufacturer }
   let(:base_url) { '/api/dcim/manufacturers/' }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
   let(:response) { File.read("spec/fixtures/dcim/manufacturer_#{entity_id}.json") }

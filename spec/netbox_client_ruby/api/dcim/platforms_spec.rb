@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Platforms, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Platforms, faraday_stub: true do
   let(:expected_length) { 1 }
-  let(:singular_type) { NetboxClientRuby::Platform }
+  let(:singular_type) { NetboxClientRuby::DCIM::Platform }
 
   let(:response) { File.read('spec/fixtures/dcim/platforms.json') }
   let(:request_url) { '/api/dcim/platforms.json' }

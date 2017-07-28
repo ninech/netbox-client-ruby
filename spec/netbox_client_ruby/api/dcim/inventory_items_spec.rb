@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::InventoryItems, faraday_stub: true do
+describe NetboxClientRuby::DCIM::InventoryItems, faraday_stub: true do
   let(:expected_length) { 1 }
-  let(:singular_type) { NetboxClientRuby::InventoryItem }
+  let(:singular_type) { NetboxClientRuby::DCIM::InventoryItem }
 
   let(:response) { File.read('spec/fixtures/dcim/inventory-items.json') }
   let(:request_url) { '/api/dcim/inventory-items.json' }

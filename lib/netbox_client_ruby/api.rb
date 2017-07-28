@@ -5,14 +5,14 @@ require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
   def self.dcim
-    @dcim ||= NetboxClientRuby::DCIM.new
+    @dcim ||= NetboxClientRuby::DCIM
   end
 
   def self.tenancy
-    @tenancy ||= NetboxClientRuby::Tenancy.new
+    @tenancy ||= NetboxClientRuby::Tenancy
   end
 
   def self.ipam
-    @ipam ||= NetboxClientRuby::IPAM.new
+    @ipam ||= NetboxClientRuby::IPAM
   end
 end

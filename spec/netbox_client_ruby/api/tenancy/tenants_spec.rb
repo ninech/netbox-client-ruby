@@ -1,53 +1,57 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Tenants, faraday_stub: true do
-  let(:response) { File.read('spec/fixtures/tenancy/tenants.json') }
-  let(:request_url) { '/api/tenancy/tenants.json' }
-  let(:request_url_params) do
-    { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
-  end
-
-  context 'unpaged fetch' do
-    describe '#length' do
-      it 'shall be the expected length' do
-        expect(subject.length).to be 3
+module NetboxClientRuby
+  module Tenancy
+    describe Tenants, faraday_stub: true do
+      let(:response) { File.read('spec/fixtures/tenancy/tenants.json') }
+      let(:request_url) { '/api/tenancy/tenants.json' }
+      let(:request_url_params) do
+        { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
       end
-    end
 
-    describe '#total' do
-      it 'shall be the expected total' do
-        expect(subject.total).to be 3
+      context 'unpaged fetch' do
+        describe '#length' do
+          it 'shall be the expected length' do
+            expect(subject.length).to be 3
+          end
+        end
+
+        describe '#total' do
+          it 'shall be the expected total' do
+            expect(subject.total).to be 3
+          end
+        end
       end
-    end
-  end
 
-  describe '#reload' do
-    it 'fetches the correct data' do
-      expect(faraday).to receive(:get).and_call_original
-      subject.reload
-    end
+      describe '#reload' do
+        it 'fetches the correct data' do
+          expect(faraday).to receive(:get).and_call_original
+          subject.reload
+        end
 
-    it 'caches the data' do
-      expect(faraday).to receive(:get).and_call_original
-      subject.total
-      subject.total
-    end
+        it 'caches the data' do
+          expect(faraday).to receive(:get).and_call_original
+          subject.total
+          subject.total
+        end
 
-    it 'reloads the data' do
-      expect(faraday).to receive(:get).twice.and_call_original
-      subject.reload
-      subject.reload
-    end
-  end
+        it 'reloads the data' do
+          expect(faraday).to receive(:get).twice.and_call_original
+          subject.reload
+          subject.reload
+        end
+      end
 
-  describe '#as_array' do
-    it 'return the correct amount' do
-      expect(subject.as_array.length).to be 3
-    end
+      describe '#as_array' do
+        it 'return the correct amount' do
+          expect(subject.as_array.length).to be 3
+        end
 
-    it 'returns single instances' do
-      subject.as_array.each do |element|
-        expect(element).to be_a NetboxClientRuby::Tenant
+        it 'returns single instances' do
+          subject.as_array.each do |element|
+            expect(element).to be_a Tenant
+          end
+        end
       end
     end
   end
