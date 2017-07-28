@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Prefixes, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Prefixes, faraday_stub: true do
   let(:expected_length) { 3 }
-  let(:expected_singular_type) { NetboxClientRuby::Prefix }
+  let(:expected_singular_type) { NetboxClientRuby::IPAM::Prefix }
   let(:response) { File.read('spec/fixtures/ipam/prefixes.json') }
   let(:request_url) { '/api/ipam/prefixes.json' }
 

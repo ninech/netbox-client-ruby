@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Rir, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Rir, faraday_stub: true do
   let(:expected_name) { 'rir1' }
-  let(:class_under_test) { NetboxClientRuby::Rir }
+  let(:class_under_test) { NetboxClientRuby::IPAM::Rir }
   let(:base_url) { '/api/ipam/rirs/' }
   let(:response) { File.read("spec/fixtures/ipam/rir_#{entity_id}.json") }
 

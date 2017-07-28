@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Region, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
   let(:region_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/region_#{region_id}.json") }
   let(:request_url) { "/api/dcim/regions/#{region_id}.json" }
 
-  subject { NetboxClientRuby::Region.new region_id }
+  subject { NetboxClientRuby::DCIM::Region.new region_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -35,7 +35,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
 
       it 'should be a Region object' do
         parent_region = subject.parent
-        expect(parent_region).to be_a NetboxClientRuby::Region
+        expect(parent_region).to be_a NetboxClientRuby::DCIM::Region
         expect(parent_region.id).to eq(1)
       end
     end
@@ -100,7 +100,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        region = NetboxClientRuby::Region.new region_id
+        region = NetboxClientRuby::DCIM::Region.new region_id
         region.name = name
         region.slug = slug
         region
@@ -134,7 +134,7 @@ describe NetboxClientRuby::Region, faraday_stub: true do
       let(:request_url) { '/api/dcim/regions/' }
 
       subject do
-        region = NetboxClientRuby::Region.new
+        region = NetboxClientRuby::DCIM::Region.new
         region.name = name
         region.slug = slug
         region

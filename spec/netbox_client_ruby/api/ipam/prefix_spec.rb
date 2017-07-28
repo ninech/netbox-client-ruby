@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'ipaddress'
 
-describe NetboxClientRuby::Prefix, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::Prefix }
+describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
+  let(:class_under_test) { NetboxClientRuby::IPAM::Prefix }
   let(:base_url) { '/api/ipam/prefixes/' }
   let(:response) { File.read("spec/fixtures/ipam/prefix_#{entity_id}.json") }
 
@@ -31,12 +31,12 @@ describe NetboxClientRuby::Prefix, faraday_stub: true do
   end
 
   {
-    site: NetboxClientRuby::Site,
-    vrf: NetboxClientRuby::Vrf,
-    tenant: NetboxClientRuby::Tenant,
-    vlan: NetboxClientRuby::Vlan,
-    status: NetboxClientRuby::PrefixStatus,
-    role: NetboxClientRuby::Role,
+    site: NetboxClientRuby::DCIM::Site,
+    vrf: NetboxClientRuby::IPAM::Vrf,
+    tenant: NetboxClientRuby::Tenancy::Tenant,
+    vlan: NetboxClientRuby::IPAM::Vlan,
+    status: NetboxClientRuby::IPAM::PrefixStatus,
+    role: NetboxClientRuby::IPAM::Role,
     prefix: IPAddress
   }.each_pair do |method_name, expected_type|
     context 'entity with references' do

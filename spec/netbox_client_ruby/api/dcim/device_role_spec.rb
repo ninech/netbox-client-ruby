@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DeviceRole, faraday_stub: true do
+describe NetboxClientRuby::DCIM::DeviceRole, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'devicerole1' }
-  let(:sut) { NetboxClientRuby::DeviceRole }
+  let(:sut) { NetboxClientRuby::DCIM::DeviceRole }
   let(:base_url) { '/api/dcim/device-roles/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Aggregate, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::Aggregate }
+describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
+  let(:class_under_test) { NetboxClientRuby::IPAM::Aggregate }
   let(:base_url) { '/api/ipam/aggregates/' }
   let(:response) { File.read("spec/fixtures/ipam/aggregate_#{entity_id}.json") }
 
@@ -38,7 +38,7 @@ describe NetboxClientRuby::Aggregate, faraday_stub: true do
       end
 
       it 'shall return the expected type' do
-        expect(subject.rir).to be_a(NetboxClientRuby::Rir)
+        expect(subject.rir).to be_a(NetboxClientRuby::IPAM::Rir)
       end
 
       it 'should an entity with the right it' do

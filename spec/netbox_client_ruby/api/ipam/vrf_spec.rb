@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Vrf, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Vrf, faraday_stub: true do
   let(:expected_name) { 'vrf1' }
-  let(:class_under_test) { NetboxClientRuby::Vrf }
+  let(:class_under_test) { NetboxClientRuby::IPAM::Vrf }
   let(:base_url) { '/api/ipam/vrfs/' }
   let(:response) { File.read("spec/fixtures/ipam/vrf_#{entity_id}.json") }
 
@@ -48,7 +48,7 @@ describe NetboxClientRuby::Vrf, faraday_stub: true do
       end
 
       it 'shall return the expected type' do
-        expect(subject.tenant).to be_a(NetboxClientRuby::Tenant)
+        expect(subject.tenant).to be_a(NetboxClientRuby::Tenancy::Tenant)
       end
 
       it 'should an entity with the right it' do

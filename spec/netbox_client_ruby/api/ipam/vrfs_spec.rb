@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Vrfs, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Vrfs, faraday_stub: true do
   let(:expected_length) { 2 }
-  let(:expected_singular_type) { NetboxClientRuby::Vrf }
+  let(:expected_singular_type) { NetboxClientRuby::IPAM::Vrf }
 
   let(:response) { File.read('spec/fixtures/ipam/vrfs.json') }
   let(:request_url) { '/api/ipam/vrfs.json' }

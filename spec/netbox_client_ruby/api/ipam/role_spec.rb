@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Role, faraday_stub: true do
+describe NetboxClientRuby::IPAM::Role, faraday_stub: true do
   let(:expected_name) { 'role1' }
   let(:expected_slug) { expected_name }
   let(:base_url) { '/api/ipam/roles/' }
@@ -9,7 +9,7 @@ describe NetboxClientRuby::Role, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
 
-  subject { NetboxClientRuby::Role.new entity_id }
+  subject { NetboxClientRuby::IPAM::Role.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -68,7 +68,7 @@ describe NetboxClientRuby::Role, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        entity = NetboxClientRuby::Role.new entity_id
+        entity = NetboxClientRuby::IPAM::Role.new entity_id
         entity.name = name
         entity.slug = slug
         entity
@@ -102,7 +102,7 @@ describe NetboxClientRuby::Role, faraday_stub: true do
       let(:request_url) { base_url }
 
       subject do
-        entity = NetboxClientRuby::Role.new
+        entity = NetboxClientRuby::IPAM::Role.new
         entity.name = name
         entity.slug = slug
         entity

@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Sites, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Sites, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/dcim/sites.json') }
   let(:request_url) { '/api/dcim/sites.json' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end
 
-  subject { NetboxClientRuby::Sites.new }
+  subject { NetboxClientRuby::DCIM::Sites.new }
 
   context 'unpaged fetch' do
     describe '#length' do
@@ -75,7 +75,7 @@ describe NetboxClientRuby::Sites, faraday_stub: true do
 
     it 'returns Site instances' do
       subject.as_array.each do |element|
-        expect(element).to be_a NetboxClientRuby::Site
+        expect(element).to be_a NetboxClientRuby::DCIM::Site
       end
     end
   end

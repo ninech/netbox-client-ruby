@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::InventoryItem, faraday_stub: true do
+describe NetboxClientRuby::DCIM::InventoryItem, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'inventory_item1' }
-  let(:sut) { NetboxClientRuby::InventoryItem }
+  let(:sut) { NetboxClientRuby::DCIM::InventoryItem }
   let(:base_url) { '/api/dcim/inventory-items/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }

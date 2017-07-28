@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::VlanGroup, faraday_stub: true do
+describe NetboxClientRuby::IPAM::VlanGroup, faraday_stub: true do
   let(:expected_name) { 'vlan1' }
   let(:expected_slug) { expected_name }
-  let(:class_under_test) { NetboxClientRuby::VlanGroup }
+  let(:class_under_test) { NetboxClientRuby::IPAM::VlanGroup }
   let(:base_url) { '/api/ipam/vlan-groups/' }
   let(:response) { File.read("spec/fixtures/ipam/vlan-group_#{entity_id}.json") }
 

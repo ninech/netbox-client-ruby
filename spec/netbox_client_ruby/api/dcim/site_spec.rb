@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Site, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
   let(:site_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/site_#{site_id}.json") }
   let(:request_url) { "/api/dcim/sites/#{site_id}.json" }
 
-  subject { NetboxClientRuby::Site.new site_id }
+  subject { NetboxClientRuby::DCIM::Site.new site_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -74,7 +74,7 @@ describe NetboxClientRuby::Site, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        site = NetboxClientRuby::Site.new site_id
+        site = NetboxClientRuby::DCIM::Site.new site_id
         site.name = name
         site.slug = slug
         site
@@ -108,7 +108,7 @@ describe NetboxClientRuby::Site, faraday_stub: true do
       let(:request_url) { '/api/dcim/sites/' }
 
       subject do
-        site = NetboxClientRuby::Site.new
+        site = NetboxClientRuby::DCIM::Site.new
         site.name = name
         site.slug = slug
         site

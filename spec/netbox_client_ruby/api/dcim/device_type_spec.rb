@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DeviceType, faraday_stub: true do
+describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_model) { 'devicetype1' }
-  let(:sut) { NetboxClientRuby::DeviceType }
+  let(:sut) { NetboxClientRuby::DCIM::DeviceType }
   let(:base_url) { '/api/dcim/device-types/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
@@ -31,7 +31,7 @@ describe NetboxClientRuby::DeviceType, faraday_stub: true do
 
   describe '#manufacturer' do
     it 'should return a Manufacturer' do
-      expect(subject.manufacturer).to be_a(NetboxClientRuby::Manufacturer)
+      expect(subject.manufacturer).to be_a(NetboxClientRuby::DCIM::Manufacturer)
     end
 
     it 'should be the expected manufacturer' do
@@ -41,7 +41,7 @@ describe NetboxClientRuby::DeviceType, faraday_stub: true do
 
   describe '#interface_ordering' do
     it 'should return a InterfaceOrdering' do
-      expect(subject.interface_ordering).to be_a(NetboxClientRuby::InterfaceOrdering)
+      expect(subject.interface_ordering).to be_a(NetboxClientRuby::DCIM::InterfaceOrdering)
     end
   end
 

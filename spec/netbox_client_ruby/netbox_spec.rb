@@ -35,12 +35,7 @@ describe NetboxClientRuby do
   }.each do |method, klass|
     context "returns the initialized #{method} object" do
       it 'is of the correct type' do
-        expect(NetboxClientRuby.public_send(method)).to be_a klass
-      end
-
-      it 'is the same instance at each call' do
-        expect(NetboxClientRuby.public_send(method))
-          .to be NetboxClientRuby.public_send(method)
+        expect(NetboxClientRuby.public_send(method)).to be klass
       end
     end
   end

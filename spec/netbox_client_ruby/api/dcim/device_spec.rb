@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Device, faraday_stub: true do
+describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
   let(:entity_id) { 2 }
   let(:expected_name) { 'device2' }
-  let(:sut) { NetboxClientRuby::Device }
+  let(:sut) { NetboxClientRuby::DCIM::Device }
   let(:base_url) { '/api/dcim/devices/' }
   let(:response) { File.read("spec/fixtures/dcim/device_#{entity_id}.json") }
 
@@ -30,15 +30,15 @@ describe NetboxClientRuby::Device, faraday_stub: true do
   end
 
   {
-    device_type: [NetboxClientRuby::DeviceType, 1],
-    device_role: [NetboxClientRuby::DeviceRole, 1],
-    tenant: [NetboxClientRuby::Tenant, 3],
-    platform: [NetboxClientRuby::Platform, 1],
-    site: [NetboxClientRuby::Site, 2],
-    rack: [NetboxClientRuby::Rack, 1],
-    primary_ip: [NetboxClientRuby::IpAddress, 5],
-    primary_ip4: [NetboxClientRuby::IpAddress, 1],
-    primary_ip6: [NetboxClientRuby::IpAddress, 5]
+    device_type: [NetboxClientRuby::DCIM::DeviceType, 1],
+    device_role: [NetboxClientRuby::DCIM::DeviceRole, 1],
+    tenant: [NetboxClientRuby::Tenancy::Tenant, 3],
+    platform: [NetboxClientRuby::DCIM::Platform, 1],
+    site: [NetboxClientRuby::DCIM::Site, 2],
+    rack: [NetboxClientRuby::DCIM::Rack, 1],
+    primary_ip: [NetboxClientRuby::IPAM::IpAddress, 5],
+    primary_ip4: [NetboxClientRuby::IPAM::IpAddress, 1],
+    primary_ip6: [NetboxClientRuby::IPAM::IpAddress, 5]
   }.each do |method_name, expected_values|
     expected_type = expected_values[0]
     expected_id = expected_values[1]

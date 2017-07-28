@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DeviceRoles, faraday_stub: true do
+describe NetboxClientRuby::DCIM::DeviceRoles, faraday_stub: true do
   let(:expected_length) { 1 }
-  let(:singular_type) { NetboxClientRuby::DeviceRole }
+  let(:singular_type) { NetboxClientRuby::DCIM::DeviceRole }
 
   let(:response) { File.read('spec/fixtures/dcim/device-roles.json') }
   let(:request_url) { '/api/dcim/device-roles.json' }

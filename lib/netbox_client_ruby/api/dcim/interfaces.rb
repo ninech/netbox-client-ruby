@@ -2,18 +2,20 @@ require 'netbox_client_ruby/entities'
 require 'netbox_client_ruby/api/dcim/interface'
 
 module NetboxClientRuby
-  class Interfaces
-    include NetboxClientRuby::Entities
+  module DCIM
+    class Interfaces
+      include Entities
 
-    path 'dcim/interfaces.json'
-    data_key 'results'
-    count_key 'count'
-    entity_creator :entity_creator
+      path 'dcim/interfaces.json'
+      data_key 'results'
+      count_key 'count'
+      entity_creator :entity_creator
 
-    private
+      private
 
-    def entity_creator(raw_entity)
-      NetboxClientRuby::Interface.new raw_entity['id']
+      def entity_creator(raw_entity)
+        Interface.new raw_entity['id']
+      end
     end
   end
 end
