@@ -1,7 +1,7 @@
 require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/api/dcim/device_type'
 require 'netbox_client_ruby/api/dcim/device_role'
-require 'netbox_client_ruby/api/tenancy/Tenant'
+require 'netbox_client_ruby/api/tenancy/tenant'
 require 'netbox_client_ruby/api/dcim/platform'
 require 'netbox_client_ruby/api/dcim/site'
 require 'netbox_client_ruby/api/dcim/rack'
