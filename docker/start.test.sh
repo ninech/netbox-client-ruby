@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec bundle exec rspec
+exec bundle exec rake

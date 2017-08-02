@@ -12,3 +12,5 @@
 
 quickstart.rb
 *.gz
+
+/vendor/
