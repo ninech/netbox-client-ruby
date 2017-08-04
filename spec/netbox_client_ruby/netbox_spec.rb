@@ -30,8 +30,9 @@ describe NetboxClientRuby do
 
   {
     dcim: NetboxClientRuby::DCIM,
-    tenancy: NetboxClientRuby::Tenancy,
-    ipam: NetboxClientRuby::IPAM
+    ipam: NetboxClientRuby::IPAM,
+    secrets: NetboxClientRuby::Secrets,
+    tenancy: NetboxClientRuby::Tenancy
   }.each do |method, klass|
     context "returns the initialized #{method} object" do
       it 'is of the correct type' do
