@@ -11,12 +11,17 @@ module NetboxClientRuby
 
     def self.headers
       headers = {}
-      netbox_auth_config = NetboxClientRuby.config.netbox.auth
-
-      raise LocalError, 'The authorization_token has not been configured.' unless netbox_auth_config.token
-
-      headers['Authorization'] = "Token #{netbox_auth_config.token}"
+      auth_token = auth_config.token
+      headers['Authorization'] = "Token #{auth_token}" if auth_token
       headers
+    end
+
+    def self.auth_config
+      netbox_config.auth
+    end
+
+    def self.netbox_config
+      NetboxClientRuby.config.netbox
     end
 
     private_class_method def self.build_faraday
