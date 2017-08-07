@@ -10,6 +10,12 @@ module NetboxClientRuby
     setting :api_base_url
     setting :auth do
       setting :token
+      setting :rsa_private_key do
+        # the default is intentionally not `~/.ssh/id_rsa`,
+        # to not accidentally leak someone's main rsa private key
+        setting :path, '~/.ssh/netbox_rsa'
+        setting :password
+      end
     end
     setting :pagination do
       setting :default_limit, 50
