@@ -1,5 +1,16 @@
 version: '2'
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.3.4
+    image: netbox-client-ruby:2.3.4
+    command: 'docker/start.test.sh'
+  app24:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.4.1
+    image: netbox-client-ruby:2.4.1
     command: 'docker/start.test.sh'

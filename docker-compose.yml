@@ -1,7 +1,21 @@
 version: '2'
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.3.4
+    image: netbox-client-ruby:2.3.4
+    depends_on:
+      - nginx
+    volumes:
+      - .:/app
+  app24:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.4.1
+    image: netbox-client-ruby:2.4.1
     depends_on:
       - nginx
     volumes:
