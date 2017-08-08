@@ -28,6 +28,22 @@ module NetboxClientRuby
         end
       end
 
+      describe '#plaintext' do
+        context 'no plaintext value' do
+          it 'should return a nil value' do
+            expect(subject.plaintext).to be_nil
+          end
+        end
+
+        context 'a plaintext value' do
+          let(:response) { File.read("spec/fixtures/secrets/secret_#{secret_id}_with_plaintext.json") }
+
+          it 'should return the plaintext value' do
+            expect(subject.plaintext).to eql('n00b')
+          end
+        end
+      end
+
       describe '.delete' do
         let(:request_method) { :delete }
         let(:response_status) { 204 }

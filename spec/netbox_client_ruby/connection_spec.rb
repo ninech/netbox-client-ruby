@@ -26,6 +26,24 @@ describe NetboxClientRuby::Connection do
       expect(actual_headers['Authorization']).to eq 'Token 2e35594ec8710e9922d14365a1ea66f27ea69450'
     end
 
+    context 'session_key given' do
+      let(:expected_session_key) { 'lolkeyhaha' }
+
+      before do
+        NetboxClientRuby::Secrets.session_key = expected_session_key
+      end
+
+      it 'adds the session_key header if available' do
+        actual_headers = NetboxClientRuby::Connection.new.headers
+
+        expect(actual_headers['X-Session-Key']).to eq expected_session_key
+      end
+
+      after do
+        NetboxClientRuby::Secrets.session_key = nil
+      end
+    end
+
     it 'sets the adapter' do
       expect(NetboxClientRuby::Connection.new.builder.handlers)
         .to include Faraday::Adapter::NetHttp

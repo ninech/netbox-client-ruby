@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ninech/netbox-client-ruby.svg?branch=master)](https://travis-ci.org/ninech/netbox-client-ruby)
 [![Gem Version](https://badge.fury.io/rb/netbox-client-ruby.svg)](https://badge.fury.io/rb/netbox-client-ruby)
+[![Code Climate](https://codeclimate.com/github/ninech/netbox-client-ruby/badges/gpa.svg)](https://codeclimate.com/github/ninech/netbox-client-ruby)
 
 This is a gem to pragmatically access your [Netbox instance](https://github.com/digitalocean/netbox)
 via it's API from Ruby. This gem is currently only compatible with Netbox v2.
@@ -36,6 +37,8 @@ NetboxClientRuby.configure do |config|
   config.netbox.api_base_url = 'http://netbox.local/api/'
 
   # these are optional:
+  config.netbox.auth.rsa_private_key.path = '~/.ssh/netbox_rsa'
+  config.netbox.auth.rsa_private_key.password = ''
   config.netbox.pagination.default_limit = 50
   config.faraday.adapter = Faraday.default_adapter
   config.faraday.request_options = { open_timeout: 1, timeout: 5 }
@@ -57,6 +60,7 @@ So if the URL is `/api/dcim/sites.json`, then the corresponding Ruby code would 
 NetboxClientRuby.configure do |c|
   c.netbox.auth.token = '2e35594ec8710e9922d14365a1ea66f27ea69450'
   c.netbox.api_base_url = 'http://netbox.local/api/'
+  c.netbox.auth.rsa_private_key.path = '~/.ssh/netbox_rsa'
 end
 
 # get all sites
@@ -71,6 +75,23 @@ puts "The first site is called #{first_site.name}."
 # Note that Netbox filters by *slug*
 devices_of_site = NetboxClientRuby.dcim.devices.filter(site: first_site.slug)
 puts "#{devices_of_site.total} devices belong to the site. #{devices_of_site}.length devices have been fetched."
+
+# working with secrets
+secrets = NetboxClientRuby.secrets.secrets
+puts "#{secrets.total} secrets are in your Netbox."
+secrets[0].plaintext # => nil, because you have not yet defined a session_key
+NetboxClientRuby.secrets.get_session_key # now get a session_key
+secrets = NetboxClientRuby.secrets.secrets # you must reload the data from the server
+secrets[0].plaintext # => 'super secret password'
+
+# optionally, you can persist the session_key:
+session_key = NetboxClientRuby.secrets.get_session_key.session_key
+FILE_NAME = File.expand_path('~/.netbox_session_key').freeze
+File.write(FILE_NAME, session_key)
+
+# later on, you can restore the persisted session_key:
+persisted_session_key = File.read(FILE_NAME)
+NetboxClientRuby.secrets.session_key = persisted_session_key
 ```
 
 ## Available Objects

@@ -4,6 +4,8 @@ describe NetboxClientRuby do
   it 'is configurable' do
     NetboxClientRuby.configure do |config|
       config.netbox.auth.token = 'my_very_special_token'
+      config.netbox.auth.rsa_private_key.path = 'spec/fixtures/rsa_private_key'
+      config.netbox.auth.rsa_private_key.password = 'password'
       config.netbox.api_base_url = 'https://netbox.test/api/'
       config.netbox.pagination.default_limit = 42
       config.netbox.pagination.max_limit = 84
@@ -14,6 +16,10 @@ describe NetboxClientRuby do
 
     expect(NetboxClientRuby.config.netbox.auth.token)
       .to eq 'my_very_special_token'
+    expect(NetboxClientRuby.config.netbox.auth.rsa_private_key.path)
+      .to eq 'spec/fixtures/rsa_private_key'
+    expect(NetboxClientRuby.config.netbox.auth.rsa_private_key.password)
+      .to eq 'password'
     expect(NetboxClientRuby.config.netbox.api_base_url)
       .to eq 'https://netbox.test/api/'
     expect(NetboxClientRuby.config.netbox.pagination.default_limit)
