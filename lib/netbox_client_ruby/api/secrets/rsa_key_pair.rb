@@ -25,10 +25,10 @@ module NetboxClientRuby
 
       def get
         if authorization_token
-          @response ||= response connection.get PATH
+          @response ||= response connection.get(PATH)
         else
           raise LocalError,
-                "The authorization_token has not been configured, but it's required for get-session-ke."
+                "The authorization_token has not been configured, but it's required for get-session-key."
         end
       end
 
