@@ -118,6 +118,11 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * VLANs
   * VLAN Groups
   * VRFs
+* Secrets:
+  * Secrets
+  * Secret Roles
+  * get-session-key
+  * generate-rsa-key-pair
 * Tenancy:
   * Tenant
   * Tenant Groups
