@@ -93,9 +93,10 @@ describe NetboxClientRuby::Entity do
   let(:faraday_stubs) { Faraday::Adapter::Test::Stubs.new }
   let(:faraday) do
     Faraday.new(url: 'https://netbox.test/api/', headers: NetboxClientRuby::Connection.headers) do |faraday|
-      faraday.adapter :test, faraday_stubs
-      faraday.request :json
+      # Commented because of https://github.com/lostisland/faraday/issues/717
+      # faraday.request :json
       faraday.response :json, content_type: /\bjson$/
+      faraday.adapter :test, faraday_stubs
     end
   end
   let(:response_json) do
