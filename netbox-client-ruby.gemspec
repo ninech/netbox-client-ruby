@@ -30,7 +30,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'dry-configurable', '~> 0.1'
-  spec.add_runtime_dependency 'faraday', '>= 0.11'
+  # see https://github.com/lostisland/faraday/issues/717
+  spec.add_runtime_dependency 'faraday', '>= 0.11', '<= 0.12.1'
   spec.add_runtime_dependency 'faraday_middleware', '~> 0.11.0'
   spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
   spec.add_runtime_dependency 'ipaddress', '>= 0.8.3'
