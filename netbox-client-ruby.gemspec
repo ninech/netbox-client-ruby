@@ -13,13 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/ninech/netbox-client-ruby'
   spec.license       = 'MIT'
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
   end
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
@@ -30,8 +25,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'dry-configurable', '~> 0.1'
-  # see https://github.com/lostisland/faraday/issues/717
-  spec.add_runtime_dependency 'faraday', '>= 0.11', '<= 0.12.1'
+  spec.add_runtime_dependency 'faraday', '>= 0.11.0'
   spec.add_runtime_dependency 'faraday_middleware', '~> 0.11.0'
   spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
   spec.add_runtime_dependency 'ipaddress', '>= 0.8.3'
