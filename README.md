@@ -27,7 +27,7 @@ Or install it manually:
 
 ### Configuration
 
-Put this somewhere, where it runs, before any call to anything else of Cloudflair.
+Put this somewhere, where it runs, before any call to anything else of Netbox.
 If you are using Rails, then this would probably be somewhere underneath /config.
 
 ```ruby
