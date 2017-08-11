@@ -76,6 +76,32 @@ puts "The first site is called #{first_site.name}."
 devices_of_site = NetboxClientRuby.dcim.devices.filter(site: first_site.slug)
 puts "#{devices_of_site.total} devices belong to the site. #{devices_of_site}.length devices have been fetched."
 
+# get a site by id
+s = NetboxClientRuby.dcim.site(1)
+
+# update a site
+s.update(name: 'Zurich', slug: 'zrh')
+
+# update a site (alternative)
+s.name = 'Amsterdam'
+s.slug = 'ams'
+s.save
+
+# create a site
+new_s = NetboxClientRuby::DCIM::Site.new
+new_s.name = 'Berlin'
+new_s.slug = 'ber'
+new_s.save
+
+# create a site (alternative)
+new_s = NetboxClientRuby::DCIM::Site
+          .new(name: 'Berlin', slug: 'ber')
+          .save
+
+# delete a site
+s = NetboxClientRuby.dcim.site(1)
+s.delete
+
 # working with secrets
 secrets = NetboxClientRuby.secrets.secrets
 puts "#{secrets.total} secrets are in your Netbox."
