@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    netbox-client-ruby (0.1.1)
+    netbox-client-ruby (0.1.2)
       dry-configurable (~> 0.1)
       faraday (>= 0.11.0)
       faraday-detailed_logger (~> 2.1)
@@ -20,14 +20,14 @@ GEM
       concurrent-ruby (~> 1.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
-    faraday-detailed_logger (2.1.1)
+    faraday-detailed_logger (2.1.2)
       faraday (~> 0.8)
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
     ipaddress (0.8.3)
     method_source (0.8.2)
     multipart-post (2.0.0)
-    openssl (2.0.5)
+    openssl (2.0.6)
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
@@ -76,4 +76,4 @@ DEPENDENCIES
   rubocop-rspec (~> 1.15)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
