@@ -159,6 +159,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## About
 
-This gem is currently maintained and funded by [nine.ch](https://nine.ch).
+This gem is currently maintained and funded by [nine](https://nine.ch).
 
-[![nine.ch logo](https://blog.nine.ch/assets/logo.png)](https://nine.ch)
+[![logo of the company 'nine'](https://logo.apps.at-nine.ch/Dmqied_eSaoBMQwk3vVgn4UIgDo=/trim/500x0/logo_claim.png)](https://www.nine.ch)
