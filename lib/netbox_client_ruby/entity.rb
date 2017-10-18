@@ -104,17 +104,22 @@ module NetboxClientRuby
       end
     end
 
-    def initialize(given_ids = nil)
-      return self if given_ids.nil?
+    def initialize(given_values = nil)
+      return self if given_values.nil?
 
-      if id_fields.count == 1 && !given_ids.is_a?(Hash)
-        instance_variable_set("@#{id_fields.keys.first}", given_ids)
+      if id_fields.count == 1 && !given_values.is_a?(Hash)
+        instance_variable_set("@#{id_fields.keys.first}", given_values)
         return self
       end
 
-      check_given_ids(given_ids)
-
-      given_ids.each { |id_field, id_value| instance_variable_set "@#{id_field}", id_value }
+      given_values.each do |field, value|
+        if id_fields.key? field.to_s
+          instance_variable_set "@#{field}", value
+        else
+          # via method_missing, because it checks for readonly fields, etc.
+          method_missing("#{field}=", value)
+        end
+      end
 
       self
     end
@@ -189,12 +194,10 @@ module NetboxClientRuby
         is_instance_variable = instance_variables.include?("@#{name[0..-2]}".to_sym)
         not_this_classes_business = is_readonly_field || is_instance_variable
 
-        if not_this_classes_business
-          super
-        else
-          dirty_data[name[0..-2]] = args[0]
-          return args[0]
-        end
+        return super if not_this_classes_business
+
+        dirty_data[name[0..-2]] = args[0]
+        return args[0]
       end
 
       return dirty_data[name] if dirty_data.key? name
@@ -245,21 +248,6 @@ module NetboxClientRuby
       @data.merge! response_data
       revert
       self
-    end
-
-    def check_given_ids(given_ids)
-      if !given_ids.is_a? Hash
-        raise ArgumentError, "'#{self.class}.new' expects the argument to be a Hash when multiple ids are defined"
-      elsif given_ids.empty?
-        raise ArgumentError, "'#{self.class}.new' expects a the argument to not be empty."
-      end
-
-      missing_ids = id_fields.keys - given_ids.keys.map(&:to_s)
-
-      unless missing_ids.empty?
-        raise ArgumentError,
-              "'#{self.class}.new' expects a value for all defined IDs. The following values are missing: '#{missing_ids.join(', ')}'"
-      end
     end
 
     def data

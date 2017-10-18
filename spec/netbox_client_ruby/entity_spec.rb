@@ -23,6 +23,7 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
 
     id test_id: 'id'
     readonly_fields :counter
+    creation_path 'tests/'
     # not deletable
 
     path 'tests/42'
@@ -182,6 +183,17 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
         subject.save
       end
 
+      it 'parses the response' do
+        expect(faraday).to_not receive(:get)
+
+        subject[:name] = name
+
+        subject.save
+
+        expect(subject.test_id).to be(43)
+        expect(subject.boolean).to be(true)
+      end
+
       context 'save with more data' do
         let(:hash) { { 'one' => 1, 'two' => 2 } }
         let(:array) { [1, 2, 3] }
@@ -221,15 +233,14 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
         end
       end
 
-      it 'parses the response' do
-        expect(faraday).to_not receive(:get)
+      context 'by supplying values through the constructor' do
+        let(:subject) { TestEntity2.new name: name }
 
-        subject[:name] = name
+        it 'does a proper POST upon save' do
+          expect(faraday).to receive(:post).and_call_original
 
-        subject.save
-
-        expect(subject.test_id).to be(43)
-        expect(subject.boolean).to be(true)
+          subject.save
+        end
       end
     end
   end
