@@ -1,0 +1,647 @@
+{
+    "count": 50,
+    "next": "http://localhost/api/dcim/power-ports/?limit=50&offset=50",
+    "previous": null,
+    "results": [
+        {
+            "id": 2,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "1",
+            "power_outlet": null,
+            "connection_status": null
+        },
+        {
+            "id": 1,
+            "device": {
+                "id": 2,
+                "url": "http://localhost/api/dcim/devices/2/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "p1",
+            "power_outlet": {
+                "id": 6,
+                "device": {
+                    "id": 10,
+                    "url": "http://localhost/api/dcim/devices/10/",
+                    "name": "device",
+                    "display_name": "device"
+                },
+                "name": "6",
+                "connected_port": 1
+            },
+            "connection_status": true
+        },
+        {
+            "id": 3,
+            "device": {
+                "id": 3,
+                "url": "http://localhost/api/dcim/devices/3/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu1",
+            "power_outlet": {
+                "id": 8,
+                "device": {
+                    "id": 10,
+                    "url": "http://localhost/api/dcim/devices/10/",
+                    "name": "device",
+                    "display_name": "device"
+                },
+                "name": "8",
+                "connected_port": 3
+            },
+            "connection_status": true
+        },
+        {
+            "id": 46,
+            "device": {
+                "id": 58,
+                "url": "http://localhost/api/dcim/devices/58/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 47,
+            "device": {
+                "id": 58,
+                "url": "http://localhost/api/dcim/devices/58/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 14,
+            "device": {
+                "id": 32,
+                "url": "http://localhost/api/dcim/devices/32/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 15,
+            "device": {
+                "id": 32,
+                "url": "http://localhost/api/dcim/devices/32/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 16,
+            "device": {
+                "id": 33,
+                "url": "http://localhost/api/dcim/devices/33/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 17,
+            "device": {
+                "id": 33,
+                "url": "http://localhost/api/dcim/devices/33/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 24,
+            "device": {
+                "id": 42,
+                "url": "http://localhost/api/dcim/devices/42/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 25,
+            "device": {
+                "id": 42,
+                "url": "http://localhost/api/dcim/devices/42/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 26,
+            "device": {
+                "id": 43,
+                "url": "http://localhost/api/dcim/devices/43/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 27,
+            "device": {
+                "id": 43,
+                "url": "http://localhost/api/dcim/devices/43/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 52,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 53,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 54,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L3",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 55,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 56,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 57,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L3",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 62,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 63,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 64,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "L3",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 48,
+            "device": {
+                "id": 59,
+                "url": "http://localhost/api/dcim/devices/59/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 49,
+            "device": {
+                "id": 59,
+                "url": "http://localhost/api/dcim/devices/59/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 34,
+            "device": {
+                "id": 52,
+                "url": "http://localhost/api/dcim/devices/52/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 35,
+            "device": {
+                "id": 52,
+                "url": "http://localhost/api/dcim/devices/52/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 36,
+            "device": {
+                "id": 53,
+                "url": "http://localhost/api/dcim/devices/53/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 37,
+            "device": {
+                "id": 53,
+                "url": "http://localhost/api/dcim/devices/53/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 38,
+            "device": {
+                "id": 54,
+                "url": "http://localhost/api/dcim/devices/54/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 39,
+            "device": {
+                "id": 54,
+                "url": "http://localhost/api/dcim/devices/54/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 40,
+            "device": {
+                "id": 55,
+                "url": "http://localhost/api/dcim/devices/55/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 41,
+            "device": {
+                "id": 55,
+                "url": "http://localhost/api/dcim/devices/55/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 22,
+            "device": {
+                "id": 36,
+                "url": "http://localhost/api/dcim/devices/36/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 23,
+            "device": {
+                "id": 36,
+                "url": "http://localhost/api/dcim/devices/36/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 12,
+            "device": {
+                "id": 24,
+                "url": "http://localhost/api/dcim/devices/24/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 13,
+            "device": {
+                "id": 24,
+                "url": "http://localhost/api/dcim/devices/24/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 6,
+            "device": {
+                "id": 13,
+                "url": "http://localhost/api/dcim/devices/13/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 7,
+            "device": {
+                "id": 13,
+                "url": "http://localhost/api/dcim/devices/13/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 50,
+            "device": {
+                "id": 60,
+                "url": "http://localhost/api/dcim/devices/60/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 51,
+            "device": {
+                "id": 60,
+                "url": "http://localhost/api/dcim/devices/60/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 4,
+            "device": {
+                "id": 4,
+                "url": "http://localhost/api/dcim/devices/4/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu1",
+            "power_outlet": {
+                "id": 5,
+                "device": {
+                    "id": 10,
+                    "url": "http://localhost/api/dcim/devices/10/",
+                    "name": "device",
+                    "display_name": "device"
+                },
+                "name": "5",
+                "connected_port": 4
+            },
+            "connection_status": true
+        },
+        {
+            "id": 5,
+            "device": {
+                "id": 5,
+                "url": "http://localhost/api/dcim/devices/5/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "psu1",
+            "power_outlet": {
+                "id": 4,
+                "device": {
+                    "id": 10,
+                    "url": "http://localhost/api/dcim/devices/10/",
+                    "name": "device",
+                    "display_name": "device"
+                },
+                "name": "4",
+                "connected_port": 5
+            },
+            "connection_status": true
+        },
+        {
+            "id": 18,
+            "device": {
+                "id": 35,
+                "url": "http://localhost/api/dcim/devices/35/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 19,
+            "device": {
+                "id": 35,
+                "url": "http://localhost/api/dcim/devices/35/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 20,
+            "device": {
+                "id": 34,
+                "url": "http://localhost/api/dcim/devices/34/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": null
+        },
+        {
+            "id": 21,
+            "device": {
+                "id": 34,
+                "url": "http://localhost/api/dcim/devices/34/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 30,
+            "device": {
+                "id": 47,
+                "url": "http://localhost/api/dcim/devices/47/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 31,
+            "device": {
+                "id": 47,
+                "url": "http://localhost/api/dcim/devices/47/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 28,
+            "device": {
+                "id": 44,
+                "url": "http://localhost/api/dcim/devices/44/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 1",
+            "power_outlet": null,
+            "connection_status": true
+        },
+        {
+            "id": 29,
+            "device": {
+                "id": 44,
+                "url": "http://localhost/api/dcim/devices/44/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "PSU 2",
+            "power_outlet": null,
+            "connection_status": true
+        }
+    ]
+}

@@ -1,0 +1,557 @@
+{
+    "count": 50,
+    "next": "http://localhost/api/dcim/power-outlets/?limit=50&offset=50",
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "1",
+            "connected_port": null
+        },
+        {
+            "id": 2,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "2",
+            "connected_port": null
+        },
+        {
+            "id": 3,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "3",
+            "connected_port": null
+        },
+        {
+            "id": 4,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "4",
+            "connected_port": 5
+        },
+        {
+            "id": 5,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "5",
+            "connected_port": 4
+        },
+        {
+            "id": 6,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "6",
+            "connected_port": 1
+        },
+        {
+            "id": 7,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "7",
+            "connected_port": null
+        },
+        {
+            "id": 8,
+            "device": {
+                "id": 10,
+                "url": "http://localhost/api/dcim/devices/10/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "8",
+            "connected_port": 3
+        },
+        {
+            "id": 109,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P1",
+            "connected_port": null
+        },
+        {
+            "id": 110,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P2",
+            "connected_port": null
+        },
+        {
+            "id": 111,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P3",
+            "connected_port": null
+        },
+        {
+            "id": 112,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P4",
+            "connected_port": null
+        },
+        {
+            "id": 113,
+            "device": {
+                "id": 62,
+                "url": "http://localhost/api/dcim/devices/62/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P5",
+            "connected_port": null
+        },
+        {
+            "id": 114,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P1",
+            "connected_port": null
+        },
+        {
+            "id": 115,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P2",
+            "connected_port": null
+        },
+        {
+            "id": 116,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P3",
+            "connected_port": null
+        },
+        {
+            "id": 117,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P4",
+            "connected_port": null
+        },
+        {
+            "id": 118,
+            "device": {
+                "id": 63,
+                "url": "http://localhost/api/dcim/devices/63/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P5",
+            "connected_port": null
+        },
+        {
+            "id": 142,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P1",
+            "connected_port": 72
+        },
+        {
+            "id": 149,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P2",
+            "connected_port": 65
+        },
+        {
+            "id": 150,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P3",
+            "connected_port": 66
+        },
+        {
+            "id": 151,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P4",
+            "connected_port": 69
+        },
+        {
+            "id": 152,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P5",
+            "connected_port": 67
+        },
+        {
+            "id": 153,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P6",
+            "connected_port": 73
+        },
+        {
+            "id": 154,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P7",
+            "connected_port": 78
+        },
+        {
+            "id": 155,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P8",
+            "connected_port": 79
+        },
+        {
+            "id": 156,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P9",
+            "connected_port": 68
+        },
+        {
+            "id": 143,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P10",
+            "connected_port": 74
+        },
+        {
+            "id": 144,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P11",
+            "connected_port": 76
+        },
+        {
+            "id": 145,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P12",
+            "connected_port": 70
+        },
+        {
+            "id": 146,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P13",
+            "connected_port": 75
+        },
+        {
+            "id": 147,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P14",
+            "connected_port": 71
+        },
+        {
+            "id": 148,
+            "device": {
+                "id": 66,
+                "url": "http://localhost/api/dcim/devices/66/",
+                "name": "device",
+                "display_name": "device"
+            },
+            "name": "P15",
+            "connected_port": 77
+        },
+        {
+            "id": 101,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "1",
+            "connected_port": null
+        },
+        {
+            "id": 93,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "1",
+            "connected_port": null
+        },
+        {
+            "id": 102,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "2",
+            "connected_port": null
+        },
+        {
+            "id": 94,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "2",
+            "connected_port": null
+        },
+        {
+            "id": 95,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "3",
+            "connected_port": null
+        },
+        {
+            "id": 103,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "3",
+            "connected_port": null
+        },
+        {
+            "id": 104,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "4",
+            "connected_port": null
+        },
+        {
+            "id": 96,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "4",
+            "connected_port": null
+        },
+        {
+            "id": 105,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "5",
+            "connected_port": null
+        },
+        {
+            "id": 97,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "5",
+            "connected_port": null
+        },
+        {
+            "id": 106,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "6",
+            "connected_port": null
+        },
+        {
+            "id": 98,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "6",
+            "connected_port": null
+        },
+        {
+            "id": 107,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "7",
+            "connected_port": null
+        },
+        {
+            "id": 99,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "7",
+            "connected_port": null
+        },
+        {
+            "id": 108,
+            "device": {
+                "id": 49,
+                "url": "http://localhost/api/dcim/devices/49/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "8",
+            "connected_port": null
+        },
+        {
+            "id": 100,
+            "device": {
+                "id": 48,
+                "url": "http://localhost/api/dcim/devices/48/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "8",
+            "connected_port": null
+        },
+        {
+            "id": 181,
+            "device": {
+                "id": 70,
+                "url": "http://localhost/api/dcim/devices/70/",
+                "name": null,
+                "display_name": "device"
+            },
+            "name": "C13-1",
+            "connected_port": null
+        }
+    ]
+}
