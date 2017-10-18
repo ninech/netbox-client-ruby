@@ -39,7 +39,7 @@ describe NetboxClientRuby::Communication do
 
   describe 'http status checks' do
     context '204 No Content' do
-      let(:response) { double('response', status: 204) }
+      let(:response) { double('response', status: 204, body: nil) }
 
       it 'returns and empty object' do
         expect(subject.response(response)).to eq({})
@@ -47,7 +47,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '304 Not Modified' do
-      let(:response) { double('response', status: 304) }
+      let(:response) { double('response', status: 304, body: nil) }
 
       it 'returns and empty object' do
         expect(subject.response(response)).to be_nil
@@ -55,7 +55,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '400 Bad Request' do
-      let(:response) { double('response', status: 400) }
+      let(:response) { double('response', status: 400, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -63,7 +63,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '401 Unauthorized' do
-      let(:response) { double('response', status: 401) }
+      let(:response) { double('response', status: 401, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -71,15 +71,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '403 Forbidden' do
-      let(:response) { double('response', status: 403) }
-
-      it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
-      end
-    end
-
-    context '429 Too many requests' do
-      let(:response) { double('response', status: 429) }
+      let(:response) { double('response', status: 403, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -87,7 +79,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '405 Method Not Allowed' do
-      let(:response) { double('response', status: 405) }
+      let(:response) { double('response', status: 405, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -95,7 +87,15 @@ describe NetboxClientRuby::Communication do
     end
 
     context '415 Unsupported Media Type' do
-      let(:response) { double('response', status: 415) }
+      let(:response) { double('response', status: 415, body: nil) }
+
+      it 'returns and empty object' do
+        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+      end
+    end
+
+    context '429 Too many requests' do
+      let(:response) { double('response', status: 429, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -103,7 +103,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '499 Random' do
-      let(:response) { double('response', status: 499) }
+      let(:response) { double('response', status: 499, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
@@ -111,7 +111,7 @@ describe NetboxClientRuby::Communication do
     end
 
     context '500 Internal Server Error' do
-      let(:response) { double('response', status: 500) }
+      let(:response) { double('response', status: 500, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::RemoteError
@@ -119,10 +119,18 @@ describe NetboxClientRuby::Communication do
     end
 
     context '600 Undefined Error' do
-      let(:response) { double('response', status: 600) }
+      let(:response) { double('response', status: 600, body: nil) }
 
       it 'returns and empty object' do
         expect { subject.response response }.to raise_error NetboxClientRuby::RemoteError
+      end
+    end
+
+    context '400 Bad Request with body' do
+      let(:response) { double('response', status: 400, body: 'you did it all wrong') }
+
+      it 'returns and empty object' do
+        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
       end
     end
   end

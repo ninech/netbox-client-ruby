@@ -8,7 +8,7 @@ module NetboxClientRuby
       return nil if response.status == 304
       return {} if response.status == 204
 
-      raise_on_http_error response.status
+      raise_on_http_error response
 
       read response
     end
@@ -32,43 +32,60 @@ module NetboxClientRuby
 
     private
 
+    def sanitize_variable_name(raw_name)
+      raw_name.gsub(/[^a-zA-Z0-9_]/, '_')
+    end
+
     def read(response)
       response.body
     end
 
-    def raise_on_http_error(status)
+    def raise_on_http_error(response)
+      status = response.status
+      body = response.body
+
       case status
       when 200..399 then
       when 400..499 then
-        raise_on_http_client_error status
+        raise_on_http_client_error response
       when 500..599 then
-        raise NetboxClientRuby::RemoteError, "#{status} Remote Error"
+        raise NetboxClientRuby::RemoteError, "#{status} Remote Error#{formatted_body(body)}"
       else
-        raise NetboxClientRuby::RemoteError, "#{status} Unknown Error Code"
+        raise NetboxClientRuby::RemoteError, "#{status} Unknown Error Code#{formatted_body(body)}"
       end
     end
 
-    def raise_on_http_client_error(status)
+    def raise_on_http_client_error(response)
+      status = response.status
+      body = response.body
+
       case status
       when 400 then
-        raise NetboxClientRuby::ClientError, '400 Bad Request'
+        raise_client_error '400 Bad Request', body
       when 401 then
-        raise NetboxClientRuby::ClientError, '401 Unauthorized'
+        raise_client_error '401 Unauthorized', body
       when 403 then
-        raise NetboxClientRuby::ClientError, '403 Forbidden'
+        raise_client_error '403 Forbidden', body
       when 405 then
-        raise NetboxClientRuby::ClientError, '405 Method Not Allowed'
+        raise_client_error '405 Method Not Allowed', body
       when 415 then
-        raise NetboxClientRuby::ClientError, '415 Unsupported Media Type'
+        raise_client_error '415 Unsupported Media Type', body
       when 429 then
-        raise NetboxClientRuby::ClientError, '429 Too Many Requests'
+        raise_client_error '429 Too Many Requests', body
       else
-        raise NetboxClientRuby::ClientError, "#{status} Request Error"
+        raise_client_error "#{status} Request Error", body
       end
     end
 
-    def sanitize_variable_name(raw_name)
-      raw_name.gsub(/[^a-zA-Z0-9_]/, '_')
+    def raise_client_error(message, body = nil)
+      raise NetboxClientRuby::ClientError, "#{message}#{formatted_body(body)}"
+    end
+
+    def formatted_body(body)
+      return '' if body.nil? || body.empty?
+      shortened = body.to_s[0, 50]
+      one_line = shortened.gsub(/\n/, '\n')
+      " (#{one_line})"
     end
   end
 end
