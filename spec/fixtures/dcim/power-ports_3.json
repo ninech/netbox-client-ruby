@@ -1,0 +1,22 @@
+{
+    "id": 3,
+    "device": {
+        "id": 3,
+        "url": "http://localhost/api/dcim/devices/3/",
+        "name": "device",
+        "display_name": "device"
+    },
+    "name": "psu1",
+    "power_outlet": {
+        "id": 8,
+        "device": {
+            "id": 10,
+            "url": "http://localhost/api/dcim/devices/10/",
+            "name": "device",
+            "display_name": "device"
+        },
+        "name": "8",
+        "connected_port": 3
+    },
+    "connection_status": true
+}

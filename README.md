@@ -132,6 +132,8 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Interfaces
   * Manufacturers
   * Platforms
+  * Power Outlets
+  * Power Ports
   * Racks
   * Regions
   * Sites
@@ -152,7 +154,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
 * Tenancy:
   * Tenant
   * Tenant Groups
-  
+
 If you can't find the object you need, also check
 [the source code](https://github.com/ninech/netbox-client-ruby/tree/master/lib/netbox_client_ruby/api)
 if it was added in the meantime without the list above having been updated.
