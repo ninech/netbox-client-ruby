@@ -17,6 +17,8 @@ require 'netbox_client_ruby/api/dcim/power_outlets'
 require 'netbox_client_ruby/api/dcim/power_port'
 require 'netbox_client_ruby/api/dcim/power_ports'
 require 'netbox_client_ruby/api/dcim/rack'
+require 'netbox_client_ruby/api/dcim/rack_group'
+require 'netbox_client_ruby/api/dcim/rack_groups'
 require 'netbox_client_ruby/api/dcim/racks'
 require 'netbox_client_ruby/api/dcim/region'
 require 'netbox_client_ruby/api/dcim/regions'
@@ -37,6 +39,7 @@ module NetboxClientRuby
       power_outlets: PowerOutlets,
       power_ports: PowerPorts,
       racks: Racks,
+      rack_groups: RackGroups,
       regions: Regions,
       sites: Sites
     }.each_pair do |method_name, class_name|
@@ -55,6 +58,7 @@ module NetboxClientRuby
       power_outlet: PowerOutlet,
       power_port: PowerPort,
       rack: Rack,
+      rack_group: RackGroup,
       region: Region,
       site: Site
     }.each_pair do |method_name, class_name|

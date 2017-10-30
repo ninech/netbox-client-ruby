@@ -1,0 +1,38 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "asn": 29691,
+      "comments": "",
+      "contact_email": "no@where",
+      "contact_name": "Vorderer Hintermayer",
+      "contact_phone": "+41 12 345 56 89",
+      "count_circuits": 0,
+      "count_devices": 0,
+      "count_prefixes": 0,
+      "count_racks": 0,
+      "count_vlans": 0,
+      "custom_fields": {},
+      "facility": "Colozüri",
+      "id": 2,
+      "name": "Colozüri 4.1",
+      "physical_address": "colozüri.ch AG\r\nBadenerstrasse 569\r\nCH-8048 Zurich",
+      "region": {
+        "id": 2,
+        "name": "Zürich-City",
+        "slug": "zrich-city",
+        "url": "http://netbox/api/dcim/regions/2.json"
+      },
+      "shipping_address": "colozüri.ch AG\r\nBadenerstrasse 569\r\nCH-8048 Zurich",
+      "slug": "cz41",
+      "tenant": {
+        "id": 1,
+        "name": "Nine",
+        "slug": "nine",
+        "url": "http://netbox/api/tenancy/tenants/1.json"
+      }
+    }
+  ]
+}
