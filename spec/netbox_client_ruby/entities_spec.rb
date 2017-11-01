@@ -96,14 +96,14 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     end
   end
 
-  describe '#as_array' do
+  describe '#to_a' do
     it 'returns an Array' do
-      expect(subject.as_array).to be_a Array
-      expect(subject.as_array.length).to be 3
+      expect(subject.to_a).to be_a Array
+      expect(subject.to_a.length).to be 3
     end
 
     it 'returns the entities as array' do
-      subject.as_array.each do |entity|
+      subject.to_a.each do |entity|
         expect(entity).to be_a OpenStruct
         expect(entity).to respond_to :data
         expect(entity.data).to be_a Hash
@@ -111,7 +111,26 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     end
 
     it 'returns a fresh Array every time' do
-      expect(subject.as_array).to_not be subject.as_array
+      expect(subject.to_a).to_not be subject.to_a
+    end
+  end
+
+  describe '#each' do
+    it 'yields all items once' do
+      count = 0
+      subject.each do |_entity|
+        count += 1
+      end
+
+      expect(count).to eq(3)
+    end
+
+    it 'yields a single entity of the expected type' do
+      subject.each do |entity|
+        expect(entity).to be_a OpenStruct
+        expect(entity).to respond_to :data
+        expect(entity.data).to be_a Hash
+      end
     end
   end
 
@@ -136,7 +155,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
 
     describe '#as_array' do
       it 'returns an empty Array' do
-        expect(subject.as_array).to eq []
+        expect(subject.to_a).to eq []
       end
     end
 

@@ -44,11 +44,11 @@ module NetboxClientRuby
 
       describe '#as_array' do
         it 'return the correct amount' do
-          expect(subject.as_array.length).to be 1
+          expect(subject.to_a.length).to be 1
         end
 
         it 'returns single instances' do
-          subject.as_array.each do |element|
+          subject.to_a.each do |element|
             expect(element).to be_a Secret
           end
         end
