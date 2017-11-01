@@ -115,6 +115,25 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     end
   end
 
+  describe '#each' do
+    it 'yields all items once' do
+      count = 0
+      subject.each do |_entity|
+        count += 1
+      end
+
+      expect(count).to eq(3)
+    end
+
+    it 'yields a single entity of the expected type' do
+      subject.each do |entity|
+        expect(entity).to be_a OpenStruct
+        expect(entity).to respond_to :data
+        expect(entity.data).to be_a Hash
+      end
+    end
+  end
+
   describe '#[]' do
     it 'returns the requested item as correct type' do
       expect(subject[0]).to be_a OpenStruct

@@ -4,6 +4,7 @@ require 'netbox_client_ruby/error/local_error'
 module NetboxClientRuby
   module Entities
     include NetboxClientRuby::Communication
+    include Enumerable
 
     def self.included(other_klass)
       other_klass.extend ClassMethods
@@ -120,8 +121,8 @@ module NetboxClientRuby
       as_entity raw_data_array[index]
     end
 
-    def to_a
-      raw_data_array.map { |raw_entity| as_entity raw_entity }
+    def each
+      raw_data_array.each { |raw_entity| yield as_entity(raw_entity) }
     end
 
     ##
