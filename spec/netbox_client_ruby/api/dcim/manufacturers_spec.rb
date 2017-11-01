@@ -42,11 +42,11 @@ describe NetboxClientRuby::DCIM::Regions, faraday_stub: true do
 
   describe '#as_array' do
     it 'return the correct amount' do
-      expect(subject.as_array.length).to be 2
+      expect(subject.to_a.length).to be 2
     end
 
     it 'returns Site instances' do
-      subject.as_array.each do |element|
+      subject.to_a.each do |element|
         expect(element).to be_a NetboxClientRuby::DCIM::Region
       end
     end

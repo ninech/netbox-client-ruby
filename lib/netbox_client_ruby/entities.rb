@@ -120,7 +120,7 @@ module NetboxClientRuby
       as_entity raw_data_array[index]
     end
 
-    def as_array
+    def to_a
       raw_data_array.map { |raw_entity| as_entity raw_entity }
     end
 
