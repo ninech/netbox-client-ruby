@@ -10,7 +10,7 @@ module NetboxClientRuby
       deletable true
       path 'ipam/vlan-groups/:id.json'
       creation_path 'ipam/vlan-groups/'
-      object_fields site: proc { |raw_data| Site.new raw_data['id'] }
+      object_fields site: proc { |raw_data| DCIM::Site.new raw_data['id'] }
     end
   end
 end
