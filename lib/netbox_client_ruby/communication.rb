@@ -45,8 +45,8 @@ module NetboxClientRuby
       body = response.body
 
       case status
-      when 200..399 then
-      when 400..499 then
+      when 200..299 then
+      when 300..499 then
         raise_on_http_client_error response
       when 500..599 then
         raise NetboxClientRuby::RemoteError, "#{status} Remote Error#{formatted_body(body)}"
@@ -83,7 +83,7 @@ module NetboxClientRuby
 
     def formatted_body(body)
       return '' if body.nil? || body.empty?
-      shortened = body.to_s[0, 50]
+      shortened = body.to_s
       one_line = shortened.gsub(/\n/, '\n')
       " (#{one_line})"
     end
