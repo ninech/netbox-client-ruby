@@ -21,7 +21,7 @@ module NetboxClientRuby
         primary_ip4: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         primary_ip6: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         role: proc { |raw_data| DCIM::DeviceRole.new raw_data['id'] },
-        status: proc { |raw_data| ClusterStatus.new raw_data['value'] },
+        status: proc { |raw_data| ClusterStatus.new raw_data },
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
       )
     end
@@ -29,18 +29,9 @@ module NetboxClientRuby
     class ClusterStatus
       attr_reader :value, :label
 
-      def initialize(status_value)
-        @value = status_value
-        @label = case status_value
-                 when 0
-                   'Offline'.freeze
-                 when 1
-                   'Active'.freeze
-                 when 3
-                   'Staged'.freeze
-                 else
-                   'UNDEFINED'.freeze
-                 end
+      def initialize(raw_data)
+        @value = raw_data['value']
+        @label = raw_data['label']
       end
     end
   end

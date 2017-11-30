@@ -21,7 +21,7 @@ module NetboxClientRuby
         vrf: proc { |raw_data| Vrf.new raw_data['id'] },
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
         vlan: proc { |raw_data| Vlan.new raw_data['id'] },
-        status: proc { |raw_data| PrefixStatus.new raw_data['value'] },
+        status: proc { |raw_data| PrefixStatus.new raw_data },
         role: proc { |raw_data| Role.new raw_data['id'] },
         prefix: proc { |raw_data| IPAddress.parse raw_data }
       )
@@ -31,20 +31,9 @@ module NetboxClientRuby
     class PrefixStatus
       attr_reader :value, :label
 
-      def initialize(status_value)
-        @value = status_value
-        @label = case status_value
-                 when 0 then
-                   'Container'.freeze
-                 when 1 then
-                   'Active'.freeze
-                 when 2 then
-                   'Reserved'.freeze
-                 when 3 then
-                   'Deprecated'.freeze
-                 else
-                   'UNDEFINED'.freeze
-                 end
+      def initialize(raw_data)
+        @value = raw_data['value']
+        @label = raw_data['label']
       end
     end
   end
