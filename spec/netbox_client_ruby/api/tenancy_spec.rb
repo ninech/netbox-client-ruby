@@ -3,13 +3,12 @@ require 'spec_helper'
 module NetboxClientRuby
   module Tenancy
     describe Tenancy do
-
       {
         tenant_groups: TenantGroups,
         tenants: Tenants
       }.each do |method, klass|
         describe ".#{method}" do
-          subject { Tenancy.public_send(method) }
+          subject { described_class.public_send(method) }
 
           context 'is of the correct type' do
             it { is_expected.to be_a klass }
@@ -18,7 +17,7 @@ module NetboxClientRuby
           context 'is a different instance each time' do
             it do
               is_expected
-                .to_not be Tenancy.public_send(method)
+                .to_not be described_class.public_send(method)
             end
           end
 

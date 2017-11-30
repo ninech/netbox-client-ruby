@@ -8,7 +8,7 @@ module NetboxClientRuby
         secrets: NetboxClientRuby::Secrets::Secrets
       }.each do |method, klass|
         describe ".#{method}" do
-          subject { NetboxClientRuby::Secrets.public_send(method) }
+          subject { described_class.public_send(method) }
 
           context 'is of the correct type' do
             it { is_expected.to be_a klass }
@@ -17,7 +17,7 @@ module NetboxClientRuby
           context 'is a different instance each time' do
             it do
               is_expected
-                .to_not be NetboxClientRuby::Secrets.public_send(method)
+                .to_not be described_class.public_send(method)
             end
           end
 
@@ -33,7 +33,7 @@ module NetboxClientRuby
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }
-          subject { NetboxClientRuby::Secrets.public_send(method, id) }
+          subject { described_class.public_send(method, id) }
 
           context 'is of the expected type' do
             it { is_expected.to be_a expected_class }
@@ -42,7 +42,7 @@ module NetboxClientRuby
           context 'it is a new instance each time' do
             it do
               is_expected
-                .to_not be NetboxClientRuby::Secrets.public_send(method, id)
+                .to_not be described_class.public_send(method, id)
             end
           end
 
@@ -53,7 +53,7 @@ module NetboxClientRuby
       end
 
       describe '.generate_rsa_key_pair' do
-        subject { NetboxClientRuby::Secrets.generate_rsa_key_pair }
+        subject { described_class.generate_rsa_key_pair }
 
         context 'is of the expected type' do
           it { is_expected.to be_a RSAKeyPair }
@@ -62,13 +62,13 @@ module NetboxClientRuby
         context 'it is a new instance each time' do
           it do
             is_expected
-              .to_not be NetboxClientRuby::Secrets.generate_rsa_key_pair
+              .to_not be described_class.generate_rsa_key_pair
           end
         end
       end
 
       describe '.get_session_key' do
-        subject { NetboxClientRuby::Secrets.get_session_key }
+        subject { described_class.get_session_key }
 
         before do
           allow_any_instance_of(NetboxClientRuby::Secrets::SessionKey).to receive(:session_key).and_return('a')
@@ -81,7 +81,7 @@ module NetboxClientRuby
         context 'it is a new instance each time' do
           it do
             is_expected
-              .to_not be NetboxClientRuby::Secrets.get_session_key
+              .to_not be described_class.get_session_key
           end
         end
       end

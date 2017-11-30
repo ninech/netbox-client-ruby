@@ -1,18 +1,19 @@
 require 'spec_helper'
 
-
 module NetboxClientRuby
   module IPAM
     describe IPAM do
       {
-        cluster_types: ClusterTypes,
-        cluster_groups: ClusterGroups,
-        clusters: Clusters,
-        virtual_machines: VirtualMachines,
-        interfaces: Interfaces,
+        roles: Roles,
+        ip_addresses: IpAddresses,
+        vlan_groups: VlanGroups,
+        vrfs: Vrfs,
+        vlans: Vlans,
+        rirs: Rirs,
+        prefixes: Prefixes
       }.each do |method, klass|
         describe ".#{method}" do
-          subject { IPAM.public_send(method) }
+          subject { described_class.public_send(method) }
 
           context 'is of the correct type' do
             it { is_expected.to be_a klass }
@@ -21,7 +22,7 @@ module NetboxClientRuby
           context 'is a different instance each time' do
             it do
               is_expected
-                .to_not be IPAM.public_send(method)
+                .to_not be described_class.public_send(method)
             end
           end
 
@@ -32,15 +33,17 @@ module NetboxClientRuby
       end
 
       {
-        cluster_type: ClusterType,
-        cluster_group: ClusterGroup,
-        cluster: Cluster,
-        virtual_machine: VirtualMachine,
-        interface: Interface,
+        role: Role,
+        ip_address: IpAddress,
+        vlan_group: VlanGroup,
+        vrf: Vrf,
+        vlan: Vlan,
+        rir: Rir,
+        prefix: Prefix
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }
-          subject { IPAM.public_send(method, id) }
+          subject { described_class.public_send(method, id) }
 
           context 'is of the expected type' do
             it { is_expected.to be_a expected_class }
@@ -49,7 +52,7 @@ module NetboxClientRuby
           context 'it is a new instance each time' do
             it do
               is_expected
-                .to_not be IPAM.public_send(method, id)
+                .to_not be described_class.public_send(method, id)
             end
           end
 

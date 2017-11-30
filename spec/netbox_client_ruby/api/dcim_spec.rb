@@ -18,7 +18,7 @@ module NetboxClientRuby
         sites: Sites
       }.each do |method, expected_class|
         describe ".#{method}" do
-          subject { DCIM.public_send(method) }
+          subject { described_class.public_send(method) }
 
           context 'is of the correct type' do
             it { is_expected.to be_a expected_class }
@@ -27,7 +27,7 @@ module NetboxClientRuby
           context 'is a different instance each time' do
             it do
               is_expected
-                .to_not be DCIM.public_send(method)
+                .to_not be described_class.public_send(method)
             end
           end
 
@@ -53,7 +53,7 @@ module NetboxClientRuby
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }
-          subject { DCIM.public_send(method, id) }
+          subject { described_class.public_send(method, id) }
 
           context 'is of the expected type' do
             it { is_expected.to be_a expected_class }
@@ -62,7 +62,7 @@ module NetboxClientRuby
           context 'it is a new instance each time' do
             it do
               is_expected
-                .to_not be DCIM.public_send(method, id)
+                .to_not be described_class.public_send(method, id)
             end
           end
 
