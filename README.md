@@ -155,6 +155,12 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
 * Tenancy:
   * Tenant
   * Tenant Groups
+* Virtualization:
+  * Cluster Types
+  * Cluster Groups
+  * Clusters
+  * Virtual Machines
+  * Interfaces
 
 If you can't find the object you need, also check
 [the source code](https://github.com/ninech/netbox-client-ruby/tree/master/lib/netbox_client_ruby/api)

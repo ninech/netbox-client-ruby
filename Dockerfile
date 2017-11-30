@@ -11,5 +11,4 @@ RUN bundle install --jobs 4 --deployment --quiet
 
 COPY . ./
 
-
 CMD docker/start.sh

@@ -1,0 +1,56 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "1",
+      "status": {
+        "value": 1,
+        "label": "Active"
+      },
+      "cluster": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/virtualization/clusters/1/",
+        "name": "1"
+      },
+      "role": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/dcim/device-roles/1/",
+        "name": "1",
+        "slug": "1"
+      },
+      "tenant": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/tenancy/tenants/1/",
+        "name": "1",
+        "slug": "1"
+      },
+      "platform": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/dcim/platforms/1/",
+        "name": "1",
+        "slug": "1"
+      },
+      "primary_ip": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/ipam/ip-addresses/1/",
+        "family": 6,
+        "address": "fe80::703d:87ff:fe48:7fda/10"
+      },
+      "primary_ip4": null,
+      "primary_ip6": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/ipam/ip-addresses/1/",
+        "family": 6,
+        "address": "fe80::703d:87ff:fe48:7fda/10"
+      },
+      "vcpus": 1,
+      "memory": 1,
+      "disk": 1,
+      "comments": "Among other public buildings in a certain town, which for many reasons it will be prudent to refrain from mentioning, and to which I will assign no fictitious name, there is one anciently common to most towns, great or small: to wit, a workhouse; and in this workhouse was born; on a day and date which I need not trouble myself to repeat, inasmuch as it can be of no possible consequence to the reader, in this stage of the business at all events; the item of mortality whose name is prefixed to the head of this chapter.\r\n\r\nFor a long time after it was ushered into this world of sorrow and trouble, by the parish surgeon, it remained a matter of considerable doubt whether the child would survive to bear any name at all; in which case it is somewhat more than probable that these memoirs would never have appeared; or, if they had, that being comprised within a couple of pages, they would have possessed the inestimable merit of being the most concise and faithful specimen of biography, extant in the literature of any age or country.\r\n\r\nAlthough I am not disposed to maintain that the being born in a workhouse, is in itself the most fortunate and enviable circumstance that can possibly befall a human being, I do mean to say that in this particular instance, it was the best thing for Oliver Twist that could by possibility have occurred. The fact is, that there was considerable difficulty in inducing Oliver to take upon himself the office of respiration,—a troublesome practice, but one which custom has rendered necessary to our easy existence; and for some time he lay gasping on a little flock mattress, rather unequally poised between this world and the next: the balance being decidedly in favour of the latter. Now, if, during this brief period, Oliver had been surrounded by careful grandmothers, anxious aunts, experienced nurses, and doctors of profound wisdom, he would most inevitably and indubitably have been killed in no time. There being nobody by, however, but a pauper old woman, who was rendered rather misty by an unwonted allowance of beer; and a parish surgeon who did such matters by contract; Oliver and Nature fought out the point between them. The result was, that, after a few struggles, Oliver breathed, sneezed, and proceeded to advertise to the inmates of the workhouse the fact of a new burden having been imposed upon the parish, by setting up as loud a cry as could reasonably have been expected from a male infant who had not been possessed of that very useful appendage, a voice, for a much longer space of time than three minutes and a quarter.",
+      "custom_fields": {}
+    }
+  ]
+}
