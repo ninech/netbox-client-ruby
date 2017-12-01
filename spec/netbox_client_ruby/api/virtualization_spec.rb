@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 module NetboxClientRuby
-  module IPAM
-    describe IPAM do
+  module Virtualization
+    describe Virtualization do
       {
-        roles: Roles,
-        ip_addresses: IpAddresses,
-        vlan_groups: VlanGroups,
-        vrfs: Vrfs,
-        vlans: Vlans,
-        rirs: Rirs,
-        prefixes: Prefixes
+        cluster_groups: ClusterGroups,
+        cluster_types: ClusterTypes,
+        clusters: Clusters,
+        virtual_machines: VirtualMachines,
+        interfaces: Interfaces,
       }.each do |method, klass|
         describe ".#{method}" do
           subject { described_class.public_send(method) }
@@ -33,13 +31,11 @@ module NetboxClientRuby
       end
 
       {
-        role: Role,
-        ip_address: IpAddress,
-        vlan_group: VlanGroup,
-        vrf: Vrf,
-        vlan: Vlan,
-        rir: Rir,
-        prefix: Prefix
+        cluster_group: ClusterGroup,
+        cluster_type: ClusterType,
+        cluster: Cluster,
+        virtual_machine: VirtualMachine,
+        interface: Interface,
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }
@@ -64,4 +60,3 @@ module NetboxClientRuby
     end
   end
 end
-

@@ -1,0 +1,20 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "1",
+      "virtual_machine": {
+        "id": 1,
+        "url": "http://nginx.netboxclientruby.docker/api/virtualization/virtual-machines/1/",
+        "name": "1"
+      },
+      "enabled": true,
+      "mac_address": "72:3D:87:48:7F:DA",
+      "mtu": 1500,
+      "description": "desc1"
+    }
+  ]
+}

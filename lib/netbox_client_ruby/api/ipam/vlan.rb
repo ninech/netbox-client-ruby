@@ -16,7 +16,7 @@ module NetboxClientRuby
       object_fields(
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
         role: proc { |raw_data| Role.new raw_data['id'] },
-        status: proc { |raw_data| VlanStatus.new raw_data['value'] },
+        status: proc { |raw_data| VlanStatus.new raw_data },
         group: proc { |raw_data| VlanGroup.new raw_data['id'] },
         site: proc { |raw_data| DCIM::Site.new raw_data['id'] },
       )
@@ -26,18 +26,9 @@ module NetboxClientRuby
     class VlanStatus
       attr_reader :value, :label
 
-      def initialize(status_value)
-        @value = status_value
-        @label = case status_value
-                 when 1 then
-                   'Active'.freeze
-                 when 2 then
-                   'Reserved'.freeze
-                 when 3 then
-                   'Deprecated'.freeze
-                 else
-                   'UNDEFINED'.freeze
-                 end
+      def initialize(raw_data)
+        @value = raw_data['value']
+        @label = raw_data['label']
       end
     end
   end
