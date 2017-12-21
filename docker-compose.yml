@@ -9,7 +9,7 @@ services:
       - netbox-nginx-config:/etc/netbox-nginx/
       - netbox-static-files:/opt/netbox/netbox/static
     ports:
-      - 80
+      - 8080
   netbox:
     image: ninech/netbox:latest
     depends_on:
