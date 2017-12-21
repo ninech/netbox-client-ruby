@@ -4,6 +4,7 @@ before_install: gem install bundler
 rvm:
   - 2.3
   - 2.4
+  - 2.5
 notifications:
   email:
     on_success: never
