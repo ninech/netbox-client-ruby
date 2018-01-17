@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in netbox-client-ruby.gemspec
+# Specify your gem dependencies in netbox-client-ruby.gemspec
 gemspec
