@@ -78,7 +78,13 @@ module NetboxClientRuby
     def find_by(attributes)
       filter(attributes).find do |netbox_object|
         attributes.all? do |filter_key, filter_value|
-          netbox_object.public_send(filter_key) == filter_value
+          if filter_key.to_s.start_with?('cf_')
+            custom_field = filter_key.to_s.sub('cf_', '')
+
+            netbox_object.custom_fields[custom_field] == filter_value
+          else
+            netbox_object.public_send(filter_key) == filter_value
+          end
         end
       end
     end

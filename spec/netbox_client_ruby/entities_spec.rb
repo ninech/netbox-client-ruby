@@ -227,6 +227,36 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
 
         it { expect(found_object.name).to eq('obj2') }
       end
+
+      describe 'search for custom fields' do
+        let(:raw_data) do
+          super().tap do |raw_data|
+            raw_data['data_node'] = [
+              { 'name' => 'my-object', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:1234' } },
+              { 'name' => 'obj1', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:123456' } },
+              { 'name' => 'obj1', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:12345678' } },
+            ]
+          end
+        end
+
+        context 'the filter key is not prefixed with cf_' do
+          let(:filter_attributes) { { 'nine_urn' => 'urn:nine:server:1234' } }
+
+          it { expect(found_object).to be_nil }
+        end
+
+        context 'the filter value is not exact' do
+          let(:filter_attributes) { { 'cf_nine_urn' => 'urn:nine:server:12' } }
+
+          it { expect(found_object).to be_nil }
+        end
+
+        context 'with correct filters' do
+          let(:filter_attributes) { { 'cf_nine_urn' => 'urn:nine:server:1234' } }
+
+          it { expect(found_object.name).to eq('my-object') }
+        end
+      end
     end
 
     context 'many search criteria' do
