@@ -68,13 +68,22 @@ sites = NetboxClientRuby.dcim.sites
 puts "There are #{sites.total} sites in your Netbox instance."
 
 # get the first site of the result set
-first_site = sites[0]
+first_site = sites.first
 puts "The first site is called #{first_site.name}."
 
 # filter devices by site
 # Note that Netbox filters by *slug*
 devices_of_site = NetboxClientRuby.dcim.devices.filter(site: first_site.slug)
 puts "#{devices_of_site.total} devices belong to the site. #{devices_of_site}.length devices have been fetched."
+
+# Finds a specific device
+NetboxClientRuby.dcim.devices.find_by(name: 'my-device', other_field: 'other-value')
+
+# Finds a specific device with a certain custom field
+NetboxClientRuby.dcim.devices.find_by(cf_custom_url: 'https://google.com')
+
+# Or a mix of regular and custom fields
+NetboxClientRuby.dcim.devices.find_by(name: 'my-device', cf_custom_field: 'custom-value')
 
 # get a site by id
 s = NetboxClientRuby.dcim.site(1)
