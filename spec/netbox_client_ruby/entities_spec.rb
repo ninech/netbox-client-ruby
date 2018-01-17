@@ -190,6 +190,85 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     end
   end
 
+  describe '#find_by' do
+    let(:found_object) { subject.find_by(filter_attributes) }
+
+    context 'one search criterion' do
+      let(:raw_data) do
+        super().tap do |raw_data|
+          raw_data['data_node'] = [
+            { 'name' => 'obj1' },
+            { 'name' => 'obj2' },
+            { 'name' => 'obj3' },
+          ]
+        end
+      end
+
+      context 'the filter key does not exist' do
+        let(:filter_attributes) { { 'does-not-exist' => 'obj2' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj5' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value is not exact' do
+        let(:filter_attributes) { { 'name' => 'obj' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'with correct filters' do
+        let(:filter_attributes) { { 'name' => 'obj2' } }
+
+        it { expect(found_object.name).to eq('obj2') }
+      end
+    end
+
+    context 'many search criteria' do
+      let(:raw_data) do
+        super().tap do |raw_data|
+          raw_data['data_node'] = [
+            { 'name' => 'obj1', 'model' => 'tail' },
+            { 'name' => 'obj2', 'model' => 'tailgator' },
+            { 'name' => 'obj3', 'model' => 'tailorswift' },
+          ]
+        end
+      end
+
+      context 'one filter key does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'does-not-exist' => 'tail' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'model' => 'tailgator' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value is not exact' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'model' => 'tai' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'with correct filters' do
+        let(:filter_attributes) { { 'name' => 'obj3', model: 'tailorswift' } }
+
+        it 'returns the correct object' do
+          expect(found_object.name).to eq('obj3')
+          expect(found_object.model).to eq('tailorswift')
+        end
+      end
+    end
+  end
+
   describe '#filter' do
     let(:filter) { { something: true } }
 

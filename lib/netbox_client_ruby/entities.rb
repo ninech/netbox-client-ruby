@@ -75,6 +75,14 @@ module NetboxClientRuby
       end
     end
 
+    def find_by(attributes)
+      filter(attributes).find do |netbox_object|
+        attributes.all? do |filter_key, filter_value|
+          netbox_object.public_send(filter_key) == filter_value
+        end
+      end
+    end
+
     def filter(filter)
       raise ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
 
