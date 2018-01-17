@@ -83,7 +83,11 @@ module NetboxClientRuby
 
             netbox_object.custom_fields[custom_field] == filter_value
           else
-            netbox_object.public_send(filter_key) == filter_value
+            if netbox_object.respond_to?(filter_key)
+              netbox_object.public_send(filter_key) == filter_value
+            else
+              false
+            end
           end
         end
       end

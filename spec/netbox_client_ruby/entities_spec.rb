@@ -20,6 +20,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
       OpenStruct.new raw_entity
     end
   end
+
   class TestEntities2
     include NetboxClientRuby::Entities
 
@@ -27,6 +28,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     data_key 'non_existent'
     count_key 'non_existent'
   end
+
   class TestEntities3
     include NetboxClientRuby::Entities
   end
