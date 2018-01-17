@@ -20,6 +20,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
       OpenStruct.new raw_entity
     end
   end
+
   class TestEntities2
     include NetboxClientRuby::Entities
 
@@ -27,6 +28,7 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
     data_key 'non_existent'
     count_key 'non_existent'
   end
+
   class TestEntities3
     include NetboxClientRuby::Entities
   end
@@ -186,6 +188,121 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
 
       it 'raises an exception' do
         expect { subject.reload }.to raise_error ArgumentError
+      end
+    end
+  end
+
+  describe '#find_by' do
+    let(:found_object) { subject.find_by(filter_attributes) }
+
+    context 'not filtering with a hash' do
+      let(:filter_attributes) { ['This is not a hash'] }
+
+      it { expect { found_object }.to raise_error('"attributes" expects a hash') }
+    end
+
+    context 'one search criterion' do
+      let(:raw_data) do
+        super().tap do |raw_data|
+          raw_data['data_node'] = [
+            { 'name' => 'obj1' },
+            { 'name' => 'obj2' },
+            { 'name' => 'obj3' },
+          ]
+        end
+      end
+
+      context 'the filter key does not exist' do
+        let(:filter_attributes) { { 'does-not-exist' => 'obj2' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj5' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value is not exact' do
+        let(:filter_attributes) { { 'name' => 'obj' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'with correct filters' do
+        let(:filter_attributes) { { 'name' => 'obj2' } }
+
+        it { expect(found_object.name).to eq('obj2') }
+      end
+
+      describe 'search for custom fields' do
+        let(:raw_data) do
+          super().tap do |raw_data|
+            raw_data['data_node'] = [
+              { 'name' => 'my-object', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:1234' } },
+              { 'name' => 'obj1', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:123456' } },
+              { 'name' => 'obj1', 'custom_fields' => { 'nine_urn' => 'urn:nine:server:12345678' } },
+            ]
+          end
+        end
+
+        context 'the filter key is not prefixed with cf_' do
+          let(:filter_attributes) { { 'nine_urn' => 'urn:nine:server:1234' } }
+
+          it { expect(found_object).to be_nil }
+        end
+
+        context 'the filter value is not exact' do
+          let(:filter_attributes) { { 'cf_nine_urn' => 'urn:nine:server:12' } }
+
+          it { expect(found_object).to be_nil }
+        end
+
+        context 'with correct filters' do
+          let(:filter_attributes) { { 'cf_nine_urn' => 'urn:nine:server:1234' } }
+
+          it { expect(found_object.name).to eq('my-object') }
+        end
+      end
+    end
+
+    context 'many search criteria' do
+      let(:raw_data) do
+        super().tap do |raw_data|
+          raw_data['data_node'] = [
+            { 'name' => 'obj1', 'model' => 'tail' },
+            { 'name' => 'obj2', 'model' => 'tailgator' },
+            { 'name' => 'obj3', 'model' => 'tailorswift' },
+          ]
+        end
+      end
+
+      context 'one filter key does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'does-not-exist' => 'tail' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value does not exist' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'model' => 'tailgator' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'the filter value is not exact' do
+        let(:filter_attributes) { { 'name' => 'obj1', 'model' => 'tai' } }
+
+        it { expect(found_object).to be_nil }
+      end
+
+      context 'with correct filters' do
+        let(:filter_attributes) { { 'name' => 'obj3', model: 'tailorswift' } }
+
+        it 'returns the correct object' do
+          expect(found_object.name).to eq('obj3')
+          expect(found_object.model).to eq('tailorswift')
+        end
       end
     end
   end

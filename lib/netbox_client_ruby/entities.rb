@@ -75,8 +75,28 @@ module NetboxClientRuby
       end
     end
 
+    def find_by(attributes)
+      fail ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
+
+      filter(attributes).find do |netbox_object|
+        attributes.all? do |filter_key, filter_value|
+          if filter_key.to_s.start_with?('cf_')
+            custom_field = filter_key.to_s.sub('cf_', '')
+
+            netbox_object.custom_fields[custom_field] == filter_value
+          else
+            if netbox_object.respond_to?(filter_key)
+              netbox_object.public_send(filter_key) == filter_value
+            else
+              false
+            end
+          end
+        end
+      end
+    end
+
     def filter(filter)
-      raise ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
+      fail ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
 
       @filter = filter
       reset
