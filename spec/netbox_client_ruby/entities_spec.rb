@@ -195,6 +195,12 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
   describe '#find_by' do
     let(:found_object) { subject.find_by(filter_attributes) }
 
+    context 'not filtering with a hash' do
+      let(:filter_attributes) { ['This is not a hash'] }
+
+      it { expect { found_object }.to raise_error('"attributes" expects a hash') }
+    end
+
     context 'one search criterion' do
       let(:raw_data) do
         super().tap do |raw_data|
