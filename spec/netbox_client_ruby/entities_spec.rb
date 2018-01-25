@@ -230,6 +230,12 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
         it { expect(found_object).to be_nil }
       end
 
+      context 'with values as symbols' do
+        let(:filter_attributes) { { 'name' => :obj2 } }
+
+        it { expect(found_object.name).to eq('obj2') }
+      end
+
       context 'with correct filters' do
         let(:filter_attributes) { { 'name' => 'obj2' } }
 
@@ -257,6 +263,12 @@ describe NetboxClientRuby::Entities, faraday_stub: true do
           let(:filter_attributes) { { 'cf_nine_urn' => 'urn:nine:server:12' } }
 
           it { expect(found_object).to be_nil }
+        end
+
+        context 'with values as symbols' do
+          let(:filter_attributes) { { 'cf_nine_urn' => :'urn:nine:server:1234' } }
+
+          it { expect(found_object.name).to eq('my-object') }
         end
 
         context 'with correct filters' do
