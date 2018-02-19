@@ -1,0 +1,19 @@
+{
+    "count": 2,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "name": "Housing",
+            "slug": "housing",
+            "color": "e91e63"
+        },
+        {
+            "id": 2,
+            "name": "Colocation",
+            "slug": "colocation",
+            "color": "00bcd4"
+        }
+    ]
+}

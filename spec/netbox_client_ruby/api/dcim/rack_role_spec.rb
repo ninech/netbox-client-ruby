@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
+describe NetboxClientRuby::DCIM::RackRole, faraday_stub: true do
   let(:entity_id) { 1 }
-  let(:expected_name) { '1' }
-  let(:base_url) { '/api/virtualization/cluster-groups/' }
-  let(:response) { File.read("spec/fixtures/virtualization/cluster-group_#{entity_id}.json") }
+  let(:expected_name) { 'Housing' }
+  let(:base_url) { '/api/dcim/rack-roles/' }
+  let(:response) { File.read("spec/fixtures/dcim/rack-role_#{entity_id}.json") }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
 
@@ -60,8 +60,7 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
 
   describe '.save' do
     let(:name) { 'foobar' }
-    let(:slug) { '1' }
-    let(:request_params) { { 'name' => name, 'slug' => slug } }
+    let(:request_params) { { 'name' => name } }
 
     context 'update' do
       let(:request_method) { :patch }
@@ -69,7 +68,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
       subject do
         entity = described_class.new entity_id
         entity.name = name
-        entity.slug = slug
         entity
       end
 
@@ -78,7 +76,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.slug).to eq(slug)
       end
 
       it 'calls PATCH when save is called' do
@@ -92,7 +89,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
 
         subject.save
         expect(subject.name).to eq(expected_name)
-        expect(subject.slug).to eq(slug)
       end
     end
 
@@ -103,7 +99,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
       subject do
         entity = described_class.new
         entity.name = name
-        entity.slug = slug
         entity
       end
 
@@ -112,7 +107,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
         expect(faraday).to_not receive(:get)
 
         expect(subject.name).to eq(name)
-        expect(subject.slug).to eq(slug)
       end
 
       it 'POSTs the data upon a call of save' do
@@ -128,7 +122,6 @@ describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
 
         expect(subject.id).to be(1)
         expect(subject.name).to eq(expected_name)
-        expect(subject.slug).to eq(slug)
       end
     end
   end

@@ -84,7 +84,7 @@ describe NetboxClientRuby::Virtualization::VirtualMachine, faraday_stub: true do
         expect(subject.save).to be(subject)
       end
 
-      it 'Reads the anwer from the PATCH answer' do
+      it 'Reads the answer from the PATCH answer' do
         expect(faraday).to receive(request_method).and_call_original
 
         subject.save

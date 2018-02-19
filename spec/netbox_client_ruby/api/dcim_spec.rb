@@ -14,6 +14,8 @@ module NetboxClientRuby
         power_outlets: PowerOutlets,
         power_ports: PowerPorts,
         racks: Racks,
+        rack_groups: RackGroups,
+        rack_roles: RackRoles,
         regions: Regions,
         sites: Sites
       }.each do |method, expected_class|
@@ -48,6 +50,8 @@ module NetboxClientRuby
         power_outlet: PowerOutlet,
         power_port: PowerPort,
         rack: Rack,
+        rack_group: RackGroup,
+        rack_role: RackRole,
         region: Region,
         site: Site
       }.each do |method, expected_class|

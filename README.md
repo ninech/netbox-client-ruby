@@ -145,6 +145,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Power Ports
   * Racks
   * Rack Groups
+  * Rack Roles
   * Regions
   * Sites
 * IPAM:
