@@ -1,0 +1,29 @@
+{
+  "id": 2,
+  "family": 4,
+  "address": "10.20.30.40/24",
+  "vrf": null,
+  "tenant": null,
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "role": null,
+  "interface": {
+    "id": 1,
+    "url": "http://netboxclientruby.docker/api/virtualization/interfaces/1/",
+    "device": null,
+    "virtual_machine": {
+      "id": 1,
+      "url": "http://netboxclientruby.docker/api/virtualization/virtual-machines/1/",
+      "name": "VirtualMachine1"
+    },
+    "name": "VirtualMachineInterface1"
+  },
+  "description": "",
+  "nat_inside": null,
+  "nat_outside": null,
+  "custom_fields": {},
+  "created": "2018-04-10",
+  "last_updated": "2018-04-10T12:05:08.263361Z"
+}
