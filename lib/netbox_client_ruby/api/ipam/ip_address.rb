@@ -40,7 +40,7 @@ module NetboxClientRuby
 
         if interface_data.key? ('virtual_machine')
           Virtualization::Interface.new interface_data['id']
-        else interface_data.key? ('device')
+        else
           DCIM::Interface.new interface_data['id']
         end
       end
