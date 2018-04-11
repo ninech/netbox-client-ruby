@@ -30,10 +30,55 @@ describe NetboxClientRuby::IPAM::IpAddress, faraday_stub: true do
     end
   end
 
+  describe '#interface' do
+    context 'no interface' do
+      let(:entity_id) { 3 }
+
+      it 'shall fetch the data' do
+        expect(faraday).to receive(:get).and_call_original
+
+        subject.interface
+      end
+
+      it 'shall return nil' do
+        expect(subject.interface).to be_nil
+      end
+    end
+
+    context 'virtual interface' do
+      let(:entity_id) { 2 }
+
+      it 'shall fetch the data' do
+        expect(faraday).to receive(:get).and_call_original
+
+        subject.interface
+      end
+
+      it 'shall return a virtual interface' do
+        expect(subject.interface).to be_a(NetboxClientRuby::Virtualization::Interface)
+        expect(subject.interface.id).to eq(1)
+      end
+    end
+
+    context 'physical device interface' do
+      let(:entity_id) { 1 }
+
+      it 'shall fetch the data' do
+        expect(faraday).to receive(:get).and_call_original
+
+        subject.interface
+      end
+
+      it 'shall return a virtual interface' do
+        expect(subject.interface).to be_a(NetboxClientRuby::DCIM::Interface)
+        expect(subject.interface.id).to eq(3)
+      end
+    end
+  end
+
   {
     vrf: NetboxClientRuby::IPAM::Vrf,
     tenant: NetboxClientRuby::Tenancy::Tenant,
-    interface: NetboxClientRuby::DCIM::Interface,
     status: Symbol
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do

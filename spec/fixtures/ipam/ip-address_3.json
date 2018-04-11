@@ -1,0 +1,19 @@
+{
+  "id": 3,
+  "family": 4,
+  "address": "20.30.40.50/24",
+  "vrf": null,
+  "tenant": null,
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "role": null,
+  "interface": null,
+  "description": "",
+  "nat_inside": null,
+  "nat_outside": null,
+  "custom_fields": {},
+  "created": "2018-04-10",
+  "last_updated": "2018-04-10T13:17:52.286492Z"
+}

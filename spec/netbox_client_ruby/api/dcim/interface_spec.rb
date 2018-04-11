@@ -29,6 +29,22 @@ describe NetboxClientRuby::DCIM::Interface, faraday_stub: true do
     end
   end
 
+  describe '#device' do
+    it 'should fetch data' do
+      expect(faraday).to receive(:get).and_call_original
+
+      expect(subject.device).to_not be_nil
+    end
+
+    it 'shall be a device instance' do
+      expect(subject.device).to be_a(NetboxClientRuby::DCIM::Device)
+    end
+
+    it 'shall be the expected device' do
+      expect(subject.device.id).to eq(1)
+    end
+  end
+
   describe '.delete' do
     let(:request_method) { :delete }
     let(:response_status) { 204 }
