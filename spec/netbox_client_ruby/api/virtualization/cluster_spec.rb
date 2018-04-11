@@ -28,6 +28,22 @@ describe NetboxClientRuby::Virtualization::Cluster, faraday_stub: true do
     end
   end
 
+  describe '#site' do
+    it 'should fetch the data' do
+      expect(faraday).to receive(:get).and_call_original
+
+      expect(subject.name).to_not be_nil
+    end
+
+    it 'shall be a site instance' do
+      expect(subject.site).to be_a(NetboxClientRuby::DCIM::Site)
+    end
+
+    it 'shall be the expected site' do
+      expect(subject.site.id).to eq(1)
+    end
+  end
+
   describe '.delete' do
     let(:request_method) { :delete }
     let(:response_status) { 204 }
