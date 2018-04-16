@@ -6,6 +6,7 @@ rvm:
 - 2.3
 - 2.4
 - 2.5
+- 2.5.1
 notifications:
   email:
     on_success: never
@@ -20,12 +21,5 @@ deploy:
     on:
       tags: true
       repo: ninech/netbox-client-ruby
+      condition: "$TRAVIS_RUBY_VERSION == 2.5.1"
     skip_cleanup: true
-  - provider: releases
-    api_key:
-      # ninech-bot
-      secure: "VS1pYQFs9OwCMeRgtdaN1CdqYdsoZv+cDC/sb1jDC2U+Ltp/+8UHD/2OBFDIACKQo8+KDgejRvSD0T/qcRwDwmy+Mfpa0Y/b8VH2+iKj7cFPEauu7FkkPoBU+OcWdk2ve3FIgn+9xhNxj7mLJDDiXX9zDPk1E/ub9P67oq28072KIdTFS9GM6GcpgFHVxk3XnF+4nLqU/FaSn+fC8JdIycTuDico64MZexpb8zWvEe1cS4u++KH2JaR71qY5h8hrraT71MvXEJLfvbPEDEOHAJjOQ2UhDgFL/RmP4knoSJ69VTszT3kV844LnGBG7W26LlllsAhlMph89ClBrT0UQoYjMuK0WDeg0FDFFlBy9s1iWxHfmHwkOI6PYoaP+9TRBqoOQGU60eYs46+aBejpUt0eFeaN+gm9hklogYokG9FwzlhV9DT0PIISUS5iRqPprDhIzdurf5crt+Gg+ZYXnWe5xkrBTXReSyKhK1unPNwyj4Q8Bykbaj7t4UZo2Uk6ybP7phYSBHSnZlUBbS/4k/xVpnMeTV4BJp/oJ+ak5pzD/fmdD8OOCtN7lq590WUL8WrCV4fDKnTtdorfyHi/CYmkBuPg6qLKzi0uwhULG/SGlyRkXX7nLLSvp5Nw5IdSyCx1JCuPGEFoFtPE2dTEPOklMlmnjKqvMvKoNZOAr0U="
-    file: 'netbox-client-ruby-*.gem'
-    on:
-      tags: true
-      repo: ninech/netbox-client-ruby
