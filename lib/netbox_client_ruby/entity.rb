@@ -173,6 +173,10 @@ module NetboxClientRuby
       patch
     end
 
+    def url
+      "#{connection.url_prefix}#{path}"
+    end
+
     def raw_data!
       data
     end
