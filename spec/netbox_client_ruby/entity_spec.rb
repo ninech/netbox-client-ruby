@@ -114,6 +114,12 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
     it 'returns the raw data' do
       expect(subject.raw_data!).to eq raw_data
     end
+
+    describe '#url' do
+      it 'returns the url of the resource' do
+        expect(subject.url).to eq 'http://netbox.test/api/tests/42'
+      end
+    end
   end
 
   describe 'send values' do
