@@ -6,7 +6,16 @@ require 'netbox-client-ruby'
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
-# (If you use this, don't forget to add pry to your Gemfile!)
+NetboxClientRuby.configure do |c|
+  c.netbox.auth.token = '0123456789abcdef0123456789abcdef01234567'
+  # c.netbox.auth.rsa_private_key.path = '~/.ssh/netbox_rsa'
+  # c.netbox.auth.rsa_private_key.password = nil
+  c.netbox.api_base_url = "http://#{`docker-compose port nginx 8080`.strip}/api/"
+  c.faraday.logger = :detailed_logger
+end
+
+puts "You will be talking to '#{NetboxClientRuby.config.netbox.api_base_url}'"
+
 require 'pry'
 Pry.start
 

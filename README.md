@@ -178,10 +178,13 @@ if it was added in the meantime without the list above having been updated.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests.
-You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies.
+Then, run `rake spec` to run the tests.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
+
+To experiment interactively, fire up the Netbox Docker container by running `docker-compose up -d`.
+Then, run `bin/console` for an interactive prompt that will allow you to experiment against your local Netbox.
 
 ## Contributing
 
