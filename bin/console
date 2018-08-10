@@ -14,7 +14,14 @@ NetboxClientRuby.configure do |c|
   c.faraday.logger = :detailed_logger
 end
 
-puts "You will be talking to '#{NetboxClientRuby.config.netbox.api_base_url}'"
+puts "You will be talking to '#{NetboxClientRuby.config.netbox.api_base_url}'."
+
+NCR = NetboxClientRuby
+puts '`NetboxClientRuby` has been abbreviated to `NCR` in this console.'
+
+puts 'Wondering how many regions you have in your Netbox?'
+puts 'Type: NetboxClientRuby.dcim.regions.count'
+puts 'Or Short: NCR.dcim.regions.count'
 
 require 'pry'
 Pry.start
