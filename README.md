@@ -186,6 +186,25 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 To experiment interactively, fire up the Netbox Docker container by running `docker-compose up -d`.
 Then, run `bin/console` for an interactive prompt that will allow you to experiment against your local Netbox.
 
+### Load Development Data
+
+To simplify development, e.g. via the `bin/console` described above, there is a very complete sample set of Netbox data readily available.
+You can use it to query almost every object and relation in Netbox.
+
+```bash
+docker-compose exec postgres psql -U postgres netbox < dump.sql
+```
+
+### Dump Development from Database
+
+Should you want to export the current set of data, use the command below.
+
+```bash
+docker-compose exec postgres pg_dump -U netbox --exclude-table-data=extras_objectchange -Cc netbox > dump.sql
+```
+
+(Remove `--exclude-table-data=extras_objectchange` from the command if you want to retain the history!)
+
 ## Contributing
 
 Bug reports and pull requests are very welcome [on GitHub](https://github.com/ninech/netbox-client-ruby).
