@@ -1,0 +1,36 @@
+{
+  "id": 1,
+  "cid": "134",
+  "provider": {
+    "id": 1,
+    "url": "http://nginx.netbox-client-ruby.docker/api/circuits/providers/1/",
+    "name": "Circuit Provider 0",
+    "slug": "circuit-provider-0"
+  },
+  "type": {
+    "id": 1,
+    "url": "http://nginx.netbox-client-ruby.docker/api/circuits/circuit-types/1/",
+    "name": "Circuit Type 0",
+    "slug": "circuit-type-0"
+  },
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "tenant": {
+    "id": 1,
+    "url": "http://nginx.netbox-client-ruby.docker/api/tenancy/tenants/1/",
+    "name": "Tenant 0",
+    "slug": "tenant-0"
+  },
+  "install_date": "2018-01-01",
+  "commit_rate": 100000000,
+  "description": "Desc of Circuit 0",
+  "comments": "1. First\r\n2. Second\r\n3. Third",
+  "tags": [
+    "tag_a"
+  ],
+  "custom_fields": {},
+  "created": "2018-08-10",
+  "last_updated": "2018-08-10T01:35:05.417229Z"
+}

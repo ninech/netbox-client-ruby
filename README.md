@@ -134,6 +134,11 @@ NetboxClientRuby.secrets.session_key = persisted_session_key
 Not all objects which the Netbox API exposes are currently implemented. Implementing new objects
 [is trivial](https://github.com/ninech/netbox-client-ruby/commit/e3cee19d21a8a6ce480d7c03d23d7c3fbc92417a), though.
 
+* Circuits:
+  * Circuits
+  * Circuit Types
+  * Circuit Terminations
+  * Providers
 * DCIM:
   * Devices
   * Device Roles

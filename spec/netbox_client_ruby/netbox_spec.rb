@@ -35,6 +35,7 @@ describe NetboxClientRuby do
   end
 
   {
+    circuits: NetboxClientRuby::Circuits,
     dcim: NetboxClientRuby::DCIM,
     ipam: NetboxClientRuby::IPAM,
     secrets: NetboxClientRuby::Secrets,
