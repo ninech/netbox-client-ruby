@@ -19,6 +19,8 @@ require 'netbox_client_ruby/api/dcim/power_ports'
 require 'netbox_client_ruby/api/dcim/rack'
 require 'netbox_client_ruby/api/dcim/rack_group'
 require 'netbox_client_ruby/api/dcim/rack_groups'
+require 'netbox_client_ruby/api/dcim/rack_reservation'
+require 'netbox_client_ruby/api/dcim/rack_reservations'
 require 'netbox_client_ruby/api/dcim/rack_role'
 require 'netbox_client_ruby/api/dcim/rack_roles'
 require 'netbox_client_ruby/api/dcim/racks'
@@ -42,6 +44,7 @@ module NetboxClientRuby
       power_ports: PowerPorts,
       racks: Racks,
       rack_groups: RackGroups,
+      rack_reservations: RackReservations,
       rack_roles: RackRoles,
       regions: Regions,
       sites: Sites
@@ -62,6 +65,7 @@ module NetboxClientRuby
       power_port: PowerPort,
       rack: Rack,
       rack_group: RackGroup,
+      rack_reservation: RackReservation,
       rack_role: RackRole,
       region: Region,
       site: Site
