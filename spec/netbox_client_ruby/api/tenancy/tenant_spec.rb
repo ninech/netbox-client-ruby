@@ -36,7 +36,7 @@ module NetboxClientRuby
         context 'Tenant with Group' do
           let(:region_id) { 3 }
 
-          it 'should be a Region object' do
+          it 'should be a TenantGroup object' do
             tenant_group = subject.group
             expect(tenant_group).to be_a TenantGroup
             expect(tenant_group.id).to eq(1)
@@ -151,4 +151,3 @@ module NetboxClientRuby
     end
   end
 end
-
