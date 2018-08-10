@@ -5,7 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/ninech/netbox-client-ruby/badges/gpa.svg)](https://codeclimate.com/github/ninech/netbox-client-ruby)
 
 This is a gem to pragmatically access your [Netbox instance](https://github.com/digitalocean/netbox)
-via it's API from Ruby. This gem is currently only compatible with Netbox v2.
+via it's API from Ruby. This gem is currently only compatible with Netbox v2.4 or newer.
 
 ## Installation
 
