@@ -4303,6 +4303,8 @@ COPY public.dcim_consoleport (id, name, connection_status, cs_port_id, device_id
 2	rs232	t	\N	3
 3	rj45	t	\N	6
 4	rj45	t	\N	7
+5	rj45	t	\N	8
+6	rs232	t	\N	8
 \.
 
 
@@ -4343,6 +4345,7 @@ COPY public.dcim_device (id, created, last_updated, name, serial, "position", fa
 5	2018-08-10	2018-08-10 01:29:58.755878+00	Child Device 0	2	\N	\N	1		2	2	1	1	13	\N	1	2	1	1	\N	\N	\N
 6	2018-08-10	2018-08-10 01:30:33.871543+00	Switch Device 0		1	0	1		2	4	1	1	7	\N	\N	\N	1	\N	1	0	\N
 7	2018-08-10	2018-08-10 01:30:44.008329+00	Switch Device 1		2	0	1		2	4	1	1	6	\N	\N	\N	1	\N	1	1	\N
+8	2018-08-10	2018-08-10 21:01:20.399349+00	Regular Unracked Device 0	4	\N	\N	1		2	3	1	\N	\N	\N	1	4	1	\N	\N	\N	\N
 \.
 
 
@@ -4459,6 +4462,13 @@ COPY public.dcim_interface (id, name, form_factor, mgmt_only, description, devic
 112	oob	1000	t		7	00:11:22:33:44:55	\N	t	\N	\N	\N	\N
 113	veth0	0	f		\N	00:11:22:33:44:55	\N	t	\N	1	\N	\N
 114	veth1	0	f		\N	00:11:22:33:44:56	\N	t	\N	1	\N	\N
+115	interfaces 0	1150	f		8	\N	\N	t	\N	\N	\N	\N
+116	interfaces 1	1150	f		8	\N	\N	t	\N	\N	\N	\N
+117	interfaces 2	1150	f		8	\N	\N	t	\N	\N	\N	\N
+118	interfaces 3	1150	f		8	\N	\N	t	\N	\N	\N	\N
+119	lag 0	200	f		8	\N	\N	t	\N	\N	\N	\N
+120	lag 1	200	f		8	\N	\N	t	\N	\N	\N	\N
+121	oob 0	1000	t		8	\N	\N	t	\N	\N	\N	\N
 \.
 
 
@@ -4609,6 +4619,8 @@ COPY public.dcim_powerport (id, name, connection_status, device_id, power_outlet
 6	power port 1	t	6	\N
 7	power port 0	t	7	\N
 8	power port 1	t	7	\N
+9	power port 0	t	8	\N
+10	power port 1	t	8	\N
 \.
 
 
@@ -5220,6 +5232,7 @@ COPY public.ipam_vrf (id, created, last_updated, name, rd, description, enforce_
 --
 
 COPY public.secrets_secret (id, created, last_updated, name, ciphertext, hash, device_id, role_id) FROM stdin;
+1	2018-08-10	2018-08-10 21:02:12.204535+00	Secret 0	\\xce3385b5b58591c8269dd257817deb0e3a8dedbf5b3fe5f9ba4ceeee1f580299a011387c469adddf9a7aa8a48cfd1cf0218506432fc1d972198a266730dbe0c6acd8f7dfc41bf82b0de65df5fc8ca437	pbkdf2_sha256$1000$YO1csXElnbgV$5zLZVoedG8RbrxqJS1nZmQcfYqzHT8IpyoR7NTcwRm0=	8	1
 \.
 
 
@@ -5261,6 +5274,7 @@ COPY public.secrets_sessionkey (id, cipher, hash, created, userkey_id) FROM stdi
 --
 
 COPY public.secrets_userkey (id, created, last_updated, public_key, master_key_cipher, user_id) FROM stdin;
+1	2018-08-10	2018-08-10 20:53:10.847351+00	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrwJIo/BlJt16TM/gGmn/cpaBB0GVB2BX2bOC8J/pyPyHa1i1jTlAo/SltC/VcBfRLWlq97j3E431f+G4Yp0S2i7r9cLcesPLIBDjfBJHSC/fntbsHoMSkCHDoCkg08Vj8pAvvwGpwAS7inBe8nch3AEhgsn0LOuDyv4k/A5U1ZsPRRYx62xQo8qig4pvPVY9nAX0gQxS1NFiztOVDKHlJzucMgjSG9imb1/DL6Ok1ioXzWdBI4XI2A2f9sciaoNVtktLvv8/iRN1shBMN6Y8+ml858yOMSwHVnsn8jtLvHcLyQFcl4aqkLAz9k4yD8C9uIHIBU7SDx9SzWWh7yHS2kmAf5zZwtWBIM30ZGOnIb2ig5DEaE7Gb/SewtVuY5nhsA8G+vBIGuGPvmolr6VdbU+0p+N1pD60JG0L/oCiUK0IyCipEbVPWHpXJ4xbMfbHtW07CPX9N1oB2dlBrCxq9NcJdUPLtexLi55lx05shJ8g/8UwXP0pCmAPaPBni1L+1dOW22DxyF1Hl+WvzwAHNVambjbCHTPeR132mQ3naslTqsnhdGgGbe7d0zXQMrIpVytRUONH0okmDtZyg1xsGdIsUcJFPJu0A9pJE013HNUPTqzoCgaiKsB2z4RyGQRwHmaeH9GpvXcC6al/dozJMT8Lh8XpHa7PJO8g2vhHd6w== netbox-client-ruby	\\x1fe983aa5b6e54d56ac7df7f2d4ea01b1d26375cffdfb79bb8bd8c2596cf6b08fd192b8af7a69b946475cdc96e30cd87e8d14005a309532251799c4ca8de6cdece663ef52b1177a54bedcd1575f2c21d21d881ce4a8d6e62ed189635eac446fe9987dd8e3095ce47cdb2095c8637df6795c3a6b85ed08064adc51fe5702301d2cc83008cb5a0d9cc9550a0e7ff751c88b7c00134a3016ace20d661cb95850624c1af1584912c152bb070b46e474edc91fb80971ce8fac9d599755f3c0859af075736a6a4e5127f5b9456a2da29bd673e8a459844f81354fdd43bd461067639425d1b1d6efb800e5007191152962bef335a6f7770efa6a2c7ea99ebad4fd238a5ebaf9e8e4c50ab9366d5992f276c6b52d3192aebc89aeb3c36f5ebdda791dd466c881475d6aa06d40d308c286e03003ba30e7359f96f7b85c90122e02d1166bd1081f9dd0de6d9bd149639e3b39358a0b6bfb3cc9feba4a32d17128d6ebbfa5b57de83bc364c8099f8b1d058bf9f4c723baf26702b4862075912d76cdb43ce2628c56e2f8088bed5022806fca9b82ebf3735d7c9c66301208e99279945568193e89812b20d0290f53e10fa82f49aee994c309399ba7204350932b765a5c9fc6fad6290cc6bb8677b8028619c951fb5e1faf169c842e033afd1b14b254dbb5c48f3d325840e24f89e9865b2a3982e2c430070e1726bb29052611a88bdfef280a6	1
 \.
 
 
@@ -5277,6 +5291,7 @@ COPY public.taggit_tag (id, name, slug) FROM stdin;
 6	tag_c	tag_c
 7	tag_d	tag_d
 8	tag_e	tag_e
+9	tag_x	tag_x
 \.
 
 
@@ -5310,6 +5325,7 @@ COPY public.taggit_taggeditem (id, object_id, content_type_id, tag_id) FROM stdi
 31	1	70	6
 32	1	9	4
 33	1	11	5
+34	8	17	9
 \.
 
 
@@ -5450,7 +5466,7 @@ SELECT pg_catalog.setval('public.circuits_provider_id_seq', 1, true);
 -- Name: dcim_consoleport_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.dcim_consoleport_id_seq', 4, true);
+SELECT pg_catalog.setval('public.dcim_consoleport_id_seq', 6, true);
 
 
 --
@@ -5478,7 +5494,7 @@ SELECT pg_catalog.setval('public.dcim_consoleserverporttemplate_id_seq', 1, fals
 -- Name: dcim_device_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.dcim_device_id_seq', 7, true);
+SELECT pg_catalog.setval('public.dcim_device_id_seq', 8, true);
 
 
 --
@@ -5513,7 +5529,7 @@ SELECT pg_catalog.setval('public.dcim_devicetype_id_seq', 4, true);
 -- Name: dcim_interface_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.dcim_interface_id_seq', 114, true);
+SELECT pg_catalog.setval('public.dcim_interface_id_seq', 121, true);
 
 
 --
@@ -5576,7 +5592,7 @@ SELECT pg_catalog.setval('public.dcim_poweroutlettemplate_id_seq', 1, false);
 -- Name: dcim_powerport_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.dcim_powerport_id_seq', 8, true);
+SELECT pg_catalog.setval('public.dcim_powerport_id_seq', 10, true);
 
 
 --
@@ -5758,7 +5774,7 @@ SELECT pg_catalog.setval('public.extras_imageattachment_id_seq', 1, false);
 -- Name: extras_objectchange_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.extras_objectchange_id_seq', 316, true);
+SELECT pg_catalog.setval('public.extras_objectchange_id_seq', 318, true);
 
 
 --
@@ -5870,7 +5886,7 @@ SELECT pg_catalog.setval('public.ipam_vrf_id_seq', 1, true);
 -- Name: secrets_secret_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.secrets_secret_id_seq', 1, false);
+SELECT pg_catalog.setval('public.secrets_secret_id_seq', 1, true);
 
 
 --
@@ -5898,28 +5914,28 @@ SELECT pg_catalog.setval('public.secrets_secretrole_users_id_seq', 1, false);
 -- Name: secrets_sessionkey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.secrets_sessionkey_id_seq', 1, false);
+SELECT pg_catalog.setval('public.secrets_sessionkey_id_seq', 1, true);
 
 
 --
 -- Name: secrets_userkey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.secrets_userkey_id_seq', 1, false);
+SELECT pg_catalog.setval('public.secrets_userkey_id_seq', 1, true);
 
 
 --
 -- Name: taggit_tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.taggit_tag_id_seq', 8, true);
+SELECT pg_catalog.setval('public.taggit_tag_id_seq', 9, true);
 
 
 --
 -- Name: taggit_taggeditem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.taggit_taggeditem_id_seq', 33, true);
+SELECT pg_catalog.setval('public.taggit_taggeditem_id_seq', 34, true);
 
 
 --
