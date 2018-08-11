@@ -11,7 +11,7 @@ services:
     ports:
       - 8080
   netbox:
-    image: ninech/netbox:v2.4.2
+    image: ninech/netbox:v2.4.3
     depends_on:
       - postgres
     volumes:
