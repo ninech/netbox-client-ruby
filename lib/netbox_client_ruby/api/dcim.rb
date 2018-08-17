@@ -18,6 +18,8 @@ require 'netbox_client_ruby/api/dcim/manufacturer'
 require 'netbox_client_ruby/api/dcim/manufacturers'
 require 'netbox_client_ruby/api/dcim/platform'
 require 'netbox_client_ruby/api/dcim/platforms'
+require 'netbox_client_ruby/api/dcim/power_connection'
+require 'netbox_client_ruby/api/dcim/power_connections'
 require 'netbox_client_ruby/api/dcim/power_outlet'
 require 'netbox_client_ruby/api/dcim/power_outlets'
 require 'netbox_client_ruby/api/dcim/power_port'
@@ -51,6 +53,7 @@ module NetboxClientRuby
       inventory_items: InventoryItems,
       manufacturers: Manufacturers,
       platforms: Platforms,
+      power_connections: PowerConnections,
       power_outlets: PowerOutlets,
       power_ports: PowerPorts,
       racks: Racks,
@@ -76,6 +79,7 @@ module NetboxClientRuby
       inventory_item: InventoryItem,
       manufacturer: Manufacturer,
       platform: Platform,
+      power_connection: PowerConnection,
       power_outlet: PowerOutlet,
       power_port: PowerPort,
       rack: Rack,
