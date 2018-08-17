@@ -5,6 +5,7 @@ require 'netbox_client_ruby/api/tenancy/tenant'
 require 'netbox_client_ruby/api/dcim/platform'
 require 'netbox_client_ruby/api/dcim/site'
 require 'netbox_client_ruby/api/dcim/rack'
+require 'netbox_client_ruby/api/dcim/virtual_chassis'
 require 'netbox_client_ruby/api/ipam/ip_address'
 
 module NetboxClientRuby
@@ -26,7 +27,8 @@ module NetboxClientRuby
         parent_device: proc { |raw_data| Device.new raw_data['id'] },
         primary_ip: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         primary_ip4: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
-        primary_ip6: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] }
+        primary_ip6: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
+        virtual_chassis: proc { |raw_data| DCIM::VirtualChassis.new raw_data['id'] },
       )
     end
   end

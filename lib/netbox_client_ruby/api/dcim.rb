@@ -34,6 +34,8 @@ require 'netbox_client_ruby/api/dcim/region'
 require 'netbox_client_ruby/api/dcim/regions'
 require 'netbox_client_ruby/api/dcim/site'
 require 'netbox_client_ruby/api/dcim/sites'
+require 'netbox_client_ruby/api/dcim/virtual_chassis'
+require 'netbox_client_ruby/api/dcim/virtual_chassis_list'
 require 'netbox_client_ruby/communication'
 
 module NetboxClientRuby
@@ -56,7 +58,8 @@ module NetboxClientRuby
       rack_reservations: RackReservations,
       rack_roles: RackRoles,
       regions: Regions,
-      sites: Sites
+      sites: Sites,
+      virtual_chassis_list: VirtualChassisList
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -80,7 +83,8 @@ module NetboxClientRuby
       rack_reservation: RackReservation,
       rack_role: RackRole,
       region: Region,
-      site: Site
+      site: Site,
+      virtual_chassis: VirtualChassis
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)

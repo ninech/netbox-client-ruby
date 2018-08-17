@@ -21,7 +21,8 @@ module NetboxClientRuby
         rack_reservations: RackReservations,
         rack_roles: RackRoles,
         regions: Regions,
-        sites: Sites
+        sites: Sites,
+        virtual_chassis_list: VirtualChassisList
       }.each do |method, expected_class|
         describe ".#{method}" do
           subject { described_class.public_send(method) }
@@ -61,7 +62,8 @@ module NetboxClientRuby
         rack_reservation: RackReservation,
         rack_role: RackRole,
         region: Region,
-        site: Site
+        site: Site,
+        virtual_chassis: VirtualChassis
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }

@@ -157,6 +157,8 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Rack Reservations
   * Regions
   * Sites
+  * Virtual Chassis (⚠️ Exception: Access the list of virtual chassis as `NetboxClientRuby.dcim.virtual_chassis_list`
+    and the class is called `VirtualChassisList`.)
 * IPAM:
   * Aggregates
   * IP Addresses
