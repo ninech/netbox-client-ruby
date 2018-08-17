@@ -15,6 +15,7 @@ module NetboxClientRuby
         power_ports: PowerPorts,
         racks: Racks,
         rack_groups: RackGroups,
+        rack_reservations: RackReservations,
         rack_roles: RackRoles,
         regions: Regions,
         sites: Sites
@@ -51,6 +52,7 @@ module NetboxClientRuby
         power_port: PowerPort,
         rack: Rack,
         rack_group: RackGroup,
+        rack_reservation: RackReservation,
         rack_role: RackRole,
         region: Region,
         site: Site

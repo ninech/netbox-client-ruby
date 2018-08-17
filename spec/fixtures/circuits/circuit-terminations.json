@@ -1,0 +1,63 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [{
+    "id": 1,
+    "circuit": {
+      "id": 1,
+      "url": "http://nginx.netbox-client-ruby.docker/api/circuits/circuits/1/",
+      "cid": "134"
+    },
+    "term_side": "A",
+    "site": {
+      "id": 1,
+      "url": "http://nginx.netbox-client-ruby.docker/api/dcim/sites/1/",
+      "name": "Site 0",
+      "slug": "site-0"
+    },
+    "interface": {
+      "id": 57,
+      "device": {
+        "id": 6,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/6/",
+        "name": "Switch Device 0",
+        "display_name": "Switch Device 0"
+      },
+      "name": "dev0_eth47",
+      "form_factor": {
+        "value": 1200,
+        "label": "SFP+ (10GE)"
+      },
+      "enabled": true,
+      "lag": null,
+      "mtu": null,
+      "mac_address": null,
+      "mgmt_only": false,
+      "description": "",
+      "is_connected": true,
+      "interface_connection": null,
+      "circuit_termination": {
+        "id": 1,
+        "circuit": {
+          "id": 1,
+          "url": "http://nginx.netbox-client-ruby.docker/api/circuits/circuits/1/",
+          "cid": "134"
+        },
+        "term_side": "A",
+        "port_speed": 10000000,
+        "upstream_speed": 1000000,
+        "xconnect_id": "1234",
+        "pp_info": "42_13"
+      },
+      "mode": null,
+      "untagged_vlan": null,
+      "tagged_vlans": [],
+      "tags": []
+    },
+    "port_speed": 10000000,
+    "upstream_speed": 1000000,
+    "xconnect_id": "1234",
+    "pp_info": "42_13"
+  }]
+}

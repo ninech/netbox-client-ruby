@@ -1,0 +1,29 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [{
+    "id": 1,
+    "rack": {
+      "id": 1,
+      "url": "http://nginx.netbox-client-ruby.docker/api/dcim/racks/1/",
+      "name": "Rack 0",
+      "display_name": "Rack 0 (000)"
+    },
+    "units": [
+      1
+    ],
+    "created": "2018-08-10",
+    "user": {
+      "id": 1,
+      "username": "admin"
+    },
+    "tenant": {
+      "id": 1,
+      "url": "http://nginx.netbox-client-ruby.docker/api/tenancy/tenants/1/",
+      "name": "Tenant 0",
+      "slug": "tenant-0"
+    },
+    "description": "Reservation 0"
+  }]
+}

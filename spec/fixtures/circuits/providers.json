@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [{
+    "id": 1,
+    "name": "Circuit Provider 0",
+    "slug": "circuit-provider-0",
+    "asn": 1234,
+    "account": "12345",
+    "portal_url": "http://www.provider0.com",
+    "noc_contact": "Call 911",
+    "admin_contact": "Operator 1",
+    "comments": "* Comment 1\r\n* Comment 2",
+    "tags": [
+      "tag_b"
+    ],
+    "custom_fields": {},
+    "created": "2018-08-10",
+    "last_updated": "2018-08-10T01:32:41.492791Z"
+  }]
+}

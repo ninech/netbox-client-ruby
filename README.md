@@ -5,7 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/ninech/netbox-client-ruby/badges/gpa.svg)](https://codeclimate.com/github/ninech/netbox-client-ruby)
 
 This is a gem to pragmatically access your [Netbox instance](https://github.com/digitalocean/netbox)
-via it's API from Ruby. This gem is currently only compatible with Netbox v2.
+via it's API from Ruby. This gem is currently only compatible with Netbox v2.4 or newer.
 
 ## Installation
 
@@ -134,6 +134,11 @@ NetboxClientRuby.secrets.session_key = persisted_session_key
 Not all objects which the Netbox API exposes are currently implemented. Implementing new objects
 [is trivial](https://github.com/ninech/netbox-client-ruby/commit/e3cee19d21a8a6ce480d7c03d23d7c3fbc92417a), though.
 
+* Circuits:
+  * Circuits
+  * Circuit Types
+  * Circuit Terminations
+  * Providers
 * DCIM:
   * Devices
   * Device Roles
@@ -146,6 +151,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Racks
   * Rack Groups
   * Rack Roles
+  * Rack Reservations
   * Regions
   * Sites
 * IPAM:
@@ -178,10 +184,32 @@ if it was added in the meantime without the list above having been updated.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests.
-You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies.
+Then, run `rake spec` to run the tests.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
+
+To experiment interactively, fire up the Netbox Docker container by running `docker-compose up -d`.
+Then, run `bin/console` for an interactive prompt that will allow you to experiment against your local Netbox.
+
+### Load Development Data
+
+To simplify development, e.g. via the `bin/console` described above, there is a very complete sample set of Netbox data readily available.
+You can use it to query almost every object and relation in Netbox.
+
+```bash
+cat dump.sql | docker-compose exec postgres psql -U postgres
+```
+
+### Dump Development from Database
+
+Should you want to export the current set of data, use the command below.
+
+```bash
+docker-compose exec postgres pg_dump -U netbox --exclude-table-data=extras_objectchange -Cc netbox > dump.sql
+```
+
+(Remove `--exclude-table-data=extras_objectchange` from the command if you want to retain the history!)
 
 ## Contributing
 

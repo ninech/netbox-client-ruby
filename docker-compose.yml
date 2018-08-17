@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: nginx:1.11-alpine
+    image: nginx:1.14-alpine
     command: nginx -g 'daemon off;' -c /etc/netbox-nginx/nginx.conf
     depends_on:
       - netbox
@@ -11,7 +11,7 @@ services:
     ports:
       - 8080
   netbox:
-    image: ninech/netbox:latest
+    image: ninech/netbox:v2.4.3
     depends_on:
       - postgres
     volumes:
@@ -19,7 +19,7 @@ services:
       - netbox-nginx-config:/etc/netbox-nginx/
     env_file: 'netbox.env'
   postgres:
-    image: postgres:9.6-alpine
+    image: postgres:10.4-alpine
     environment:
       POSTGRES_USER: netbox
       POSTGRES_PASSWORD: netbox

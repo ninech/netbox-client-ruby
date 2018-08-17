@@ -1,14 +1,14 @@
 require 'netbox_client_ruby/entity'
 
 module NetboxClientRuby
-  module DCIM
-    class RackRole
+  module Circuits
+    class Provider
       include Entity
 
       id id: :id
       deletable true
-      path 'dcim/rack-roles/:id.json'
-      creation_path 'dcim/rack-roles/'
+      path 'circuits/providers/:id.json'
+      creation_path 'circuits/providers/'
     end
   end
 end
