@@ -146,6 +146,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Device Roles
   * Device Types
   * Interfaces
+  * Interface Connections
   * Manufacturers
   * Platforms
   * Power Outlets
