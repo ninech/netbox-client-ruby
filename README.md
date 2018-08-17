@@ -140,6 +140,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Circuit Terminations: `NetboxClientRuby.circuits.circuit_terminations`
   * Providers: `NetboxClientRuby.circuits.providers`
 * DCIM:
+  * Console Connections: `NetboxClientRuby.dcim.console_connections`
   * Console Ports: `NetboxClientRuby.dcim.console_ports`
   * Console Server Ports: `NetboxClientRuby.dcim.console_server_ports`
   * Devices: `NetboxClientRuby.dcim.devices`

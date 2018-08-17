@@ -1,3 +1,5 @@
+require 'netbox_client_ruby/api/dcim/console_connection'
+require 'netbox_client_ruby/api/dcim/console_connections'
 require 'netbox_client_ruby/api/dcim/console_port'
 require 'netbox_client_ruby/api/dcim/console_ports'
 require 'netbox_client_ruby/api/dcim/console_server_port'
@@ -43,6 +45,7 @@ require 'netbox_client_ruby/communication'
 module NetboxClientRuby
   module DCIM
     {
+      console_connections: ConsoleConnections,
       console_ports: ConsolePorts,
       console_server_ports: ConsoleServerPorts,
       devices: Devices,
@@ -69,6 +72,7 @@ module NetboxClientRuby
     end
 
     {
+      console_connection: ConsoleConnection,
       console_port: ConsolePort,
       console_server_port: ConsoleServerPort,
       device: Device,

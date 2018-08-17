@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "device": {
+    "id": 3,
+    "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+    "name": "Regular Racked Device 0",
+    "display_name": "Regular Racked Device 0"
+  },
+  "name": "rj45",
+  "cs_port": {
+    "id": 1,
+    "url": "http://nginx.netbox-client-ruby.docker/api/dcim/console-server-ports/1/",
+    "device": {
+      "id": 7,
+      "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+      "name": "Switch Device 1",
+      "display_name": "Switch Device 1"
+    },
+    "name": "Console Server Port 0"
+  },
+  "connection_status": true,
+  "tags": []
+}
