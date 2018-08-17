@@ -4,6 +4,8 @@ module NetboxClientRuby
   module DCIM
     describe DCIM do
       {
+        console_ports: ConsolePorts,
+        console_server_ports: ConsoleServerPorts,
         devices: Devices,
         device_roles: DeviceRoles,
         device_types: DeviceTypes,
@@ -41,6 +43,8 @@ module NetboxClientRuby
       end
 
       {
+        console_port: ConsolePort,
+        console_server_port: ConsoleServerPort,
         device: Device,
         device_role: DeviceRole,
         device_type: DeviceType,

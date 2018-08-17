@@ -1,0 +1,55 @@
+{
+  "count": 4,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "device": {
+        "id": 7,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+        "name": "Switch Device 1",
+        "display_name": "Switch Device 1"
+      },
+      "name": "Console Server Port 0",
+      "connected_console": 1,
+      "tags": []
+    },
+    {
+      "id": 2,
+      "device": {
+        "id": 7,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+        "name": "Switch Device 1",
+        "display_name": "Switch Device 1"
+      },
+      "name": "Console Server Port 1",
+      "connected_console": 2,
+      "tags": []
+    },
+    {
+      "id": 3,
+      "device": {
+        "id": 7,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+        "name": "Switch Device 1",
+        "display_name": "Switch Device 1"
+      },
+      "name": "Console Server Port 2",
+      "connected_console": null,
+      "tags": []
+    },
+    {
+      "id": 4,
+      "device": {
+        "id": 7,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+        "name": "Switch Device 1",
+        "display_name": "Switch Device 1"
+      },
+      "name": "Console Server Port 3",
+      "connected_console": null,
+      "tags": []
+    }
+  ]
+}

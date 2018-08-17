@@ -140,6 +140,8 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Circuit Terminations
   * Providers
 * DCIM:
+  * Console Ports
+  * Console Server Ports
   * Devices
   * Device Roles
   * Device Types
