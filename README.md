@@ -135,53 +135,54 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
 [is trivial](https://github.com/ninech/netbox-client-ruby/commit/e3cee19d21a8a6ce480d7c03d23d7c3fbc92417a), though.
 
 * Circuits:
-  * Circuits
-  * Circuit Types
-  * Circuit Terminations
-  * Providers
+  * Circuits: `NetboxClientRuby.circuits.circuits`
+  * Circuit Types: `NetboxClientRuby.circuits.circuit_types`
+  * Circuit Terminations: `NetboxClientRuby.circuits.circuit_terminations`
+  * Providers: `NetboxClientRuby.circuits.providers`
 * DCIM:
-  * Console Ports
-  * Console Server Ports
-  * Devices
-  * Device Roles
-  * Device Types
-  * Interfaces
-  * Interface Connections
-  * Manufacturers
-  * Platforms
-  * Power Outlets
-  * Power Ports
-  * Racks
-  * Rack Groups
-  * Rack Roles
-  * Rack Reservations
-  * Regions
-  * Sites
-  * Virtual Chassis (⚠️ Exception: Access the list of virtual chassis as `NetboxClientRuby.dcim.virtual_chassis_list`
-    and the class is called `VirtualChassisList`.)
+  * Console Ports: `NetboxClientRuby.dcim.console_ports`
+  * Console Server Ports: `NetboxClientRuby.dcim.console_server_ports`
+  * Devices: `NetboxClientRuby.dcim.devices`
+  * Device Roles: `NetboxClientRuby.dcim.device_roles`
+  * Device Types: `NetboxClientRuby.dcim.device_types`
+  * Interfaces: `NetboxClientRuby.dcim.interfaces`
+  * Interface Connections: `NetboxClientRuby.dcim.interface_connections`
+  * Manufacturers: `NetboxClientRuby.dcim.manufacturers`
+  * Platforms: `NetboxClientRuby.dcim.platforms`
+  * Power Outlets: `NetboxClientRuby.dcim.power_outlets`
+  * Power Ports: `NetboxClientRuby.dcim.power_ports`
+  * Racks: `NetboxClientRuby.dcim.racks`
+  * Rack Groups: `NetboxClientRuby.dcim.rack_groups`
+  * Rack Roles: `NetboxClientRuby.dcim.rack_roles`
+  * Rack Reservations: `NetboxClientRuby.dcim.rack_reservations`
+  * Regions: `NetboxClientRuby.dcim.regions`
+  * Sites: `NetboxClientRuby.dcim.sites`
+  * Virtual Chassis: `NetboxClientRuby.dcim.virtual_chassis_list`
+    (⚠️ Exception: The access is different and the class is called `VirtualChassisList` because the plural and singular
+    names are the same and this poses a conflict.)
 * IPAM:
-  * Aggregates
-  * IP Addresses
-  * Prefixes
-  * RIRs
-  * Roles
-  * VLANs
-  * VLAN Groups
-  * VRFs
+  * Aggregates: `NetboxClientRuby.ipam.aggregates`
+  * IP Addresses: `NetboxClientRuby.ipam.ip_addresses`
+  * Prefixes: `NetboxClientRuby.ipam.prefixes`
+  * RIRs: `NetboxClientRuby.ipam.rirs`
+  * Roles: `NetboxClientRuby.ipam.roles`
+  * VLANs: `NetboxClientRuby.ipam.vlans`
+  * VLAN Groups: `NetboxClientRuby.ipam.vlan_groups`
+  * VRFs: `NetboxClientRuby.ipam.vrfs`
 * Secrets:
-  * Secrets
-  * Secret Roles
-  * get-session-key
-  * generate-rsa-key-pair
+  * Secrets: `NetboxClientRuby.secrets.secrets`
+  * Secret Roles: `NetboxClientRuby.secrets.secret_roles`
+  * generate-rsa-key-pair: `NetboxClientRuby.secrets.generate_rsa_key_pair`
+  * get-session-key: `NetboxClientRuby.secrets.get_session_key`
 * Tenancy:
-  * Tenant
-  * Tenant Groups
+  * Tenant: `NetboxClientRuby.tenancy.tenants`
+  * Tenant Groups: `NetboxClientRuby.tenancy.tenant_groups`
 * Virtualization:
-  * Cluster Types
-  * Cluster Groups
-  * Clusters
-  * Virtual Machines
-  * Interfaces
+  * Cluster Types: `NetboxClientRuby.virtualization.cluster_types`
+  * Cluster Groups: `NetboxClientRuby.virtualization.cluster_groups`
+  * Clusters: `NetboxClientRuby.virtualization.clusters`
+  * Virtual Machines: `NetboxClientRuby.virtualization.virtual_machines`
+  * Interfaces: `NetboxClientRuby.virtualization.interfaces`
 
 If you can't find the object you need, also check
 [the source code](https://github.com/ninech/netbox-client-ruby/tree/master/lib/netbox_client_ruby/api)
