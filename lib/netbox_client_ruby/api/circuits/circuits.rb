@@ -8,7 +8,7 @@ module NetboxClientRuby
     #
     # Normally, this class would be called `Circuits`.
     # But this conflicts with the module of the same name.
-    class CircuitList
+    class Circuits
       include Entities
 
       path 'circuits/circuits.json'

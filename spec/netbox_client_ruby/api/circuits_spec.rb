@@ -2,10 +2,10 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Circuits
-    describe Circuits do
+    describe NetboxClientRuby::Circuits do
       {
         providers: Providers,
-        circuits: CircuitList,
+        circuits: NetboxClientRuby::Circuits::Circuits,
         circuit_terminations: CircuitTerminations,
         circuit_types: CircuitTypes
       }.each do |method, klass|
