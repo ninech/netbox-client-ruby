@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "device": {
+    "id": 7,
+    "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+    "name": "Switch Device 1",
+    "display_name": "Switch Device 1"
+  },
+  "name": "rj45",
+  "cs_port": null,
+  "connection_status": true,
+  "tags": []
+}

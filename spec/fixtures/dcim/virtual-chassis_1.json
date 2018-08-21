@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "master": {
+    "id": 6,
+    "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/6/",
+    "name": "Switch Device 0",
+    "display_name": "Switch Device 0"
+  },
+  "domain": "Virtual Chassis 0",
+  "tags": []
+}

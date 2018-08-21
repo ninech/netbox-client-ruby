@@ -4,13 +4,18 @@ module NetboxClientRuby
   module DCIM
     describe DCIM do
       {
+        console_connections: ConsoleConnections,
+        console_ports: ConsolePorts,
+        console_server_ports: ConsoleServerPorts,
         devices: Devices,
         device_roles: DeviceRoles,
         device_types: DeviceTypes,
         interfaces: Interfaces,
+        interface_connections: InterfaceConnections,
         inventory_items: InventoryItems,
         manufacturers: Manufacturers,
         platforms: Platforms,
+        power_connections: PowerConnections,
         power_outlets: PowerOutlets,
         power_ports: PowerPorts,
         racks: Racks,
@@ -18,7 +23,8 @@ module NetboxClientRuby
         rack_reservations: RackReservations,
         rack_roles: RackRoles,
         regions: Regions,
-        sites: Sites
+        sites: Sites,
+        virtual_chassis_list: VirtualChassisList
       }.each do |method, expected_class|
         describe ".#{method}" do
           subject { described_class.public_send(method) }
@@ -41,13 +47,18 @@ module NetboxClientRuby
       end
 
       {
+        console_connection: ConsoleConnection,
+        console_port: ConsolePort,
+        console_server_port: ConsoleServerPort,
         device: Device,
         device_role: DeviceRole,
         device_type: DeviceType,
         interface: Interface,
+        interface_connection: InterfaceConnection,
         inventory_item: InventoryItem,
         manufacturer: Manufacturer,
         platform: Platform,
+        power_connection: PowerConnection,
         power_outlet: PowerOutlet,
         power_port: PowerPort,
         rack: Rack,
@@ -55,7 +66,8 @@ module NetboxClientRuby
         rack_reservation: RackReservation,
         rack_role: RackRole,
         region: Region,
-        site: Site
+        site: Site,
+        virtual_chassis: VirtualChassis
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }

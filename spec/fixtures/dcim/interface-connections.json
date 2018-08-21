@@ -1,0 +1,152 @@
+{
+  "count": 5,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 9,
+      "interface_a": {
+        "id": 1,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/1/",
+        "device": {
+          "id": 3,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+          "name": "Regular Racked Device 0",
+          "display_name": "Regular Racked Device 0"
+        },
+        "name": "interfaces 0"
+      },
+      "interface_b": {
+        "id": 15,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/15/",
+        "device": {
+          "id": 6,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/6/",
+          "name": "Switch Device 0",
+          "display_name": "Switch Device 0"
+        },
+        "name": "dev0_eth0"
+      },
+      "connection_status": {
+        "value": true,
+        "label": "Connected"
+      }
+    },
+    {
+      "id": 14,
+      "interface_a": {
+        "id": 3,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/3/",
+        "device": {
+          "id": 3,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+          "name": "Regular Racked Device 0",
+          "display_name": "Regular Racked Device 0"
+        },
+        "name": "interfaces 2"
+      },
+      "interface_b": {
+        "id": 17,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/17/",
+        "device": {
+          "id": 6,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/6/",
+          "name": "Switch Device 0",
+          "display_name": "Switch Device 0"
+        },
+        "name": "dev0_eth10"
+      },
+      "connection_status": {
+        "value": false,
+        "label": "Planned"
+      }
+    },
+    {
+      "id": 15,
+      "interface_a": {
+        "id": 7,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/7/",
+        "device": {
+          "id": 3,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+          "name": "Regular Racked Device 0",
+          "display_name": "Regular Racked Device 0"
+        },
+        "name": "oob 0"
+      },
+      "interface_b": {
+        "id": 30,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/30/",
+        "device": {
+          "id": 6,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/6/",
+          "name": "Switch Device 0",
+          "display_name": "Switch Device 0"
+        },
+        "name": "dev0_eth22"
+      },
+      "connection_status": {
+        "value": true,
+        "label": "Connected"
+      }
+    },
+    {
+      "id": 11,
+      "interface_a": {
+        "id": 2,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/2/",
+        "device": {
+          "id": 3,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+          "name": "Regular Racked Device 0",
+          "display_name": "Regular Racked Device 0"
+        },
+        "name": "interfaces 1"
+      },
+      "interface_b": {
+        "id": 65,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/65/",
+        "device": {
+          "id": 7,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+          "name": "Switch Device 1",
+          "display_name": "Switch Device 1"
+        },
+        "name": "dev1_eth1"
+      },
+      "connection_status": {
+        "value": true,
+        "label": "Connected"
+      }
+    },
+    {
+      "id": 12,
+      "interface_a": {
+        "id": 4,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/4/",
+        "device": {
+          "id": 3,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/3/",
+          "name": "Regular Racked Device 0",
+          "display_name": "Regular Racked Device 0"
+        },
+        "name": "interfaces 3"
+      },
+      "interface_b": {
+        "id": 76,
+        "url": "http://nginx.netbox-client-ruby.docker/api/dcim/interfaces/76/",
+        "device": {
+          "id": 7,
+          "url": "http://nginx.netbox-client-ruby.docker/api/dcim/devices/7/",
+          "name": "Switch Device 1",
+          "display_name": "Switch Device 1"
+        },
+        "name": "dev1_eth2"
+      },
+      "connection_status": {
+        "value": false,
+        "label": "Planned"
+      }
+    }
+  ]
+}

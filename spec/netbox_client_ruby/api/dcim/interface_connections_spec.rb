@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 module NetboxClientRuby
-  module Circuits
-    describe CircuitList, faraday_stub: true do
-      let(:response) { File.read('spec/fixtures/circuits/circuits.json') }
-      let(:request_url) { '/api/circuits/circuits.json' }
-      let(:single_type) { Circuit }
-      let(:expected_number_of_items) { 1 }
+  module DCIM
+    describe InterfaceConnections, faraday_stub: true do
+      let(:expected_length) { 5 }
+      let(:singular_type) { InterfaceConnection }
+
+      let(:response) { File.read('spec/fixtures/dcim/interface-connections.json') }
+      let(:request_url) { '/api/dcim/interface-connections.json' }
       let(:request_url_params) do
         { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
       end
@@ -14,13 +15,13 @@ module NetboxClientRuby
       context 'unpaged fetch' do
         describe '#length' do
           it 'shall be the expected length' do
-            expect(subject.length).to be expected_number_of_items
+            expect(subject.length).to be expected_length
           end
         end
 
         describe '#total' do
           it 'shall be the expected total' do
-            expect(subject.total).to be expected_number_of_items
+            expect(subject.total).to be expected_length
           end
         end
       end
@@ -46,12 +47,12 @@ module NetboxClientRuby
 
       describe '#as_array' do
         it 'return the correct amount' do
-          expect(subject.to_a.length).to be expected_number_of_items
+          expect(subject.to_a.length).to be expected_length
         end
 
-        it 'returns single instances' do
+        it 'returns Site instances' do
           subject.to_a.each do |element|
-            expect(element).to be_a single_type
+            expect(element).to be_a singular_type
           end
         end
       end
