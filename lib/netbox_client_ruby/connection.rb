@@ -35,7 +35,8 @@ module NetboxClientRuby
         faraday.request request_encoding
         faraday.response config.faraday.logger if config.faraday.logger
         faraday.response :json, content_type: /\bjson$/
-        faraday.options.merge NetboxClientRuby.config.faraday.request_options
+        faraday.options.merge! NetboxClientRuby.config.faraday.request_options
+        faraday.ssl.merge! NetboxClientRuby.config.faraday.ssl
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
         faraday.adapter config.faraday.adapter || Faraday.default_adapter
       end

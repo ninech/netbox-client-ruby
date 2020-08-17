@@ -27,5 +27,6 @@ module NetboxClientRuby
     setting :adapter, :net_http
     setting :logger
     setting :request_options, open_timeout: 1, timeout: 5
+    setting :ssl
   end
 end
