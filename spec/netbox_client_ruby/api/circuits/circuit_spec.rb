@@ -36,6 +36,22 @@ module NetboxClientRuby
         end
       end
 
+      describe '.provider' do
+        it 'should be a Provider object' do
+          provider = subject.provider
+          expect(provider).to be_a Provider
+          expect(provider.id).to eq(1)
+        end
+      end
+
+      describe '.type' do
+        it 'should be a Type object' do
+          provider = subject.type
+          expect(provider).to be_a CircuitType
+          expect(provider.id).to eq(1)
+        end
+      end
+
       describe '.delete' do
         let(:request_method) { :delete }
         let(:response_status) { 204 }
