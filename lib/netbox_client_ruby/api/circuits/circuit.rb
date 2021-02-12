@@ -24,12 +24,12 @@ module NetboxClientRuby
 
       object_fields(
         provider: proc do |raw_data|
-          Circuit::CircuitProvider.new raw_data['id']
+          Provider.new raw_data['id']
         end,
         status: proc do |raw_status|
           STATUS_VALUES.key(raw_status['value']) || raw_status['value']
         end,
-        type: proc { |raw_data| Circuit::CircuitType.new raw_data['id'] },
+        type: proc { |raw_data| CircuitType.new raw_data['id'] },
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] }
       )
     end
