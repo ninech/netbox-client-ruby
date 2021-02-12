@@ -130,6 +130,8 @@ module NetboxClientRuby
     end
 
     def reload
+      raise LocalError, "Can't 'reload', this object has never been saved" unless ids_set?
+
       @data = get
       revert
       self
@@ -259,7 +261,7 @@ module NetboxClientRuby
     end
 
     def get
-      response connection.get path unless @deleted
+      response connection.get path unless @deleted or !ids_set?
     end
 
     def readonly_fields
