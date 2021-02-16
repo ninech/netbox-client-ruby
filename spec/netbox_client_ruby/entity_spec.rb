@@ -395,4 +395,12 @@ describe NetboxClientRuby::Entity, faraday_stub: true do
       expect(b).to_not be a
     end
   end
+
+  describe 'calling an attribute' do
+    describe 'for an unsaved entity' do
+      it 'should raise a NoMethodError' do
+        expect { subject.unknown_attribute }.to raise_error NoMethodError
+      end
+    end
+  end
 end
