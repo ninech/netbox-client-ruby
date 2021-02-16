@@ -206,7 +206,7 @@ To simplify development, e.g. via the `bin/console` described above, there is a 
 You can use it to query almost every object and relation in Netbox.
 
 ```bash
-cat dump.sql | docker-compose exec postgres psql -U postgres
+docker exec -i netbox-client-ruby_postgres_1 psql -U postgres < dump.sql
 ```
 
 ### Dump Development from Database
