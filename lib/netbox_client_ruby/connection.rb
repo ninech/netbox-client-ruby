@@ -10,7 +10,7 @@ module NetboxClientRuby
     }.freeze
 
     def self.new(options = {})
-      build_faraday(DEFAULT_OPTIONS.merge(options))
+      build_faraday(**DEFAULT_OPTIONS.merge(options))
     end
 
     def self.headers
