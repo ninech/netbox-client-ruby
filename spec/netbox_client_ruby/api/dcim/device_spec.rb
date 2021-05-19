@@ -55,6 +55,22 @@ describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     end
   end
 
+  describe "#tags" do
+    it "should return an Array" do
+      expect(subject.tags)
+        .to be_a(Array)
+    end
+
+    it "should have NetboxClientRuby::Extras::Tag as elements" do
+      expect(subject.tags[0])
+        .to be_a(NetboxClientRuby::Extras::Tag)
+    end
+
+    it "should be the expected tag" do
+      expect(subject.tags[0].id).to eq(1)
+    end
+  end
+
   describe '.delete' do
     let(:request_method) { :delete }
     let(:response_status) { 204 }

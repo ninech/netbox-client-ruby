@@ -77,5 +77,14 @@
   "comments": "",
   "custom_fields": {
     "custom1": "custom1"
-  }
+  },
+  "tags": [
+    {
+      "id": 1,
+      "url": "http://netbox/api/extras/tags/1/",
+      "name": "Production",
+      "slug": "production",
+      "color": "ff5722"
+    }
+  ]
 }
