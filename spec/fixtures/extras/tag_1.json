@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "url": "http://netbox/api/extras/tags/1/",
+  "name": "Production",
+  "slug": "production",
+  "color": "ff5722",
+  "description": "",
+  "tagged_items": 0
+}
