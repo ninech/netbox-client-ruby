@@ -9,6 +9,8 @@ describe NetboxClientRuby::Connection do
         config.netbox.api_base_url = 'https://netbox.test/api/'
         config.faraday.adapter = :net_http
         config.faraday.logger = nil
+        config.faraday.request_options = {}
+        config.faraday.ssl = {}
       end
     end
 
@@ -61,6 +63,7 @@ describe NetboxClientRuby::Connection do
         config.netbox.auth.token = '2e35594ec8710e9922d14365a1ea66f27ea69450'
         config.netbox.api_base_url = 'https://netbox.test/api/'
         config.faraday.adapter = :net_http_persistent
+        config.faraday.ssl = {}
       end
     end
 
@@ -78,6 +81,7 @@ describe NetboxClientRuby::Connection do
           config.netbox.api_base_url = 'https://netbox.test/api/'
           config.faraday.logger = :logger
           config.faraday.adapter = :net_http
+          config.faraday.ssl = {}
         end
       end
 
