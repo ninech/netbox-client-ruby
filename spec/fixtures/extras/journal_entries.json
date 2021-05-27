@@ -1,0 +1,28 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "url": "http://netbox/api/extras/journal-entries/1/",
+      "display": "May 27, 2021 - 10:44 a.m. (Info)",
+      "assigned_object_type": "dcim.device",
+      "assigned_object_id": 1,
+      "assigned_object": {
+        "id": 1,
+        "url": "http://netbox/api/dcim/devices/1/",
+        "display": "New Device",
+        "name": "New Device",
+        "display_name": "New Device"
+      },
+      "created": "2021-05-27T10:44:54.686142Z",
+      "created_by": 1,
+      "kind": {
+        "value": "info",
+        "label": "Info"
+      },
+      "comments": "Hello"
+    }    
+  ]
+}
