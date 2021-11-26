@@ -162,6 +162,10 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Virtual Chassis: `NetboxClientRuby.dcim.virtual_chassis_list`
     (⚠️ Exception: The access is different and the class is called `VirtualChassisList` because the plural and singular
     names are the same and this poses a conflict.)
+* Extras:
+  * Config Contexts: `NetboxClientRuby.extras.config_contexts`
+  * Journal Entries: `NetboxClientRuby.extras.journal_entries`
+  * Tags: `NetboxClientRuby.extras.tags`
 * IPAM:
   * Aggregates: `NetboxClientRuby.ipam.aggregates`
   * IP Addresses: `NetboxClientRuby.ipam.ip_addresses`

@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "url": "http://netbox/api/extras/config-contexts/1/",
+  "name": "Production",
+  "weight": 1000,
+  "description": "",
+  "is_active": true,
+  "regions": [],
+  "sites": [],
+  "roles": [],
+  "platforms": [],
+  "cluster_groups": [],
+  "clusters": [],
+  "tenant_groups": [],
+  "tenants": [],
+  "tags": [],
+  "data": {}
+}
