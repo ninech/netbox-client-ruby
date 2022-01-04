@@ -1,0 +1,29 @@
+{
+  "id": 3,
+  "start_address": "10.2.0.10/16",
+  "end_address": "10.2.0.20/16",
+  "vrf": {
+    "id": 1,
+    "url": "http://localhost/api/ipam/vrfs/1/",
+    "name": "vrf1",
+    "rd": "RD1"
+  },
+  "tenant": {
+    "id": 1,
+    "url": "http://localhost/api/tenancy/tenants/1/",
+    "name": "tenant1",
+    "slug": "tenant1"
+  },
+  "status": {
+    "value": "active",
+    "label": "Active"
+  },
+  "role": {
+    "id": 1,
+    "url": "http://localhost/api/ipam/roles/1/",
+    "name": "role1",
+    "slug": "role1"
+  },
+  "description": "desc1",
+  "custom_fields": {}
+}

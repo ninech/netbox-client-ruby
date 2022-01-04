@@ -2,6 +2,8 @@ require 'netbox_client_ruby/api/ipam/aggregate'
 require 'netbox_client_ruby/api/ipam/aggregates'
 require 'netbox_client_ruby/api/ipam/ip_addresses'
 require 'netbox_client_ruby/api/ipam/ip_address'
+require 'netbox_client_ruby/api/ipam/ip_ranges'
+require 'netbox_client_ruby/api/ipam/ip_range'
 require 'netbox_client_ruby/api/ipam/prefix'
 require 'netbox_client_ruby/api/ipam/prefixes'
 require 'netbox_client_ruby/api/ipam/rir'
@@ -23,6 +25,7 @@ module NetboxClientRuby
     {
       aggregates: Aggregates,
       ip_addresses: IpAddresses,
+      ip_ranges: IpRanges,
       prefixes: Prefixes,
       rirs: Rirs,
       roles: Roles,
@@ -37,6 +40,7 @@ module NetboxClientRuby
     {
       aggregate: Aggregate,
       ip_address: IpAddress,
+      ip_range: IpRange,
       prefix: Prefix,
       rir: Rir,
       role: Role,

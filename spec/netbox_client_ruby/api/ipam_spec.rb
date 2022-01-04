@@ -6,6 +6,7 @@ module NetboxClientRuby
       {
         roles: Roles,
         ip_addresses: IpAddresses,
+        ip_ranges: IpRanges,
         vlan_groups: VlanGroups,
         vrfs: Vrfs,
         vlans: Vlans,
@@ -35,6 +36,7 @@ module NetboxClientRuby
       {
         role: Role,
         ip_address: IpAddress,
+        ip_range: IpRange,
         vlan_group: VlanGroup,
         vrf: Vrf,
         vlan: Vlan,
@@ -64,4 +66,3 @@ module NetboxClientRuby
     end
   end
 end
-
