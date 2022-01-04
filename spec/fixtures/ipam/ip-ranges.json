@@ -1,0 +1,64 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "start_address": "10.0.0.10/8",
+      "end_address": "10.0.0.20/8",
+      "vrf": null,
+      "tenant": null,
+      "status": {
+        "value": 1,
+        "label": "Active"
+      },
+      "role": null,
+      "description": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 2,
+      "start_address": "10.1.0.10/16",
+      "end_address": "10.1.0.20/16",
+      "vrf": null,
+      "tenant": null,
+      "status": {
+        "value": 1,
+        "label": "Active"
+      },
+      "role": null,
+      "description": "",
+      "custom_fields": {}
+    },
+    {
+      "id": 3,
+      "start_address": "10.2.0.10/16",
+      "end_address": "10.2.0.10/16",
+      "vrf": {
+        "id": 1,
+        "url": "http://localhost/api/ipam/vrfs/1/",
+        "name": "vrf1",
+        "rd": "RD1"
+      },
+      "tenant": {
+        "id": 1,
+        "url": "http://localhost/api/tenancy/tenants/1/",
+        "name": "tenant1",
+        "slug": "tenant1"
+      },
+      "status": {
+        "value": "active",
+        "label": "Active"
+      },
+      "role": {
+        "id": 1,
+        "url": "http://localhost/api/ipam/roles/1/",
+        "name": "role1",
+        "slug": "role1"
+      },
+      "description": "desc1",
+      "custom_fields": {}
+    }
+  ]
+}

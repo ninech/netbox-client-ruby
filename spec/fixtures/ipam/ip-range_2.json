@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "start_address": "10.1.0.10/16",
+  "end_address": "10.1.0.20/16",
+  "vrf": null,
+  "tenant": null,
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
+  "role": null,
+  "description": "",
+  "custom_fields": {}
+}
