@@ -169,6 +169,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
 * IPAM:
   * Aggregates: `NetboxClientRuby.ipam.aggregates`
   * IP Addresses: `NetboxClientRuby.ipam.ip_addresses`
+  * IP Ranges: `NetboxClientRuby.ipam.ip_ranges`
   * Prefixes: `NetboxClientRuby.ipam.prefixes`
   * RIRs: `NetboxClientRuby.ipam.rirs`
   * Roles: `NetboxClientRuby.ipam.roles`
