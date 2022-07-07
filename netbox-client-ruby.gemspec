@@ -26,9 +26,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.6.0'
 
   spec.add_runtime_dependency 'dry-configurable', '~> 0.13.0'
-  spec.add_runtime_dependency 'faraday', '~> 0.11', '>= 0.11.0'
+  spec.add_runtime_dependency 'faraday', '>= 0.11.0', '< 2'
   spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
-  spec.add_runtime_dependency 'faraday_middleware', '~> 0.11'
+  spec.add_runtime_dependency 'faraday_middleware', '>= 0.11', '< 2'
   spec.add_runtime_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
   spec.add_runtime_dependency 'openssl', '~> 2.0', '>= 2.0.5'
 
