@@ -1,0 +1,27 @@
+{
+    "id": 1,
+    "device": null,
+    "virtual_machine": {
+        "id": 1,
+        "url": "http://localhost/api/virtualization/virtual-machines/1/",
+        "name": "Virtual Machine 0"
+    },
+    "name": "Service 0",
+    "port": 443,
+    "protocol": {
+        "value": 6,
+        "label": "TCP"
+    },
+    "ipaddresses": [
+        {
+            "id": 4,
+            "url": "http://localhost/api/ipam/ip-addresses/4/",
+            "family": 4,
+            "address": "10.0.0.100/24"
+        }
+    ],
+    "description": "This is Description",
+    "custom_fields": {},
+    "created": "2023-04-23",
+    "last_updated": "2023-04-23T15:44:58.595982Z"
+}

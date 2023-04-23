@@ -173,6 +173,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Prefixes: `NetboxClientRuby.ipam.prefixes`
   * RIRs: `NetboxClientRuby.ipam.rirs`
   * Roles: `NetboxClientRuby.ipam.roles`
+  * Services: `NetboxClientRuby.ipam.services`
   * VLANs: `NetboxClientRuby.ipam.vlans`
   * VLAN Groups: `NetboxClientRuby.ipam.vlan_groups`
   * VRFs: `NetboxClientRuby.ipam.vrfs`
