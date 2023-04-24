@@ -5187,6 +5187,7 @@ COPY public.ipam_role (id, name, slug, weight, created, last_updated) FROM stdin
 --
 
 COPY public.ipam_service (id, created, last_updated, name, protocol, port, description, device_id, virtual_machine_id) FROM stdin;
+1	2023-04-23	2023-04-23 15:44:58.595982+00	Service 0	6	443	This is Description	\N	1
 \.
 
 
@@ -5195,6 +5196,7 @@ COPY public.ipam_service (id, created, last_updated, name, protocol, port, descr
 --
 
 COPY public.ipam_service_ipaddresses (id, service_id, ipaddress_id) FROM stdin;
+1	1	4
 \.
 
 
@@ -5326,6 +5328,7 @@ COPY public.taggit_taggeditem (id, object_id, content_type_id, tag_id) FROM stdi
 32	1	9	4
 33	1	11	5
 34	8	17	9
+35	1	47	5
 \.
 
 
@@ -5774,7 +5777,7 @@ SELECT pg_catalog.setval('public.extras_imageattachment_id_seq', 1, false);
 -- Name: extras_objectchange_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.extras_objectchange_id_seq', 318, true);
+SELECT pg_catalog.setval('public.extras_objectchange_id_seq', 319, true);
 
 
 --
@@ -5851,14 +5854,14 @@ SELECT pg_catalog.setval('public.ipam_role_id_seq', 1, true);
 -- Name: ipam_service_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.ipam_service_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ipam_service_id_seq', 1, true);
 
 
 --
 -- Name: ipam_service_ipaddresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.ipam_service_ipaddresses_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ipam_service_ipaddresses_id_seq', 1, true);
 
 
 --
@@ -5935,7 +5938,7 @@ SELECT pg_catalog.setval('public.taggit_tag_id_seq', 9, true);
 -- Name: taggit_taggeditem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: netbox
 --
 
-SELECT pg_catalog.setval('public.taggit_taggeditem_id_seq', 34, true);
+SELECT pg_catalog.setval('public.taggit_taggeditem_id_seq', 35, true);
 
 
 --
