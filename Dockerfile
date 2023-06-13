@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=2.3.4
+ARG RUBY_VERSION=3.2.2
 FROM ruby:${RUBY_VERSION}-alpine
 
 RUN apk add --no-cache git openssl-dev build-base
