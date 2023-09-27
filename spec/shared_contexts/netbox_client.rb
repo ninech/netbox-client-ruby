@@ -1,3 +1,10 @@
+require "dry/configurable/test_interface"
+
+# https://dry-rb.org/gems/dry-configurable/1.0/testing/
+module NetboxClientRuby
+  enable_test_interface
+end
+
 RSpec.shared_context 'connection setup' do
   let(:netbox_auth_token) { 'this-is-the-test-token' }
   let(:netbox_api_base_url) { 'http://netbox.test/api/' }
@@ -5,6 +12,7 @@ RSpec.shared_context 'connection setup' do
   let(:netbox_auth_rsa_private_key_pass) { nil }
 
   before do
+    NetboxClientRuby.reset_config
     NetboxClientRuby.configure do |config|
       config.netbox.auth.token = netbox_auth_token
       config.netbox.auth.rsa_private_key.path = netbox_auth_rsa_private_key_file
