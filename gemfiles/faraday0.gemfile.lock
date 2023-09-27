@@ -3,9 +3,8 @@ PATH
   specs:
     netbox-client-ruby (0.9.0)
       dry-configurable (~> 1)
-      faraday (>= 0.11.0, < 2)
+      faraday (>= 0.11.0, < 3)
       faraday-detailed_logger (~> 2.1)
-      faraday_middleware (>= 0.11, < 2)
       ipaddress (~> 0.8, >= 0.8.3)
       openssl (>= 2.0.5)
 

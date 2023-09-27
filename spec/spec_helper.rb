@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'netbox-client-ruby'
 require 'shared_context'
+require 'faraday/net_http_persistent' if Faraday::VERSION > '2'
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'
