@@ -1,5 +1,5 @@
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday_middleware' if Faraday::VERSION < '2'
 require 'faraday/detailed_logger'
 require 'netbox_client_ruby/error/local_error'
 

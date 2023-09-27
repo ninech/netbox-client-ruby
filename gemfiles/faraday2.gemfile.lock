@@ -12,8 +12,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    base64 (0.1.1)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     diff-lcs (1.5.0)
     dry-configurable (1.0.1)
       dry-core (~> 1.0, < 2)
@@ -21,15 +23,20 @@ GEM
     dry-core (1.0.0)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
-    faraday (1.0.0)
-      multipart-post (>= 1.2, < 3)
+    faraday (2.7.11)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
     faraday-detailed_logger (2.5.0)
       faraday (>= 0.16, < 3)
-    faraday_middleware (1.2.0)
-      faraday (~> 1.0)
+    faraday-net_http (3.0.2)
+    faraday-net_http_persistent (2.1.0)
+      faraday (~> 2.5)
+      net-http-persistent (~> 4.0)
     ipaddress (0.8.3)
     method_source (1.0.0)
-    multipart-post (2.3.0)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
     openssl (3.2.0)
     parallel (1.23.0)
     parser (3.2.2.3)
@@ -71,6 +78,7 @@ GEM
       rubocop (~> 0.87)
       rubocop-ast (>= 0.7.1)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     unicode-display_width (1.8.0)
     zeitwerk (2.6.12)
 
@@ -80,8 +88,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1)
-  faraday (= 1.0)
-  faraday_middleware (< 2)
+  faraday (< 3)
+  faraday-net_http_persistent
   netbox-client-ruby!
   pry (~> 0.10)
   rake (~> 13)

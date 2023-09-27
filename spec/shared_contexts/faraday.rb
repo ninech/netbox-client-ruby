@@ -1,5 +1,3 @@
-require 'faraday'
-require 'faraday_middleware'
 require 'uri'
 
 RSpec.shared_context 'faraday connection', faraday_stub: true do
