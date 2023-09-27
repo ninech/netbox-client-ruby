@@ -97,19 +97,29 @@ describe NetboxClientRuby::Connection do
       end
     end
 
-    context 'detailed logger' do
-      before do
-        NetboxClientRuby.configure do |config|
-          config.netbox.auth.token = '2e35594ec8710e9922d14365a1ea66f27ea69450'
-          config.netbox.api_base_url = 'https://netbox.test/api/'
-          config.faraday.logger = :detailed_logger
-          config.faraday.adapter = :net_http
+    # For old versions of Faraday prior to Faraday 0.16.x, it does not appear to
+    # be possible to set the current version of faraday-detailed_logger, which raises the error
+    #
+    #  Faraday::Error:
+    #      :detailed_logger is not registered on Faraday::Response
+    #
+    # Because this version range of Faraday is so old, we skip the test rather
+    # than attempting to backport this optional feature.
+    if Faraday::VERSION > '0.16'
+      context 'detailed logger' do
+        before do
+          NetboxClientRuby.configure do |config|
+            config.netbox.auth.token = '2e35594ec8710e9922d14365a1ea66f27ea69450'
+            config.netbox.api_base_url = 'https://netbox.test/api/'
+            config.faraday.logger = :detailed_logger
+            config.faraday.adapter = :net_http
+          end
         end
-      end
 
-      it 'sets the logger' do
-        expect(NetboxClientRuby::Connection.new.builder.handlers)
-          .to include Faraday::DetailedLogger::Middleware
+        it 'sets the logger' do
+          expect(NetboxClientRuby::Connection.new.builder.handlers)
+            .to include Faraday::DetailedLogger::Middleware
+        end
       end
     end
   end

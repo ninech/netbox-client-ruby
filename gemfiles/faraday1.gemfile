@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem "faraday", "= 1.0"
+gem "faraday_middleware", "< 2"
+
+gemspec path: ".."
