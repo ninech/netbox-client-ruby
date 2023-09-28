@@ -1,4 +1,5 @@
 require 'dry-configurable'
+require 'netbox_client_ruby/error'
 require 'netbox_client_ruby/api'
 
 module NetboxClientRuby
