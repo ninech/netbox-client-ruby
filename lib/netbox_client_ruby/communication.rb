@@ -1,5 +1,4 @@
-require 'netbox_client_ruby/error/client_error'
-require 'netbox_client_ruby/error/remote_error'
+require 'netbox_client_ruby/error'
 require 'netbox_client_ruby/connection'
 
 module NetboxClientRuby
