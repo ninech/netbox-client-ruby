@@ -15,6 +15,12 @@ Add this line to your application's Gemfile:
 gem 'netbox-client-ruby'
 ```
 
+If your application already uses Faraday 0.x or 1.x and you cannot otherwise upgrade to Faraday 2, you must also add this line to your application's Gemfile:
+
+```ruby
+gem 'faraday_middleware' # remove when upgrading to Faraday 2+
+```
+
 And then execute:
 
     $ bundle
