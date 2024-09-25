@@ -39,7 +39,7 @@ module NetboxClientRuby
           end
         end
 
-        @id_fields.keys.each do |field|
+        @id_fields.each_key do |field|
           define_method(field) { instance_variable_get :"@#{field}" }
         end
 
