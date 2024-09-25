@@ -1,5 +1,4 @@
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# frozen_string_literal: true
 
 Gem::Specification.new do |spec|
   spec.name          = 'netbox-client-ruby'
@@ -21,13 +20,12 @@ Gem::Specification.new do |spec|
   end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 2.7.0'
 
-  spec.add_runtime_dependency 'dry-configurable', '~> 1'
-  spec.add_runtime_dependency 'faraday', '>= 0.11.0', '< 3'
-  spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
-  spec.add_runtime_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
-  spec.add_runtime_dependency 'openssl', '>= 2.0.5'
+  spec.add_dependency 'dry-configurable', '~> 1'
+  spec.add_dependency 'faraday', '>= 0.11.0', '< 3'
+  spec.add_dependency 'faraday-detailed_logger', '~> 2.1'
+  spec.add_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
+  spec.add_dependency 'openssl', '>= 2.0.5'
 end
