@@ -15,7 +15,7 @@ module NetboxClientRuby
         active: 1,
         reserved: 2,
         deprecated: 3,
-        dhcp: 5
+        dhcp: 5,
       }.freeze
 
       id id: :id

@@ -34,7 +34,7 @@ module NetboxClientRuby
       services: Services,
       vlans: Vlans,
       vlan_groups: VlanGroups,
-      vrfs: Vrfs
+      vrfs: Vrfs,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -50,7 +50,7 @@ module NetboxClientRuby
       service: Service,
       vlan: Vlan,
       vlan_group: VlanGroup,
-      vrf: Vrf
+      vrf: Vrf,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)

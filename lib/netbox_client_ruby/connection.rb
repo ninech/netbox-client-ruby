@@ -23,7 +23,7 @@ end
 module NetboxClientRuby
   class Connection
     DEFAULT_OPTIONS = {
-      request_encoding: :json
+      request_encoding: :json,
     }.freeze
 
     def self.new(options = {})

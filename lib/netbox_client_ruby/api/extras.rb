@@ -12,7 +12,7 @@ module NetboxClientRuby
     {
       config_contexts: ConfigContexts,
       journal_entries: JournalEntries,
-      tags: Tags
+      tags: Tags,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -21,7 +21,7 @@ module NetboxClientRuby
     {
       config_context: ConfigContext,
       journal_entry: JournalEntry,
-      tag: Tag
+      tag: Tag,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)

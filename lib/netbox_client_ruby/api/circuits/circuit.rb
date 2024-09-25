@@ -16,7 +16,7 @@ module NetboxClientRuby
         planned: 2,
         provisioning: 3,
         offline: 4,
-        decommissioned: 5
+        decommissioned: 5,
       }.freeze
 
       id id: :id

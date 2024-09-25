@@ -11,7 +11,7 @@ module NetboxClientRuby
       STATUS_VALUES = {
         active: 1,
         planned: 2,
-        retired: 4
+        retired: 4,
       }.freeze
 
       id id: :id

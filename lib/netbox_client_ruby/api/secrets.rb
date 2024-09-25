@@ -12,7 +12,7 @@ module NetboxClientRuby
       secret_roles: SecretRoles,
       secrets: Secrets,
       generate_rsa_key_pair: RSAKeyPair,
-      get_session_key: SessionKey
+      get_session_key: SessionKey,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -20,7 +20,7 @@ module NetboxClientRuby
 
     {
       secret_role: SecretRole,
-      secret: Secret
+      secret: Secret,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)
