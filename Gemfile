@@ -5,14 +5,16 @@ source 'https://rubygems.org'
 # Specify your gem dependencies in netbox-client-ruby.gemspec
 gemspec
 
-gem 'bundler', '~> 2.1'
-gem 'pry', '~> 0.10'
-gem 'rake', '~> 13'
-gem 'rspec', '~> 3.5'
+gem 'appraisal', git: 'https://github.com/thoughtbot/appraisal.git'
+
+gem 'pry'
+gem 'rake'
+gem 'rspec'
 gem 'rubocop'
 gem 'rubocop-performance'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
 
+# fallback to faraday 1.x in dev environment
 gem 'faraday', '~> 1.10'
 gem 'faraday_middleware'

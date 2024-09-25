@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/thoughtbot/appraisal.git
+  revision: 24feeea4c5c1d2e7a5f95d053da61858c6bfb2b1
+  specs:
+    appraisal (2.5.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
+
 PATH
   remote: ..
   specs:
@@ -11,8 +20,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.2)
+    coderay (1.1.3)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
+    diff-lcs (1.5.1)
     dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -32,24 +44,79 @@ GEM
       net-http-persistent (>= 4.0.4, < 5)
     ipaddress (0.8.3)
     json (2.7.2)
+    language_server-protocol (3.17.0.3)
     logger (1.6.1)
+    method_source (1.1.0)
     net-http (0.4.1)
       uri
     net-http-persistent (4.0.4)
       connection_pool (~> 2.2)
     openssl (3.2.0)
+    parallel (1.26.3)
+    parser (3.3.5.0)
+      ast (~> 2.4.1)
+      racc
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    racc (1.8.1)
+    rainbow (3.1.1)
+    rake (13.2.1)
+    regexp_parser (2.9.2)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.1)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
+    rubocop (1.66.1)
+      json (~> 2.3)
+      language_server-protocol (>= 3.17.0)
+      parallel (~> 1.10)
+      parser (>= 3.3.0.2)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 2.4, < 3.0)
+      rubocop-ast (>= 1.32.2, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.32.3)
+      parser (>= 3.3.1.0)
+    rubocop-performance (1.22.1)
+      rubocop (>= 1.48.1, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (3.0.5)
+      rubocop (~> 1.61)
+    ruby-progressbar (1.13.0)
+    thor (1.3.2)
+    unicode-display_width (2.6.0)
     uri (0.13.1)
     zeitwerk (2.6.18)
 
 PLATFORMS
-  arm64-darwin-22
   arm64-darwin-23
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
+  appraisal!
   faraday (< 3)
   faraday-net_http_persistent
   netbox-client-ruby!
+  pry
+  rake
+  rspec
+  rubocop
+  rubocop-performance
+  rubocop-rake
+  rubocop-rspec
 
 BUNDLED WITH
-   2.4.10
+   2.5.20
