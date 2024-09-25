@@ -77,7 +77,7 @@ module NetboxClientRuby
     end
 
     def find_by(attributes) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-      fail ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
+      raise ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
 
       filter(attributes).find do |netbox_object|
         attributes.all? do |filter_key, filter_value|
@@ -97,7 +97,7 @@ module NetboxClientRuby
     end
 
     def filter(filter)
-      fail ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
+      raise ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
 
       @filter = filter
       reset
