@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Virtualization
-    describe Virtualization do
+    RSpec.describe Virtualization do
       {
         cluster_groups: ClusterGroups,
         cluster_types: ClusterTypes,

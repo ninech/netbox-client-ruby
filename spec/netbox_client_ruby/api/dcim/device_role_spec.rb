@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::DeviceRole, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::DeviceRole, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'devicerole1' }
   let(:sut) { NetboxClientRuby::DCIM::DeviceRole }

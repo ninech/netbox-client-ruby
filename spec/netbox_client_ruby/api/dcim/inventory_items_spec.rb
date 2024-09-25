@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::InventoryItems, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::InventoryItems, faraday_stub: true do
   let(:expected_length) { 1 }
   let(:singular_type) { NetboxClientRuby::DCIM::InventoryItem }
 

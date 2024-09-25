@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::RackRole, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::RackRole, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'Housing' }
   let(:base_url) { '/api/dcim/rack-roles/' }

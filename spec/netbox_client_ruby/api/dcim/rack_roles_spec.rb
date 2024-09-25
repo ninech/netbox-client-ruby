@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::RackRoles, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::RackRoles, faraday_stub: true do
   let(:expected_length) { 2 }
   let(:singular_type) { NetboxClientRuby::DCIM::RackRole }
 

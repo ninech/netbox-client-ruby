@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ipaddress'
 
-describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::IPAM::Prefix }
   let(:base_url) { '/api/ipam/prefixes/' }
   let(:response) { File.read("spec/fixtures/ipam/prefix_#{entity_id}.json") }

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Circuits
-    describe CircuitTermination, faraday_stub: true do
+    RSpec.describe CircuitTermination, faraday_stub: true do
       let(:id) { 1 }
       let(:base_url) { '/api/circuits/circuit-terminations/' }
       let(:request_url) { "#{base_url}#{id}.json" }

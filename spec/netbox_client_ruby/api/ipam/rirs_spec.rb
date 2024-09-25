@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::IPAM::Rirs, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::Rirs, faraday_stub: true do
   let(:expected_length) { 2 }
   let(:expected_singular_type) { NetboxClientRuby::IPAM::Rir }
 

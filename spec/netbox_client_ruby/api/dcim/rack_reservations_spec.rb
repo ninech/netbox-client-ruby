@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe RackReservations, faraday_stub: true do
+    RSpec.describe RackReservations, faraday_stub: true do
       let(:expected_length) { 1 }
       let(:singular_type) { RackReservation }
 

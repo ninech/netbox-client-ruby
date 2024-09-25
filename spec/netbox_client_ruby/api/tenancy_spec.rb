@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Tenancy
-    describe Tenancy do
+    RSpec.describe Tenancy do
       {
         tenant_groups: TenantGroups,
         tenants: Tenants

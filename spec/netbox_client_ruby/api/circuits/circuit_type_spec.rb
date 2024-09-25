@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Circuits
-    describe CircuitType, faraday_stub: true do
+    RSpec.describe CircuitType, faraday_stub: true do
       let(:id) { 1 }
       let(:base_url) { '/api/circuits/circuit-types/' }
       let(:request_url) { "#{base_url}#{id}.json" }
