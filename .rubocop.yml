@@ -9,7 +9,9 @@ AllCops:
   TargetRubyVersion: 2.7
   Exclude:
     - bin/*
+    - gemfiles/*
     - spec/**/*
+    - lib/netbox-client-ruby.rb
 
 Style/Documentation:
   Enabled: false
@@ -19,6 +21,13 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - lib/netbox_client_ruby/api/secrets/session_key.rb
 
 # RSpec/NotToNot:
 #   EnforcedStyle: to_not
