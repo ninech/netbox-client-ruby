@@ -4,7 +4,7 @@ require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/error'
 
 module NetboxClientRuby
-  module Entities
+  module Entities # rubocop:disable Metrics/ModuleLength
     include NetboxClientRuby::Communication
     include Enumerable
 

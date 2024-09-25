@@ -46,7 +46,7 @@ module NetboxClientRuby
       NetboxClientRuby.config.netbox
     end
 
-    private_class_method def self.build_faraday(request_encoding: :json)
+    private_class_method def self.build_faraday(request_encoding: :json) # rubocop:disable Metrics/AbcSize
       config = NetboxClientRuby.config
       Faraday.new(url: config.netbox.api_base_url, headers: headers) do |faraday|
         faraday.request request_encoding
