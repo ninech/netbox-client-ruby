@@ -40,7 +40,7 @@ module NetboxClientRuby
         end
 
         @id_fields.keys.each do |field|
-          define_method(field) { instance_variable_get "@#{field}" }
+          define_method(field) { instance_variable_get :"@#{field}" }
         end
 
         @id_fields
@@ -110,13 +110,13 @@ module NetboxClientRuby
       return self if given_values.nil?
 
       if id_fields.count == 1 && !given_values.is_a?(Hash)
-        instance_variable_set("@#{id_fields.keys.first}", given_values)
+        instance_variable_set(:"@#{id_fields.keys.first}", given_values)
         return self
       end
 
       given_values.each do |field, value|
         if id_fields.key? field.to_s
-          instance_variable_set "@#{field}", value
+          instance_variable_set :"@#{field}", value
         else
           # via method_missing, because it checks for readonly fields, etc.
           method_missing("#{field}=", value)
@@ -330,12 +330,12 @@ module NetboxClientRuby
           raise LocalError, "Can't find the id field '#{id_field}' in the received data."
         end
 
-        instance_variable_set("@#{id_attr}", data[id_field])
+        instance_variable_set(:"@#{id_attr}", data[id_field])
       end
     end
 
     def ids_set?
-      id_fields.map { |id_attr, _| instance_variable_get("@#{id_attr}") }.all?
+      id_fields.map { |id_attr, _| instance_variable_get(:"@#{id_attr}") }.all?
     end
   end
 end
