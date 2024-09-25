@@ -10,7 +10,7 @@ module NetboxClientRuby
     class SessionKey
       include Communication
 
-      PATH = '/api/secrets/get-session-key/'.freeze
+      PATH = '/api/secrets/get-session-key/'
 
       def initialize
         session_key

@@ -33,7 +33,7 @@ module NetboxClientRuby
     def self.headers
       headers = {}
       auth_token = auth_config.token
-      headers['Authorization'] = "Token #{auth_token}".freeze if auth_token
+      headers['Authorization'] = "Token #{auth_token}" if auth_token
       headers['X-Session-Key'] = NetboxClientRuby::Secrets.session_key if NetboxClientRuby::Secrets.session_key
       headers
     end
