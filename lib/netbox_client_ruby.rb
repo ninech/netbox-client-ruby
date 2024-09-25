@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry-configurable'
 require 'netbox_client_ruby/error'
 require 'netbox_client_ruby/api'
