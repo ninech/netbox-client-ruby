@@ -11,9 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Christian Mäder']
   spec.email         = ['christian.maeder@nine.ch']
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
-  end
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org' if spec.respond_to?(:metadata)
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
