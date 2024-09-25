@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::IPAM::VlanGroup, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::VlanGroup, faraday_stub: true do
   let(:expected_name) { 'vlan1' }
   let(:expected_slug) { expected_name }
   let(:class_under_test) { NetboxClientRuby::IPAM::VlanGroup }

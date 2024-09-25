@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Entity do
+RSpec.describe NetboxClientRuby::Entity do
   class TestSubPoro
     attr_accessor :name
 

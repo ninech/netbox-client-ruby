@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::RackGroup, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::RackGroup, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'Colozüri 4.1' }
   let(:base_url) { '/api/dcim/rack-groups/' }

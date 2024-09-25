@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
   let(:region_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/region_#{region_id}.json") }
   let(:request_url) { "/api/dcim/regions/#{region_id}.json" }

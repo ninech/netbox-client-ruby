@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Extras
-    describe JournalEntries, faraday_stub: true do
+    RSpec.describe JournalEntries, faraday_stub: true do
       let(:expected_number_of_items) { 1 }
       let(:expected_singular_type) { JournalEntry }
 

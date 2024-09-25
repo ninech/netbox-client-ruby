@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Tenancy
-    describe Tenants, faraday_stub: true do
+    RSpec.describe Tenants, faraday_stub: true do
       let(:response) { File.read('spec/fixtures/tenancy/tenants.json') }
       let(:request_url) { '/api/tenancy/tenants.json' }
       let(:request_url_params) do

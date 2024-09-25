@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Extras
-    describe Extras do
+    RSpec.describe Extras do
       {
         tags: Tags
       }.each do |method, klass|

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Extras
-    describe JournalEntry, faraday_stub: true do
+    RSpec.describe JournalEntry, faraday_stub: true do
       let(:entity_id) { 1 }
       let(:base_url) { '/api/extras/journal-entries/' }
       let(:request_url) { "#{base_url}#{entity_id}.json" }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::Interfaces, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::Interfaces, faraday_stub: true do
   let(:expected_length) { 3 }
   let(:singular_type) { NetboxClientRuby::DCIM::Interface }
 

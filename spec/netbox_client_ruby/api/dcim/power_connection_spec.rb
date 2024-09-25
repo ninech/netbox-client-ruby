@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe PowerConnection, faraday_stub: true do
+    RSpec.describe PowerConnection, faraday_stub: true do
       let(:entity_id) { 1 }
       let(:expected_name) { 'power port 0' }
       let(:base_url) { '/api/dcim/power-connections/' }

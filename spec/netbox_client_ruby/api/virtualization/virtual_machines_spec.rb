@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Virtualization::VirtualMachines, faraday_stub: true do
+RSpec.describe NetboxClientRuby::Virtualization::VirtualMachines, faraday_stub: true do
   let(:expected_length) { 1 }
   let(:singular_type) { NetboxClientRuby::Virtualization::VirtualMachine }
 

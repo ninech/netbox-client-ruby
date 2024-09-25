@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Secrets
-    describe NetboxClientRuby::Secrets do
+    RSpec.describe NetboxClientRuby::Secrets do
       {
         secret_roles: SecretRoles,
         secrets: NetboxClientRuby::Secrets::Secrets

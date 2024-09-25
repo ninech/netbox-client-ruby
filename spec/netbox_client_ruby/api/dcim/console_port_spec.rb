@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe ConsolePort, faraday_stub: true do
+    RSpec.describe ConsolePort, faraday_stub: true do
       let(:entity_id) { 1 }
       let(:expected_name) { 'rj45' }
       let(:base_url) { '/api/dcim/console-ports/' }

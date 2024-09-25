@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Secrets
-    describe Secrets, faraday_stub: true do
+    RSpec.describe Secrets, faraday_stub: true do
       let(:response) { File.read('spec/fixtures/secrets/secrets.json') }
       let(:request_url) { '/api/secrets/secrets.json' }
       let(:request_url_params) do

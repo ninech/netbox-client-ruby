@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::Rack, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::Rack, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { 'test2rack' }
   let(:sut) { NetboxClientRuby::DCIM::Rack }

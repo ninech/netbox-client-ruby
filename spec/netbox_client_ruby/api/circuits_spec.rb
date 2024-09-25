@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Circuits
-    describe NetboxClientRuby::Circuits do
+    RSpec.describe NetboxClientRuby::Circuits do
       {
         providers: Providers,
         circuits: NetboxClientRuby::Circuits::Circuits,

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe InterfaceConnection, faraday_stub: true do
+    RSpec.describe InterfaceConnection, faraday_stub: true do
       let(:entity_id) { 9 }
       let(:expected_connection_status) { true }
       let(:base_url) { '/api/dcim/interface-connections/' }

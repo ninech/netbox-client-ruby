@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe VirtualChassis, faraday_stub: true do
+    RSpec.describe VirtualChassis, faraday_stub: true do
       let(:entity_id) { 1 }
       let(:expected_domain) { 'Virtual Chassis 0' }
       let(:base_url) { '/api/dcim/virtual-chassis/' }

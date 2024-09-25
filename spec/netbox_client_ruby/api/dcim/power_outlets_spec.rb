@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::PowerOutlets, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::PowerOutlets, faraday_stub: true do
   let(:expected_length) { 50 }
   let(:singular_type) { NetboxClientRuby::DCIM::PowerOutlet }
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module IPAM
-    describe IPAM do
+    RSpec.describe IPAM do
       {
         roles: Roles,
         ip_addresses: IpAddresses,

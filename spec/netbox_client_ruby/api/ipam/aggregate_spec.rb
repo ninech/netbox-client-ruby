@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::IPAM::Aggregate }
   let(:base_url) { '/api/ipam/aggregates/' }
   let(:response) { File.read("spec/fixtures/ipam/aggregate_#{entity_id}.json") }

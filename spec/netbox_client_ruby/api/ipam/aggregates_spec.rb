@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::IPAM::Aggregates, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::Aggregates, faraday_stub: true do
   let(:expected_length) { 1 }
   let(:expected_singular_type) { NetboxClientRuby::IPAM::Aggregate }
 
