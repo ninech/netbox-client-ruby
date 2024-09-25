@@ -10,6 +10,8 @@ gem 'pry', '~> 0.10'
 gem 'rake', '~> 13'
 gem 'rspec', '~> 3.5'
 gem 'rubocop'
+gem 'rubocop-performance'
+gem 'rubocop-rake'
 gem 'rubocop-rspec'
 
 gem 'faraday', '~> 1.10'
