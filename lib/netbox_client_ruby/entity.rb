@@ -328,9 +328,7 @@ module NetboxClientRuby
 
     def extract_ids
       id_fields.each do |id_attr, id_field|
-        unless data.key?(id_field)
-          raise LocalError, "Can't find the id field '#{id_field}' in the received data."
-        end
+        raise LocalError, "Can't find the id field '#{id_field}' in the received data." unless data.key?(id_field)
 
         instance_variable_set(:"@#{id_attr}", data[id_field])
       end
