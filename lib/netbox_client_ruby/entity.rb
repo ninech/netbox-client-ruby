@@ -141,6 +141,7 @@ module NetboxClientRuby
 
     def save
       return post unless ids_set?
+
       patch
     end
 
@@ -311,6 +312,7 @@ module NetboxClientRuby
       path.scan(/:([a-zA-Z_][a-zA-Z0-9_]+[!?=]?)/) do |match, *|
         path_variable_value = send(match)
         return interpreted_path.gsub! ":#{match}", path_variable_value.to_s unless path_variable_value.nil?
+
         raise LocalError, "Received 'nil' while replacing ':#{match}' in '#{path}' with a value."
       end
       interpreted_path

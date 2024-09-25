@@ -84,6 +84,7 @@ module NetboxClientRuby
 
     def formatted_body(body)
       return '' if body.nil? || body.empty?
+
       shortened = body.to_s
       one_line = shortened.gsub(/\n/, '\n')
       " (#{one_line})"

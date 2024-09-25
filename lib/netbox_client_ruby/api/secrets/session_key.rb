@@ -78,6 +78,7 @@ module NetboxClientRuby
         # If nil is not converted to '', then OpenSSL will block and ask on console for the password.
         # We really don't want that.
         return '' if pwd.nil?
+
         pwd
       end
 
