@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::IPAM::VlanGroups, faraday_stub: true do

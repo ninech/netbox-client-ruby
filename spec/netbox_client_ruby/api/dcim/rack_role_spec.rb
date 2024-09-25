@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::RackRole, faraday_stub: true do

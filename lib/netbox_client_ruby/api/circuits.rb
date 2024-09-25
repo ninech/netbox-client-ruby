@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/api/circuits/circuit'
 require 'netbox_client_ruby/api/circuits/circuits'
 require 'netbox_client_ruby/api/circuits/circuit_termination'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/api/virtualization/cluster_group'
 require 'netbox_client_ruby/api/virtualization/cluster_groups'
 require 'netbox_client_ruby/api/virtualization/cluster_type'

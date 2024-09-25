@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do

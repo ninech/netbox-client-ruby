@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::IPAM::Role, faraday_stub: true do
