@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/entity'
 require 'netbox_client_ruby/api/ipam/rir'
 

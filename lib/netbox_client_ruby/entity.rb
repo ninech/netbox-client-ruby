@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/communication'
 require 'netbox_client_ruby/error'
 
@@ -305,7 +307,7 @@ module NetboxClientRuby
     end
 
     def replace_path_variables_in(path)
-      interpreted_path = path.clone
+      interpreted_path = path.dup
       path.scan(/:([a-zA-Z_][a-zA-Z0-9_]+[!?=]?)/) do |match, *|
         path_variable_value = send(match)
         return interpreted_path.gsub! ":#{match}", path_variable_value.to_s unless path_variable_value.nil?

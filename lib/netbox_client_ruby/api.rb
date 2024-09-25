@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/api/circuits'
 require 'netbox_client_ruby/api/dcim'
 require 'netbox_client_ruby/api/extras'

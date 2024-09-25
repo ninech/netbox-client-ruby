@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/api/secrets/rsa_key_pair'
 require 'netbox_client_ruby/api/secrets/secret_roles'
 require 'netbox_client_ruby/api/secrets/secrets'
