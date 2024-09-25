@@ -24,7 +24,7 @@ module NetboxClientRuby
         primary_ip6: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         role: proc { |raw_data| DCIM::DeviceRole.new raw_data['id'] },
         status: proc { |raw_data| ClusterStatus.new raw_data },
-        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
+        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] }
       )
     end
 

@@ -14,7 +14,7 @@ module NetboxClientRuby
       creation_path 'dcim/virtual-chassis/'
 
       object_fields(
-        master: proc { |raw_data| Device.new raw_data['id'] },
+        master: proc { |raw_data| Device.new raw_data['id'] }
       )
     end
   end

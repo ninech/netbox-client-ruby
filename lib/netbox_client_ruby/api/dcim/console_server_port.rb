@@ -16,7 +16,7 @@ module NetboxClientRuby
 
       object_fields(
         device: proc { |raw_data| Device.new raw_data['id'] },
-        connected_console: proc { |raw_data| ConsolePort.new raw_data },
+        connected_console: proc { |raw_data| ConsolePort.new raw_data }
       )
     end
   end

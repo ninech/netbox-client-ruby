@@ -15,7 +15,7 @@ module NetboxClientRuby
       creation_path 'dcim/rack-groups/'
       object_fields(
         region: proc { |raw_data| DCIM::Region.new raw_data['id'] },
-        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
+        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] }
       )
     end
   end

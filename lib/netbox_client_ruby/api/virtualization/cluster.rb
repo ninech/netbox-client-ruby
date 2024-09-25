@@ -17,7 +17,7 @@ module NetboxClientRuby
       object_fields(
         group: proc { |raw_data| ClusterGroup.new raw_data['id'] },
         site: proc { |raw_data| DCIM::Site.new raw_data['id'] },
-        type: proc { |raw_data| ClusterType.new raw_data['id'] },
+        type: proc { |raw_data| ClusterType.new raw_data['id'] }
       )
     end
   end

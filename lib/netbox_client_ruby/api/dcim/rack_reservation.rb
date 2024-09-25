@@ -16,7 +16,7 @@ module NetboxClientRuby
 
       object_fields(
         rack: proc { |raw_data| DCIM::Rack.new raw_data['id'] },
-        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
+        tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] }
       )
     end
   end

@@ -31,7 +31,7 @@ module NetboxClientRuby
         primary_ip4: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         primary_ip6: proc { |raw_data| IPAM::IpAddress.new raw_data['id'] },
         virtual_chassis: proc { |raw_data| DCIM::VirtualChassis.new raw_data['id'] },
-        tags: proc { |raw_data| Extras::Tag.new raw_data['id'] },
+        tags: proc { |raw_data| Extras::Tag.new raw_data['id'] }
       )
     end
   end

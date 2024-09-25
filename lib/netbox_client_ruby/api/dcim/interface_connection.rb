@@ -15,7 +15,7 @@ module NetboxClientRuby
 
       object_fields(
         interface_a: proc { |raw_data| Interface.new raw_data['id'] },
-        interface_b: proc { |raw_data| Interface.new raw_data['id'] },
+        interface_b: proc { |raw_data| Interface.new raw_data['id'] }
       )
     end
   end

@@ -16,7 +16,7 @@ module NetboxClientRuby
 
       object_fields(
         device: proc { |raw_data| Device.new raw_data['id'] },
-        power_outlet: proc { |raw_data| PowerOutlet.new raw_data['id'] },
+        power_outlet: proc { |raw_data| PowerOutlet.new raw_data['id'] }
       )
     end
   end
