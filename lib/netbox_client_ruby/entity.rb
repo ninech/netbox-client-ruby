@@ -164,7 +164,7 @@ module NetboxClientRuby
         s_attribute = attribute.to_s
         next if readonly_fields.include? s_attribute
 
-        sym_attr_writer = "#{attribute}=".to_sym
+        sym_attr_writer = :"#{attribute}="
         if methods.include?(sym_attr_writer)
           public_send(sym_attr_writer, values)
         else
@@ -197,7 +197,7 @@ module NetboxClientRuby
 
       if name.end_with?('=')
         is_readonly_field = readonly_fields.include?(name[0..-2])
-        is_instance_variable = instance_variables.include?("@#{name[0..-2]}".to_sym)
+        is_instance_variable = instance_variables.include?(:"@#{name[0..-2]}")
         not_this_classes_business = is_readonly_field || is_instance_variable
 
         return super if not_this_classes_business
