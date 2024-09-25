@@ -107,23 +107,18 @@ module NetboxClientRuby
     end
 
     def initialize(given_values = nil) # rubocop:disable Metrics/MethodLength
-      return self if given_values.nil?
-
-      if id_fields.count == 1 && !given_values.is_a?(Hash)
-        instance_variable_set(:"@#{id_fields.keys.first}", given_values)
-        return self
-      end
-
-      given_values.each do |field, value|
-        if id_fields.key? field.to_s
-          instance_variable_set :"@#{field}", value
-        else
-          # via method_missing, because it checks for readonly fields, etc.
-          method_missing("#{field}=", value)
+      if given_values.is_a?(Hash)
+        given_values.each do |field, value|
+          if id_fields.key? field.to_s
+            instance_variable_set :"@#{field}", value
+          else
+            # via method_missing, because it checks for readonly fields, etc.
+            method_missing("#{field}=", value)
+          end
         end
+      elsif id_fields.count == 1 && !given_values.is_a?(Hash)
+        instance_variable_set(:"@#{id_fields.keys.first}", given_values)
       end
-
-      self
     end
 
     def revert
