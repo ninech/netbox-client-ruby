@@ -40,23 +40,22 @@ module NetboxClientRuby
         @limit
       end
 
-      def check_limit(limit)
+      def check_limit(limit) # rubocop:disable Metrics/MethodLength
         max_limit = NetboxClientRuby.config.netbox.pagination.max_limit
         if limit.nil?
-          raise ArgumentError,
-                "'limit' can not be nil."
+          raise ArgumentError, "'limit' can not be nil."
+
         elsif !limit.is_a?(Numeric)
-          raise ArgumentError,
-                "The limit '#{limit}' is not numeric but it has to be."
+          raise ArgumentError, "The limit '#{limit}' is not numeric but it has to be."
+
         elsif !limit.integer?
-          raise ArgumentError,
-                "The limit '#{limit}' is not integer but it has to be."
+          raise ArgumentError, "The limit '#{limit}' is not integer but it has to be."
+
         elsif limit.negative?
-          raise ArgumentError,
-                "The limit '#{limit}' is below zero, but it should be zero or bigger."
+          raise ArgumentError, "The limit '#{limit}' is below zero, but it should be zero or bigger."
+
         elsif limit > max_limit
-          raise ArgumentError,
-                "The limit '#{limit}' is bigger than the configured limit value ('#{max_limit}')."
+          raise ArgumentError, "The limit '#{limit}' is bigger than the configured limit value ('#{max_limit}')."
         end
       end
 
@@ -77,7 +76,7 @@ module NetboxClientRuby
       end
     end
 
-    def find_by(attributes)
+    def find_by(attributes) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
       fail ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
 
       filter(attributes).find do |netbox_object|

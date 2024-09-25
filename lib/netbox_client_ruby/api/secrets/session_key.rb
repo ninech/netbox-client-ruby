@@ -54,7 +54,7 @@ module NetboxClientRuby
         private_key.to_pem
       end
 
-      def decode_private_key(encoded_private_key)
+      def decode_private_key(encoded_private_key) # rubocop:disable Metrics/MethodLength
         begin
           private_key = OpenSSL::PKey::RSA.new encoded_private_key, rsa_private_key_password
 
@@ -62,15 +62,18 @@ module NetboxClientRuby
         rescue OpenSSL::PKey::RSAError
           if rsa_private_key_password.empty?
             raise LocalError,
-                  "The private key at '#{rsa_private_key_path}' requires a password, but none was given, or the key data is corrupted. (The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
+                  "The private key at '#{rsa_private_key_path}' requires a password, but none was given, or the key data is corrupted. " \
+                  "(The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
           else
             raise LocalError,
-                  "The password given for the private key at '#{rsa_private_key_path}' is not valid or the key data is corrupted. (The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
+                  "The password given for the private key at '#{rsa_private_key_path}' is not valid or the key data is corrupted. " \
+                  "(The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
           end
         end
 
         raise LocalError,
-              "The file at '#{rsa_private_key_path}' is not a private key, but a private key is required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
+              "The file at '#{rsa_private_key_path}' is not a private key, but a private key is required for get-session-key. " \
+              "(The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
 
       def rsa_private_key_password
@@ -86,15 +89,17 @@ module NetboxClientRuby
         encoded_private_key = key_file.read
         return encoded_private_key unless encoded_private_key.nil? || encoded_private_key.empty?
 
-        raise LocalError,
-              "The file at '#{rsa_private_key_path}' is empty, but a private key is required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
+        message = "The file at '#{rsa_private_key_path}' is empty, but a private key is required for get-session-key. " \
+                  "(The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
+        raise LocalError, message
       end
 
       def open_private_key_file
         return File.new rsa_private_key_path if File.exist? rsa_private_key_path
 
-        raise LocalError,
-              "No file exists at the given path '#{rsa_private_key_path}', but it's required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
+        message = "No file exists at the given path '#{rsa_private_key_path}', but it's required for get-session-key. " \
+                  "(The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
+        raise LocalError, message
       end
 
       def rsa_private_key_path

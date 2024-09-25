@@ -41,12 +41,13 @@ module NetboxClientRuby
       response.body
     end
 
-    def raise_on_http_error(response)
+    def raise_on_http_error(response) # rubocop:disable Metrics/MethodLength
       status = response.status
       body = response.body
 
       case status
       when 200..299
+        # pass
       when 300..499
         raise_on_http_client_error response
       when 500..599
@@ -56,7 +57,7 @@ module NetboxClientRuby
       end
     end
 
-    def raise_on_http_client_error(response)
+    def raise_on_http_client_error(response) # rubocop:disable Metrics/MethodLength
       status = response.status
       body = response.body
 

@@ -4,7 +4,7 @@ require 'netbox_client_ruby/communication'
 require 'netbox_client_ruby/error'
 
 module NetboxClientRuby
-  module Entity
+  module Entity # rubocop:disable Metrics/ModuleLength
     include NetboxClientRuby::Communication
 
     def self.included(other_klass)
@@ -24,7 +24,7 @@ module NetboxClientRuby
       #   id 'an_id_field' => 'id_field_in_data'
       #   id an_id_field: 'id_field_in_data', :another_id_field: 'id_field2_in_data'
       #
-      def id(*fields)
+      def id(*fields) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Metrics/MethodLength
         return @id_fields if @id_fields
 
         raise ArgumentError, "No 'id' was defined, but one is expected." if fields.empty?
@@ -91,7 +91,7 @@ module NetboxClientRuby
         end
       end
 
-      def sanitize_mapping(fields_to_class_map)
+      def sanitize_mapping(fields_to_class_map) # rubocop:disable Metrics/MethodLength
         fields_map = {}
         fields_to_class_map.each do |field_definition|
           if field_definition.is_a?(Hash)
@@ -106,7 +106,7 @@ module NetboxClientRuby
       end
     end
 
-    def initialize(given_values = nil)
+    def initialize(given_values = nil) # rubocop:disable Metrics/MethodLength
       return self if given_values.nil?
 
       if id_fields.count == 1 && !given_values.is_a?(Hash)
@@ -162,7 +162,7 @@ module NetboxClientRuby
       self
     end
 
-    def update(new_values)
+    def update(new_values) # rubocop:disable Metrics/MethodLength
       new_values.each do |attribute, values|
         s_attribute = attribute.to_s
         next if readonly_fields.include? s_attribute
@@ -195,7 +195,7 @@ module NetboxClientRuby
       dirty_data[name.to_s] = value
     end
 
-    def method_missing(name_as_symbol, *args, &block)
+    def method_missing(name_as_symbol, *args, &block) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength
       name = name_as_symbol.to_s
 
       if name.end_with?('=')
@@ -216,7 +216,7 @@ module NetboxClientRuby
       super
     end
 
-    def respond_to_missing?(name_as_symbol, *args)
+    def respond_to_missing?(name_as_symbol, *args) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       name = name_as_symbol.to_s
 
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
