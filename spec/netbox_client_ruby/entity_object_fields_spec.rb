@@ -10,6 +10,7 @@ RSpec.describe NetboxClientRuby::Entity do
       @name = data['name']
     end
   end
+
   class TestSubEntity
     include NetboxClientRuby::Entity
 
@@ -18,9 +19,10 @@ RSpec.describe NetboxClientRuby::Entity do
 
     def initialize(my_id, data = nil)
       self.data = data
-      super my_id: my_id
+      super(my_id: my_id)
     end
   end
+
   module ArrayObjectField
     class TestEntitySimple
       include NetboxClientRuby::Entity
@@ -30,9 +32,10 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields 'an_object_array'
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
+
     class TestEntityPoro
       include NetboxClientRuby::Entity
 
@@ -41,9 +44,10 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields an_object_array: TestSubPoro
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
+
     class TestEntityProc
       include NetboxClientRuby::Entity
 
@@ -52,10 +56,11 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
   end
+
   module ObjectField
     class TestEntityPlain
       include NetboxClientRuby::Entity
@@ -65,9 +70,10 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields :an_object
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
+
     class TestEntityPoro
       include NetboxClientRuby::Entity
 
@@ -76,9 +82,10 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields an_object: TestSubPoro
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
+
     class TestEntityProc
       include NetboxClientRuby::Entity
 
@@ -87,7 +94,7 @@ RSpec.describe NetboxClientRuby::Entity do
       object_fields an_object: proc { |data| TestSubEntity.new(@test_id, data) }
 
       def initialize
-        super test_id: 42
+        super(test_id: 42)
       end
     end
   end
@@ -100,7 +107,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
   end
   let(:response_json) do
-    <<-json
+    <<-JSON
       {
         "id": 42,
         "name": "Beat",
@@ -127,7 +134,7 @@ RSpec.describe NetboxClientRuby::Entity do
         },
         "counter": 1
       }
-    json
+    JSON
   end
   let(:url) { '/api/tests/42' }
 
@@ -140,7 +147,7 @@ RSpec.describe NetboxClientRuby::Entity do
 
   describe 'objectification of the content of array fields' do
     context 'anonymous classes' do
-      let(:subject) { ArrayObjectField::TestEntitySimple.new }
+      subject { ArrayObjectField::TestEntitySimple.new }
 
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
@@ -174,7 +181,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
 
     context 'poro classes' do
-      let(:subject) { ArrayObjectField::TestEntityPoro.new }
+      subject { ArrayObjectField::TestEntityPoro.new }
 
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
@@ -208,7 +215,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
 
     context 'entity classes' do
-      let(:subject) { ArrayObjectField::TestEntityProc.new }
+      subject { ArrayObjectField::TestEntityProc.new }
 
       it 'does not return `an_object_array` as Hashes' do
         expect(subject.an_object_array).to be_a Array
@@ -244,7 +251,7 @@ RSpec.describe NetboxClientRuby::Entity do
 
   describe 'objectification of the content of object fields' do
     context 'anonymous class' do
-      let(:subject) { ObjectField::TestEntityPlain.new }
+      subject { ObjectField::TestEntityPlain.new }
 
       it 'does not return `an_object` as a Hash' do
         expect(subject.an_object).to_not be_a Hash
@@ -271,7 +278,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
 
     context 'poro class' do
-      let(:subject) { ObjectField::TestEntityPoro.new }
+      subject { ObjectField::TestEntityPoro.new }
 
       it 'does not return `an_object` as a Hash' do
         expect(subject.an_object).to be_a TestSubPoro
@@ -298,7 +305,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
 
     context 'entity class' do
-      let(:subject) { ObjectField::TestEntityProc.new }
+      subject { ObjectField::TestEntityProc.new }
 
       it 'does not return `an_object` as a Hashe' do
         expect(subject.an_object).to_not be_a Hash

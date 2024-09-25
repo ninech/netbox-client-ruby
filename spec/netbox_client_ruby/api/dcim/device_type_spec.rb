@@ -3,15 +3,15 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
+  subject { sut.new entity_id }
+
   let(:entity_id) { 1 }
   let(:expected_model) { 'devicetype1' }
-  let(:sut) { NetboxClientRuby::DCIM::DeviceType }
+  let(:sut) { described_class }
   let(:base_url) { '/api/dcim/device-types/' }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
   let(:response) { File.read("spec/fixtures/dcim/device-type_#{entity_id}.json") }
-
-  subject { sut.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -20,7 +20,7 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
   end
 
   describe '#model' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       expect(subject.model).to_not be_nil
@@ -32,17 +32,17 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
   end
 
   describe '#manufacturer' do
-    it 'should return a Manufacturer' do
+    it 'returns a Manufacturer' do
       expect(subject.manufacturer).to be_a(NetboxClientRuby::DCIM::Manufacturer)
     end
 
-    it 'should be the expected manufacturer' do
+    it 'is the expected manufacturer' do
       expect(subject.manufacturer.id).to be(1)
     end
   end
 
   describe '#interface_ordering' do
-    it 'should return a InterfaceOrdering' do
+    it 'returns a InterfaceOrdering' do
       expect(subject.interface_ordering).to be_a(NetboxClientRuby::DCIM::InterfaceOrdering)
     end
   end
@@ -52,7 +52,7 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -62,14 +62,14 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'model' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(model: 'noob').model).to eq(expected_model)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -83,14 +83,14 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
     let(:request_params) { { 'model' => model, 'slug' => slug } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         region = sut.new entity_id
         region.model = model
         region.slug = slug
         region
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -116,15 +116,15 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
         region = sut.new
         region.model = model
         region.slug = slug
         region
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

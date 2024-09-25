@@ -4,11 +4,12 @@ require 'spec_helper'
 require 'json'
 
 RSpec.describe NetboxClientRuby::Communication do
+  subject { Victim.new }
+
   let(:faraday) { double('Faraday') }
   let(:url) { '/api' }
   let(:response) { double('response', body: response_body, status: 200) }
 
-  let(:subject) { Victim.new }
   class Victim
     include NetboxClientRuby::Communication
   end

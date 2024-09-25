@@ -3,15 +3,15 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
+  subject { sut.new entity_id }
+
   let(:entity_id) { 2 }
   let(:expected_name) { 'device2' }
-  let(:sut) { NetboxClientRuby::DCIM::Device }
+  let(:sut) { described_class }
   let(:base_url) { '/api/dcim/devices/' }
   let(:response) { File.read("spec/fixtures/dcim/device_#{entity_id}.json") }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
-
-  subject { sut.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -20,7 +20,7 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       expect(subject.name).to_not be_nil
@@ -40,35 +40,35 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     rack: [NetboxClientRuby::DCIM::Rack, 1],
     primary_ip: [NetboxClientRuby::IPAM::IpAddress, 5],
     primary_ip4: [NetboxClientRuby::IPAM::IpAddress, 1],
-    primary_ip6: [NetboxClientRuby::IPAM::IpAddress, 5]
+    primary_ip6: [NetboxClientRuby::IPAM::IpAddress, 5],
   }.each do |method_name, expected_values|
     expected_type = expected_values[0]
     expected_id = expected_values[1]
 
     describe "##{method_name}" do
-      it "should return a #{expected_type}" do
+      it "returns a #{expected_type}" do
         expect(subject.public_send(method_name))
           .to be_a(expected_type)
       end
 
-      it "should be the expected #{method_name}" do
+      it "is the expected #{method_name}" do
         expect(subject.public_send(method_name).id).to eq(expected_id)
       end
     end
   end
 
-  describe "#tags" do
-    it "should return an Array" do
+  describe '#tags' do
+    it 'returns an Array' do
       expect(subject.tags)
         .to be_a(Array)
     end
 
-    it "should have NetboxClientRuby::Extras::Tag as elements" do
+    it 'has NetboxClientRuby::Extras::Tag as elements' do
       expect(subject.tags[0])
         .to be_a(NetboxClientRuby::Extras::Tag)
     end
 
-    it "should be the expected tag" do
+    it 'is the expected tag' do
       expect(subject.tags[0].id).to eq(1)
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -88,14 +88,14 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq(expected_name)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -109,14 +109,14 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     let(:request_params) { { 'name' => name, 'display_name' => display_name } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         region = sut.new entity_id
         region.name = name
         region.display_name = display_name
         region
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -142,15 +142,15 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
         region = sut.new
         region.name = name
         region.display_name = display_name
         region
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

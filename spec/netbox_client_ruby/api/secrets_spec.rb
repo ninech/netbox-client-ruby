@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NetboxClientRuby::Secrets do
   {
     secret_roles: NetboxClientRuby::Secrets::SecretRoles,
-    secrets: NetboxClientRuby::Secrets::Secrets
+    secrets: NetboxClientRuby::Secrets::Secrets,
   }.each do |method, klass|
     describe ".#{method}" do
       subject { described_class.public_send(method) }
@@ -16,8 +16,7 @@ RSpec.describe NetboxClientRuby::Secrets do
 
       context 'is a different instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method)
+          expect(subject).to_not be described_class.public_send(method)
         end
       end
 
@@ -29,11 +28,12 @@ RSpec.describe NetboxClientRuby::Secrets do
 
   {
     secret: NetboxClientRuby::Secrets::Secret,
-    secret_role: NetboxClientRuby::Secrets::SecretRole
+    secret_role: NetboxClientRuby::Secrets::SecretRole,
   }.each do |method, expected_class|
     describe ".#{method}" do
-      let(:id) { 1 }
       subject { described_class.public_send(method, id) }
+
+      let(:id) { 1 }
 
       context 'is of the expected type' do
         it { is_expected.to be_a expected_class }
@@ -41,8 +41,7 @@ RSpec.describe NetboxClientRuby::Secrets do
 
       context 'it is a new instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method, id)
+          expect(subject).to_not be described_class.public_send(method, id)
         end
       end
 
@@ -61,8 +60,7 @@ RSpec.describe NetboxClientRuby::Secrets do
 
     context 'it is a new instance each time' do
       it do
-        is_expected
-          .to_not be described_class.generate_rsa_key_pair
+        expect(subject).to_not be described_class.generate_rsa_key_pair
       end
     end
   end
@@ -80,8 +78,7 @@ RSpec.describe NetboxClientRuby::Secrets do
 
     context 'it is a new instance each time' do
       it do
-        is_expected
-          .to_not be described_class.get_session_key
+        expect(subject).to_not be described_class.get_session_key
       end
     end
   end

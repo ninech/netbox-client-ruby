@@ -3,14 +3,14 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true do
+  subject { described_class.new entity_id }
+
   let(:entity_id) { 9 }
   let(:expected_connection_status) { true }
   let(:base_url) { '/api/dcim/interface-connections/' }
   let(:response) { File.read("spec/fixtures/dcim/interface-connection_#{entity_id}.json") }
 
   let(:request_url) { "#{base_url}#{entity_id}.json" }
-
-  subject { described_class.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -19,7 +19,7 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true d
   end
 
   describe '#connection_status' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       expect(subject.connection_status['value']).to_not be_nil
@@ -35,7 +35,7 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true d
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -45,14 +45,14 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true d
     let(:request_method) { :patch }
     let(:request_params) { { 'connection_status' => false } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(connection_status: false).connection_status['value']).to eq(expected_connection_status)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -65,13 +65,13 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true d
     let(:request_params) { { 'connection_status' => connection_status } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = described_class.new entity_id
         entity.connection_status = connection_status
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -95,14 +95,14 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnection, faraday_stub: true d
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
         entity = described_class.new
         entity.connection_status = connection_status
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

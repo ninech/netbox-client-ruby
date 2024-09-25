@@ -3,15 +3,15 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::IPAM::Aggregate }
+  subject { class_under_test.new entity_id }
+
+  let(:class_under_test) { described_class }
   let(:base_url) { '/api/ipam/aggregates/' }
   let(:response) { File.read("spec/fixtures/ipam/aggregate_#{entity_id}.json") }
 
   let(:expected_prefix) { '10.0.0.0/8' }
   let(:entity_id) { 1 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
-
-  subject { class_under_test.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -20,7 +20,7 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
   end
 
   describe '#prefix' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       expect(subject.prefix).to_not be_nil
@@ -33,7 +33,7 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
 
   describe '.rir' do
     context 'entity with rir' do
-      it 'should fetch the data' do
+      it 'fetches the data' do
         expect(faraday).to receive(:get).and_call_original
 
         expect(subject.rir).to_not be_nil
@@ -43,7 +43,7 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
         expect(subject.rir).to be_a(NetboxClientRuby::IPAM::Rir)
       end
 
-      it 'should an entity with the right it' do
+      it 'ans entity with the right it' do
         expect(subject.rir.id).to eq(entity_id)
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -64,14 +64,14 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'prefix' => '192.168.0.0/16' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(prefix: '192.168.0.0/16').prefix).to eq(expected_prefix)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -84,13 +84,13 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
     let(:request_params) { { 'prefix' => prefix } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = class_under_test.new entity_id
         entity.prefix = prefix
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -113,15 +113,15 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
       end
     end
 
-    context '.new' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
+    describe '.new' do
       subject do
         entity = class_under_test.new
         entity.prefix = prefix
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

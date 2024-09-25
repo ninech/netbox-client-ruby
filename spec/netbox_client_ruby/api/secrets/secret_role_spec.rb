@@ -3,12 +3,12 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
+  subject { described_class.new secret_id }
+
   let(:secret_id) { 1 }
   let(:base_url) { '/api/secrets/secret-roles/' }
   let(:request_url) { "#{base_url}#{secret_id}.json" }
   let(:response) { File.read("spec/fixtures/secrets/secret-role_#{secret_id}.json") }
-
-  subject { NetboxClientRuby::Secrets::SecretRole.new secret_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -17,7 +17,7 @@ RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.name
@@ -33,7 +33,7 @@ RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -43,14 +43,14 @@ RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq('ipmi_password')
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -63,13 +63,13 @@ RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
     let(:request_params) { { 'name' => name } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
-        entity = NetboxClientRuby::Secrets::SecretRole.new secret_id
+        entity = described_class.new secret_id
         entity.name = name
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -93,14 +93,14 @@ RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
-        entity = NetboxClientRuby::Secrets::SecretRole.new
+        entity = described_class.new
         entity.name = name
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

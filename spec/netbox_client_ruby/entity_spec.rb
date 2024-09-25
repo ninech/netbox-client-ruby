@@ -17,9 +17,10 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
     def initialize(id = nil, name = nil)
       @name = name
-      super id
+      super(id)
     end
   end
+
   class TestEntity2
     include NetboxClientRuby::Entity
 
@@ -30,6 +31,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
     path 'tests/42'
   end
+
   class TestEntity3
     include NetboxClientRuby::Entity
 
@@ -37,12 +39,15 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
     # Wrong URL (starts with '/')
     path '/tests/42'
   end
+
   class TestEntity4
     include NetboxClientRuby::Entity
 
     id test_id: 'id'
     # no path defined
   end
+
+  subject { TestEntity.new 42, 'Urs' }
 
   let(:raw_data) do
     {
@@ -54,21 +59,20 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       'date' => '2014-05-28T18:46:18.764425Z',
       'an_object' => {
         'key' => 'value',
-        'second' => 2
+        'second' => 2,
       },
       'an_array' => [],
       'an_object_array' => [
         { 'name' => 'obj1' },
         { 'name' => 'obj2' },
-        { 'name' => 'obj3' }
+        { 'name' => 'obj3' },
       ],
-      'counter' => 1
+      'counter' => 1,
     }
   end
 
   let(:response) { JSON.generate(raw_data) }
   let(:request_url) { '/api/tests/42' }
-  let(:subject) { TestEntity.new 42, 'Urs' }
 
   it 'gets the name from the TestEntity' do
     expect(subject.name).to eq 'Urs'
@@ -166,7 +170,8 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
     end
 
     context 'creating the object' do
-      let(:subject) { TestEntity.new }
+      subject { TestEntity.new }
+
       let(:name) { 'foobar' }
 
       let(:request_url) { '/api/tests/' }
@@ -242,7 +247,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       end
 
       context 'by supplying values through the constructor' do
-        let(:subject) { TestEntity2.new name: name }
+        subject { TestEntity2.new name: name }
 
         it 'does a proper POST upon save' do
           expect(faraday).to receive(:post).and_call_original
@@ -270,7 +275,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
   end
 
   describe 'api class has readonly_fields' do
-    let(:subject) { TestEntity2.new 42 }
+    subject { TestEntity2.new 42 }
 
     it 'still runs a fetch' do
       expect(faraday).to receive(:get).once.and_call_original
@@ -315,7 +320,8 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       end
 
       context 'non-deletable entity' do
-        let(:subject) { TestEntity2.new 42 }
+        subject { TestEntity2.new 42 }
+
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -347,7 +353,8 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       end
 
       context 'non-deletable entity' do
-        let(:subject) { TestEntity2.new 42 }
+        subject { TestEntity2.new 42 }
+
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -356,7 +363,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
   end
 
   describe 'a wrong path is given' do
-    let(:subject) { TestEntity3.new 42 }
+    subject { TestEntity3.new 42 }
 
     it 'raises an exception' do
       expect { subject.name }.to raise_error Faraday::Adapter::Test::Stubs::NotFound
@@ -364,7 +371,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
   end
 
   describe 'no path given' do
-    let(:subject) { TestEntity4.new 42 }
+    subject { TestEntity4.new 42 }
 
     it 'raises an exception' do
       expect { subject.reload }.to raise_error ArgumentError
@@ -400,7 +407,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
   describe 'calling an attribute' do
     describe 'for an unsaved entity' do
-      it 'should raise a NoMethodError' do
+      it 'raises a NoMethodError' do
         expect { subject.unknown_attribute }.to raise_error NoMethodError
       end
     end

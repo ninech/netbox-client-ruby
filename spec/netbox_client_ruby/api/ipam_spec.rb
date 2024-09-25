@@ -11,7 +11,7 @@ RSpec.describe NetboxClientRuby::IPAM do
     vrfs: NetboxClientRuby::IPAM::Vrfs,
     vlans: NetboxClientRuby::IPAM::Vlans,
     rirs: NetboxClientRuby::IPAM::Rirs,
-    prefixes: NetboxClientRuby::IPAM::Prefixes
+    prefixes: NetboxClientRuby::IPAM::Prefixes,
   }.each do |method, klass|
     describe ".#{method}" do
       subject { described_class.public_send(method) }
@@ -22,8 +22,7 @@ RSpec.describe NetboxClientRuby::IPAM do
 
       context 'is a different instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method)
+          expect(subject).to_not be described_class.public_send(method)
         end
       end
 
@@ -41,11 +40,12 @@ RSpec.describe NetboxClientRuby::IPAM do
     vrf: NetboxClientRuby::IPAM::Vrf,
     vlan: NetboxClientRuby::IPAM::Vlan,
     rir: NetboxClientRuby::IPAM::Rir,
-    prefix: NetboxClientRuby::IPAM::Prefix
+    prefix: NetboxClientRuby::IPAM::Prefix,
   }.each do |method, expected_class|
     describe ".#{method}" do
-      let(:id) { 1 }
       subject { described_class.public_send(method, id) }
+
+      let(:id) { 1 }
 
       context 'is of the expected type' do
         it { is_expected.to be_a expected_class }
@@ -53,8 +53,7 @@ RSpec.describe NetboxClientRuby::IPAM do
 
       context 'it is a new instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method, id)
+          expect(subject).to_not be described_class.public_send(method, id)
         end
       end
 

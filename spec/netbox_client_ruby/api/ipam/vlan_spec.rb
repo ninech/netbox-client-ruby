@@ -3,15 +3,15 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
+  subject { class_under_test.new entity_id }
+
   let(:expected_name) { 'vlan_1' }
-  let(:class_under_test) { NetboxClientRuby::IPAM::Vlan }
+  let(:class_under_test) { described_class }
   let(:base_url) { '/api/ipam/vlans/' }
   let(:response) { File.read("spec/fixtures/ipam/vlan_#{entity_id}.json") }
 
   let(:entity_id) { 1 }
   let(:request_url) { "#{base_url}#{entity_id}.json" }
-
-  subject { class_under_test.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -20,7 +20,7 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.name
@@ -35,10 +35,10 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
     tenant: NetboxClientRuby::Tenancy::Tenant,
     group: NetboxClientRuby::IPAM::VlanGroup,
     status: NetboxClientRuby::IPAM::VlanStatus,
-    role: NetboxClientRuby::IPAM::Role
+    role: NetboxClientRuby::IPAM::Role,
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do
-      it 'should fetch the data' do
+      it 'fetches the data' do
         expect(faraday).to receive(:get).and_call_original
 
         expect(subject.public_send(method_name)).to_not be_nil
@@ -51,7 +51,7 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
   end
 
   describe '.status' do
-    it 'should assign the correct value' do
+    it 'assigns the correct value' do
       expect(subject.status.label).to eq('Active')
     end
   end
@@ -61,7 +61,7 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -71,14 +71,14 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq(expected_name)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -92,14 +92,14 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
     let(:request_params) { { 'name' => name, 'rd' => rd } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = class_under_test.new entity_id
         entity.name = name
         entity.rd = rd
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -123,16 +123,16 @@ RSpec.describe NetboxClientRuby::IPAM::Vlan, faraday_stub: true do
       end
     end
 
-    context '.new' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
+    describe '.new' do
       subject do
         entity = class_under_test.new
         entity.name = name
         entity.rd = rd
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

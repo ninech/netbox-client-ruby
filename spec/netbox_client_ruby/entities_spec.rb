@@ -35,6 +35,8 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
     include NetboxClientRuby::Entities
   end
 
+  subject { TestEntities.new }
+
   let(:raw_data) do
     {
       'total_count' => 999,
@@ -42,14 +44,13 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
       'data_node' => [
         { 'name' => 'obj1' },
         { 'name' => 'obj2' },
-        { 'name' => 'obj3' }
-      ]
+        { 'name' => 'obj3' },
+      ],
     }
   end
   let(:response) { JSON.generate(raw_data) }
   let(:request_url) { '/api/tests/42' }
   let(:request_url_params) { { limit: 321 } }
-  let(:subject) { TestEntities.new }
 
   describe '#total' do
     it 'returns the correct total' do
@@ -65,6 +66,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
 
     context 'nonexistent count_key provided' do
       subject { TestEntities2.new }
+
       let(:request_url) { '/test' }
       let(:request_url_params) do
         { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
@@ -152,6 +154,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
 
   context 'nonexistent data_key provided' do
     subject { TestEntities2.new }
+
     let(:request_url) { '/test' }
     let(:request_url_params) do
       { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
@@ -178,7 +181,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
 
   describe '#path' do
     context 'a wrong path is given' do
-      let(:subject) { TestEntities2.new }
+      subject { TestEntities2.new }
 
       it 'raises an exception' do
         expect { subject.reload }.to raise_error Faraday::Adapter::Test::Stubs::NotFound
@@ -186,7 +189,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
     end
 
     context 'no path given' do
-      let(:subject) { TestEntities3.new }
+      subject { TestEntities3.new }
 
       it 'raises an exception' do
         expect { subject.reload }.to raise_error ArgumentError

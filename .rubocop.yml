@@ -2,7 +2,7 @@
 require:
   - rubocop-performance
   - rubocop-rake
-  # - rubocop-rspec
+  - rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -10,7 +10,6 @@ AllCops:
   Exclude:
     - bin/*
     - gemfiles/*
-    - spec/**/*
     - lib/netbox-client-ruby.rb
 
 Style/Documentation:
@@ -25,9 +24,51 @@ Style/TrailingCommaInHashLiteral:
 Style/AccessModifierDeclarations:
   Enabled: false
 
+Style/OpenStructUse:
+  Enabled: false
+
 Layout/LineLength:
   Exclude:
     - lib/netbox_client_ruby/api/secrets/session_key.rb
 
-# RSpec/NotToNot:
-#   EnforcedStyle: to_not
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MetadataStyle:
+  EnforcedStyle: hash
+
+RSpec/ExampleLength:
+  Max: 7
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleExpectations:
+  Max: 9
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 11
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/IteratedExpectation:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false

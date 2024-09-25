@@ -19,8 +19,7 @@ RSpec.describe NetboxClientRuby::Virtualization do
 
       context 'is a different instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method)
+          expect(subject).to_not be described_class.public_send(method)
         end
       end
 
@@ -38,8 +37,9 @@ RSpec.describe NetboxClientRuby::Virtualization do
     interface: NetboxClientRuby::Virtualization::Interface,
   }.each do |method, expected_class|
     describe ".#{method}" do
-      let(:id) { 1 }
       subject { described_class.public_send(method, id) }
+
+      let(:id) { 1 }
 
       context 'is of the expected type' do
         it { is_expected.to be_a expected_class }
@@ -47,8 +47,7 @@ RSpec.describe NetboxClientRuby::Virtualization do
 
       context 'it is a new instance each time' do
         it do
-          is_expected
-            .to_not be described_class.public_send(method, id)
+          expect(subject).to_not be described_class.public_send(method, id)
         end
       end
 

@@ -26,11 +26,12 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   let(:request_url_params_string) do
     return request_url_params if request_url_params.nil?
     return "?#{request_url_params}" if request_url_params.is_a? String
+
     '?' + URI.encode_www_form(request_url_params)
   end
 
   before do
-    #puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
+    # puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
     faraday_stubs.public_send(request_method,
                               "#{request_url}#{request_url_params_string}",
                               request_params) do |_env|
