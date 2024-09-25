@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Extras
-    describe ConfigContext, faraday_stub: true do
+    RSpec.describe ConfigContext, faraday_stub: true do
       let(:entity_id) { 1 }
       let(:base_url) { '/api/extras/config-contexts/' }
       let(:request_url) { "#{base_url}#{entity_id}.json" }

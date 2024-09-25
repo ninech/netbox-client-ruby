@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ipaddress'
 
-describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::IPAM::IpRange }
   let(:base_url) { '/api/ipam/ip-ranges/' }
   let(:response) { File.read("spec/fixtures/ipam/ip-range_#{entity_id}.json") }

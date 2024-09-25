@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
+RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
   let(:site_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/site_#{site_id}.json") }
   let(:request_url) { "/api/dcim/sites/#{site_id}.json" }

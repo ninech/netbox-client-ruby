@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'uri'
 
-describe NetboxClientRuby::Connection do
+RSpec.describe NetboxClientRuby::Connection do
   describe 'email and key' do
     before do
       NetboxClientRuby.configure do |config|

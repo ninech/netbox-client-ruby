@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Secrets
-    describe SecretRole, faraday_stub: true do
+    RSpec.describe SecretRole, faraday_stub: true do
       let(:secret_id) { 1 }
       let(:base_url) { '/api/secrets/secret-roles/' }
       let(:request_url) { "#{base_url}#{secret_id}.json" }

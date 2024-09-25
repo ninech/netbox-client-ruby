@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Circuits
-    describe Providers, faraday_stub: true do
+    RSpec.describe Providers, faraday_stub: true do
       let(:response) { File.read('spec/fixtures/circuits/providers.json') }
       let(:request_url) { '/api/circuits/providers.json' }
       let(:single_type) { Provider }

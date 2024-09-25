@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Secrets
-    describe SessionKey, faraday_stub: true do
+    RSpec.describe SessionKey, faraday_stub: true do
       let(:request_method) { :post }
       let(:request_url) { '/api/secrets/get-session-key/' }
       let(:request_params) { { private_key: File.read('spec/fixtures/secrets/rsa_private_key') } }

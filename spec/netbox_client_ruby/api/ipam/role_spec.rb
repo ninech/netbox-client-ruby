@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::IPAM::Role, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::Role, faraday_stub: true do
   let(:expected_name) { 'role1' }
   let(:expected_slug) { expected_name }
   let(:base_url) { '/api/ipam/roles/' }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
+RSpec.describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:expected_name) { '1' }
   let(:base_url) { '/api/virtualization/cluster-groups/' }

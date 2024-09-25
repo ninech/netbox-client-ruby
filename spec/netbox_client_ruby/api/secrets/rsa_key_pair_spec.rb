@@ -3,7 +3,7 @@ require 'digest/md5'
 
 module NetboxClientRuby
   module Secrets
-    describe RSAKeyPair, faraday_stub: true do
+    RSpec.describe RSAKeyPair, faraday_stub: true do
       let(:request_url) { '/api/secrets/generate-rsa-key-pair/' }
       let(:response) { File.read('spec/fixtures/secrets/generate-rsa-key-pair.json') }
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe ConsolePorts, faraday_stub: true do
+    RSpec.describe ConsolePorts, faraday_stub: true do
       let(:expected_length) { 6 }
       let(:singular_type) { ConsolePort }
 

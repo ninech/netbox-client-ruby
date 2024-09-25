@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module DCIM
-    describe PowerConnections, faraday_stub: true do
+    RSpec.describe PowerConnections, faraday_stub: true do
       let(:expected_length) { 2 }
       let(:singular_type) { PowerConnection }
 

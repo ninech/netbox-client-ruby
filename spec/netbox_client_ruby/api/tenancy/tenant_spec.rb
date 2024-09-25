@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module NetboxClientRuby
   module Tenancy
-    describe Tenant, faraday_stub: true do
+    RSpec.describe Tenant, faraday_stub: true do
       let(:region_id) { 1 }
       let(:base_url) { '/api/tenancy/tenants/' }
       let(:request_url) { "#{base_url}#{region_id}.json" }

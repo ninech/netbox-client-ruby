@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ipaddress'
 
-describe NetboxClientRuby::IPAM::IpAddress, faraday_stub: true do
+RSpec.describe NetboxClientRuby::IPAM::IpAddress, faraday_stub: true do
   let(:class_under_test) { NetboxClientRuby::IPAM::IpAddress }
   let(:base_url) { '/api/ipam/ip-addresses/' }
   let(:response) { File.read("spec/fixtures/ipam/ip-address_#{entity_id}.json") }
