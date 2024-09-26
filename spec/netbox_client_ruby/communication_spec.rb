@@ -16,7 +16,7 @@ RSpec.describe NetboxClientRuby::Communication do
 
   describe 'get connection' do
     it 'returns a valid connection' do
-      expect(NetboxClientRuby::Connection).to receive(:new).and_return faraday
+      allow(NetboxClientRuby::Connection).to receive(:new).and_return faraday
 
       expect(subject.connection).to be faraday
     end

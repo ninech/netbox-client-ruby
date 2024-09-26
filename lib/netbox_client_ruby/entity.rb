@@ -52,7 +52,7 @@ module NetboxClientRuby
         @readonly_fields = fields.map(&:to_s)
       end
 
-      def deletable(deletable = false)
+      def deletable(deletable = false) # rubocop:disable Style/OptionalBooleanParameter
         @deletable ||= deletable
       end
 
