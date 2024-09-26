@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::Virtualization::Interfaces, faraday_stub: true 
   let(:singular_type) { NetboxClientRuby::Virtualization::Interface }
 
   let(:response) { File.read('spec/fixtures/virtualization/interfaces.json') }
-  let(:request_url) { '/api/virtualization/interfaces.json' }
+  let(:request_url) { '/api/virtualization/interfaces/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

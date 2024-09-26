@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Vlans
       include Entities
 
-      path 'ipam/vlans.json'
+      path 'ipam/vlans/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Roles
       include Entities
 
-      path 'ipam/roles.json'
+      path 'ipam/roles/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

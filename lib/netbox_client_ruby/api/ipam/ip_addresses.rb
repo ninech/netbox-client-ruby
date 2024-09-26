@@ -6,7 +6,7 @@ module NetboxClientRuby
     class IpAddresses
       include Entities
 
-      path 'ipam/ip-addresses.json'
+      path 'ipam/ip-addresses/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Sites
       include Entities
 
-      path 'dcim/sites.json'
+      path 'dcim/sites/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

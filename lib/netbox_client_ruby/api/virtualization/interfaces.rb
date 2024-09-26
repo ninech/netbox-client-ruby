@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Interfaces
       include Entities
 
-      path 'virtualization/interfaces.json'
+      path 'virtualization/interfaces/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

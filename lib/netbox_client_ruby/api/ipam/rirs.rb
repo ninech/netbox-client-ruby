@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Rirs
       include Entities
 
-      path 'ipam/rirs.json'
+      path 'ipam/rirs/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

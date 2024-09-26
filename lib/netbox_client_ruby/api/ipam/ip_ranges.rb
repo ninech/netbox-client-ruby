@@ -6,7 +6,7 @@ module NetboxClientRuby
     class IpRanges
       include Entities
 
-      path 'ipam/ip-ranges.json'
+      path 'ipam/ip-ranges/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

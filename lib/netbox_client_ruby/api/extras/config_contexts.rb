@@ -6,7 +6,7 @@ module NetboxClientRuby
     class ConfigContexts
       include Entities
 
-      path 'extras/config-contexts.json'
+      path 'extras/config-contexts/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

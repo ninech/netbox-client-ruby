@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::DCIM::RackRoles, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::RackRole }
 
   let(:response) { File.read('spec/fixtures/dcim/rack-roles.json') }
-  let(:request_url) { '/api/dcim/rack-roles.json' }
+  let(:request_url) { '/api/dcim/rack-roles/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

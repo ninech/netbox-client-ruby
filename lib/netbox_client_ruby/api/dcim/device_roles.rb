@@ -6,7 +6,7 @@ module NetboxClientRuby
     class DeviceRoles
       include Entities
 
-      path 'dcim/device-roles.json'
+      path 'dcim/device-roles/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

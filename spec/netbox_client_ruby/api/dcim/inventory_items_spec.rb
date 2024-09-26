@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::DCIM::InventoryItems, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::InventoryItem }
 
   let(:response) { File.read('spec/fixtures/dcim/inventory-items.json') }
-  let(:request_url) { '/api/dcim/inventory-items.json' }
+  let(:request_url) { '/api/dcim/inventory-items/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -4,7 +4,7 @@ RSpec.describe NetboxClientRuby::IPAM::Vlans, faraday_stub: true do
   let(:expected_length) { 1 }
   let(:expected_singular_type) { NetboxClientRuby::IPAM::Vlan }
   let(:response) { File.read('spec/fixtures/ipam/vlans.json') }
-  let(:request_url) { '/api/ipam/vlans.json' }
+  let(:request_url) { '/api/ipam/vlans/' }
 
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }

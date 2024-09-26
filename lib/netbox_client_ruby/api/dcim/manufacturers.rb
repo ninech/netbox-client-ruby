@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Manufacturers
       include Entities
 
-      path 'dcim/manufacturers.json'
+      path 'dcim/manufacturers/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator
