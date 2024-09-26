@@ -10,6 +10,7 @@ gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rake"
 gem "rubocop-rspec"
+gem "simplecov"
 gem "faraday", "= 1.0"
 gem "faraday_middleware", "< 2"
 

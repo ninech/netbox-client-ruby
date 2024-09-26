@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
+require 'simplecov'
+
+# Start SimpleCov
+SimpleCov.start do
+  add_filter 'spec/'
+end
+
 require 'netbox-client-ruby'
 require 'shared_context'
 require 'faraday/net_http_persistent' if Faraday::VERSION > '2'

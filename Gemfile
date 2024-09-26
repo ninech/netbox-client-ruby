@@ -14,6 +14,7 @@ gem 'rubocop'
 gem 'rubocop-performance'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
+gem 'simplecov'
 
 # fallback to faraday 1.x in dev environment
 gem 'faraday', '~> 1.10'

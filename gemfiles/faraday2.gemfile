@@ -10,6 +10,7 @@ gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rake"
 gem "rubocop-rspec"
+gem "simplecov"
 gem "faraday", "< 3"
 gem "faraday-net_http_persistent"
 
