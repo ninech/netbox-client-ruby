@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Secrets::Secrets, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/secrets/secrets.json') }
-  let(:request_url) { '/api/secrets/secrets.json' }
+  let(:request_url) { '/api/secrets/secrets/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -8,7 +8,7 @@ module NetboxClientRuby
     class Clusters
       include Entities
 
-      path 'virtualization/clusters.json'
+      path 'virtualization/clusters/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

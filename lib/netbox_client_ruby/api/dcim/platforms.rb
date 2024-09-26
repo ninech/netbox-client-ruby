@@ -8,7 +8,7 @@ module NetboxClientRuby
     class Platforms
       include Entities
 
-      path 'dcim/platforms.json'
+      path 'dcim/platforms/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

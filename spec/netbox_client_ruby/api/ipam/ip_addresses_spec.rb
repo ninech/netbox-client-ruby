@@ -6,7 +6,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpAddresses, faraday_stub: true do
   let(:expected_length) { 1 }
   let(:expected_singular_type) { NetboxClientRuby::IPAM::IpAddress }
   let(:response) { File.read('spec/fixtures/ipam/ip-addresses.json') }
-  let(:request_url) { '/api/ipam/ip-addresses.json' }
+  let(:request_url) { '/api/ipam/ip-addresses/' }
 
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }

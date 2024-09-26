@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Extras::ConfigContexts, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::Extras::ConfigContext }
 
   let(:response) { File.read('spec/fixtures/extras/config_contexts.json') }
-  let(:request_url) { '/api/extras/config-contexts.json' }
+  let(:request_url) { '/api/extras/config-contexts/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Circuits::CircuitTypes, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/circuits/circuit-types.json') }
-  let(:request_url) { '/api/circuits/circuit-types.json' }
+  let(:request_url) { '/api/circuits/circuit-types/' }
   let(:single_type) { NetboxClientRuby::Circuits::CircuitType }
   let(:expected_number_of_items) { 1 }
   let(:request_url_params) do

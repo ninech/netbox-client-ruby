@@ -8,7 +8,7 @@ module NetboxClientRuby
     class InventoryItems
       include Entities
 
-      path 'dcim/inventory-items.json'
+      path 'dcim/inventory-items/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

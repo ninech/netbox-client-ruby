@@ -8,7 +8,7 @@ module NetboxClientRuby
     class DeviceTypes
       include Entities
 
-      path 'dcim/device-types.json'
+      path 'dcim/device-types/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

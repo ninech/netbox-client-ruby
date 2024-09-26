@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::VirtualChassisList, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::VirtualChassis }
 
   let(:response) { File.read('spec/fixtures/dcim/virtual-chassis.json') }
-  let(:request_url) { '/api/dcim/virtual-chassis.json' }
+  let(:request_url) { '/api/dcim/virtual-chassis/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -8,7 +8,7 @@ module NetboxClientRuby
     class ClusterTypes
       include Entities
 
-      path 'virtualization/cluster-types.json'
+      path 'virtualization/cluster-types/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

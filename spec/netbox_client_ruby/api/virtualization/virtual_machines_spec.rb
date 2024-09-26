@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Virtualization::VirtualMachines, faraday_stub: 
   let(:singular_type) { NetboxClientRuby::Virtualization::VirtualMachine }
 
   let(:response) { File.read('spec/fixtures/virtualization/virtual-machines.json') }
-  let(:request_url) { '/api/virtualization/virtual-machines.json' }
+  let(:request_url) { '/api/virtualization/virtual-machines/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

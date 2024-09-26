@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Tenancy::TenantGroups, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::Tenancy::TenantGroup }
 
   let(:response) { File.read('spec/fixtures/tenancy/tenant-groups.json') }
-  let(:request_url) { '/api/tenancy/tenant-groups.json' }
+  let(:request_url) { '/api/tenancy/tenant-groups/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

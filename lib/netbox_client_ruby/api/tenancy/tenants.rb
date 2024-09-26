@@ -8,7 +8,7 @@ module NetboxClientRuby
     class Tenants
       include Entities
 
-      path 'tenancy/tenants.json'
+      path 'tenancy/tenants/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

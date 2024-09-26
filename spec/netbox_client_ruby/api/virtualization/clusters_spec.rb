@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Virtualization::Clusters, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::Virtualization::Cluster }
 
   let(:response) { File.read('spec/fixtures/virtualization/clusters.json') }
-  let(:request_url) { '/api/virtualization/clusters.json' }
+  let(:request_url) { '/api/virtualization/clusters/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Virtualization::ClusterGroups, faraday_stub: tr
   let(:singular_type) { NetboxClientRuby::Virtualization::ClusterGroup }
 
   let(:response) { File.read('spec/fixtures/virtualization/cluster-groups.json') }
-  let(:request_url) { '/api/virtualization/cluster-groups.json' }
+  let(:request_url) { '/api/virtualization/cluster-groups/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

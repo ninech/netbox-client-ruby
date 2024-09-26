@@ -13,7 +13,7 @@ module NetboxClientRuby
     class Circuits
       include Entities
 
-      path 'circuits/circuits.json'
+      path 'circuits/circuits/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

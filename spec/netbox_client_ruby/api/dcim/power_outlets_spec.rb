@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::PowerOutlets, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::PowerOutlet }
 
   let(:response) { File.read('spec/fixtures/dcim/power-outlets.json') }
-  let(:request_url) { '/api/dcim/power-outlets.json' }
+  let(:request_url) { '/api/dcim/power-outlets/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

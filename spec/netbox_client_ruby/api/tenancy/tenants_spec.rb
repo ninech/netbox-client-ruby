@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Tenancy::Tenants, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/tenancy/tenants.json') }
-  let(:request_url) { '/api/tenancy/tenants.json' }
+  let(:request_url) { '/api/tenancy/tenants/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

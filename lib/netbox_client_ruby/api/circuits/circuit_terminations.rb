@@ -8,7 +8,7 @@ module NetboxClientRuby
     class CircuitTerminations
       include Entities
 
-      path 'circuits/circuit-terminations.json'
+      path 'circuits/circuit-terminations/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

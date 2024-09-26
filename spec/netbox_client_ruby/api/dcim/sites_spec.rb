@@ -6,7 +6,7 @@ RSpec.describe NetboxClientRuby::DCIM::Sites, faraday_stub: true do
   subject { described_class.new }
 
   let(:response) { File.read('spec/fixtures/dcim/sites.json') }
-  let(:request_url) { '/api/dcim/sites.json' }
+  let(:request_url) { '/api/dcim/sites/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

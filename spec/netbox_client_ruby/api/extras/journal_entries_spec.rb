@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Extras::JournalEntries, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::Extras::JournalEntry }
 
   let(:response) { File.read('spec/fixtures/extras/journal_entries.json') }
-  let(:request_url) { '/api/extras/journal-entries.json' }
+  let(:request_url) { '/api/extras/journal-entries/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceRoles, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::DeviceRole }
 
   let(:response) { File.read('spec/fixtures/dcim/device-roles.json') }
-  let(:request_url) { '/api/dcim/device-roles.json' }
+  let(:request_url) { '/api/dcim/device-roles/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::IPAM::Rirs, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::IPAM::Rir }
 
   let(:response) { File.read('spec/fixtures/ipam/rirs.json') }
-  let(:request_url) { '/api/ipam/rirs.json' }
+  let(:request_url) { '/api/ipam/rirs/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

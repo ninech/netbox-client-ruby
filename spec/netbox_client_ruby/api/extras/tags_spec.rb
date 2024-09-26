@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Extras::Tags, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::Extras::Tag }
 
   let(:response) { File.read('spec/fixtures/extras/tags.json') }
-  let(:request_url) { '/api/extras/tags.json' }
+  let(:request_url) { '/api/extras/tags/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

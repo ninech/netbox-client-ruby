@@ -8,7 +8,7 @@ module NetboxClientRuby
     class ConsoleServerPorts
       include Entities
 
-      path 'dcim/console-server-ports.json'
+      path 'dcim/console-server-ports/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

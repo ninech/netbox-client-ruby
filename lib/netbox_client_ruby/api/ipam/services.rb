@@ -8,7 +8,7 @@ module NetboxClientRuby
     class Services
       include Entities
 
-      path 'ipam/services.json'
+      path 'ipam/services/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

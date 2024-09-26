@@ -8,7 +8,7 @@ module NetboxClientRuby
     class RackRoles
       include Entities
 
-      path 'dcim/rack-roles.json'
+      path 'dcim/rack-roles/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

@@ -8,7 +8,7 @@ module NetboxClientRuby
     class Aggregates
       include Entities
 
-      path 'ipam/aggregates.json'
+      path 'ipam/aggregates/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

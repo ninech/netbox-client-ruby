@@ -8,7 +8,7 @@ module NetboxClientRuby
     class RackGroups
       include Entities
 
-      path 'dcim/rack-groups.json'
+      path 'dcim/rack-groups/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

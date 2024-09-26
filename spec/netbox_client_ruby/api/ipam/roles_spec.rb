@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::IPAM::Roles, faraday_stub: true do
   let(:expected_singular_type) { NetboxClientRuby::IPAM::Role }
 
   let(:response) { File.read('spec/fixtures/ipam/roles.json') }
-  let(:request_url) { '/api/ipam/roles.json' }
+  let(:request_url) { '/api/ipam/roles/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

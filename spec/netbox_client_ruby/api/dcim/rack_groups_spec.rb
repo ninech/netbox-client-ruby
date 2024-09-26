@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::RackGroups, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::RackGroup }
 
   let(:response) { File.read('spec/fixtures/dcim/rack-groups.json') }
-  let(:request_url) { '/api/dcim/rack-groups.json' }
+  let(:request_url) { '/api/dcim/rack-groups/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

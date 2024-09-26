@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::PowerConnections, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::PowerConnection }
 
   let(:response) { File.read('spec/fixtures/dcim/power-connections.json') }
-  let(:request_url) { '/api/dcim/power-connections.json' }
+  let(:request_url) { '/api/dcim/power-connections/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

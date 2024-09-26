@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::RackReservations, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::RackReservation }
 
   let(:response) { File.read('spec/fixtures/dcim/rack-reservations.json') }
-  let(:request_url) { '/api/dcim/rack-reservations.json' }
+  let(:request_url) { '/api/dcim/rack-reservations/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end
