@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Circuits::CircuitTerminations, faraday_stub: true do
   let(:response) { File.read('spec/fixtures/circuits/circuit-terminations.json') }
-  let(:request_url) { '/api/circuits/circuit-terminations.json' }
+  let(:request_url) { '/api/circuits/circuit-terminations/' }
   let(:single_type) { NetboxClientRuby::Circuits::CircuitTermination }
   let(:expected_number_of_items) { 1 }
   let(:request_url_params) do

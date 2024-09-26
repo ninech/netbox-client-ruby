@@ -6,7 +6,7 @@ module NetboxClientRuby
     class SecretRoles
       include Entities
 
-      path 'secrets/secret-roles.json'
+      path 'secrets/secret-roles/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

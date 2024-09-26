@@ -6,7 +6,7 @@ module NetboxClientRuby
     class VirtualMachines
       include Entities
 
-      path 'virtualization/virtual-machines.json'
+      path 'virtualization/virtual-machines/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

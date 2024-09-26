@@ -6,7 +6,7 @@ module NetboxClientRuby
     class PowerConnections
       include Entities
 
-      path 'dcim/power-connections.json'
+      path 'dcim/power-connections/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

@@ -6,7 +6,7 @@ module NetboxClientRuby
     class PowerOutlets
       include Entities
 
-      path 'dcim/power-outlets.json'
+      path 'dcim/power-outlets/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

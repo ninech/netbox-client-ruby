@@ -6,7 +6,7 @@ module NetboxClientRuby
     class InterfaceConnections
       include Entities
 
-      path 'dcim/interface-connections.json'
+      path 'dcim/interface-connections/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

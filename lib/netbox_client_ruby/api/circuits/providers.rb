@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Providers
       include Entities
 
-      path 'circuits/providers.json'
+      path 'circuits/providers/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

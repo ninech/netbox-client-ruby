@@ -6,7 +6,7 @@ module NetboxClientRuby
     class RackReservations
       include Entities
 
-      path 'dcim/rack-reservations.json'
+      path 'dcim/rack-reservations/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

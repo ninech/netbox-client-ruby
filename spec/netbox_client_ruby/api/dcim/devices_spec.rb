@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::DCIM::Devices, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::Device }
 
   let(:response) { File.read('spec/fixtures/dcim/devices.json') }
-  let(:request_url) { '/api/dcim/devices.json' }
+  let(:request_url) { '/api/dcim/devices/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

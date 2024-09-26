@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::DCIM::InterfaceConnections, faraday_stub: true 
   let(:singular_type) { NetboxClientRuby::DCIM::InterfaceConnection }
 
   let(:response) { File.read('spec/fixtures/dcim/interface-connections.json') }
-  let(:request_url) { '/api/dcim/interface-connections.json' }
+  let(:request_url) { '/api/dcim/interface-connections/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

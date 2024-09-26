@@ -5,7 +5,7 @@ RSpec.describe NetboxClientRuby::DCIM::ConsoleConnections, faraday_stub: true do
   let(:singular_type) { NetboxClientRuby::DCIM::ConsoleConnection }
 
   let(:response) { File.read('spec/fixtures/dcim/console-connections.json') }
-  let(:request_url) { '/api/dcim/console-connections.json' }
+  let(:request_url) { '/api/dcim/console-connections/' }
   let(:request_url_params) do
     { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
   end

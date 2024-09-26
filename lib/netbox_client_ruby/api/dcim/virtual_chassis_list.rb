@@ -6,7 +6,7 @@ module NetboxClientRuby
     class VirtualChassisList
       include Entities
 
-      path 'dcim/virtual-chassis.json'
+      path 'dcim/virtual-chassis/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator

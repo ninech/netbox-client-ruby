@@ -6,7 +6,7 @@ module NetboxClientRuby
     class Tags
       include Entities
 
-      path 'extras/tags.json'
+      path 'extras/tags/'
       data_key 'results'
       count_key 'count'
       entity_creator :entity_creator
