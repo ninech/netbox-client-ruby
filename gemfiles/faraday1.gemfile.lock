@@ -16,6 +16,7 @@ PATH
       faraday-detailed_logger (~> 2.1)
       ipaddress (~> 0.8, >= 0.8.3)
       openssl (>= 2.0.5)
+      zeitwerk
 
 GEM
   remote: https://rubygems.org/

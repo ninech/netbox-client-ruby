@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/dcim/region'
-
 module NetboxClientRuby
   module DCIM
     class Regions

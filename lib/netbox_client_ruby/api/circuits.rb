@@ -1,15 +1,5 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby/api/circuits/circuit'
-require 'netbox_client_ruby/api/circuits/circuits'
-require 'netbox_client_ruby/api/circuits/circuit_termination'
-require 'netbox_client_ruby/api/circuits/circuit_terminations'
-require 'netbox_client_ruby/api/circuits/circuit_type'
-require 'netbox_client_ruby/api/circuits/circuit_types'
-require 'netbox_client_ruby/api/circuits/provider'
-require 'netbox_client_ruby/api/circuits/providers'
-require 'netbox_client_ruby/communication'
-
 module NetboxClientRuby
   module Circuits
     {

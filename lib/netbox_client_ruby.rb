@@ -1,8 +1,43 @@
 # frozen_string_literal: true
 
 require 'dry-configurable'
-require 'netbox_client_ruby/error'
-require 'netbox_client_ruby/api'
+require 'ipaddress'
+require 'openssl'
+
+require 'faraday'
+require 'faraday/detailed_logger'
+
+if Faraday::VERSION < '2'
+  begin
+    require 'faraday_middleware'
+  rescue LoadError => e
+    message = <<~MSG
+      For the current version of Faraday (#{Faraday::VERSION}), "faraday_middleware"
+      is a required peer dependency of "netbox-client-ruby". Please install
+      "faraday_middleware" separately OR upgrade to Faraday 2, in which case,
+      "faraday_middleware" is not needed to work with "netbox-client-ruby".
+
+      #{e.message}
+    MSG
+    raise NetboxClientRuby::Error, message
+  end
+end
+
+require 'zeitwerk'
+
+# load zeitwerk
+Zeitwerk::Loader.for_gem.tap do |loader|
+  loader.ignore("#{__dir__}/netbox-client-ruby.rb")
+  loader.collapse("#{__dir__}/netbox_client_ruby/api")
+  loader.inflector.inflect('dcim' => 'DCIM')
+  loader.inflector.inflect('ipam' => 'IPAM')
+  loader.inflector.inflect('rsa_key_pair' => 'RSAKeyPair')
+  # loader.log!
+  loader.setup
+end
+
+# load gem errors
+require_relative 'netbox_client_ruby/error'
 
 module NetboxClientRuby
   extend Dry::Configurable
@@ -30,5 +65,33 @@ module NetboxClientRuby
     setting :adapter, default: :net_http
     setting :logger
     setting :request_options, default: { open_timeout: 1, timeout: 5 }
+  end
+
+  def self.circuits
+    NetboxClientRuby::Circuits
+  end
+
+  def self.dcim
+    NetboxClientRuby::DCIM
+  end
+
+  def self.extras
+    NetboxClientRuby::Extras
+  end
+
+  def self.ipam
+    NetboxClientRuby::IPAM
+  end
+
+  def self.secrets
+    NetboxClientRuby::Secrets
+  end
+
+  def self.tenancy
+    NetboxClientRuby::Tenancy
+  end
+
+  def self.virtualization
+    NetboxClientRuby::Virtualization
   end
 end

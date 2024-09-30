@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday-detailed_logger', '~> 2.1'
   spec.add_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
   spec.add_dependency 'openssl', '>= 2.0.5'
+  spec.add_dependency 'zeitwerk'
 end

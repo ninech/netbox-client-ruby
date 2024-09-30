@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby/error'
-require 'netbox_client_ruby/connection'
-
 module NetboxClientRuby
   module Communication
     def response(response)

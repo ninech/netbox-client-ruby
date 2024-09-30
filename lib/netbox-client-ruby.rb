@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby'
+require_relative 'netbox_client_ruby'

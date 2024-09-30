@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require 'openssl'
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/dcim/device'
-require 'netbox_client_ruby/api/secrets/secret_role'
-
 module NetboxClientRuby
   module Secrets
     class SessionKey
