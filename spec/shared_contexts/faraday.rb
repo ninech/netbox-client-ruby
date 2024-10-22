@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 
 RSpec.shared_context 'faraday connection', faraday_stub: true do

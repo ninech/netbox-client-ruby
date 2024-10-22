@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'netbox_client_ruby/api/ipam/aggregate'
 require 'netbox_client_ruby/api/ipam/aggregates'
 require 'netbox_client_ruby/api/ipam/ip_addresses'
