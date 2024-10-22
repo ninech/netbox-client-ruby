@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'netbox-client-ruby'
-  spec.version       = File.read(File.expand_path('VERSION', __dir__)).strip
+  spec.version       = `git describe --tags --match="v[0-9]*" --abbrev=0`.strip.delete_prefix("v")
 
   spec.summary       = 'A read/write client for Netbox v2.'
   spec.homepage      = 'https://github.com/ninech/netbox-client-ruby'
