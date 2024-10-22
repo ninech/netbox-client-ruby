@@ -17,7 +17,7 @@ end
 
 NCR = NetboxClientRuby
 
-version = File.read(File.expand_path('../VERSION', __dir__)).strip
+version = Gem.loaded_specs["netbox-client-ruby"].version
 
 puts <<~WELCOME_TEXT
   This is using NetboxClientRuby v#{version}.

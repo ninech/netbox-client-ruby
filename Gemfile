@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gem "faraday", "~> 1.10"
 gem "faraday_middleware"
