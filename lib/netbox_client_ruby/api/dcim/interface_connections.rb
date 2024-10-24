@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/dcim/interface_connection'
-
 module NetboxClientRuby
   module DCIM
     class InterfaceConnections

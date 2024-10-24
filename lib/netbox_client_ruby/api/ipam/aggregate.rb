@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/ipam/rir'
-
 module NetboxClientRuby
   module IPAM
     class Aggregate

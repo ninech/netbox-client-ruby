@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/circuits/circuit_termination'
-
 module NetboxClientRuby
   module Circuits
     class CircuitTerminations

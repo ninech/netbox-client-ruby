@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/tenancy/tenant_group'
-
 module NetboxClientRuby
   module Tenancy
     class Tenant

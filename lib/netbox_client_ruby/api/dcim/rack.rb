@@ -1,5 +1,3 @@
-require 'netbox_client_ruby/entity'
-
 module NetboxClientRuby
   module DCIM
     class Rack

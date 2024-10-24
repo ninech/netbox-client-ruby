@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/ipam/prefix'
-
 module NetboxClientRuby
   module IPAM
     class Prefixes

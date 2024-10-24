@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/dcim/console_connection'
-
 module NetboxClientRuby
   module DCIM
     class ConsoleConnections

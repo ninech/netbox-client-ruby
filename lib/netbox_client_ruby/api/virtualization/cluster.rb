@@ -1,8 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/virtualization/cluster_group'
-require 'netbox_client_ruby/api/virtualization/cluster_type'
-require 'netbox_client_ruby/api/dcim/site'
-
 module NetboxClientRuby
   module Virtualization
     class Cluster

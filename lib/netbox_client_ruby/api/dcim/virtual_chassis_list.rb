@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/dcim/virtual_chassis'
-
 module NetboxClientRuby
   module DCIM
     class VirtualChassisList

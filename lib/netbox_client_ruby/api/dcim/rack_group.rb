@@ -1,7 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/dcim/region'
-require 'netbox_client_ruby/api/tenancy/tenant'
-
 module NetboxClientRuby
   module DCIM
     class RackGroup

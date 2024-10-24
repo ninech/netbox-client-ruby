@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/ipam/ip_address'
-
 module NetboxClientRuby
   module IPAM
     class Service

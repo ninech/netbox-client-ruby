@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/error'
-
 module NetboxClientRuby
   module Entities
     include NetboxClientRuby::Communication
