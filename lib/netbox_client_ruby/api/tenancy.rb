@@ -1,9 +1,3 @@
-require 'netbox_client_ruby/api/tenancy/tenant'
-require 'netbox_client_ruby/api/tenancy/tenants'
-require 'netbox_client_ruby/api/tenancy/tenant_group'
-require 'netbox_client_ruby/api/tenancy/tenant_groups'
-require 'netbox_client_ruby/communication'
-
 module NetboxClientRuby
   module Tenancy
     {

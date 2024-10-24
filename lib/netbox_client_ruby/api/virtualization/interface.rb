@@ -1,6 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/virtualization/virtual_machine'
-
 module NetboxClientRuby
   module Virtualization
     class Interface

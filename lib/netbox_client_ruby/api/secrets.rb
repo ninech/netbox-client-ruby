@@ -1,9 +1,3 @@
-require 'netbox_client_ruby/api/secrets/rsa_key_pair'
-require 'netbox_client_ruby/api/secrets/secret_roles'
-require 'netbox_client_ruby/api/secrets/secrets'
-require 'netbox_client_ruby/api/secrets/session_key'
-require 'netbox_client_ruby/communication'
-
 module NetboxClientRuby
   module Secrets
     {

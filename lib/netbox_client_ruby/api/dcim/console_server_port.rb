@@ -1,7 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/dcim/device'
-require 'netbox_client_ruby/api/dcim/console_port'
-
 module NetboxClientRuby
   module DCIM
     class ConsoleServerPort

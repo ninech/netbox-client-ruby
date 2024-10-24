@@ -1,8 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/circuits/circuit'
-require 'netbox_client_ruby/api/dcim/site'
-require 'netbox_client_ruby/api/dcim/interface'
-
 module NetboxClientRuby
   module Circuits
     class CircuitTermination

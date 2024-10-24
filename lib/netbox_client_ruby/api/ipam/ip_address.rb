@@ -1,9 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/dcim/interface'
-require 'netbox_client_ruby/api/ipam/vrf'
-require 'netbox_client_ruby/api/tenancy/tenant'
-require 'ipaddress'
-
 module NetboxClientRuby
   module IPAM
     class IpAddress

@@ -1,10 +1,3 @@
-require 'netbox_client_ruby/entity'
-require 'netbox_client_ruby/api/dcim/device_role'
-require 'netbox_client_ruby/api/dcim/platform'
-require 'netbox_client_ruby/api/ipam/ip_address'
-require 'netbox_client_ruby/api/tenancy/tenant'
-require 'netbox_client_ruby/api/virtualization/cluster'
-
 module NetboxClientRuby
   module Virtualization
     class VirtualMachine
