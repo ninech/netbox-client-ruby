@@ -4,7 +4,4 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-
-for filename in gemfiles/*.gemfile; do
-  BUNDLE_GEMFILE=$filename bundle install
-done
+bundle exec appraisal install
