@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+appraise 'faraday0' do
+  gem 'faraday', '< 1.0'
+  gem 'faraday_middleware', '< 1'
+end
+
 appraise 'faraday1' do
   gem 'faraday', '= 1.0'
   gem 'faraday_middleware', '< 2'
