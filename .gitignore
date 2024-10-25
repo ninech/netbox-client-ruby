@@ -13,4 +13,6 @@
 quickstart.rb
 *.gz
 
-/vendor/
+vendor/
+Gemfile.lock
+*.gemfile.lock
