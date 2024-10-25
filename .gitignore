@@ -16,3 +16,6 @@ quickstart.rb
 vendor/
 Gemfile.lock
 *.gemfile.lock
+
+# Ignore MacOS files
+.DS_Store
