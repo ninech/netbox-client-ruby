@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby/entities'
-require 'netbox_client_ruby/api/ipam/role'
-
 module NetboxClientRuby
   module IPAM
     class Roles

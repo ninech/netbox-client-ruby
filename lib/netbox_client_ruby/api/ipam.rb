@@ -1,27 +1,5 @@
 # frozen_string_literal: true
 
-require 'netbox_client_ruby/api/ipam/aggregate'
-require 'netbox_client_ruby/api/ipam/aggregates'
-require 'netbox_client_ruby/api/ipam/ip_addresses'
-require 'netbox_client_ruby/api/ipam/ip_address'
-require 'netbox_client_ruby/api/ipam/ip_ranges'
-require 'netbox_client_ruby/api/ipam/ip_range'
-require 'netbox_client_ruby/api/ipam/prefix'
-require 'netbox_client_ruby/api/ipam/prefixes'
-require 'netbox_client_ruby/api/ipam/rir'
-require 'netbox_client_ruby/api/ipam/rirs'
-require 'netbox_client_ruby/api/ipam/role'
-require 'netbox_client_ruby/api/ipam/roles'
-require 'netbox_client_ruby/api/ipam/service'
-require 'netbox_client_ruby/api/ipam/services'
-require 'netbox_client_ruby/api/ipam/vlan_group'
-require 'netbox_client_ruby/api/ipam/vlan_groups'
-require 'netbox_client_ruby/api/ipam/vlan'
-require 'netbox_client_ruby/api/ipam/vlans'
-require 'netbox_client_ruby/api/ipam/vrf'
-require 'netbox_client_ruby/api/ipam/vrfs'
-require 'netbox_client_ruby/communication'
-
 module NetboxClientRuby
   module IPAM
     {
