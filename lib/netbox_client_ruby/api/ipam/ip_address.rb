@@ -33,12 +33,8 @@ module NetboxClientRuby
         interface_data = data['interface']
 
         return nil unless interface_data
-
-        if interface_data.key?('virtual_machine')
-          Virtualization::Interface.new interface_data['id']
-        else
-          DCIM::Interface.new interface_data['id']
-        end
+        return Virtualization::Interface.new interface_data['id'] unless interface_data.dig('virtual_machine').nil?
+        return DCIM::Interface.new interface_data['id']
       end
     end
   end
