@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/ninech/netbox-client-ruby'
   spec.license       = 'MIT'
 
-  spec.authors       = ['Christian Mäder']
-  spec.email         = ['christian.maeder@nine.ch']
+  spec.authors       = ['Nine Internet Solutions AG']
+  spec.email         = ['support@nine.ch']
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
