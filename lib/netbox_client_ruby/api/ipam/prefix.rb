@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'ipam/prefixes/:id.json'
+      path 'ipam/prefixes/:id/'
       creation_path 'ipam/prefixes/'
       object_fields(
         site: proc { |raw_data| DCIM::Site.new raw_data['id'] },

@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'extras/config-contexts/:id.json'
+      path 'extras/config-contexts/:id/'
       creation_path 'extras/config-contexts/'
       object_fields(
         regions: proc { |raw_data| DCIM::Region.new raw_data['id'] },

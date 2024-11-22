@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/manufacturers/:id.json'
+      path 'dcim/manufacturers/:id/'
       creation_path 'dcim/manufacturers/'
     end
   end

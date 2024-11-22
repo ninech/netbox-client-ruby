@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'virtualization/cluster-groups/:id.json'
+      path 'virtualization/cluster-groups/:id/'
       creation_path 'virtualization/cluster-groups/'
     end
   end

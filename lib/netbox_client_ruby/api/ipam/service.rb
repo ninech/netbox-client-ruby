@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'ipam/services/:id.json'
+      path 'ipam/services/:id/'
       creation_path 'ipam/services/'
       object_fields(
         device: proc { |raw_data| Device.new raw_data['id'] },

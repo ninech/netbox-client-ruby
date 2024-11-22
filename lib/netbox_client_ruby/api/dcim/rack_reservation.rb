@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/rack-reservations/:id.json'
+      path 'dcim/rack-reservations/:id/'
       creation_path 'dcim/rack-reservations/'
 
       object_fields(

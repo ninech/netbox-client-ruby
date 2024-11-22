@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'virtualization/interfaces/:id.json'
+      path 'virtualization/interfaces/:id/'
       creation_path 'virtualization/interfaces/'
       object_fields virtual_machine: proc { |raw_data|
         VirtualMachine.new raw_data['id']

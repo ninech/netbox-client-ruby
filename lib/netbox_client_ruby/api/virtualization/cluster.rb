@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'virtualization/clusters/:id.json'
+      path 'virtualization/clusters/:id/'
       creation_path 'virtualization/clusters/'
       object_fields(
         group: proc { |raw_data| ClusterGroup.new raw_data['id'] },

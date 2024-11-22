@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'ipam/vlans/:id.json'
+      path 'ipam/vlans/:id/'
       creation_path 'ipam/vlans/'
       object_fields(
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },

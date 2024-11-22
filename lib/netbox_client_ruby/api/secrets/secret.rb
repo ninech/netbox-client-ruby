@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'secrets/secrets/:id.json'
+      path 'secrets/secrets/:id/'
       creation_path 'secrets/secrets/'
       object_fields device: proc { |raw_data| Device.new raw_data['id'] },
                     role: proc { |raw_data| SecretRole.new raw_data['id'] }

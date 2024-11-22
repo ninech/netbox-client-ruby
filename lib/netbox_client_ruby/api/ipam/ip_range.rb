@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'ipam/ip-ranges/:id.json'
+      path 'ipam/ip-ranges/:id/'
       creation_path 'ipam/ip-ranges/'
       object_fields(
         vrf: proc { |raw_data| Vrf.new raw_data['id'] },
