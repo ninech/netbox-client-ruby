@@ -16,7 +16,7 @@ module NetboxClientRuby
                       :count_devices, :count_circuits
 
       deletable true
-      path 'dcim/sites/:id.json'
+      path 'dcim/sites/:id/'
       creation_path 'dcim/sites/'
       object_fields(
         region: proc { |raw_region| DCIM::Region.new raw_region['id'] },

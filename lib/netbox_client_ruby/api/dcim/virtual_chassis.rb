@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/virtual-chassis/:id.json'
+      path 'dcim/virtual-chassis/:id/'
       creation_path 'dcim/virtual-chassis/'
 
       object_fields(

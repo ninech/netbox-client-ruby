@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/inventory-items/:id.json'
+      path 'dcim/inventory-items/:id/'
       creation_path 'dcim/inventory-items/'
       object_fields device: proc { |raw_data| Device.new raw_data['id'] },
                     manufacturer: proc { |raw_data| Manufacturer.new raw_data['id'] }

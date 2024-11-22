@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'extras/tags/:id.json'
+      path 'extras/tags/:id/'
       creation_path 'extras/tags/'
     end
   end

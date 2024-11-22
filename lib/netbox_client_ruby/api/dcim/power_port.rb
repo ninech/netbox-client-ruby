@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/power-ports/:id.json'
+      path 'dcim/power-ports/:id/'
       creation_path 'dcim/power-ports/'
       object_fields device: proc { |raw_data| Device.new raw_data['id'] }
       object_fields power_outlet: proc { |raw_data| PowerOutlet.new raw_data['id'] }

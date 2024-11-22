@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'ipam/aggregates/:id.json'
+      path 'ipam/aggregates/:id/'
       creation_path 'ipam/aggregates/'
       object_fields rir: proc { |raw_data| Rir.new raw_data['id'] }
     end

@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'extras/journal-entries/:id.json'
+      path 'extras/journal-entries/:id/'
       creation_path 'extras/journal-entries/'
     end
   end

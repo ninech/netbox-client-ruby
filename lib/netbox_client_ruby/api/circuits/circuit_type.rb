@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'circuits/circuit-types/:id.json'
+      path 'circuits/circuit-types/:id/'
       creation_path 'circuits/circuit-types/'
     end
   end

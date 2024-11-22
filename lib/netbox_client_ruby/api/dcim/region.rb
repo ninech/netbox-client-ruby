@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/regions/:id.json'
+      path 'dcim/regions/:id/'
       creation_path 'dcim/regions/'
       object_fields parent: proc { |raw_data| Region.new raw_data['id'] }
     end

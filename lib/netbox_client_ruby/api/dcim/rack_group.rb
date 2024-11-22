@@ -7,7 +7,7 @@ module NetboxClientRuby
 
       id id: :id
       deletable true
-      path 'dcim/rack-groups/:id.json'
+      path 'dcim/rack-groups/:id/'
       creation_path 'dcim/rack-groups/'
       object_fields(
         region: proc { |raw_data| DCIM::Region.new raw_data['id'] },
