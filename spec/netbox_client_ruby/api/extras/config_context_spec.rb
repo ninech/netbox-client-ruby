@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NetboxClientRuby::Extras::ConfigContext, faraday_stub: true do
   let(:entity_id) { 1 }
   let(:base_url) { '/api/extras/config-contexts/' }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/extras/config_context_#{entity_id}.json") }
 
   subject { NetboxClientRuby::Extras::ConfigContext.new entity_id }

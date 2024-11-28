@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NetboxClientRuby::Secrets::SecretRole, faraday_stub: true do
   let(:secret_id) { 1 }
   let(:base_url) { '/api/secrets/secret-roles/' }
-  let(:request_url) { "#{base_url}#{secret_id}.json" }
+  let(:request_url) { "#{base_url}#{secret_id}/" }
   let(:response) { File.read("spec/fixtures/secrets/secret-role_#{secret_id}.json") }
 
   subject { NetboxClientRuby::Secrets::SecretRole.new secret_id }

@@ -9,7 +9,7 @@ RSpec.describe NetboxClientRuby::IPAM::Aggregate, faraday_stub: true do
 
   let(:expected_prefix) { '10.0.0.0/8' }
   let(:entity_id) { 1 }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { class_under_test.new entity_id }
 

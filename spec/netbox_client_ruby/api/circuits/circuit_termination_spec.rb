@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NetboxClientRuby::Circuits::CircuitTermination, faraday_stub: true do
   let(:id) { 1 }
   let(:base_url) { '/api/circuits/circuit-terminations/' }
-  let(:request_url) { "#{base_url}#{id}.json" }
+  let(:request_url) { "#{base_url}#{id}/" }
   let(:response) { File.read("spec/fixtures/circuits/circuit-termination_#{id}.json") }
 
   subject { described_class.new id }

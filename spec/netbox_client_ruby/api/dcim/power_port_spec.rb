@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::PowerPort, faraday_stub: true do
   let(:expected_name) { 'psu1' }
   let(:base_url) { '/api/dcim/power-ports/' }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/power-ports_#{entity_id}.json") }
 
   subject { described_class.new entity_id }

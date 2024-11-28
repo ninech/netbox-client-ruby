@@ -11,7 +11,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   let(:expected_start_address) { IPAddress.parse '10.2.0.10/16' }
   let(:expected_end_address) { IPAddress.parse '10.2.0.20/16' }
   let(:entity_id) { 3 }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { class_under_test.new entity_id }
 

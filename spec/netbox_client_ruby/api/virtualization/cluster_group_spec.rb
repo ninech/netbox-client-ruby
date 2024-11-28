@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::Virtualization::ClusterGroup, faraday_stub: tru
   let(:base_url) { '/api/virtualization/cluster-groups/' }
   let(:response) { File.read("spec/fixtures/virtualization/cluster-group_#{entity_id}.json") }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { described_class.new entity_id }
 

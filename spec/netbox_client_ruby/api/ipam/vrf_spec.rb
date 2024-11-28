@@ -9,7 +9,7 @@ RSpec.describe NetboxClientRuby::IPAM::Vrf, faraday_stub: true do
   let(:response) { File.read("spec/fixtures/ipam/vrf_#{entity_id}.json") }
 
   let(:entity_id) { 1 }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { class_under_test.new entity_id }
 

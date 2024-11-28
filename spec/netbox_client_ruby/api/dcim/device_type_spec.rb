@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceType, faraday_stub: true do
   let(:sut) { NetboxClientRuby::DCIM::DeviceType }
   let(:base_url) { '/api/dcim/device-types/' }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/device-type_#{entity_id}.json") }
 
   subject { sut.new entity_id }

@@ -9,7 +9,7 @@ RSpec.describe NetboxClientRuby::DCIM::Rack, faraday_stub: true do
   let(:base_url) { '/api/dcim/racks/' }
   let(:response) { File.read("spec/fixtures/dcim/rack_#{entity_id}.json") }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { sut.new entity_id }
 

@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::DCIM::InventoryItem, faraday_stub: true do
   let(:sut) { NetboxClientRuby::DCIM::InventoryItem }
   let(:base_url) { '/api/dcim/inventory-items/' }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/inventory-item_#{entity_id}.json") }
 
   subject { sut.new entity_id }
