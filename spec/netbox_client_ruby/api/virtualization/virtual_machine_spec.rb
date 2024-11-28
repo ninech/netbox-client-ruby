@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::Virtualization::VirtualMachine, faraday_stub: t
   let(:base_url) { '/api/virtualization/virtual-machines/' }
   let(:response) { File.read("spec/fixtures/virtualization/virtual-machine_#{entity_id}.json") }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { described_class.new entity_id }
 

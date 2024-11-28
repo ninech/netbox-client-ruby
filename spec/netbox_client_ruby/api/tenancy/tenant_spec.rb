@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe NetboxClientRuby::Tenancy::Tenant, faraday_stub: true do
   let(:region_id) { 1 }
   let(:base_url) { '/api/tenancy/tenants/' }
-  let(:request_url) { "#{base_url}#{region_id}.json" }
+  let(:request_url) { "#{base_url}#{region_id}/" }
   let(:response) { File.read("spec/fixtures/tenancy/tenant_#{region_id}.json") }
 
   subject { NetboxClientRuby::Tenancy::Tenant.new region_id }

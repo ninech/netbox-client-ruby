@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::DCIM::VirtualChassis, faraday_stub: true do
   let(:base_url) { '/api/dcim/virtual-chassis/' }
   let(:response) { File.read("spec/fixtures/dcim/virtual-chassis_#{entity_id}.json") }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { described_class.new entity_id }
 

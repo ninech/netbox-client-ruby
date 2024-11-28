@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::DCIM::Manufacturer, faraday_stub: true do
   let(:expected_name) { 'manu1' }
   let(:sut) { NetboxClientRuby::DCIM::Manufacturer }
   let(:base_url) { '/api/dcim/manufacturers/' }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/manufacturer_#{entity_id}.json") }
 
   subject { sut.new entity_id }

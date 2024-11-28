@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::DCIM::Interface, faraday_stub: true do
   let(:sut) { NetboxClientRuby::DCIM::Interface }
   let(:base_url) { '/api/dcim/interfaces/' }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/interface_#{entity_id}.json") }
 
   subject { sut.new entity_id }

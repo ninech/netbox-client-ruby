@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::IPAM::Service, faraday_stub: true do
   let(:response) { File.read("spec/fixtures/ipam/service_#{entity_id}.json") }
 
   let(:entity_id) { 1 }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { NetboxClientRuby::IPAM::Service.new entity_id }
 

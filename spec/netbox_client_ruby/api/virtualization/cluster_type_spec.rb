@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::Virtualization::ClusterType, faraday_stub: true
   let(:base_url) { '/api/virtualization/cluster-types/' }
   let(:response) { File.read("spec/fixtures/virtualization/cluster-type_#{entity_id}.json") }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { described_class.new entity_id }
 

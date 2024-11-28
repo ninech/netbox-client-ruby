@@ -10,7 +10,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpAddress, faraday_stub: true do
 
   let(:expected_address) { IPAddress.parse('10.0.0.1/8') }
   let(:entity_id) { 1 }
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
 
   subject { class_under_test.new entity_id }
 

@@ -8,7 +8,7 @@ RSpec.describe NetboxClientRuby::DCIM::DeviceRole, faraday_stub: true do
   let(:sut) { NetboxClientRuby::DCIM::DeviceRole }
   let(:base_url) { '/api/dcim/device-roles/' }
 
-  let(:request_url) { "#{base_url}#{entity_id}.json" }
+  let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/device-role_#{entity_id}.json") }
 
   subject { sut.new entity_id }
