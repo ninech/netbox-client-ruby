@@ -47,7 +47,10 @@ NetboxClientRuby.configure do |config|
   config.netbox.auth.rsa_private_key.password = ''
   config.netbox.pagination.default_limit = 50
   config.faraday.adapter = Faraday.default_adapter
+  # https://lostisland.github.io/faraday/#/customization/request-options
   config.faraday.request_options = { open_timeout: 1, timeout: 5 }
+  # see: https://lostisland.github.io/faraday/#/customization/ssl-options
+  config.faraday.ssl_options = { verify: true }
   config.faraday.logger = :logger # built-in options: :logger, :detailed_logger; default: nil
 end
 ```

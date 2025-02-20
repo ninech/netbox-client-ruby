@@ -28,7 +28,7 @@ module NetboxClientRuby
 
     private_class_method def self.build_faraday(request_encoding: :json)
       config = NetboxClientRuby.config
-      Faraday.new(url: config.netbox.api_base_url, headers: headers) do |faraday|
+      Faraday.new(url: config.netbox.api_base_url, headers: headers, ssl: config.faraday.ssl_options) do |faraday|
         faraday.request request_encoding
         faraday.response config.faraday.logger if config.faraday.logger
         faraday.response :json, content_type: /\bjson$/
