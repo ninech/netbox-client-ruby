@@ -65,6 +65,7 @@ module NetboxClientRuby
     setting :adapter, default: :net_http
     setting :logger
     setting :request_options, default: { open_timeout: 1, timeout: 5 }
+    setting :ssl_options, default: { verify: true }
   end
 
   def self.circuits

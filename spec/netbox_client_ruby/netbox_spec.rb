@@ -14,6 +14,7 @@ RSpec.describe NetboxClientRuby do
       config.faraday.adapter = :net_http_persistent
       config.faraday.logger = :detailed_logger
       config.faraday.request_options = { open_timeout: 3, timeout: 15 }
+      config.faraday.ssl_options = { verify: true }
     end
 
     expect(NetboxClientRuby.config.netbox.auth.token)
@@ -34,6 +35,8 @@ RSpec.describe NetboxClientRuby do
       .to be :detailed_logger
     expect(NetboxClientRuby.config.faraday.request_options)
       .to eq(open_timeout: 3, timeout: 15)
+    expect(NetboxClientRuby.config.faraday.ssl_options)
+      .to eq(verify: true)
   end
 
   {
