@@ -4,7 +4,7 @@ module NetboxClientRuby
   module Tenancy
     {
       tenants: Tenants,
-      tenant_groups: TenantGroups,
+      tenant_groups: TenantGroups
       contacts: Contacts,
       contact_groups: ContactGroups
     }.each_pair do |method_name, class_name|
@@ -14,7 +14,7 @@ module NetboxClientRuby
 
     {
       tenant: Tenant,
-      tenant_group: TenantGroup,
+      tenant_group: TenantGroup
       contact: Contact,
       contact_group: ContactGroup
     }.each_pair do |method_name, class_name|

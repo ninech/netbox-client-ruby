@@ -6,7 +6,7 @@ RSpec.describe NetboxClientRuby::Tenancy do
   {
     tenant_groups: NetboxClientRuby::Tenancy::TenantGroups,
     tenants: NetboxClientRuby::Tenancy::Tenants,
-    contact_groups: NetboxClientRuby::Tenancy::ContactGroups,
+    contact_groups: NetboxClientRuby::Tenancy::ContacttGroups,
     contacts: NetboxClientRuby::Tenancy::Contacts
   }.each do |method, klass|
     describe ".#{method}" do
