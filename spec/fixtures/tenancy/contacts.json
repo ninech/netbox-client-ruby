@@ -8,12 +8,10 @@
       "name": "contact3",
       "email": "contact3@customer.test",
       "group": {
-        "id": 2,
-        "url": "http://localhost/api/tenancy/contact_groups/2/",
-        "display": "Child Customers",
-        "name": "Child Customers",
-        "slug": "child-customers",
-        "description": "Child contact group"
+        "id": 1,
+        "url": "http://localhost/api/tenancy/contact-groups/1/",
+        "name": "Customer",
+        "slug": "customer"
       },
       "description": "",
       "comments": "",

@@ -1,7 +1,5 @@
 {
   "id": 1,
-  "display": "Parent Customers",
-  "name": "Parent Customers",
-  "slug": "parent-customers",
-  "description": "Parent Contact contact group"
+  "name": "Customer",
+  "slug": "customer"
 }

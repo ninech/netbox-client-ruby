@@ -1,30 +1,12 @@
 {
-  "count": 2,
+  "count": 1,
   "next": null,
   "previous": null,
   "results": [
     {
       "id": 1,
-      "display": "Parent Customers",
-      "name": "Parent Customers",
-      "slug": "parent-customers",
-      "description": "Parent Contact contact group",
-      "parent": null
-    },
-    {
-      "id": 2,
-      "display": "Child Customers",
-      "name": "Child Customers",
-      "slug": "child-customers",
-      "description": "Child contact group",
-      "parent": {
-        "id": 1,
-        "url": "http://localhost/api/tenancy/contact_groups/1/",
-        "display": "Parent Customers",
-        "name": "Parent Customers",
-        "slug": "parent-customers",
-        "description": "Parent Contact contact group"
-      }
+      "name": "Customer",
+      "slug": "customer"
     }
   ]
 }

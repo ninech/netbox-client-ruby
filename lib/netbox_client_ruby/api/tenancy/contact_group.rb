@@ -9,7 +9,6 @@ module NetboxClientRuby
       deletable true
       path 'tenancy/contact-groups/:id/'
       creation_path 'tenancy/contact-groups/'
-      object_fields parent: proc { |raw_data| ContactGroup.new raw_data['id'] }
     end
   end
 end

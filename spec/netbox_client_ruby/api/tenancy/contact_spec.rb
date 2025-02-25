@@ -39,7 +39,7 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
       it 'should be a ContactGroup object' do
         contact_group = subject.group
         expect(contact_group).to be_a NetboxClientRuby::Tenancy::ContactGroup
-        expect(contact_group.id).to eq(2)
+        expect(contact_group.id).to eq(1)
       end
     end
   end
