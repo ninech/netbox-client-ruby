@@ -3,16 +3,16 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Tenancy::TenantGroup, faraday_stub: true do
-  let(:region_id) { 1 }
+  let(:tenant_group_id) { 1 }
   let(:base_url) { '/api/tenancy/tenant-groups/' }
-  let(:request_url) { "#{base_url}#{region_id}/" }
-  let(:response) { File.read("spec/fixtures/tenancy/tenant-group_#{region_id}.json") }
+  let(:request_url) { "#{base_url}#{tenant_group_id}/" }
+  let(:response) { File.read("spec/fixtures/tenancy/tenant-group_#{tenant_group_id}.json") }
 
-  subject { NetboxClientRuby::Tenancy::TenantGroup.new region_id }
+  subject { NetboxClientRuby::Tenancy::TenantGroup.new tenant_group_id }
 
   describe '#id' do
     it 'shall be the expected id' do
-      expect(subject.id).to eq(region_id)
+      expect(subject.id).to eq(tenant_group_id)
     end
   end
 
@@ -67,7 +67,7 @@ RSpec.describe NetboxClientRuby::Tenancy::TenantGroup, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        entity = NetboxClientRuby::Tenancy::TenantGroup.new region_id
+        entity = NetboxClientRuby::Tenancy::TenantGroup.new tenant_group_id
         entity.name = name
         entity.slug = slug
         entity
