@@ -24,7 +24,23 @@ RSpec.describe NetboxClientRuby::Tenancy::ContactGroup, faraday_stub: true do
     end
 
     it 'shall be the expected name' do
-      expect(subject.name).to eq('Customer')
+      expect(subject.name).to eq('Parent Customers')
+    end
+  end
+
+  describe '.parent' do
+    it 'should be nil' do
+      expect(subject.parent).to be_nil
+    end
+
+    context 'Child Contact Group' do
+      let(:contact_group_id) { 2 }
+
+      it 'should be a Contact Group object' do
+        parent_contact_group = subject.parent
+        expect(parent_contact_group).to be_a NetboxClientRuby::Tenancy::ContactGroup
+        expect(parent_contact_group.id).to eq(1)
+      end
     end
   end
 
@@ -45,7 +61,7 @@ RSpec.describe NetboxClientRuby::Tenancy::ContactGroup, faraday_stub: true do
 
     it 'should update the object' do
       expect(faraday).to receive(request_method).and_call_original
-      expect(subject.update(name: 'noob').name).to eq('Customer')
+      expect(subject.update(name: 'noob').name).to eq('Parent Customers')
     end
   end
 
@@ -91,8 +107,8 @@ RSpec.describe NetboxClientRuby::Tenancy::ContactGroup, faraday_stub: true do
         expect(faraday).to receive(request_method).and_call_original
 
         subject.save
-        expect(subject.name).to eq('Customer')
-        expect(subject.slug).to eq('customer')
+        expect(subject.name).to eq('Parent Customers')
+        expect(subject.slug).to eq('parent-customers')
       end
     end
 
@@ -127,8 +143,8 @@ RSpec.describe NetboxClientRuby::Tenancy::ContactGroup, faraday_stub: true do
         subject.save
 
         expect(subject.id).to be(1)
-        expect(subject.name).to eq('Customer')
-        expect(subject.slug).to eq('customer')
+        expect(subject.name).to eq('Parent Customers')
+        expect(subject.slug).to eq('parent-customers')
       end
     end
   end
