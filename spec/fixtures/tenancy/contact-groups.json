@@ -1,12 +1,30 @@
 {
-  "count": 1,
+  "count": 2,
   "next": null,
   "previous": null,
   "results": [
     {
       "id": 1,
-      "name": "Customer",
-      "slug": "customer"
+      "display": "Customers",
+      "name": "Customers",
+      "slug": "customers",
+      "description": "Parent Contact contact group",
+      "parent": null
+    },
+    {
+      "id": 2,
+      "display": "East Coast Customers",
+      "name": "East Coast Customers",
+      "slug": "east-coast-customers",
+      "description": "Child contact group",
+      "parent": {
+        "id": 1,
+        "url": "http://localhost/api/tenancy/contact_groups/1/",
+        "display": "Customers",
+        "name": "Customers",
+        "slug": "customers",
+        "description": "Parent Contact contact group"
+      }
     }
   ]
 }
