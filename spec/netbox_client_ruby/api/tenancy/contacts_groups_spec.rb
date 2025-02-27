@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Tenancy::ContactGroups, faraday_stub: true do
-  let(:expected_number_of_items) { 1 }
+  let(:expected_number_of_items) { 2 }
   let(:expected_singular_type) { NetboxClientRuby::Tenancy::ContactGroup }
 
   let(:response) { File.read('spec/fixtures/tenancy/contact-groups.json') }
