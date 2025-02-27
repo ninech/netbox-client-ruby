@@ -5,8 +5,11 @@
   "results": [
     {
       "id": 1,
+      "display": "Customer",
       "name": "Customer",
-      "slug": "customer"
+      "slug": "customer",
+      "description": "Customer contact group",
+      "parent": null
     }
   ]
 }
