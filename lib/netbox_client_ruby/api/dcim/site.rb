@@ -19,6 +19,7 @@ module NetboxClientRuby
       path 'dcim/sites/:id/'
       creation_path 'dcim/sites/'
       object_fields(
+        tenant: proc { |raw_region| Tenancy::Tenant.new raw_region['id'] },
         region: proc { |raw_region| DCIM::Region.new raw_region['id'] },
         status: proc do |raw_status|
           STATUS_VALUES.key(raw_status['value']) || raw_status['value']
