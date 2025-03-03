@@ -1,0 +1,16 @@
+{
+  "id": 3,
+  "name": "tenant3",
+  "email": "contact3@customer.test",
+  "group": {
+    "id": 2,
+    "url": "http://localhost/api/tenancy/contact_groups/2/",
+    "display": "Child Customers",
+    "name": "Child Customers",
+    "slug": "child-customers",
+    "description": "Child contact group"
+  },
+  "description": "",
+  "comments": "",
+  "custom_fields": {}
+}
