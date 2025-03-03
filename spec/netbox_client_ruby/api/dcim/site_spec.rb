@@ -3,11 +3,12 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
+  let(:class_under_test) { NetboxClientRuby::DCIM::Site }
   let(:entity_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/site_#{entity_id}.json") }
   let(:request_url) { "/api/dcim/sites/#{entity_id}/" }
 
-  subject { described_class.new entity_id }
+  subject { class_under_test.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -34,6 +35,24 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
 
     it 'should not be updateable' do
       expect { subject.count_prefixes = 2 }.to raise_exception(NoMethodError)
+    end
+  end
+
+  {
+    region: NetboxClientRuby::DCIM::Region,
+    tenant: NetboxClientRuby::Tenancy::Tenant,
+    status: Symbol
+  }.each_pair do |method_name, expected_type|
+    describe ".#{method_name}" do
+      it 'should fetch the data' do
+        expect(faraday).to receive(:get).and_call_original
+
+        expect(subject.public_send(method_name)).to_not be_nil
+      end
+
+      it 'shall return the expected type' do
+        expect(subject.public_send(method_name)).to be_a(expected_type)
+      end
     end
   end
 
@@ -94,7 +113,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        entity = described_class.new entity_id
+        entity = class_under_test.new entity_id
         entity.name = name
         entity.slug = slug
         entity
@@ -128,7 +147,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
       let(:request_url) { '/api/dcim/sites/' }
 
       subject do
-        entity = described_class.new
+        entity = class_under_test.new
         entity.name = name
         entity.slug = slug
         entity
