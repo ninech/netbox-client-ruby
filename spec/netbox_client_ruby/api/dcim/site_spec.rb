@@ -3,12 +3,11 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::DCIM::Site }
   let(:entity_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/site_#{entity_id}.json") }
   let(:request_url) { "/api/dcim/sites/#{entity_id}/" }
 
-  subject { class_under_test.new entity_id }
+  subject { described_class.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -95,7 +94,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
       let(:request_method) { :patch }
 
       subject do
-        entity = class_under_test.new entity_id
+        entity = described_class.new entity_id
         entity.name = name
         entity.slug = slug
         entity
@@ -129,7 +128,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
       let(:request_url) { '/api/dcim/sites/' }
 
       subject do
-        entity = class_under_test.new
+        entity = described_class.new
         entity.name = name
         entity.slug = slug
         entity
