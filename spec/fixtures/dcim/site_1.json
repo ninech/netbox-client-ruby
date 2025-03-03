@@ -2,8 +2,25 @@
   "id": 1,
   "name": "test",
   "slug": "test",
-  "region": null,
-  "tenant": null,
+  "region": {
+    "id": 1,
+    "name": "region1",
+    "slug": "region1",
+    "parent": null
+  },
+  "tenant": {
+    "id": 1,
+    "name": "tenant1",
+    "slug": "tenant1",
+    "group": null,
+    "description": "",
+    "comments": "",
+    "custom_fields": {}
+  },
+  "status": {
+    "value": 1,
+    "label": "Active"
+  },
   "facility": "",
   "asn": null,
   "physical_address": "",
