@@ -245,7 +245,7 @@ Before opening a PR, please
 * extend the existing specs
 * run rspec
 * run rubocop and fix your warnings
-* check if this README.md file needs adjustments
+* check if this `README.md` file needs adjustments
 
 ## License
 
