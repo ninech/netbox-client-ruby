@@ -19,3 +19,4 @@ Gemfile.lock
 
 # Ignore MacOS files
 .DS_Store
+.devcontainer/devcontainer.env

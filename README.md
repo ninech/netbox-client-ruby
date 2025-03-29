@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ninech/netbox-client-ruby.svg?branch=master)](https://travis-ci.org/ninech/netbox-client-ruby)
 [![Gem Version](https://badge.fury.io/rb/netbox-client-ruby.svg)](https://badge.fury.io/rb/netbox-client-ruby)
 [![Code Climate](https://codeclimate.com/github/ninech/netbox-client-ruby/badges/gpa.svg)](https://codeclimate.com/github/ninech/netbox-client-ruby)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/ninech/netbox-client-ruby)
 
 This is a gem to pragmatically access your [Netbox instance](https://github.com/digitalocean/netbox)
 via it's API from Ruby. This gem is currently only compatible with Netbox v2.4 or newer.
@@ -235,6 +236,24 @@ docker-compose exec postgres pg_dump -U netbox --exclude-table-data=extras_objec
 ```
 
 (Remove `--exclude-table-data=extras_objectchange` from the command if you want to retain the history!)
+
+### Dev Containers
+
+If you'd like to use a [Dev Container](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
+development environment in VS Code, the configuration files for the development environment has been provided
+in the `./.devcontainer` folder.
+
+By default, the Dockerfile/devcontainer uses the `ruby:3.2` image. If you want to use a different version:
+
+- Update the value for `build.args.RUBY_VERSION` from `${localEnv:RUBY_VERSION:3.2.5}` to the actual version number
+(which is just an image tag)
+- Or set the local/host environment variable `RUBY_VERSION` before starting/restarting VS Code.
+  See: [Variables in devcontainer.json](https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson) for more details.
+
+If you would like to pass environment variables into the Dev Container,
+copy the `.devcontainer/devcontainer.dist.env` to `.devcontainer/devcontainer.env` and put them in there.
+
+For more details and prerequisite, see: <https://code.visualstudio.com/docs/devcontainers/create-dev-container>
 
 ## Contributing
 

@@ -1,0 +1,43 @@
+{
+  "name": "Netbox Client Ruby",
+  "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "..",
+      "args": {
+          "RUBY_VERSION": "${localEnv:RUBY_VERSION:3.2.5}"
+      }
+  },
+  "runArgs": [
+    "--env-file", "${localWorkspaceFolder}/.devcontainer/devcontainer.env"
+  ],
+  "features": {
+      "ghcr.io/devcontainers/features/common-utils:2": {
+          "installZsh": "true",
+          "username": "vscode",
+          "userUid": "1000",
+          "userGid": "1000",
+          "upgradePackages": "true"
+      },
+      "ghcr.io/devcontainers/features/ruby:1": "none",
+      "ghcr.io/devcontainers/features/node:1": "none",
+      "ghcr.io/devcontainers/features/git:1": {
+          "version": "latest",
+          "ppa": "false"
+      }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        // a language server
+        "shopify.ruby-lsp"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  // we need to sudo bundle install otherwise the prism gem won't compile and install.
+  "postCreateCommand": "sudo bin/setup",
+  // make sure we're updated each time we start.
+  "postStartCommand": "bin/setup"
+}
