@@ -56,4 +56,10 @@ RSpec.describe NetboxClientRuby::IPAM::IpAddresses, faraday_stub: true do
       end
     end
   end
+
+  describe '#find_by' do
+    it 'should return a match with to_string' do
+      expect(subject.find_by({ address: '10.0.0.1/8' })['address']).to eq('10.0.0.1/8')
+    end
+  end
 end

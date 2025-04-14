@@ -85,7 +85,11 @@ module NetboxClientRuby
             netbox_object.custom_fields[custom_field].to_s == filter_value.to_s
           else
             if netbox_object.respond_to?(filter_key)
-              netbox_object.public_send(filter_key).to_s == filter_value.to_s
+              if netbox_object.public_send(filter_key).respond_to?(:to_string)
+                netbox_object.public_send(filter_key).to_string == filter_value.to_s
+              else
+                netbox_object.public_send(filter_key).to_s == filter_value.to_s
+              end
             else
               false
             end
