@@ -1,0 +1,34 @@
+
+{
+  "id": 1,
+  "url": "http://localhost/api/dcim/mac-addresses/1/",
+  "display_url": "http://localhost/dcim/mac-addresses/1/",
+  "display": "23:2f:bd:ad:aa:d1",
+  "mac_address": "23:2f:bd:ad:aa:d1",
+  "assigned_object_type": "dcim.interface",
+  "assigned_object_id": 1,
+  "assigned_object": {
+    "id": 1,
+    "device": {
+      "id": 1,
+      "url": "http://localhost/api/dcim/devices/1/",
+      "name": "device1",
+      "display_name": "device1"
+    },
+    "name": "e1",
+    "form_factor": {
+      "value": 1000,
+      "label": "1000BASE-T (1GE)"
+    },
+    "lag": null,
+    "mac_address": null,
+    "mgmt_only": false,
+    "description": "",
+    "connection": null,
+    "connected_interface": null
+  },
+  "description": "",
+  "comments": "",
+  "tags": [],
+  "custom_fields": {}
+}
