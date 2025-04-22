@@ -85,11 +85,7 @@ module NetboxClientRuby
             netbox_object.custom_fields[custom_field].to_s == filter_value.to_s
           else
             if netbox_object.respond_to?(filter_key)
-              # ruby's IPAddress class has a to_s and to_string method.
-              # the to_s will return just the ip address.
-              # the to_string will return the ip address with the subnet mask.
-              # we want to use the to_string method if it is available.
-              if netbox_object.public_send(filter_key).respond_to?(:to_string)
+              if netbox_object.public_send(filter_key).is_a?(IPAddress)
                 netbox_object.public_send(filter_key).to_string == filter_value.to_s
               else
                 netbox_object.public_send(filter_key).to_s == filter_value.to_s
