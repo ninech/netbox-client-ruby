@@ -15,24 +15,7 @@ module NetboxClientRuby
       NetboxClientRuby::Connection.new
     end
 
-    def hash_to_object(hash)
-      objectified_class = Class.new
-      objectified_instance = objectified_class.new
-      hash.each do |k, v|
-        variable_name = sanitize_variable_name(k)
-        variable_name = "_#{variable_name}" if objectified_instance.methods.map(&:to_s).include?(variable_name)
-
-        objectified_instance.instance_variable_set(:"@#{variable_name}", v)
-        objectified_class.send(:define_method, variable_name, proc { instance_variable_get(:"@#{variable_name}") })
-      end
-      objectified_instance
-    end
-
     private
-
-    def sanitize_variable_name(raw_name)
-      raw_name.gsub(/[^a-zA-Z0-9_]/, '_')
-    end
 
     def read(response)
       response.body
