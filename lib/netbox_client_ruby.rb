@@ -36,9 +36,6 @@ Zeitwerk::Loader.for_gem.tap do |loader|
   loader.setup
 end
 
-# load gem errors
-require_relative 'netbox_client_ruby/error'
-
 module NetboxClientRuby
   extend Dry::Configurable
 

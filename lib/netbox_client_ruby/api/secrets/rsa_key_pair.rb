@@ -25,7 +25,7 @@ module NetboxClientRuby
         if authorization_token
           @response ||= response connection.get(PATH)
         else
-          raise LocalError,
+          raise NetboxClientRuby::Error::LocalError,
                 "The authorization_token has not been configured, but it's required for get-session-key."
         end
       end
