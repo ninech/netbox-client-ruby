@@ -177,7 +177,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       let(:request_params) { { 'name' => name } }
 
       it 'does raise an exception when trying to fetch data' do
-        expect { subject.reload }.to raise_error(NetboxClientRuby::LocalError)
+        expect { subject.reload }.to raise_error(NetboxClientRuby::Error::LocalError)
       end
 
       it 'returns itself when calling save' do
@@ -321,7 +321,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
         let(:subject) { TestEntity2.new 42 }
 
         it 'raises an error' do
-          expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
+          expect { subject.delete }.to raise_error NetboxClientRuby::Error::LocalError
         end
       end
     end
@@ -354,7 +354,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
         let(:subject) { TestEntity2.new 42 }
 
         it 'raises an error' do
-          expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
+          expect { subject.delete }.to raise_error NetboxClientRuby::Error::LocalError
         end
       end
     end
