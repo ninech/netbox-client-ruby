@@ -83,12 +83,14 @@ module NetboxClientRuby
             custom_field = filter_key.to_s.sub('cf_', '')
 
             netbox_object.custom_fields[custom_field].to_s == filter_value.to_s
-          else
-            if netbox_object.respond_to?(filter_key)
-              netbox_object.public_send(filter_key).to_s == filter_value.to_s
+          elsif netbox_object.respond_to?(filter_key)
+            if netbox_object.public_send(filter_key).is_a?(IPAddress)
+              netbox_object.public_send(filter_key).to_string == filter_value.to_s
             else
-              false
+              netbox_object.public_send(filter_key).to_s == filter_value.to_s
             end
+          else
+            false
           end
         end
       end
