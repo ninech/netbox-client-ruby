@@ -16,7 +16,7 @@ module NetboxClientRuby
         vlan: proc { |raw_data| Vlan.new raw_data['id'] },
         status: proc { |raw_data| PrefixStatus.new raw_data },
         role: proc { |raw_data| Role.new raw_data['id'] },
-        prefix: proc { |raw_data| IPAddress.parse raw_data }
+        prefix: proc { |raw_data| IPAddress.parse raw_data },
       )
       readonly_fields :display_name
     end

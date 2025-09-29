@@ -13,7 +13,7 @@ module NetboxClientRuby
       object_fields(
         circuit: proc { |raw_data| Circuit::Circuit.new raw_data['id'] },
         site: proc { |raw_data| DCIM::Site.new raw_data['id'] },
-        interface: proc { |raw_data| DCIM::Interface.new raw_data['id'] }
+        interface: proc { |raw_data| DCIM::Interface.new raw_data['id'] },
       )
     end
   end

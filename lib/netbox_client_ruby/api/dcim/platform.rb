@@ -12,7 +12,7 @@ module NetboxClientRuby
       object_fields(
         manufacturer: proc do |raw_manufacturer|
           DCIM::Manufacturer.new raw_manufacturer['id']
-        end
+        end,
       )
     end
   end

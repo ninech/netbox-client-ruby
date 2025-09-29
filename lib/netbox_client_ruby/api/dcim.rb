@@ -24,7 +24,7 @@ module NetboxClientRuby
       rack_roles: RackRoles,
       regions: Regions,
       sites: Sites,
-      virtual_chassis_list: VirtualChassisList
+      virtual_chassis_list: VirtualChassisList,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -52,7 +52,7 @@ module NetboxClientRuby
       rack_role: RackRole,
       region: Region,
       site: Site,
-      virtual_chassis: VirtualChassis
+      virtual_chassis: VirtualChassis,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)

@@ -18,7 +18,7 @@ module NetboxClientRuby
         clusters: proc { |raw_data| Virtualization::Cluster.new raw_data['id'] },
         tenant_groups: proc { |raw_data| Tenancy::TenantGroup.new raw_data['id'] },
         tenants: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
-        tags: proc { |raw_data| Tag.new raw_data['id'] }
+        tags: proc { |raw_data| Tag.new raw_data['id'] },
       )
     end
   end

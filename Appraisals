@@ -13,5 +13,5 @@ end
 appraise 'faraday2' do
   gem 'faraday', '< 3'
   gem 'faraday-net_http_persistent'
-  remove_gem "faraday_middleware"
+  remove_gem 'faraday_middleware'
 end

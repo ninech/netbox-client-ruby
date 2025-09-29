@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module NetboxClientRuby
-  module Entity
+  module Entity # rubocop:disable Metrics/ModuleLength
     include NetboxClientRuby::Communication
 
     def self.included(other_klass)
@@ -21,7 +21,7 @@ module NetboxClientRuby
       #   id 'an_id_field' => 'id_field_in_data'
       #   id an_id_field: 'id_field_in_data', :another_id_field: 'id_field2_in_data'
       #
-      def id(*fields)
+      def id(*fields) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
         return @id_fields if @id_fields
 
         raise ArgumentError, "No 'id' was defined, but one is expected." if fields.empty?
@@ -36,7 +36,7 @@ module NetboxClientRuby
           end
         end
 
-        @id_fields.keys.each do |field|
+        @id_fields.each_key do |field|
           define_method(field) { instance_variable_get :"@#{field}" }
         end
 
@@ -49,7 +49,7 @@ module NetboxClientRuby
         @readonly_fields = fields.map(&:to_s)
       end
 
-      def deletable(deletable = false)
+      def deletable(deletable = false) # rubocop:disable Style/OptionalBooleanParameter
         @deletable ||= deletable
       end
 
@@ -88,7 +88,7 @@ module NetboxClientRuby
         end
       end
 
-      def sanitize_mapping(fields_to_class_map)
+      def sanitize_mapping(fields_to_class_map) # rubocop:disable Metrics/MethodLength
         fields_map = {}
         fields_to_class_map.each do |field_definition|
           if field_definition.is_a?(Hash)
@@ -103,7 +103,7 @@ module NetboxClientRuby
       end
     end
 
-    def initialize(given_values = nil)
+    def initialize(given_values = nil) # rubocop:disable Metrics/MethodLength
       return self if given_values.nil?
 
       if id_fields.count == 1 && !given_values.is_a?(Hash)
@@ -138,6 +138,7 @@ module NetboxClientRuby
 
     def save
       return post unless ids_set?
+
       patch
     end
 
@@ -158,7 +159,7 @@ module NetboxClientRuby
       self
     end
 
-    def update(new_values)
+    def update(new_values) # rubocop:disable Metrics/MethodLength
       new_values.each do |attribute, values|
         s_attribute = attribute.to_s
         next if readonly_fields.include? s_attribute
@@ -191,7 +192,7 @@ module NetboxClientRuby
       dirty_data[name.to_s] = value
     end
 
-    def method_missing(name_as_symbol, *args, &block)
+    def method_missing(name_as_symbol, *args, &block) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength
       name = name_as_symbol.to_s
 
       if name.end_with?('=')
@@ -212,7 +213,7 @@ module NetboxClientRuby
       super
     end
 
-    def respond_to_missing?(name_as_symbol, *args)
+    def respond_to_missing?(name_as_symbol, *args) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       name = name_as_symbol.to_s
 
       return false if name.end_with?('=') && readonly_fields.include?(name[0..-2])
@@ -325,6 +326,7 @@ module NetboxClientRuby
       path.scan(/:([a-zA-Z_][a-zA-Z0-9_]+[!?=]?)/) do |match, *|
         path_variable_value = send(match)
         return interpreted_path.gsub! ":#{match}", path_variable_value.to_s unless path_variable_value.nil?
+
         raise LocalError, "Received 'nil' while replacing ':#{match}' in '#{path}' with a value."
       end
       interpreted_path
@@ -340,9 +342,7 @@ module NetboxClientRuby
 
     def extract_ids
       id_fields.each do |id_attr, id_field|
-        unless data.key?(id_field)
-          raise LocalError, "Can't find the id field '#{id_field}' in the received data."
-        end
+        raise LocalError, "Can't find the id field '#{id_field}' in the received data." unless data.key?(id_field)
 
         instance_variable_set(:"@#{id_attr}", data[id_field])
       end

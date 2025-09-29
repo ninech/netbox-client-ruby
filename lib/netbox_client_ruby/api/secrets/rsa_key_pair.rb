@@ -5,7 +5,7 @@ module NetboxClientRuby
     class RSAKeyPair
       include Communication
 
-      PATH = '/api/secrets/generate-rsa-key-pair/'.freeze
+      PATH = '/api/secrets/generate-rsa-key-pair/'
 
       def public_key
         get['public_key']

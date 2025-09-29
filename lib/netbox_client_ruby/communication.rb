@@ -21,37 +21,38 @@ module NetboxClientRuby
       response.body
     end
 
-    def raise_on_http_error(response)
+    def raise_on_http_error(response) # rubocop:disable Metrics/MethodLength
       status = response.status
       body = response.body
 
       case status
-      when 200..299 then
-      when 300..499 then
+      when 200..299
+        # do nothing
+      when 300..499
         raise_on_http_client_error response
-      when 500..599 then
+      when 500..599
         raise NetboxClientRuby::RemoteError, "#{status} Remote Error#{formatted_body(body)}"
       else
         raise NetboxClientRuby::RemoteError, "#{status} Unknown Error Code#{formatted_body(body)}"
       end
     end
 
-    def raise_on_http_client_error(response)
+    def raise_on_http_client_error(response) # rubocop:disable Metrics/MethodLength
       status = response.status
       body = response.body
 
       case status
-      when 400 then
+      when 400
         raise_client_error '400 Bad Request', body
-      when 401 then
+      when 401
         raise_client_error '401 Unauthorized', body
-      when 403 then
+      when 403
         raise_client_error '403 Forbidden', body
-      when 405 then
+      when 405
         raise_client_error '405 Method Not Allowed', body
-      when 415 then
+      when 415
         raise_client_error '415 Unsupported Media Type', body
-      when 429 then
+      when 429
         raise_client_error '429 Too Many Requests', body
       else
         raise_client_error "#{status} Request Error", body
@@ -64,6 +65,7 @@ module NetboxClientRuby
 
     def formatted_body(body)
       return '' if body.nil? || body.empty?
+
       shortened = body.to_s
       one_line = shortened.gsub(/\n/, '\n')
       " (#{one_line})"
