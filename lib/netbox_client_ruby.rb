@@ -68,6 +68,16 @@ module NetboxClientRuby
     setting :ssl_options, default: { verify: true }
   end
 
+  def self.load_collection(collection, method_name, class_name)
+    collection.define_method(method_name) { class_name.new }
+    collection.__send__(:module_function, method_name)
+  end
+
+  def self.load_entity(entity, method_name, class_name)
+    entity.define_method(method_name) { |id| class_name.new id }
+    entity.__send__(:module_function, method_name)
+  end
+
   def self.circuits
     NetboxClientRuby::Circuits
   end

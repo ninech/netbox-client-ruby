@@ -8,8 +8,7 @@ module NetboxClientRuby
       circuit_types: CircuitTypes,
       circuit_terminations: CircuitTerminations,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { class_name.new }
-      module_function(method_name)
+      NetboxClientRuby.load_collection(self, method_name, class_name)
     end
 
     {
@@ -18,8 +17,7 @@ module NetboxClientRuby
       circuit_type: CircuitType,
       circuit_termination: CircuitTermination,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { |id| class_name.new id }
-      module_function(method_name)
+      NetboxClientRuby.load_entity(self, method_name, class_name)
     end
   end
 end

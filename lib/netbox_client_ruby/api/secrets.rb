@@ -8,16 +8,14 @@ module NetboxClientRuby
       generate_rsa_key_pair: RSAKeyPair,
       get_session_key: SessionKey,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { class_name.new }
-      module_function(method_name)
+      NetboxClientRuby.load_collection(self, method_name, class_name)
     end
 
     {
       secret_role: SecretRole,
       secret: Secret,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { |id| class_name.new id }
-      module_function(method_name)
+      NetboxClientRuby.load_entity(self, method_name, class_name)
     end
 
     def session_key=(session_key)
