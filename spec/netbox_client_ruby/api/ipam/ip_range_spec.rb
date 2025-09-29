@@ -4,7 +4,9 @@ require 'spec_helper'
 require 'ipaddress'
 
 RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::IPAM::IpRange }
+  subject { class_under_test.new entity_id }
+
+  let(:class_under_test) { described_class }
   let(:base_url) { '/api/ipam/ip-ranges/' }
   let(:response) { File.read("spec/fixtures/ipam/ip-range_#{entity_id}.json") }
 
@@ -13,8 +15,6 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   let(:entity_id) { 3 }
   let(:request_url) { "#{base_url}#{entity_id}/" }
 
-  subject { class_under_test.new entity_id }
-
   describe '#id' do
     it 'shall be the expected id' do
       expect(subject.id).to eq(entity_id)
@@ -22,7 +22,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   end
 
   describe '#start_address' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.start_address
@@ -34,7 +34,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   end
 
   describe '#end_address' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.end_address
@@ -51,11 +51,11 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
     status: NetboxClientRuby::IPAM::IpRangeStatus,
     role: NetboxClientRuby::IPAM::Role,
     start_address: IPAddress,
-    end_address: IPAddress
+    end_address: IPAddress,
   }.each_pair do |method_name, expected_type|
     context 'entity with references' do
       describe ".#{method_name}" do
-        it 'should fetch the data and not return nil' do
+        it 'fetches the data and not return nil' do
           expect(faraday).to receive(:get).and_call_original
 
           expect(subject.public_send(method_name)).to_not be_nil
@@ -69,10 +69,10 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
 
     context 'entity without references' do
       describe ".#{method_name}" do
-        it 'should fetch the data and return nil' do
+        it 'fetches the data and return nil' do
           expect(faraday).to receive(:get).and_call_original
 
-          expect(subject.public_send(method_name)).to be
+          expect(subject.public_send(method_name)).to_not be_nil
         end
 
         it 'shall return the expected type' do
@@ -83,7 +83,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
   end
 
   describe '.status' do
-    it 'should assign the correct value' do
+    it 'assigns the correct value' do
       expect(subject.status.label).to eq('Active')
     end
   end
@@ -93,7 +93,7 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -104,14 +104,14 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'start_address' => start_address } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(start_address: start_address).start_address).to eq(expected_start_address)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -124,13 +124,13 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
     let(:request_params) { { 'start_address' => start_address } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = class_under_test.new entity_id
         entity.start_address = start_address
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -153,15 +153,15 @@ RSpec.describe NetboxClientRuby::IPAM::IpRange, faraday_stub: true do
       end
     end
 
-    context '.new' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
+    context 'new' do
       subject do
         entity = class_under_test.new
         entity.start_address = start_address
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

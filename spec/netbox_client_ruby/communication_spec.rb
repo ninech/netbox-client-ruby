@@ -3,19 +3,20 @@
 require 'spec_helper'
 require 'json'
 
+class Victim
+  include NetboxClientRuby::Communication
+end
+
 RSpec.describe NetboxClientRuby::Communication do
   let(:faraday) { double('Faraday') }
   let(:url) { '/api' }
   let(:response) { double('response', body: response_body, status: 200) }
 
   let(:subject) { Victim.new }
-  class Victim
-    include NetboxClientRuby::Communication
-  end
 
   describe 'get connection' do
     it 'returns a valid connection' do
-      expect(NetboxClientRuby::Connection).to receive(:new).and_return faraday
+      expect(NetboxClientRuby::Connection).to receive(:new).and_return faraday # rubocop:disable RSpec/StubbedMock
 
       expect(subject.connection).to be faraday
     end

@@ -12,7 +12,6 @@ AllCops:
   Exclude:
     - bin/*
     - gemfiles/*
-    - spec/**/*
     - lib/netbox-client-ruby.rb
 
 Gemspec/RequireMFA:
@@ -35,4 +34,51 @@ Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma
 
 Style/AccessModifierDeclarations:
+  Enabled: false
+
+#########
+# RSPEC #
+#########
+
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 7
+
+RSpec/MetadataStyle:
+  EnforcedStyle: hash
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+# Configure me :)
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/SubjectDeclaration:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/IteratedExpectation:
   Enabled: false

@@ -3,12 +3,12 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
+  subject { described_class.new contact_id }
+
   let(:contact_id) { 1 }
   let(:base_url) { '/api/tenancy/contacts/' }
   let(:request_url) { "#{base_url}#{contact_id}/" }
   let(:response) { File.read("spec/fixtures/tenancy/contact_#{contact_id}.json") }
-
-  subject { NetboxClientRuby::Tenancy::Contact.new contact_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -17,7 +17,7 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.name
@@ -29,14 +29,14 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
   end
 
   describe '.group' do
-    it 'should be nil' do
+    it 'is nil' do
       expect(subject.group).to be_nil
     end
 
     context 'Contact with Group' do
       let(:contact_id) { 3 }
 
-      it 'should be a ContactGroup object' do
+      it 'is a ContactGroup object' do
         contact_group = subject.group
         expect(contact_group).to be_a NetboxClientRuby::Tenancy::ContactGroup
         expect(contact_group.id).to eq(2)
@@ -49,7 +49,7 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -59,14 +59,14 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq('contact1')
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -80,14 +80,14 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
     let(:request_params) { { 'name' => name, 'slug' => slug } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
-        entity = NetboxClientRuby::Tenancy::Contact.new contact_id
+        entity = described_class.new contact_id
         entity.name = name
         entity.slug = slug
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -113,15 +113,15 @@ RSpec.describe NetboxClientRuby::Tenancy::Contact, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
-        entity = NetboxClientRuby::Tenancy::Contact.new
+        entity = described_class.new
         entity.name = name
         entity.slug = slug
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

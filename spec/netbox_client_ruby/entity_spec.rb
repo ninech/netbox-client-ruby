@@ -2,48 +2,51 @@
 
 require 'spec_helper'
 
+class TestEntity
+  include NetboxClientRuby::Entity
+
+  attr_accessor :name
+
+  id test_id: 'id'
+  readonly_fields :counter
+  deletable true
+  path 'tests/:test_id'
+  creation_path 'tests/'
+  object_fields :an_object, :an_object_array
+
+  def initialize(id = nil, name = nil)
+    @name = name
+    super(id)
+  end
+end
+
+class TestEntity2
+  include NetboxClientRuby::Entity
+
+  id test_id: 'id'
+  readonly_fields :counter
+  creation_path 'tests/'
+  # not deletable
+
+  path 'tests/42'
+end
+
+class TestEntity3
+  include NetboxClientRuby::Entity
+
+  id test_id: 'id'
+  # Wrong URL (starts with '/')
+  path '/tests/42'
+end
+
+class TestEntity4
+  include NetboxClientRuby::Entity
+
+  id test_id: 'id'
+  # no path defined
+end
+
 RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
-  class TestEntity
-    include NetboxClientRuby::Entity
-
-    attr_accessor :name
-
-    id test_id: 'id'
-    readonly_fields :counter
-    deletable true
-    path 'tests/:test_id'
-    creation_path 'tests/'
-    object_fields :an_object, :an_object_array
-
-    def initialize(id = nil, name = nil)
-      @name = name
-      super id
-    end
-  end
-  class TestEntity2
-    include NetboxClientRuby::Entity
-
-    id test_id: 'id'
-    readonly_fields :counter
-    creation_path 'tests/'
-    # not deletable
-
-    path 'tests/42'
-  end
-  class TestEntity3
-    include NetboxClientRuby::Entity
-
-    id test_id: 'id'
-    # Wrong URL (starts with '/')
-    path '/tests/42'
-  end
-  class TestEntity4
-    include NetboxClientRuby::Entity
-
-    id test_id: 'id'
-    # no path defined
-  end
-
   let(:raw_data) do
     {
       'id' => 43,
@@ -54,15 +57,15 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
       'date' => '2014-05-28T18:46:18.764425Z',
       'an_object' => {
         'key' => 'value',
-        'second' => 2
+        'second' => 2,
       },
       'an_array' => [],
       'an_object_array' => [
         { 'name' => 'obj1' },
         { 'name' => 'obj2' },
-        { 'name' => 'obj3' }
+        { 'name' => 'obj3' },
       ],
-      'counter' => 1
+      'counter' => 1,
     }
   end
 
@@ -316,6 +319,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
       context 'non-deletable entity' do
         let(:subject) { TestEntity2.new 42 }
+
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -348,6 +352,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
       context 'non-deletable entity' do
         let(:subject) { TestEntity2.new 42 }
+
         it 'raises an error' do
           expect { subject.delete }.to raise_error NetboxClientRuby::LocalError
         end
@@ -400,7 +405,7 @@ RSpec.describe NetboxClientRuby::Entity, faraday_stub: true do
 
   describe 'calling an attribute' do
     describe 'for an unsaved entity' do
-      it 'should raise a NoMethodError' do
+      it 'raises a NoMethodError' do
         expect { subject.unknown_attribute }.to raise_error NoMethodError
       end
     end

@@ -9,7 +9,7 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   let(:faraday_stubs) { Faraday::Adapter::Test::Stubs.new }
   let(:faraday) do
     Faraday.new(url: NetboxClientRuby.config.netbox.api_base_url,
-                headers: NetboxClientRuby::Connection.headers) do |faraday|
+                headers: NetboxClientRuby::Connection.headers) do |faraday| # rubocop:disable Style/TrailingCommaInArguments
       faraday.response :json, content_type: /\bjson$/
       faraday.request faraday_logger if faraday_logger
       faraday.adapter :test, faraday_stubs
@@ -26,14 +26,15 @@ RSpec.shared_context 'faraday connection', faraday_stub: true do
   let(:request_url_params_string) do
     return request_url_params if request_url_params.nil?
     return "?#{request_url_params}" if request_url_params.is_a? String
-    '?' + URI.encode_www_form(request_url_params)
+
+    '?' + URI.encode_www_form(request_url_params) # rubocop:disable Style/StringConcatenation
   end
 
   before do
-    #puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
+    # puts "expected request: #{request_method} #{request_url}#{request_url_params_string} (#{request_params})"
     faraday_stubs.public_send(request_method,
                               "#{request_url}#{request_url_params_string}",
-                              request_params) do |_env|
+                              request_params) do |_env| # rubocop:disable Style/TrailingCommaInArguments
       [response_status, response_config, response]
     end
     allow(Faraday).to receive(:new).and_return faraday

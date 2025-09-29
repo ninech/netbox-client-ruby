@@ -2,96 +2,103 @@
 
 require 'spec_helper'
 
-RSpec.describe NetboxClientRuby::Entity do
-  class TestSubPoro
-    attr_accessor :name
+class TestSubPoro
+  attr_accessor :name
 
-    def initialize(data)
-      @name = data['name']
-    end
+  def initialize(data)
+    @name = data['name']
   end
-  class TestSubEntity
+end
+
+class TestSubEntity
+  include NetboxClientRuby::Entity
+
+  id my_id: 'name'
+  path 'tests/:my_id/sub'
+
+  def initialize(my_id, data = nil)
+    self.data = data
+    super(my_id: my_id)
+  end
+end
+
+module ArrayObjectField
+  class TestEntitySimple
     include NetboxClientRuby::Entity
 
-    id my_id: 'name'
-    path 'tests/:my_id/sub'
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields 'an_object_array'
 
-    def initialize(my_id, data = nil)
-      self.data = data
-      super my_id: my_id
-    end
-  end
-  module ArrayObjectField
-    class TestEntitySimple
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields 'an_object_array'
-
-      def initialize
-        super test_id: 42
-      end
-    end
-    class TestEntityPoro
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields an_object_array: TestSubPoro
-
-      def initialize
-        super test_id: 42
-      end
-    end
-    class TestEntityProc
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
-
-      def initialize
-        super test_id: 42
-      end
-    end
-  end
-  module ObjectField
-    class TestEntityPlain
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields :an_object
-
-      def initialize
-        super test_id: 42
-      end
-    end
-    class TestEntityPoro
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields an_object: TestSubPoro
-
-      def initialize
-        super test_id: 42
-      end
-    end
-    class TestEntityProc
-      include NetboxClientRuby::Entity
-
-      id test_id: 'id'
-      path 'tests/:test_id'
-      object_fields an_object: proc { |data| TestSubEntity.new(@test_id, data) }
-
-      def initialize
-        super test_id: 42
-      end
+    def initialize
+      super(test_id: 42)
     end
   end
 
+  class TestEntityPoro
+    include NetboxClientRuby::Entity
+
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields an_object_array: TestSubPoro
+
+    def initialize
+      super(test_id: 42)
+    end
+  end
+
+  class TestEntityProc
+    include NetboxClientRuby::Entity
+
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields an_object_array: proc { |data| TestSubEntity.new(@test_id, data) }
+
+    def initialize
+      super(test_id: 42)
+    end
+  end
+end
+
+module ObjectField
+  class TestEntityPlain
+    include NetboxClientRuby::Entity
+
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields :an_object
+
+    def initialize
+      super(test_id: 42)
+    end
+  end
+
+  class TestEntityPoro
+    include NetboxClientRuby::Entity
+
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields an_object: TestSubPoro
+
+    def initialize
+      super(test_id: 42)
+    end
+  end
+
+  class TestEntityProc
+    include NetboxClientRuby::Entity
+
+    id test_id: 'id'
+    path 'tests/:test_id'
+    object_fields an_object: proc { |data| TestSubEntity.new(@test_id, data) }
+
+    def initialize
+      super(test_id: 42)
+    end
+  end
+end
+
+RSpec.describe NetboxClientRuby::Entity do
   let(:faraday_stubs) { Faraday::Adapter::Test::Stubs.new }
   let(:faraday) do
     Faraday.new(url: 'https://netbox.test/api/', headers: NetboxClientRuby::Connection.headers) do |faraday|
@@ -100,7 +107,7 @@ RSpec.describe NetboxClientRuby::Entity do
     end
   end
   let(:response_json) do
-    <<-json
+    <<-JSON
       {
         "id": 42,
         "name": "Beat",
@@ -127,7 +134,7 @@ RSpec.describe NetboxClientRuby::Entity do
         },
         "counter": 1
       }
-    json
+    JSON
   end
   let(:url) { '/api/tests/42' }
 
@@ -243,7 +250,7 @@ RSpec.describe NetboxClientRuby::Entity do
   end
 
   describe 'objectification of the content of object fields' do
-    context 'anonymous class' do
+    context 'with anonymous class' do
       let(:subject) { ObjectField::TestEntityPlain.new }
 
       it 'does not return `an_object` as a Hash' do
@@ -270,7 +277,7 @@ RSpec.describe NetboxClientRuby::Entity do
       end
     end
 
-    context 'poro class' do
+    context 'with poro class' do
       let(:subject) { ObjectField::TestEntityPoro.new }
 
       it 'does not return `an_object` as a Hash' do
@@ -297,7 +304,7 @@ RSpec.describe NetboxClientRuby::Entity do
       end
     end
 
-    context 'entity class' do
+    context 'with entity class' do
       let(:subject) { ObjectField::TestEntityProc.new }
 
       it 'does not return `an_object` as a Hashe' do
