@@ -88,6 +88,8 @@ module NetboxClientRuby
         end
       end
 
+      private
+
       def sanitize_mapping(fields_to_class_map) # rubocop:disable Metrics/MethodLength
         fields_map = {}
         fields_to_class_map.each do |field_definition|
