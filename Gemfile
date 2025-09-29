@@ -7,6 +7,7 @@ gemspec
 
 # Dev libs
 gem 'appraisal', git: 'https://github.com/thoughtbot/appraisal.git'
+gem 'ostruct'
 gem 'pry'
 gem 'rake'
 gem 'rspec'

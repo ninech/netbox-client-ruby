@@ -2,16 +2,25 @@
 
 require 'warning'
 
+Warning[:deprecated]   = true
+Warning[:experimental] = true
+Warning[:performance]  = true if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.3.0")
+
 # Ignore all warnings in Gem dependencies
 Gem.path.each do |path|
   Warning.ignore(//, path)
 end
 
+# Ignore OpenStruct warning (only used in tests)
+Warning.ignore(/OpenStruct use is discouraged for performance reasons/)
+
+# Load gem
 require 'netbox-client-ruby'
 require_relative 'shared_contexts/netbox_client'
 require_relative 'shared_contexts/faraday'
 require 'faraday/net_http_persistent' if Faraday::VERSION > '2'
 
+# Configure rspec
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'
 
