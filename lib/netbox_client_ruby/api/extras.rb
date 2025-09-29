@@ -7,8 +7,7 @@ module NetboxClientRuby
       journal_entries: JournalEntries,
       tags: Tags,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { class_name.new }
-      module_function(method_name)
+      NetboxClientRuby.load_collection(self, method_name, class_name)
     end
 
     {
@@ -16,8 +15,7 @@ module NetboxClientRuby
       journal_entry: JournalEntry,
       tag: Tag,
     }.each_pair do |method_name, class_name|
-      define_method(method_name) { |id| class_name.new id }
-      module_function(method_name)
+      NetboxClientRuby.load_entity(self, method_name, class_name)
     end
   end
 end
