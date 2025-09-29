@@ -4,15 +4,15 @@ require 'spec_helper'
 require 'ipaddress'
 
 RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
-  let(:class_under_test) { NetboxClientRuby::IPAM::Prefix }
+  subject { class_under_test.new entity_id }
+
+  let(:class_under_test) { described_class }
   let(:base_url) { '/api/ipam/prefixes/' }
   let(:response) { File.read("spec/fixtures/ipam/prefix_#{entity_id}.json") }
 
   let(:expected_prefix) { IPAddress.parse '10.2.0.0/16' }
   let(:entity_id) { 3 }
   let(:request_url) { "#{base_url}#{entity_id}/" }
-
-  subject { class_under_test.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -21,7 +21,7 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
   end
 
   describe '#prefix' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.prefix
@@ -39,11 +39,11 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
     vlan: NetboxClientRuby::IPAM::Vlan,
     status: NetboxClientRuby::IPAM::PrefixStatus,
     role: NetboxClientRuby::IPAM::Role,
-    prefix: IPAddress
+    prefix: IPAddress,
   }.each_pair do |method_name, expected_type|
     context 'entity with references' do
       describe ".#{method_name}" do
-        it 'should fetch the data and not return nil' do
+        it 'fetches the data and not return nil' do
           expect(faraday).to receive(:get).and_call_original
 
           expect(subject.public_send(method_name)).to_not be_nil
@@ -57,10 +57,10 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
 
     context 'entity without references' do
       describe ".#{method_name}" do
-        it 'should fetch the data and return nil' do
+        it 'fetches the data and return nil' do
           expect(faraday).to receive(:get).and_call_original
 
-          expect(subject.public_send(method_name)).to be
+          expect(subject.public_send(method_name)).to_not be_nil
         end
 
         it 'shall return the expected type' do
@@ -71,7 +71,7 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
   end
 
   describe '.status' do
-    it 'should assign the correct value' do
+    it 'assigns the correct value' do
       expect(subject.status.label).to eq('Container')
     end
   end
@@ -81,7 +81,7 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -92,14 +92,14 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'prefix' => prefix } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(prefix: prefix).prefix).to eq(expected_prefix)
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -112,13 +112,13 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
     let(:request_params) { { 'prefix' => prefix } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = class_under_test.new entity_id
         entity.prefix = prefix
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -141,15 +141,15 @@ RSpec.describe NetboxClientRuby::IPAM::Prefix, faraday_stub: true do
       end
     end
 
-    context '.new' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
+    context 'new' do
       subject do
         entity = class_under_test.new
         entity.prefix = prefix
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

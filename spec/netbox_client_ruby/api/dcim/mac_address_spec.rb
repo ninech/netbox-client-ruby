@@ -3,12 +3,12 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
+  subject { described_class.new entity_id }
+
   let(:entity_id) { 1 }
   let(:base_url) { '/api/dcim/mac-addresses/' }
   let(:request_url) { "#{base_url}#{entity_id}/" }
   let(:response) { File.read("spec/fixtures/dcim/mac-address_#{entity_id}.json") }
-
-  subject { NetboxClientRuby::DCIM::MacAddress.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -17,7 +17,7 @@ RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
   end
 
   describe '#mac_address' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.mac_address
@@ -33,7 +33,7 @@ RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -44,14 +44,14 @@ RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
     let(:request_params) { { 'mac_address' => '23:2f:bd:ad:aa:d2' } }
     let(:response) { File.read("spec/fixtures/dcim/mac-address_#{entity_id}-update.json") }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(mac_address: '23:2f:bd:ad:aa:d2').mac_address).to eq('23:2f:bd:ad:aa:d2')
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -67,20 +67,20 @@ RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
       {
         'mac_address' => mac_address,
         'assigned_object_type' => assigned_object_type,
-        'assigned_object_id' => assigned_object_id
+        'assigned_object_id' => assigned_object_id,
       }
     end
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
-        entity = NetboxClientRuby::DCIM::MacAddress.new entity_id
+        entity = described_class.new entity_id
         entity.mac_address = mac_address
         entity.assigned_object_type = assigned_object_type
         entity.assigned_object_id = assigned_object_id
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -108,16 +108,16 @@ RSpec.describe NetboxClientRuby::DCIM::MacAddress, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { base_url }
-
       subject do
-        entity = NetboxClientRuby::DCIM::MacAddress.new
+        entity = described_class.new
         entity.mac_address = mac_address
         entity.assigned_object_type = assigned_object_type
         entity.assigned_object_id = assigned_object_id
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { base_url }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

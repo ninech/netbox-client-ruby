@@ -27,7 +27,7 @@ module NetboxClientRuby
         rack_roles: RackRoles,
         regions: Regions,
         sites: Sites,
-        virtual_chassis_list: VirtualChassisList
+        virtual_chassis_list: VirtualChassisList,
       }.each do |method, expected_class|
         describe ".#{method}" do
           subject { described_class.public_send(method) }
@@ -38,7 +38,7 @@ module NetboxClientRuby
 
           context 'is a different instance each time' do
             it do
-              is_expected
+              expect(subject)
                 .to_not be described_class.public_send(method)
             end
           end
@@ -71,10 +71,11 @@ module NetboxClientRuby
         rack_role: RackRole,
         region: Region,
         site: Site,
-        virtual_chassis: VirtualChassis
+        virtual_chassis: VirtualChassis,
       }.each do |method, expected_class|
         describe ".#{method}" do
           let(:id) { 1 }
+
           subject { described_class.public_send(method, id) }
 
           context 'is of the expected type' do
@@ -83,7 +84,7 @@ module NetboxClientRuby
 
           context 'it is a new instance each time' do
             it do
-              is_expected
+              expect(subject)
                 .to_not be described_class.public_send(method, id)
             end
           end

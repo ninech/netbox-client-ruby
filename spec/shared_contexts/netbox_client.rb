@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry/configurable/test_interface"
+require 'dry/configurable/test_interface'
 
 # https://dry-rb.org/gems/dry-configurable/1.0/testing/
 module NetboxClientRuby

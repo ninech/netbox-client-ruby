@@ -7,7 +7,7 @@ RSpec.describe NetboxClientRuby::Tenancy do
     tenant_groups: NetboxClientRuby::Tenancy::TenantGroups,
     tenants: NetboxClientRuby::Tenancy::Tenants,
     contact_groups: NetboxClientRuby::Tenancy::ContactGroups,
-    contacts: NetboxClientRuby::Tenancy::Contacts
+    contacts: NetboxClientRuby::Tenancy::Contacts,
   }.each do |method, klass|
     describe ".#{method}" do
       subject { described_class.public_send(method) }
@@ -18,7 +18,7 @@ RSpec.describe NetboxClientRuby::Tenancy do
 
       context 'is a different instance each time' do
         it do
-          is_expected
+          expect(subject)
             .to_not be described_class.public_send(method)
         end
       end

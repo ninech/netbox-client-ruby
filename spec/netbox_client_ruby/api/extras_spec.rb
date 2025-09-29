@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::Extras do
   {
-    tags: NetboxClientRuby::Extras::Tags
+    tags: NetboxClientRuby::Extras::Tags,
   }.each do |method, klass|
     describe ".#{method}" do
       subject { described_class.public_send(method) }
@@ -15,7 +15,7 @@ RSpec.describe NetboxClientRuby::Extras do
 
       context 'is a different instance each time' do
         it do
-          is_expected
+          expect(subject)
             .to_not be described_class.public_send(method)
         end
       end

@@ -3,11 +3,11 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
+  subject { described_class.new region_id }
+
   let(:region_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/region_#{region_id}.json") }
   let(:request_url) { "/api/dcim/regions/#{region_id}/" }
-
-  subject { NetboxClientRuby::DCIM::Region.new region_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -16,7 +16,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.name
@@ -28,16 +28,16 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
   end
 
   describe '.parent' do
-    it 'should be nil' do
+    it 'is nil' do
       expect(subject.parent).to be_nil
     end
 
     context 'Sub Region' do
       let(:region_id) { 2 }
 
-      it 'should be a Region object' do
+      it 'is a Region object' do
         parent_region = subject.parent
-        expect(parent_region).to be_a NetboxClientRuby::DCIM::Region
+        expect(parent_region).to be_a described_class
         expect(parent_region.id).to eq(1)
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -58,7 +58,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq('region1')
     end
@@ -69,7 +69,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
       context 'delete a parent' do
         let(:request_params) { { 'parent' => nil } }
 
-        it 'should remove the parent' do
+        it 'removes the parent' do
           expect(subject.update(parent: nil)).to be subject
         end
       end
@@ -77,7 +77,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
       context 'add a parent' do
         let(:request_params) { { 'parent' => 1 } }
 
-        it 'should add a parent' do
+        it 'adds a parent' do
           expect(subject.update(parent: 1)).to be subject
         end
       end
@@ -85,7 +85,7 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -99,14 +99,14 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
     let(:request_params) { { 'name' => name, 'slug' => slug } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
-        region = NetboxClientRuby::DCIM::Region.new region_id
+        region = described_class.new region_id
         region.name = name
         region.slug = slug
         region
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -132,15 +132,15 @@ RSpec.describe NetboxClientRuby::DCIM::Region, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { '/api/dcim/regions/' }
-
       subject do
-        region = NetboxClientRuby::DCIM::Region.new
+        region = described_class.new
         region.name = name
         region.slug = slug
         region
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { '/api/dcim/regions/' }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)

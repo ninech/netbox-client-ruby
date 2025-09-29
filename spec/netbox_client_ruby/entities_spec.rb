@@ -4,37 +4,37 @@ require 'spec_helper'
 require 'ostruct'
 require 'uri'
 
+class TestEntities
+  include NetboxClientRuby::Entities
+
+  attr_accessor :collected_raw_entities
+
+  path 'tests/42'
+  data_key 'data_node'
+  count_key 'total_count'
+  limit 321
+  entity_creator :entity_creator
+
+  private
+
+  def entity_creator(raw_entity)
+    OpenStruct.new raw_entity
+  end
+end
+
+class TestEntities2
+  include NetboxClientRuby::Entities
+
+  path '/test'
+  data_key 'non_existent'
+  count_key 'non_existent'
+end
+
+class TestEntities3
+  include NetboxClientRuby::Entities
+end
+
 RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
-  class TestEntities
-    include NetboxClientRuby::Entities
-
-    attr_accessor :collected_raw_entities
-
-    path 'tests/42'
-    data_key 'data_node'
-    count_key 'total_count'
-    limit 321
-    entity_creator :entity_creator
-
-    private
-
-    def entity_creator(raw_entity)
-      OpenStruct.new raw_entity
-    end
-  end
-
-  class TestEntities2
-    include NetboxClientRuby::Entities
-
-    path '/test'
-    data_key 'non_existent'
-    count_key 'non_existent'
-  end
-
-  class TestEntities3
-    include NetboxClientRuby::Entities
-  end
-
   let(:raw_data) do
     {
       'total_count' => 999,
@@ -42,8 +42,8 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
       'data_node' => [
         { 'name' => 'obj1' },
         { 'name' => 'obj2' },
-        { 'name' => 'obj3' }
-      ]
+        { 'name' => 'obj3' },
+      ],
     }
   end
   let(:response) { JSON.generate(raw_data) }
@@ -65,6 +65,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
 
     context 'nonexistent count_key provided' do
       subject { TestEntities2.new }
+
       let(:request_url) { '/test' }
       let(:request_url_params) do
         { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
@@ -152,6 +153,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
 
   context 'nonexistent data_key provided' do
     subject { TestEntities2.new }
+
     let(:request_url) { '/test' }
     let(:request_url_params) do
       { limit: NetboxClientRuby.config.netbox.pagination.default_limit }
@@ -341,7 +343,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
     context 'check filter on connection' do
       let(:request_url_params) { filter }
 
-      it 'applies the filter' do
+      it 'applies the filter' do # rubocop:disable RSpec/NoExpectationExample
         subject.filter(filter).reload
       end
     end
@@ -357,16 +359,16 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
       expect(subject.all).to be subject
     end
 
-    it 'fetches all the articles until the maximum allowed value' do
+    it 'fetches all the articles until the maximum allowed value' do # rubocop:disable RSpec/NoExpectationExample
       subject.limit(limit).reload
     end
 
     context 'complex test' do
       before do
-        url_params_string = '?' + URI.encode_www_form(limit: 321)
+        url_params_string = '?' + URI.encode_www_form(limit: 321) # rubocop:disable Style/StringConcatenation
         faraday_stubs.public_send(request_method,
                                   "#{request_url}#{url_params_string}",
-                                  request_params) do |_env|
+                                  request_params) do |_env| # rubocop:disable Style/TrailingCommaInArguments
           [response_status, response_config, response]
         end
       end
@@ -428,7 +430,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
       context "page #{counter}" do
         let(:page) { counter }
 
-        it 'fetches the correct data from the right offset' do
+        it 'fetches the correct data from the right offset' do # rubocop:disable RSpec/NoExpectationExample
           subject.page(page).reload
         end
       end
@@ -466,7 +468,7 @@ RSpec.describe NetboxClientRuby::Entities, faraday_stub: true do
       context "page #{counter}" do
         let(:offset) { counter * limit }
 
-        it 'fetches the correct data from the right offset' do
+        it 'fetches the correct data from the right offset' do # rubocop:disable RSpec/NoExpectationExample
           subject.offset(offset).reload
         end
       end

@@ -4,7 +4,7 @@ require 'warning'
 
 Warning[:deprecated]   = true
 Warning[:experimental] = true
-Warning[:performance]  = true if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.3.0")
+Warning[:performance]  = true if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.3.0')
 
 # Ignore all warnings in Gem dependencies
 Gem.path.each do |path|

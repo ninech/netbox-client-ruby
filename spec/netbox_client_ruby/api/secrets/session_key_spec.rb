@@ -50,6 +50,7 @@ RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do
 
       context 'but a wrong password is given' do
         let(:netbox_auth_rsa_private_key_pass) { 'wrong_password' }
+
         it 'does not send any request to the server' do
           expect(faraday).to_not receive(request_method)
 

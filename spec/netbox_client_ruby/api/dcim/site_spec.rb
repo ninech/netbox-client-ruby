@@ -3,11 +3,11 @@
 require 'spec_helper'
 
 RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
+  subject { described_class.new entity_id }
+
   let(:entity_id) { 1 }
   let(:response) { File.read("spec/fixtures/dcim/site_#{entity_id}.json") }
   let(:request_url) { "/api/dcim/sites/#{entity_id}/" }
-
-  subject { described_class.new entity_id }
 
   describe '#id' do
     it 'shall be the expected id' do
@@ -16,7 +16,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
   end
 
   describe '#name' do
-    it 'should fetch the data' do
+    it 'fetches the data' do
       expect(faraday).to receive(:get).and_call_original
 
       subject.name
@@ -28,11 +28,11 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
   end
 
   describe '#count_prefixes' do
-    it 'should have the expected value' do
+    it 'has the expected value' do
       expect(subject.count_prefixes).to eq(0)
     end
 
-    it 'should not be updateable' do
+    it 'is not updateable' do
       expect { subject.count_prefixes = 2 }.to raise_exception(NoMethodError)
     end
   end
@@ -40,10 +40,10 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
   {
     region: NetboxClientRuby::DCIM::Region,
     tenant: NetboxClientRuby::Tenancy::Tenant,
-    status: Symbol
+    status: Symbol,
   }.each_pair do |method_name, expected_type|
     describe ".#{method_name}" do
-      it 'should fetch the data' do
+      it 'fetches the data' do
         expect(faraday).to receive(:get).and_call_original
 
         expect(subject.public_send(method_name)).to_not be_nil
@@ -60,7 +60,7 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
     let(:response_status) { 204 }
     let(:response) { nil }
 
-    it 'should delete the object' do
+    it 'deletes the object' do
       expect(faraday).to receive(request_method).and_call_original
       subject.delete
     end
@@ -70,14 +70,14 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
     let(:request_method) { :patch }
     let(:request_params) { { 'name' => 'noob' } }
 
-    it 'should update the object' do
+    it 'updates the object' do
       expect(faraday).to receive(request_method).and_call_original
       expect(subject.update(name: 'noob').name).to eq('test')
     end
   end
 
   describe '.reload' do
-    it 'should reload the object' do
+    it 'reloads the object' do
       expect(faraday).to receive(request_method).twice.and_call_original
 
       subject.reload
@@ -91,14 +91,14 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
     let(:request_params) { { 'name' => name, 'slug' => slug } }
 
     context 'update' do
-      let(:request_method) { :patch }
-
       subject do
         entity = described_class.new entity_id
         entity.name = name
         entity.slug = slug
         entity
       end
+
+      let(:request_method) { :patch }
 
       it 'does not call PATCH until save is called' do
         expect(faraday).to_not receive(request_method)
@@ -124,15 +124,15 @@ RSpec.describe NetboxClientRuby::DCIM::Site, faraday_stub: true do
     end
 
     context 'create' do
-      let(:request_method) { :post }
-      let(:request_url) { '/api/dcim/sites/' }
-
       subject do
         entity = described_class.new
         entity.name = name
         entity.slug = slug
         entity
       end
+
+      let(:request_method) { :post }
+      let(:request_url) { '/api/dcim/sites/' }
 
       it 'does not POST until save is called' do
         expect(faraday).to_not receive(request_method)
