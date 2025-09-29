@@ -8,7 +8,8 @@ Gem.path.each do |path|
 end
 
 require 'netbox-client-ruby'
-require 'shared_context'
+require_relative 'shared_contexts/netbox_client'
+require_relative 'shared_contexts/faraday'
 require 'faraday/net_http_persistent' if Faraday::VERSION > '2'
 
 RSpec.configure do |config|
