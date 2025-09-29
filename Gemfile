@@ -10,6 +10,7 @@ gem 'appraisal', git: 'https://github.com/thoughtbot/appraisal.git'
 gem 'pry'
 gem 'rake'
 gem 'rspec'
+gem 'warning'
 
 # fallback to faraday 1.x in dev environment
 gem 'faraday', '~> 1.10'
