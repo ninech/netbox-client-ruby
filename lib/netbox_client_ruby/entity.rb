@@ -21,25 +21,12 @@ module NetboxClientRuby
       #   id 'an_id_field' => 'id_field_in_data'
       #   id an_id_field: 'id_field_in_data', :another_id_field: 'id_field2_in_data'
       #
-      def id(*fields) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
+      def id(*fields)
         return @id_fields if @id_fields
 
         raise ArgumentError, "No 'id' was defined, but one is expected." if fields.empty?
 
-        @id_fields = {}
-        if fields.first.is_a?(Hash)
-          fields.first.each { |key, value| @id_fields[key.to_s] = value.to_s }
-        else
-          fields.map(&:to_s).each do |field|
-            field_as_string = field.to_s
-            @id_fields[field_as_string] = field_as_string
-          end
-        end
-
-        @id_fields.each_key do |field|
-          define_method(field) { instance_variable_get :"@#{field}" }
-        end
-
+        @id_fields = load_attributes(fields)
         @id_fields
       end
 
@@ -102,6 +89,25 @@ module NetboxClientRuby
           end
         end
         fields_map
+      end
+
+      def load_attributes(fields) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+        id_fields = {}
+
+        if fields.first.is_a?(Hash)
+          fields.first.each { |key, value| id_fields[key.to_s] = value.to_s }
+        else
+          fields.map(&:to_s).each do |field|
+            field_as_string = field.to_s
+            id_fields[field_as_string] = field_as_string
+          end
+        end
+
+        id_fields.each_key do |field|
+          define_method(field) { instance_variable_get :"@#{field}" }
+        end
+
+        id_fields
       end
     end
 
