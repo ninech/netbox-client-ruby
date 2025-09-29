@@ -6,7 +6,7 @@ module NetboxClientRuby
       providers: Providers,
       circuits: Circuits,
       circuit_types: CircuitTypes,
-      circuit_terminations: CircuitTerminations
+      circuit_terminations: CircuitTerminations,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { class_name.new }
       module_function(method_name)
@@ -16,7 +16,7 @@ module NetboxClientRuby
       provider: Provider,
       circuit: Circuit,
       circuit_type: CircuitType,
-      circuit_termination: CircuitTermination
+      circuit_termination: CircuitTermination,
     }.each_pair do |method_name, class_name|
       define_method(method_name) { |id| class_name.new id }
       module_function(method_name)

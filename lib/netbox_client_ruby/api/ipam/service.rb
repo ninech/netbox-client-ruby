@@ -13,7 +13,7 @@ module NetboxClientRuby
         device: proc { |raw_data| Device.new raw_data['id'] },
         virtual_machine: proc { |raw_data| VirtualMachine.new raw_data['id'] },
         protocol: proc { |raw_data| ServiceProtocol.new raw_data },
-        ipaddresses: proc { |raw_data| IpAddress.new raw_data['id'] }
+        ipaddresses: proc { |raw_data| IpAddress.new raw_data['id'] },
       )
       readonly_fields :display_name
     end

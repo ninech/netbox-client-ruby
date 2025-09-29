@@ -13,6 +13,10 @@ Gem::Specification.new do |spec|
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+    spec.metadata['homepage_uri']      = 'https://github.com/ninech/netbox-client-ruby'
+    spec.metadata['changelog_uri']     = 'https://github.com/ninech/netbox-client-ruby/releases'
+    spec.metadata['source_code_uri']   = 'https://github.com/ninech/netbox-client-ruby'
+    spec.metadata['bug_tracker_uri']   = 'https://github.com/ninech/netbox-client-ruby/issues'
   end
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
@@ -21,10 +25,10 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.7.0'
 
-  spec.add_runtime_dependency 'dry-configurable', '~> 1'
-  spec.add_runtime_dependency 'faraday', '>= 0.11.0', '< 3'
-  spec.add_runtime_dependency 'faraday-detailed_logger', '~> 2.1'
-  spec.add_runtime_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
-  spec.add_runtime_dependency 'openssl', '>= 2.0.5'
-  spec.add_runtime_dependency 'zeitwerk', '~> 2.6.0'
+  spec.add_dependency 'dry-configurable', '~> 1'
+  spec.add_dependency 'faraday', '>= 0.11.0', '< 3'
+  spec.add_dependency 'faraday-detailed_logger', '~> 2.1'
+  spec.add_dependency 'ipaddress', '~> 0.8', '>= 0.8.3'
+  spec.add_dependency 'openssl', '>= 2.0.5'
+  spec.add_dependency 'zeitwerk', '~> 2.6.0'
 end

@@ -15,7 +15,7 @@ module NetboxClientRuby
         role: proc { |raw_data| Role.new raw_data['id'] },
         status: proc { |raw_data| IpRangeStatus.new raw_data },
         start_address: proc { |raw_data| IPAddress.parse raw_data },
-        end_address: proc { |raw_data| IPAddress.parse raw_data }
+        end_address: proc { |raw_data| IPAddress.parse raw_data },
       )
     end
 

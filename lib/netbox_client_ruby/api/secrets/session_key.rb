@@ -5,7 +5,7 @@ module NetboxClientRuby
     class SessionKey
       include Communication
 
-      PATH = '/api/secrets/get-session-key/'.freeze
+      PATH = '/api/secrets/get-session-key/'
 
       def initialize
         session_key
@@ -49,6 +49,7 @@ module NetboxClientRuby
         private_key.to_pem
       end
 
+      # rubocop:disable Layout/LineLength,Metrics/MethodLength
       def decode_private_key(encoded_private_key)
         begin
           private_key = OpenSSL::PKey::RSA.new encoded_private_key, rsa_private_key_password
@@ -67,15 +68,18 @@ module NetboxClientRuby
         raise LocalError,
               "The file at '#{rsa_private_key_path}' is not a private key, but a private key is required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
+      # rubocop:enable Layout/LineLength,Metrics/MethodLength
 
       def rsa_private_key_password
         pwd = rsa_private_key_config.password
         # If nil is not converted to '', then OpenSSL will block and ask on console for the password.
         # We really don't want that.
         return '' if pwd.nil?
+
         pwd
       end
 
+      # rubocop:disable Layout/LineLength
       def read_private_key_file(key_file)
         encoded_private_key = key_file.read
         return encoded_private_key unless encoded_private_key.nil? || encoded_private_key.empty?
@@ -90,6 +94,7 @@ module NetboxClientRuby
         raise LocalError,
               "No file exists at the given path '#{rsa_private_key_path}', but it's required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
+      # rubocop:enable Layout/LineLength
 
       def rsa_private_key_path
         @rsa_private_key_path ||= File.expand_path(rsa_private_key_config.path)

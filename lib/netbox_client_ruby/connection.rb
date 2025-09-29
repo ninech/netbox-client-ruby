@@ -3,7 +3,7 @@
 module NetboxClientRuby
   class Connection
     DEFAULT_OPTIONS = {
-      request_encoding: :json
+      request_encoding: :json,
     }.freeze
 
     def self.new(options = {})
@@ -13,7 +13,7 @@ module NetboxClientRuby
     def self.headers
       headers = {}
       auth_token = auth_config.token
-      headers['Authorization'] = "Token #{auth_token}".freeze if auth_token
+      headers['Authorization'] = "Token #{auth_token}" if auth_token
       headers['X-Session-Key'] = NetboxClientRuby::Secrets.session_key if NetboxClientRuby::Secrets.session_key
       headers
     end
@@ -26,7 +26,7 @@ module NetboxClientRuby
       NetboxClientRuby.config.netbox
     end
 
-    private_class_method def self.build_faraday(request_encoding: :json)
+    private_class_method def self.build_faraday(request_encoding: :json) # rubocop:disable Metrics/AbcSize
       config = NetboxClientRuby.config
       Faraday.new(url: config.netbox.api_base_url, headers: headers, ssl: config.faraday.ssl_options) do |faraday|
         faraday.request request_encoding

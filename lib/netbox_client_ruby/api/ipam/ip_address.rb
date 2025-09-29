@@ -9,7 +9,7 @@ module NetboxClientRuby
         active: 1,
         reserved: 2,
         deprecated: 3,
-        dhcp: 5
+        dhcp: 5,
       }.freeze
 
       id id: :id
@@ -20,7 +20,7 @@ module NetboxClientRuby
         vrf: proc { |raw_data| Vrf.new raw_data['id'] },
         tenant: proc { |raw_data| Tenancy::Tenant.new raw_data['id'] },
         status: proc { |raw_data| STATUS_VALUES.key(raw_data['value']) || raw_data['value'] },
-        address: proc { |raw_ip| IPAddress.parse(raw_ip) }
+        address: proc { |raw_ip| IPAddress.parse(raw_ip) },
       )
       readonly_fields :display_name
 
@@ -33,8 +33,9 @@ module NetboxClientRuby
         interface_data = data['interface']
 
         return nil unless interface_data
-        return Virtualization::Interface.new interface_data['id'] unless interface_data.dig('virtual_machine').nil?
-        return DCIM::Interface.new interface_data['id']
+        return Virtualization::Interface.new interface_data['id'] unless interface_data['virtual_machine'].nil?
+
+        DCIM::Interface.new interface_data['id']
       end
     end
   end

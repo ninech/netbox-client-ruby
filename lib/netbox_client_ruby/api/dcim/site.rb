@@ -8,7 +8,7 @@ module NetboxClientRuby
       STATUS_VALUES = {
         active: 1,
         planned: 2,
-        retired: 4
+        retired: 4,
       }.freeze
 
       id id: :id
@@ -23,7 +23,7 @@ module NetboxClientRuby
         region: proc { |raw_region| DCIM::Region.new raw_region['id'] },
         status: proc do |raw_status|
           STATUS_VALUES.key(raw_status['value']) || raw_status['value']
-        end
+        end,
       )
     end
   end

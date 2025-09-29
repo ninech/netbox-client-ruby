@@ -20,7 +20,7 @@ module NetboxClientRuby
       creation_path 'dcim/device-types/'
       object_fields(
         manufacturer: proc { |raw_data| Manufacturer.new raw_data['id'] },
-        interface_ordering: InterfaceOrdering
+        interface_ordering: InterfaceOrdering,
       )
     end
   end

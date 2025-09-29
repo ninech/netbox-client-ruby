@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module NetboxClientRuby
-  module Entities
+  module Entities # rubocop:disable Metrics/ModuleLength
     include NetboxClientRuby::Communication
     include Enumerable
 
@@ -37,7 +37,7 @@ module NetboxClientRuby
         @limit
       end
 
-      def check_limit(limit)
+      def check_limit(limit) # rubocop:disable Metrics/MethodLength
         max_limit = NetboxClientRuby.config.netbox.pagination.max_limit
         if limit.nil?
           raise ArgumentError,
@@ -74,8 +74,8 @@ module NetboxClientRuby
       end
     end
 
-    def find_by(attributes)
-      fail ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
+    def find_by(attributes) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+      raise ArgumentError, '"attributes" expects a hash' unless attributes.is_a? Hash
 
       filter(attributes).find do |netbox_object|
         attributes.all? do |filter_key, filter_value|
@@ -83,19 +83,17 @@ module NetboxClientRuby
             custom_field = filter_key.to_s.sub('cf_', '')
 
             netbox_object.custom_fields[custom_field].to_s == filter_value.to_s
+          elsif netbox_object.respond_to?(filter_key)
+            netbox_object.public_send(filter_key).to_s == filter_value.to_s
           else
-            if netbox_object.respond_to?(filter_key)
-              netbox_object.public_send(filter_key).to_s == filter_value.to_s
-            else
-              false
-            end
+            false
           end
         end
       end
     end
 
     def filter(filter)
-      fail ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
+      raise ArgumentError, '"filter" expects a hash' unless filter.is_a? Hash
 
       @filter = filter
       reset
