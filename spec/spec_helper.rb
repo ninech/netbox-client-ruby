@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Load ruby-warning gem
 require 'warning'
 
 Warning[:deprecated]   = true
@@ -13,6 +14,16 @@ end
 
 # Ignore OpenStruct warning (only used in tests)
 Warning.ignore(/OpenStruct use is discouraged for performance reasons/)
+
+# Load simplecov
+require 'simplecov'
+require 'simplecov_json_formatter'
+
+# Start SimpleCov
+SimpleCov.start do
+  formatter SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::JSONFormatter])
+  add_filter 'spec/'
+end
 
 # Load gem
 require 'netbox-client-ruby'
