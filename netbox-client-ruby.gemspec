@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'lib/netbox_client_ruby/version'
+
 Gem::Specification.new do |spec|
   spec.name          = 'netbox-client-ruby'
-  spec.version       = `git describe --tags --match="v[0-9]*" --abbrev=0`.strip.delete_prefix("v")
+  spec.version       = NetboxClientRuby::VERSION::STRING
 
   spec.summary       = 'A read/write client for Netbox v2.'
   spec.homepage      = 'https://github.com/ninech/netbox-client-ruby'
