@@ -11,6 +11,7 @@ gem 'ostruct'
 gem 'pry'
 gem 'rake'
 gem 'rspec'
+gem 'simplecov'
 gem 'warning'
 
 # fallback to faraday 1.x in dev environment
