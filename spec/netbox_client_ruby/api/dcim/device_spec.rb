@@ -41,10 +41,7 @@ RSpec.describe NetboxClientRuby::DCIM::Device, faraday_stub: true do
     primary_ip: [NetboxClientRuby::IPAM::IpAddress, 5],
     primary_ip4: [NetboxClientRuby::IPAM::IpAddress, 1],
     primary_ip6: [NetboxClientRuby::IPAM::IpAddress, 5],
-  }.each do |method_name, expected_values|
-    expected_type = expected_values[0]
-    expected_id = expected_values[1]
-
+  }.each do |method_name, (expected_type, expected_id)|
     describe "##{method_name}" do
       it "returns a #{expected_type}" do
         expect(subject.public_send(method_name))
