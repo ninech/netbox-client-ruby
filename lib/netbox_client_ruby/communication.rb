@@ -31,9 +31,9 @@ module NetboxClientRuby
       when 300..499
         raise_on_http_client_error response
       when 500..599
-        raise NetboxClientRuby::RemoteError, "#{status} Remote Error#{formatted_body(body)}"
+        raise NetboxClientRuby::Error::RemoteError, "#{status} Remote Error#{formatted_body(body)}"
       else
-        raise NetboxClientRuby::RemoteError, "#{status} Unknown Error Code#{formatted_body(body)}"
+        raise NetboxClientRuby::Error::RemoteError, "#{status} Unknown Error Code#{formatted_body(body)}"
       end
     end
 
@@ -60,7 +60,7 @@ module NetboxClientRuby
     end
 
     def raise_client_error(message, body = nil)
-      raise NetboxClientRuby::ClientError, "#{message}#{formatted_body(body)}"
+      raise NetboxClientRuby::Error::ClientError, "#{message}#{formatted_body(body)}"
     end
 
     def formatted_body(body)
