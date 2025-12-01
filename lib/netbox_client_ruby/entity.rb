@@ -144,6 +144,10 @@ module NetboxClientRuby
       self
     end
 
+    def changed?
+      !dirty_data.empty?
+    end
+
     def save
       return post unless ids_set?
 
@@ -209,6 +213,11 @@ module NetboxClientRuby
         not_this_classes_business = is_readonly_field || is_instance_variable
 
         return super if not_this_classes_business
+
+        if ids_set? and data[name[0..-2]] == args[0]
+          dirty_data.delete name[0..-2]
+          return args[0]
+        end
 
         dirty_data[name[0..-2]] = args[0]
         return args[0]
