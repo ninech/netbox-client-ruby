@@ -155,6 +155,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Devices: `NetboxClientRuby.dcim.devices`
   * Device Roles: `NetboxClientRuby.dcim.device_roles`
   * Device Types: `NetboxClientRuby.dcim.device_types`
+  * Front Ports: `NetboxClientRuby.dcim.front_ports`
   * Interfaces: `NetboxClientRuby.dcim.interfaces`
   * Interface Connections: `NetboxClientRuby.dcim.interface_connections`
   * Manufacturers: `NetboxClientRuby.dcim.manufacturers`
@@ -166,6 +167,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Rack Groups: `NetboxClientRuby.dcim.rack_groups`
   * Rack Roles: `NetboxClientRuby.dcim.rack_roles`
   * Rack Reservations: `NetboxClientRuby.dcim.rack_reservations`
+  * Rear Ports: `NetboxClientRuby.dcim.rear_ports`
   * Regions: `NetboxClientRuby.dcim.regions`
   * Sites: `NetboxClientRuby.dcim.sites`
   * Virtual Chassis: `NetboxClientRuby.dcim.virtual_chassis_list`

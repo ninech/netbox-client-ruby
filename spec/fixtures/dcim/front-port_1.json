@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "1",
+  "slug": "1",
+  "type": {
+    "value": "8p8c",
+    "label": "8P8C"
+  },
+  "description": "The first front port"
+}
