@@ -1,0 +1,18 @@
+module NetboxClientRuby
+  module DCIM
+    class Locations
+      include Entities
+
+      path 'dcim/locations/'
+      data_key 'results'
+      count_key 'count'
+      entity_creator :entity_creator
+
+      private
+
+      def entity_creator(raw_entity)
+        Location.new raw_entity['id']
+      end
+    end
+  end
+end
