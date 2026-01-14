@@ -258,4 +258,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 This gem is currently maintained and funded by [nine](https://nine.ch).
 
-[![logo of the company 'nine'](https://logo.apps.at-nine.ch/Dmqied_eSaoBMQwk3vVgn4UIgDo=/trim/500x0/logo_claim.png)](https://www.nine.ch)
+[![logo of the company 'nine'](https://github.com/user-attachments/assets/cfdf3a03-5853-4f82-91f1-a6ef9f076759)](https://www.nine.ch)
