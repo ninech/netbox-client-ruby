@@ -158,6 +158,7 @@ Not all objects which the Netbox API exposes are currently implemented. Implemen
   * Front Ports: `NetboxClientRuby.dcim.front_ports`
   * Interfaces: `NetboxClientRuby.dcim.interfaces`
   * Interface Connections: `NetboxClientRuby.dcim.interface_connections`
+  * Locations: `NetboxClientRuby.dcim.locations`
   * Manufacturers: `NetboxClientRuby.dcim.manufacturers`
   * Platforms: `NetboxClientRuby.dcim.platforms`
   * Power Connections: `NetboxClientRuby.dcim.power_connections`
