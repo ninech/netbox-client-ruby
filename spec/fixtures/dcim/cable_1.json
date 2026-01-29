@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "display": "#1",
+  "type": "cat5",
+  "a_terminations": [],
+  "b_terminations": [],
+  "status": {
+    "value": "connected",
+    "label": "Connected"
+  },
+  "tenant": null,
+  "label": null,
+  "color": null,
+  "length": null,
+  "length_unit": null,
+  "description": null,
+  "comments": null,
+  "tags": [],
+  "custom_fields": {}
+}

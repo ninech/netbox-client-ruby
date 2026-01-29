@@ -1,0 +1,67 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "display": "#1",
+      "type": "cat5",
+      "a_terminations": [],
+      "b_terminations": [],
+      "status": {
+        "value": "connected",
+        "label": "Connected"
+      },
+      "tenant": null,
+      "label": null,
+      "color": null,
+      "length": null,
+      "length_unit": null,
+      "description": null,
+      "comments": null,
+      "tags": [],
+      "custom_fields": {}
+    },
+    {
+      "id": 2,
+      "display": "#2",
+      "type": "cat5",
+      "a_terminations": [],
+      "b_terminations": [],
+      "status": {
+        "value": "connected",
+        "label": "Connected"
+      },
+      "tenant": null,
+      "label": null,
+      "color": null,
+      "length": null,
+      "length_unit": null,
+      "description": null,
+      "comments": null,
+      "tags": [],
+      "custom_fields": {}
+    },
+    {
+      "id": 3,
+      "display": "#3",
+      "type": "cat5",
+      "a_terminations": [],
+      "b_terminations": [],
+      "status": {
+        "value": "connected",
+        "label": "Connected"
+      },
+      "tenant": null,
+      "label": null,
+      "color": null,
+      "length": null,
+      "length_unit": null,
+      "description": null,
+      "comments": null,
+      "tags": [],
+      "custom_fields": {}
+    }
+  ]
+}

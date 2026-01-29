@@ -3,6 +3,7 @@
 module NetboxClientRuby
   module DCIM
     {
+      cables: Cables,
       console_connections: ConsoleConnections,
       console_ports: ConsolePorts,
       console_server_ports: ConsoleServerPorts,
@@ -33,6 +34,7 @@ module NetboxClientRuby
     end
 
     {
+      cable: Cable,
       console_connection: ConsoleConnection,
       console_port: ConsolePort,
       console_server_port: ConsoleServerPort,
