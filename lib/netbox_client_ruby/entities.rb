@@ -3,6 +3,7 @@
 module NetboxClientRuby
   module Entities # rubocop:disable Metrics/ModuleLength
     include NetboxClientRuby::Communication
+    include NetboxClientRuby::BulkOperations
     include Enumerable
 
     def self.included(other_klass)
@@ -166,6 +167,72 @@ module NetboxClientRuby
     alias get! reload
     alias size length
     alias count total
+
+    ##
+    # Generalized filterable + paginated read (Exigence B), available on every
+    # collection. Configures filter/limit/offset and returns self so the caller
+    # can read +#results+, +#next_url+, +#total+, or enumerate. Chainable.
+    #
+    #   nb.core.object_changes.get_list(
+    #     { changed_object_type_id: [12, 34], time_after: ts, ordering: '-time' },
+    #     limit: 100
+    #   )
+    def get_list(filters = {}, limit: nil, offset: nil)
+      filter(filters) unless filters.nil? || filters.empty?
+      self.limit(limit) unless limit.nil?
+      self.offset(offset) unless offset.nil?
+      self
+    end
+
+    ##
+    # Raw +results+ array of the current page (no entity wrapping).
+    def results
+      raw_data_array
+    end
+
+    ##
+    # Absolute URL of the next / previous page as returned by NetBox, or nil.
+    def next_url
+      data['next']
+    end
+
+    def previous_url
+      data['previous']
+    end
+
+    ##
+    # Follows +next+ from the current (filtered/limited) query until exhausted
+    # and returns every entity across all pages. This is the incremental-polling
+    # aggregation used against /core/object-changes/ (Exigence B).
+    def all_pages
+      collected = []
+      page = data
+
+      loop do
+        (page[self.class.data_key] || []).each { |raw_entity| collected << as_entity(raw_entity) }
+        next_page_url = page['next']
+        break if next_page_url.nil? || next_page_url.empty?
+
+        page = response connection.get(next_page_url)
+      end
+
+      collected
+    end
+
+    ##
+    # Lazily yields each raw page Hash ({results:, next:, ...}), following next.
+    def each_page
+      return enum_for(:each_page) unless block_given?
+
+      page = data
+      loop do
+        yield page
+        next_page_url = page['next']
+        break if next_page_url.nil? || next_page_url.empty?
+
+        page = response connection.get(next_page_url)
+      end
+    end
 
     private
 

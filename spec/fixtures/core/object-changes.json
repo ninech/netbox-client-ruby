@@ -1,0 +1,11 @@
+{
+  "count": 2, "next": null, "previous": null,
+  "results": [
+    { "id": 9001, "action": { "value": "update", "label": "Updated" },
+      "changed_object_type": "dcim.device", "changed_object_id": 5,
+      "time": "2026-06-02T10:00:00Z", "object_repr": "device-5" },
+    { "id": 9002, "action": { "value": "create", "label": "Created" },
+      "changed_object_type": "dcim.cable", "changed_object_id": 12,
+      "time": "2026-06-02T10:01:00Z", "object_repr": "cable-12" }
+  ]
+}
