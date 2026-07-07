@@ -14,9 +14,9 @@ gem 'rspec'
 gem 'simplecov'
 gem 'warning'
 
-# fallback to faraday 1.x in dev environment
-gem 'faraday', '~> 1.10'
-gem 'faraday_middleware'
+# default to faraday 2.x in dev environment
+gem 'faraday', '~> 2.14'
+gem 'faraday-net_http_persistent', '~> 2.3'
 
 # Dev tools / linter
 gem 'rubocop',             require: false

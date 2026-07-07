@@ -14,6 +14,6 @@ gem "rubocop", require: false
 gem "rubocop-performance", require: false
 gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
-gem "faraday-net_http_persistent"
+gem "faraday-net_http_persistent", "~> 2.3"
 
 gemspec path: "../"
