@@ -1,0 +1,4 @@
+[
+  { "id": 101, "label": "A2", "status": { "value": "planned", "label": "Planned" } },
+  { "id": 102, "label": "B2", "status": { "value": "planned", "label": "Planned" } }
+]

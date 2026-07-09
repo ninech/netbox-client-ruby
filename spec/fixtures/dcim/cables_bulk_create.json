@@ -1,0 +1,8 @@
+[
+  { "id": 101, "url": "http://netbox.test/api/dcim/cables/101/", "display": "#101",
+    "type": "cat6", "label": "A", "status": { "value": "connected", "label": "Connected" },
+    "a_terminations": [], "b_terminations": [], "custom_fields": {} },
+  { "id": 102, "url": "http://netbox.test/api/dcim/cables/102/", "display": "#102",
+    "type": "cat6", "label": "B", "status": { "value": "connected", "label": "Connected" },
+    "a_terminations": [], "b_terminations": [], "custom_fields": {} }
+]

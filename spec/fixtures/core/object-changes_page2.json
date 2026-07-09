@@ -1,0 +1,6 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": "http://netbox.test/api/core/object-changes/?limit=2&offset=0",
+  "results": [ { "id": 3 } ]
+}

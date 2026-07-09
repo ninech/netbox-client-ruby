@@ -82,6 +82,10 @@ module NetboxClientRuby
     NetboxClientRuby::Circuits
   end
 
+  def self.core
+    NetboxClientRuby::Core
+  end
+
   def self.dcim
     NetboxClientRuby::DCIM
   end
