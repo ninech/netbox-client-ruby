@@ -61,7 +61,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 400, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 401, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 403, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -85,7 +85,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 405, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -93,7 +93,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 415, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -101,7 +101,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 429, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 499, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
 
@@ -117,7 +117,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 500, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::RemoteError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::RemoteError
       end
     end
 
@@ -125,7 +125,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 600, body: nil) }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::RemoteError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::RemoteError
       end
     end
 
@@ -133,7 +133,7 @@ RSpec.describe NetboxClientRuby::Communication do
       let(:response) { double('response', status: 400, body: 'you did it all wrong') }
 
       it 'returns and empty object' do
-        expect { subject.response response }.to raise_error NetboxClientRuby::ClientError
+        expect { subject.response response }.to raise_error NetboxClientRuby::Error::ClientError
       end
     end
   end

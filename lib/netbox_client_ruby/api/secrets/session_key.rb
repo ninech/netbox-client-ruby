@@ -25,7 +25,7 @@ module NetboxClientRuby
         if authorization_token
           response(post)
         else
-          raise LocalError,
+          raise NetboxClientRuby::Error::LocalError,
                 "The authorization_token has not been configured, but it's required for get-session-key."
         end
       end
@@ -57,15 +57,15 @@ module NetboxClientRuby
           return private_key if private_key.private?
         rescue OpenSSL::PKey::RSAError
           if rsa_private_key_password.empty?
-            raise LocalError,
+            raise NetboxClientRuby::Error::LocalError,
                   "The private key at '#{rsa_private_key_path}' requires a password, but none was given, or the key data is corrupted. (The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
           else
-            raise LocalError,
+            raise NetboxClientRuby::Error::LocalError,
                   "The password given for the private key at '#{rsa_private_key_path}' is not valid or the key data is corrupted. (The corresponding configuration is 'netbox.auth.rsa_private_key.password'.)"
           end
         end
 
-        raise LocalError,
+        raise NetboxClientRuby::Error::LocalError,
               "The file at '#{rsa_private_key_path}' is not a private key, but a private key is required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
       # rubocop:enable Layout/LineLength,Metrics/MethodLength
@@ -84,14 +84,14 @@ module NetboxClientRuby
         encoded_private_key = key_file.read
         return encoded_private_key unless encoded_private_key.nil? || encoded_private_key.empty?
 
-        raise LocalError,
+        raise NetboxClientRuby::Error::LocalError,
               "The file at '#{rsa_private_key_path}' is empty, but a private key is required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
 
       def open_private_key_file
         return File.new rsa_private_key_path if File.exist? rsa_private_key_path
 
-        raise LocalError,
+        raise NetboxClientRuby::Error::LocalError,
               "No file exists at the given path '#{rsa_private_key_path}', but it's required for get-session-key. (The corresponding configuration is 'netbox.auth.rsa_private_key.path'.)"
       end
       # rubocop:enable Layout/LineLength

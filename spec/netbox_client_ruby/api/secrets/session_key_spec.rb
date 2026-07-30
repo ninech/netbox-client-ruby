@@ -54,7 +54,7 @@ RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do
         it 'does not send any request to the server' do
           expect(faraday).to_not receive(request_method)
 
-          expect { subject.session_key }.to raise_error(NetboxClientRuby::LocalError)
+          expect { subject.session_key }.to raise_error(NetboxClientRuby::Error::LocalError)
         end
       end
 
@@ -64,7 +64,7 @@ RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do
         it 'does not send any request to the server' do
           expect(faraday).to_not receive(request_method)
 
-          expect { subject.session_key }.to raise_error(NetboxClientRuby::LocalError)
+          expect { subject.session_key }.to raise_error(NetboxClientRuby::Error::LocalError)
         end
       end
     end
@@ -75,7 +75,7 @@ RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do
       it 'does not send any request to the server' do
         expect(faraday).to_not receive(request_method)
 
-        expect { subject.session_key }.to raise_error(NetboxClientRuby::LocalError)
+        expect { subject.session_key }.to raise_error(NetboxClientRuby::Error::LocalError)
       end
     end
 
@@ -85,7 +85,7 @@ RSpec.describe NetboxClientRuby::Secrets::SessionKey, faraday_stub: true do
       it 'does not send any request to the server' do
         expect(faraday).to_not receive(request_method)
 
-        expect { subject.session_key }.to raise_error(NetboxClientRuby::LocalError)
+        expect { subject.session_key }.to raise_error(NetboxClientRuby::Error::LocalError)
       end
     end
 

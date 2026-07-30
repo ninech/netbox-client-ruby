@@ -137,7 +137,7 @@ module NetboxClientRuby
     end
 
     def reload
-      raise LocalError, "Can't 'reload', this object has never been saved" unless ids_set?
+      raise NetboxClientRuby::Error::LocalError, "Can't 'reload', this object has never been saved" unless ids_set?
 
       @data = get
       revert
@@ -151,14 +151,14 @@ module NetboxClientRuby
     end
 
     def create(raw_data)
-      raise LocalError, "Can't 'create', this object already exists" if ids_set?
+      raise NetboxClientRuby::Error::LocalError, "Can't 'create', this object already exists" if ids_set?
 
       @dirty_data = raw_data
       post
     end
 
     def delete
-      raise NetboxClientRuby::LocalError, "Can't delete unless deletable=true" unless deletable
+      raise NetboxClientRuby::Error::LocalError, "Can't delete unless deletable=true" unless deletable
       return self if @deleted
 
       @data = response connection.delete path
@@ -335,7 +335,8 @@ module NetboxClientRuby
         path_variable_value = send(match)
         return interpreted_path.gsub! ":#{match}", path_variable_value.to_s unless path_variable_value.nil?
 
-        raise LocalError, "Received 'nil' while replacing ':#{match}' in '#{path}' with a value."
+        raise NetboxClientRuby::Error::LocalError,
+              "Received 'nil' while replacing ':#{match}' in '#{path}' with a value."
       end
       interpreted_path
     end
@@ -350,7 +351,10 @@ module NetboxClientRuby
 
     def extract_ids
       id_fields.each do |id_attr, id_field|
-        raise LocalError, "Can't find the id field '#{id_field}' in the received data." unless data.key?(id_field)
+        unless data.key?(id_field)
+          raise NetboxClientRuby::Error::LocalError,
+                "Can't find the id field '#{id_field}' in the received data."
+        end
 
         instance_variable_set(:"@#{id_attr}", data[id_field])
       end
